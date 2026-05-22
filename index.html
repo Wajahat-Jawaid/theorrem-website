@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theorrem — AI Systems for Real Estate</title>
+<meta name="description" content="Theorrem builds AI-powered chatbots and WhatsApp automation for real estate businesses in Pakistan. Qualify leads 24/7, automate property search, and close more deals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0d0d;
+    --bg2: #141414;
+    --bg3: #1a1a1a;
+    --border: rgba(255,255,255,0.08);
+    --text: #f0ede8;
+    --muted: #888880;
+    --accent: #c8b89a;
+    --accent2: #e8ddd0;
+    --green: #4a9e6e;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 4rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(13,13,13,0.85);
+    backdrop-filter: blur(12px);
+  }
+
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--accent2);
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+
+  .logo span { color: var(--accent); }
+
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--text); }
+
+  .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+
+  .nav-cta {
+    color: var(--bg) !important;
+    background: var(--accent);
+    padding: 0.5rem 1.25rem;
+    border-radius: 4px;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--accent2) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(200,184,154,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    display: inline-block;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--accent2);
+    max-width: 800px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero p {
+    font-size: 1.125rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .hero-ctas { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 0.875rem 2rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+
+  .btn-secondary:hover { color: var(--text); }
+
+  .hero-stat {
+    margin-top: 5rem;
+    display: flex;
+    gap: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-item { }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--accent2);
+    letter-spacing: -0.02em;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+
+  /* SECTION */
+  section { padding: 6rem 4rem; }
+
+  .section-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    letter-spacing: -0.02em;
+    color: var(--accent2);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    max-width: 600px;
+  }
+
+  .section-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 480px;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* PRODUCTS */
+  .products { background: var(--bg2); }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
+    margin-top: 4rem;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .product-card {
+    background: var(--bg2);
+    padding: 2.5rem;
+    position: relative;
+    border-right: 1.5px solid var(--border);
+    transition: background 0.2s;
+  }
+
+  .product-card:last-child { border-right: none; }
+  .product-card:hover { background: var(--bg3); }
+
+  .product-icon {
+    width: 44px; height: 44px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+  }
+
+  .product-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--accent2);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .product-card p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .feature-list li {
+    font-size: 0.85rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .feature-list li::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* HOW IT WORKS */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 4rem;
+    position: relative;
+  }
+
+  .step {
+    padding: 2rem;
+    border-left: 1px solid var(--border);
+    position: relative;
+  }
+
+  .step:first-child { border-left: none; }
+
+  .step-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem;
+    color: rgba(200,184,154,0.12);
+    line-height: 1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.04em;
+  }
+
+  .step h4 {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--accent2);
+    margin-bottom: 0.5rem;
+  }
+
+  .step p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* WHO */
+  .who-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .who-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.5rem;
+    background: var(--bg2);
+    transition: border-color 0.2s;
+  }
+
+  .who-card:hover { border-color: rgba(200,184,154,0.25); }
+
+  .who-card h4 {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--accent2);
+    margin-bottom: 0.5rem;
+  }
+
+  .who-card p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* CONTACT */
+  .contact { background: var(--bg2); text-align: center; }
+
+  .contact .section-title { max-width: 100%; }
+  .contact .section-sub { max-width: 420px; margin: 0 auto 2.5rem; }
+
+  .contact-email {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200,184,154,0.3);
+    padding-bottom: 4px;
+    transition: color 0.2s;
+  }
+
+  .contact-email:hover { color: var(--accent2); }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer p { font-size: 0.8rem; color: var(--muted); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag, .hero h1, .hero p, .hero-ctas, .hero-stat {
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .hero h1 { animation-delay: 0.1s; }
+  .hero p { animation-delay: 0.2s; }
+  .hero-ctas { animation-delay: 0.3s; }
+  .hero-stat { animation-delay: 0.4s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section, .hero { padding: 4rem 1.5rem; }
+    .hero { padding-top: 7rem; }
+    .products-grid, .steps, .who-grid { grid-template-columns: 1fr; }
+    .product-card { border-right: none; border-bottom: 1.5px solid var(--border); }
+    .step { border-left: none; border-top: 1px solid var(--border); }
+    .hero-stat { gap: 2rem; flex-wrap: wrap; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">Theorrem<span>.</span></a>
+  <div class="nav-links">
+    <a href="#products">Products</a>
+    <a href="#how">How it works</a>
+    <a href="#who">Who we serve</a>
+    <a href="#contact" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-tag">AI systems for real estate</div>
+  <h1>Turn every inquiry into<br><em>a qualified lead</em></h1>
+  <p>Theorrem builds AI-powered chatbots and WhatsApp automation for property businesses in Pakistan. Respond instantly, qualify buyers 24/7, and never miss a deal.</p>
+  <div class="hero-ctas">
+    <a href="#contact" class="btn-primary">Request a demo →</a>
+    <a href="#products" class="btn-secondary">See our products</a>
+  </div>
+  <div class="hero-stat">
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Lead qualification</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">< 2s</div>
+      <div class="stat-label">Response time</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">WhatsApp</div>
+      <div class="stat-label">Native integration</div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="section-tag">Our products</div>
+  <h2 class="section-title">Two ways to engage your buyers</h2>
+  <p class="section-sub">Whether your customers find you on the web or message you on WhatsApp, Theorrem has you covered.</p>
+
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-icon">🌐</div>
+      <h3>Web Chatbot</h3>
+      <p>An intelligent property search assistant embedded directly on your website. Buyers describe what they want — the AI finds and presents matching listings instantly.</p>
+      <ul class="feature-list">
+        <li>Natural language property search</li>
+        <li>Filters by location, budget, bedrooms, type</li>
+        <li>Remembers conversation context</li>
+        <li>Shows agent contact details</li>
+        <li>Fully branded to your business</li>
+      </ul>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">💬</div>
+      <h3>WhatsApp Bot</h3>
+      <p>The same intelligence, delivered through WhatsApp — where Pakistani buyers actually are. Respond to inquiries automatically, around the clock, without adding headcount.</p>
+      <ul class="feature-list">
+        <li>Instant replies on WhatsApp Business</li>
+        <li>Property listings sent as formatted messages</li>
+        <li>Handles multiple conversations simultaneously</li>
+        <li>Escalates to human agent when needed</li>
+        <li>Works on your existing business number</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="section-tag">How it works</div>
+  <h2 class="section-title">Up and running in days, not months</h2>
+  <p class="section-sub">We handle the entire setup. You provide your property data and branding — we deliver a working AI system.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h4>Share your inventory</h4>
+      <p>Provide your property listings in any format. We process and index everything into the AI's knowledge base.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h4>We configure the AI</h4>
+      <p>The system is trained on your listings, tuned to your market, and branded to your business identity.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h4>Go live</h4>
+      <p>Embed the chatbot on your site or connect it to your WhatsApp Business number. Takes minutes.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h4>Leads qualify themselves</h4>
+      <p>Buyers get instant answers. Your agents focus on serious prospects. You close more deals.</p>
+    </div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="section-tag">Who we serve</div>
+  <h2 class="section-title">Built for Pakistan's property market</h2>
+  <p class="section-sub">From large portals to independent dealers, Theorrem adapts to your scale and workflow.</p>
+
+  <div class="who-grid">
+    <div class="who-card">
+      <h4>Property portals</h4>
+      <p>Handle thousands of daily inquiries without scaling your support team. AI qualifies buyers before they reach your agents.</p>
+    </div>
+    <div class="who-card">
+      <h4>Marketing firms</h4>
+      <p>Automate lead capture across your project portfolio. Never let a WhatsApp inquiry go unanswered again.</p>
+    </div>
+    <div class="who-card">
+      <h4>Authorized dealers</h4>
+      <p>Compete at the same level as large agencies. A 24/7 AI assistant on your WhatsApp gives buyers instant responses.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-tag">Get in touch</div>
+  <h2 class="section-title">Ready to see it in action?</h2>
+  <p class="section-sub">We offer a free demo tailored to your property inventory. See exactly how it would work for your business.</p>
+  <a href="mailto:hello@theorrem.com" class="contact-email">hello@theorrem.com</a>
+</section>
+
+<footer>
+  <a href="#" class="logo" style="font-size: 1.1rem;">Theorrem<span>.</span></a>
+  <p>© 2025 Theorrem. AI systems for real estate businesses in Pakistan.</p>
+</footer>
+
+</body>
+</html>
