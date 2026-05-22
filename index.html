@@ -4,889 +4,844 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Theorrem — AI Automation Systems</title>
-<meta name="description" content="Theorrem builds intelligent AI systems that transform how businesses operate. We automate complex workflows, eliminate manual processes, and unlock growth at scale.">
+<meta name="description" content="Theorrem builds intelligent AI systems that transform how businesses operate.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
 :root{
-  --bg:#060608;
-  --bg2:#0a0a0f;
-  --bg3:#0f0f18;
-  --border:rgba(255,255,255,0.06);
+  --bg:#0a0a0a;
+  --bg2:#111111;
+  --bg3:#161616;
+  --bg4:#1c1c1c;
+  --border:rgba(255,255,255,0.07);
   --border2:rgba(255,255,255,0.12);
-  --text:#e8e6f0;
-  --muted:#6b6880;
-  --muted2:#9996aa;
-  --accent:#7b5ea7;
-  --accent2:#a07fd4;
-  --accent3:#c8abff;
-  --glow:rgba(123,94,167,0.15);
-  --glow2:rgba(123,94,167,0.06);
+  --border3:rgba(255,255,255,0.18);
+  --text:#f2f0eb;
+  --text2:#a8a49c;
+  --text3:#6b6760;
+  --orange:#ff6b2b;
+  --orange2:#ff8c55;
+  --orange-glow:rgba(255,107,43,0.15);
+  --orange-glow2:rgba(255,107,43,0.06);
+  --green:#22c55e;
+  --r:6px;
 }
+
 html{scroll-behavior:smooth;}
 body{
-  font-family:'Inter',sans-serif;
+  font-family:'DM Sans',sans-serif;
   background:var(--bg);
   color:var(--text);
-  font-size:16px;
-  line-height:1.6;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
 
 /* SCROLLBAR */
-::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar{width:3px;}
 ::-webkit-scrollbar-track{background:var(--bg);}
-::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px;}
-
-/* CURSOR */
-.cursor{
-  position:fixed;width:8px;height:8px;
-  background:var(--accent3);border-radius:50%;
-  pointer-events:none;z-index:9999;
-  transition:transform 0.1s;
-  mix-blend-mode:difference;
-}
-.cursor-ring{
-  position:fixed;width:32px;height:32px;
-  border:1px solid rgba(200,171,255,0.4);
-  border-radius:50%;pointer-events:none;z-index:9998;
-  transition:transform 0.15s, width 0.2s, height 0.2s, opacity 0.2s;
-}
-
-/* NOISE OVERLAY */
-body::before{
-  content:'';
-  position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:1000;opacity:0.4;
-}
+::-webkit-scrollbar-thumb{background:var(--orange);border-radius:2px;}
 
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:500;
   display:flex;align-items:center;justify-content:space-between;
-  padding:1.5rem 5rem;
-  transition:background 0.3s, border-color 0.3s;
-}
-nav.scrolled{
-  background:rgba(6,6,8,0.85);
-  backdrop-filter:blur(20px);
+  padding:0 2.5rem;height:60px;
+  background:rgba(10,10,10,0.8);
+  backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border);
 }
 .logo{
-  font-family:'Syne',sans-serif;
-  font-size:1.3rem;
-  font-weight:800;
-  color:var(--text);
-  text-decoration:none;
-  letter-spacing:-0.02em;
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:1.2rem;font-weight:800;
+  color:var(--text);text-decoration:none;
+  letter-spacing:-0.03em;
+  display:flex;align-items:center;gap:6px;
 }
-.logo-dot{color:var(--accent2);}
-.nav-links{display:flex;gap:2.5rem;align-items:center;}
-.nav-links a{
-  color:var(--muted2);font-size:0.85rem;
-  text-decoration:none;font-weight:400;
-  transition:color 0.2s;letter-spacing:0.01em;
+.logo-badge{
+  background:var(--orange);
+  color:#fff;font-size:0.55rem;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:2px 6px;border-radius:3px;
+  vertical-align:middle;
 }
-.nav-links a:hover{color:var(--text);}
-.nav-cta{
-  background:transparent !important;
-  border:1px solid var(--border2) !important;
-  color:var(--text) !important;
-  padding:0.5rem 1.25rem;
-  border-radius:4px;
-  font-size:0.85rem !important;
-  font-weight:500 !important;
-  transition:border-color 0.2s, background 0.2s !important;
+.nav-center{display:flex;gap:0.25rem;align-items:center;}
+.nav-link{
+  color:var(--text2);font-size:0.8rem;font-weight:400;
+  text-decoration:none;padding:0.4rem 0.85rem;
+  border-radius:4px;transition:color 0.15s,background 0.15s;
 }
-.nav-cta:hover{border-color:var(--accent2) !important;background:var(--glow2) !important;}
+.nav-link:hover{color:var(--text);background:rgba(255,255,255,0.05);}
+.nav-right{display:flex;align-items:center;gap:0.75rem;}
+.nav-btn{
+  font-size:0.8rem;font-weight:500;
+  padding:0.45rem 1rem;border-radius:5px;
+  text-decoration:none;transition:all 0.15s;
+}
+.nav-btn-ghost{color:var(--text2);border:1px solid var(--border2);}
+.nav-btn-ghost:hover{color:var(--text);border-color:var(--border3);}
+.nav-btn-solid{
+  background:var(--orange);color:#fff;
+  border:1px solid var(--orange);
+}
+.nav-btn-solid:hover{background:var(--orange2);}
 
 /* HERO */
 .hero{
+  padding:120px 2.5rem 0;
   min-height:100vh;
   display:flex;flex-direction:column;
-  justify-content:center;
-  padding:0 5rem;
-  position:relative;
-  overflow:hidden;
-}
-
-/* GRID BACKGROUND */
-.hero::before{
-  content:'';
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(123,94,167,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(123,94,167,0.07) 1px, transparent 1px);
-  background-size:60px 60px;
-  mask-image:radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 80%);
-}
-
-/* GLOW ORBS */
-.orb{
-  position:absolute;border-radius:50%;
-  filter:blur(80px);pointer-events:none;
-}
-.orb-1{
-  width:500px;height:500px;
-  background:radial-gradient(circle, rgba(123,94,167,0.2) 0%, transparent 70%);
-  top:-100px;right:-100px;
-  animation:float1 8s ease-in-out infinite;
-}
-.orb-2{
-  width:300px;height:300px;
-  background:radial-gradient(circle, rgba(160,127,212,0.12) 0%, transparent 70%);
-  bottom:100px;left:-50px;
-  animation:float2 10s ease-in-out infinite;
-}
-
-@keyframes float1{
-  0%,100%{transform:translate(0,0);}
-  50%{transform:translate(-30px,30px);}
-}
-@keyframes float2{
-  0%,100%{transform:translate(0,0);}
-  50%{transform:translate(20px,-20px);}
-}
-
-.hero-inner{position:relative;z-index:2;max-width:900px;}
-
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:0.75rem;
-  font-size:0.75rem;font-weight:500;
-  letter-spacing:0.15em;text-transform:uppercase;
-  color:var(--accent2);margin-bottom:2rem;
-  opacity:0;animation:fadeUp 0.8s 0.1s ease both;
-}
-.eyebrow-line{
-  width:30px;height:1px;background:var(--accent2);
-}
-
-.hero h1{
-  font-family:'Syne',sans-serif;
-  font-size:clamp(3.5rem,7vw,6.5rem);
-  font-weight:800;
-  line-height:0.95;
-  letter-spacing:-0.04em;
-  color:var(--text);
-  margin-bottom:2rem;
-  opacity:0;animation:fadeUp 0.8s 0.2s ease both;
-}
-.hero h1 .line-2{
-  display:block;
-  background:linear-gradient(135deg, var(--accent3) 0%, var(--accent2) 50%, #7b5ea7 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
-}
-
-.hero-desc{
-  font-size:1.1rem;color:var(--muted2);
-  max-width:480px;font-weight:300;line-height:1.8;
-  margin-bottom:3rem;
-  opacity:0;animation:fadeUp 0.8s 0.3s ease both;
-}
-
-.hero-ctas{
-  display:flex;gap:1rem;align-items:center;
-  opacity:0;animation:fadeUp 0.8s 0.4s ease both;
-}
-
-.btn-primary{
-  display:inline-flex;align-items:center;gap:0.5rem;
-  background:var(--accent);color:#fff;
-  padding:0.875rem 2rem;border-radius:4px;
-  font-size:0.875rem;font-weight:500;
-  text-decoration:none;
-  border:1px solid var(--accent);
-  transition:background 0.2s, transform 0.15s, box-shadow 0.2s;
   position:relative;overflow:hidden;
 }
-.btn-primary::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,0.1),transparent);
-  opacity:0;transition:opacity 0.2s;
-}
-.btn-primary:hover{
-  background:var(--accent2);
-  box-shadow:0 0 30px rgba(123,94,167,0.4);
-  transform:translateY(-1px);
-}
-.btn-primary:hover::before{opacity:1;}
 
-.btn-ghost{
-  display:inline-flex;align-items:center;gap:0.5rem;
-  color:var(--muted2);font-size:0.875rem;
-  text-decoration:none;
-  transition:color 0.2s;
-  padding:0.875rem 0;
-}
-.btn-ghost:hover{color:var(--text);}
-.btn-ghost .arrow{transition:transform 0.2s;}
-.btn-ghost:hover .arrow{transform:translateX(4px);}
-
-/* MARQUEE */
-.marquee-section{
-  padding:3rem 0;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  overflow:hidden;
-  position:relative;
-}
-.marquee-section::before,.marquee-section::after{
-  content:'';position:absolute;top:0;bottom:0;width:150px;z-index:2;
-}
-.marquee-section::before{left:0;background:linear-gradient(90deg,var(--bg),transparent);}
-.marquee-section::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent);}
-
-.marquee-track{
-  display:flex;gap:4rem;
-  animation:marquee 25s linear infinite;
-  width:max-content;
-}
-.marquee-track:hover{animation-play-state:paused;}
-
-@keyframes marquee{
-  from{transform:translateX(0);}
-  to{transform:translateX(-50%);}
-}
-
-.marquee-item{
-  display:flex;align-items:center;gap:0.75rem;
-  font-size:0.8rem;font-weight:500;
-  letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--muted);white-space:nowrap;
-}
-.marquee-dot{
-  width:4px;height:4px;border-radius:50%;
-  background:var(--accent);flex-shrink:0;
-}
-
-/* SECTIONS */
-section{padding:7rem 5rem;}
-
-.section-label{
-  font-size:0.7rem;font-weight:600;
-  letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--accent2);margin-bottom:1.25rem;
-  display:flex;align-items:center;gap:0.75rem;
-}
-.section-label::before{
-  content:'';width:20px;height:1px;background:var(--accent2);
-}
-
-.section-title{
-  font-family:'Syne',sans-serif;
-  font-size:clamp(2.2rem,4vw,3.5rem);
-  font-weight:800;
-  letter-spacing:-0.03em;
-  line-height:1.05;
-  color:var(--text);
-  margin-bottom:1.25rem;
-}
-
-.section-sub{
-  color:var(--muted2);font-size:1rem;
-  max-width:500px;font-weight:300;line-height:1.8;
-}
-
-/* SERVICES */
-.services{background:var(--bg2);}
-
-.services-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1px;
-  margin-top:5rem;
-  background:var(--border);
-  border:1px solid var(--border);
-  border-radius:8px;
-  overflow:hidden;
-}
-
-.service-card{
-  background:var(--bg2);
-  padding:2.5rem;
-  position:relative;
-  overflow:hidden;
-  transition:background 0.3s;
-  cursor:default;
-}
-.service-card::before{
-  content:'';
+/* GRID */
+.hero-grid-bg{
   position:absolute;inset:0;
-  background:radial-gradient(circle at 50% 0%, var(--glow), transparent 70%);
-  opacity:0;transition:opacity 0.4s;
-}
-.service-card:hover{background:var(--bg3);}
-.service-card:hover::before{opacity:1;}
-
-.service-num{
-  font-family:'Syne',sans-serif;
-  font-size:0.7rem;font-weight:700;
-  letter-spacing:0.15em;color:var(--muted);
-  margin-bottom:2rem;
-  display:block;
-}
-
-.service-icon{
-  font-size:1.5rem;margin-bottom:1.25rem;
-  display:block;
-}
-
-.service-card h3{
-  font-family:'Syne',sans-serif;
-  font-size:1.1rem;font-weight:700;
-  color:var(--text);margin-bottom:0.75rem;
-  letter-spacing:-0.02em;
-}
-
-.service-card p{
-  font-size:0.875rem;color:var(--muted2);
-  font-weight:300;line-height:1.7;
-}
-
-.service-arrow{
-  position:absolute;bottom:2rem;right:2rem;
-  color:var(--accent);font-size:1rem;
-  opacity:0;transform:translate(-4px,4px);
-  transition:opacity 0.2s, transform 0.2s;
-}
-.service-card:hover .service-arrow{opacity:1;transform:translate(0,0);}
-
-/* PROCESS */
-.process-grid{
-  margin-top:5rem;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:1px;
-  background:var(--border);
-  border:1px solid var(--border);
-  border-radius:8px;
-  overflow:hidden;
-}
-
-.process-item{
-  background:var(--bg);
-  padding:3rem;
-  position:relative;
-}
-
-.process-item:nth-child(1),.process-item:nth-child(2){
-  border-bottom:1px solid var(--border);
-}
-
-.process-num{
-  font-family:'Syne',sans-serif;
-  font-size:4rem;font-weight:800;
-  color:rgba(123,94,167,0.08);
-  line-height:1;margin-bottom:1.5rem;
-  letter-spacing:-0.04em;
-}
-
-.process-item h3{
-  font-family:'Syne',sans-serif;
-  font-size:1.1rem;font-weight:700;
-  color:var(--text);margin-bottom:0.75rem;
-  letter-spacing:-0.02em;
-}
-
-.process-item p{
-  font-size:0.875rem;color:var(--muted2);
-  font-weight:300;line-height:1.7;
-  max-width:320px;
-}
-
-.process-tag{
-  display:inline-block;
-  font-size:0.7rem;font-weight:600;
-  letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--accent2);
-  background:rgba(123,94,167,0.1);
-  border:1px solid rgba(123,94,167,0.2);
-  padding:0.3rem 0.75rem;
-  border-radius:2px;
-  margin-bottom:1.25rem;
-}
-
-/* WHY */
-.why{background:var(--bg2);}
-
-.why-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:3rem;
-  margin-top:5rem;
-  align-items:start;
-}
-
-.why-left{}
-
-.why-list{
-  display:flex;flex-direction:column;gap:0;
-  margin-top:2rem;
-}
-
-.why-item{
-  padding:1.5rem 0;
-  border-bottom:1px solid var(--border);
-  display:flex;gap:1.5rem;
-  align-items:flex-start;
-  cursor:default;
-}
-.why-item:first-child{border-top:1px solid var(--border);}
-
-.why-item-num{
-  font-family:'Syne',sans-serif;
-  font-size:0.7rem;font-weight:700;
-  color:var(--accent);
-  margin-top:3px;flex-shrink:0;
-  letter-spacing:0.1em;
-}
-
-.why-item-content h4{
-  font-family:'Syne',sans-serif;
-  font-size:0.95rem;font-weight:700;
-  color:var(--text);margin-bottom:0.4rem;
-  letter-spacing:-0.01em;
-}
-.why-item-content p{
-  font-size:0.85rem;color:var(--muted2);
-  font-weight:300;line-height:1.6;
-}
-
-.why-right{
-  position:sticky;top:8rem;
-}
-
-.why-visual{
-  background:var(--bg3);
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:2.5rem;
-  position:relative;
-  overflow:hidden;
-}
-.why-visual::before{
-  content:'';position:absolute;
-  top:-100px;right:-100px;
-  width:300px;height:300px;
-  background:radial-gradient(circle,var(--glow),transparent 70%);
-}
-
-.metric-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:1px;background:var(--border);
-  border:1px solid var(--border);
-  border-radius:6px;overflow:hidden;
-  margin-bottom:1.5rem;
-}
-
-.metric{
-  background:var(--bg2);
-  padding:1.5rem;
-}
-.metric-val{
-  font-family:'Syne',sans-serif;
-  font-size:1.8rem;font-weight:800;
-  color:var(--accent3);letter-spacing:-0.03em;
-  line-height:1;margin-bottom:0.4rem;
-}
-.metric-label{
-  font-size:0.75rem;color:var(--muted);
-  font-weight:400;
-}
-
-.why-visual-desc{
-  font-size:0.85rem;color:var(--muted2);
-  font-weight:300;line-height:1.7;
-}
-
-/* INDUSTRIES */
-.industries-grid{
-  display:flex;flex-wrap:wrap;gap:0.75rem;
-  margin-top:3rem;
-}
-
-.industry-pill{
-  display:inline-flex;align-items:center;gap:0.5rem;
-  padding:0.6rem 1.25rem;
-  border:1px solid var(--border);
-  border-radius:100px;
-  font-size:0.85rem;color:var(--muted2);
-  transition:border-color 0.2s, color 0.2s, background 0.2s;
-  cursor:default;
-}
-.industry-pill:hover{
-  border-color:var(--accent);
-  color:var(--accent3);
-  background:var(--glow2);
-}
-.industry-pill-dot{
-  width:5px;height:5px;border-radius:50%;
-  background:var(--accent);flex-shrink:0;
-  opacity:0.5;
-  transition:opacity 0.2s;
-}
-.industry-pill:hover .industry-pill-dot{opacity:1;}
-
-/* CTA SECTION */
-.cta-section{
-  background:var(--bg2);
-  padding:7rem 5rem;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-}
-.cta-section::before{
-  content:'';position:absolute;
-  top:50%;left:50%;transform:translate(-50%,-50%);
-  width:600px;height:600px;
-  background:radial-gradient(circle,rgba(123,94,167,0.1),transparent 70%);
+  background-image:
+    linear-gradient(var(--border) 1px,transparent 1px),
+    linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:40px 40px;
+  mask-image:radial-gradient(ellipse 100% 80% at 50% 0%,black 20%,transparent 75%);
   pointer-events:none;
 }
 
-.cta-section .section-label{justify-content:center;}
-.cta-section .section-label::before{display:none;}
-.cta-section .section-title{margin:0 auto 1rem;}
-.cta-section .section-sub{margin:0 auto 3rem;}
+.hero-top{
+  display:flex;align-items:flex-start;
+  justify-content:space-between;
+  gap:2rem;
+  position:relative;z-index:2;
+}
 
-.cta-email{
-  font-family:'Syne',sans-serif;
-  font-size:clamp(1.5rem,3vw,2.5rem);
-  font-weight:800;
-  letter-spacing:-0.03em;
-  color:var(--accent3);
+.hero-left{flex:1;max-width:680px;}
+
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--bg3);border:1px solid var(--border2);
+  border-radius:100px;padding:5px 12px 5px 8px;
+  font-size:0.72rem;font-weight:500;
+  color:var(--text2);margin-bottom:2rem;
+  letter-spacing:0.01em;
+}
+.hero-tag-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--green);flex-shrink:0;
+  box-shadow:0 0 6px var(--green);
+}
+
+.hero h1{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:clamp(3.2rem,6.5vw,6rem);
+  font-weight:800;line-height:0.97;
+  letter-spacing:-0.04em;
+  color:var(--text);
+  margin-bottom:1.75rem;
+}
+
+.hero h1 .accent{
+  color:var(--orange);
+  font-style:italic;
+  font-family:'Instrument Serif',serif;
+  font-weight:400;
+}
+
+.hero-sub{
+  font-size:1rem;color:var(--text2);
+  font-weight:300;line-height:1.75;
+  max-width:440px;margin-bottom:2.5rem;
+}
+
+.hero-actions{display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;margin-bottom:4rem;}
+
+.btn-orange{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--orange);color:#fff;
+  padding:0.7rem 1.5rem;border-radius:5px;
+  font-size:0.875rem;font-weight:500;
   text-decoration:none;
-  display:inline-block;
+  transition:background 0.15s,transform 0.1s,box-shadow 0.2s;
+  border:1px solid var(--orange);
+}
+.btn-orange:hover{
+  background:var(--orange2);
+  box-shadow:0 0 24px rgba(255,107,43,0.35);
+  transform:translateY(-1px);
+}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:6px;
+  color:var(--text2);
+  padding:0.7rem 1.5rem;border-radius:5px;
+  font-size:0.875rem;font-weight:400;
+  text-decoration:none;
+  border:1px solid var(--border2);
+  transition:all 0.15s;
+}
+.btn-outline:hover{color:var(--text);border-color:var(--border3);}
+
+/* HERO RIGHT CARDS */
+.hero-right{
+  width:320px;flex-shrink:0;
+  display:flex;flex-direction:column;gap:0.75rem;
+  padding-top:0.5rem;
+}
+
+.hero-card{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:1rem 1.25rem;
+  transition:border-color 0.2s;
+}
+.hero-card:hover{border-color:var(--border2);}
+
+.hero-card-label{
+  font-size:0.7rem;font-weight:500;
+  color:var(--text3);letter-spacing:0.08em;
+  text-transform:uppercase;margin-bottom:0.5rem;
+}
+.hero-card-val{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:1.6rem;font-weight:800;
+  color:var(--text);letter-spacing:-0.03em;
+  line-height:1;margin-bottom:0.25rem;
+}
+.hero-card-sub{font-size:0.78rem;color:var(--text3);font-weight:300;}
+
+.hero-card-orange .hero-card-val{color:var(--orange);}
+
+.hero-card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:0.75rem;}
+.tag{
+  font-size:0.7rem;font-weight:500;
+  padding:3px 8px;border-radius:3px;
+  background:var(--bg3);border:1px solid var(--border);
+  color:var(--text2);
+}
+.tag-orange{background:rgba(255,107,43,0.1);border-color:rgba(255,107,43,0.2);color:var(--orange2);}
+
+/* HERO BOTTOM STRIP */
+.hero-strip{
+  display:flex;gap:0;
+  border-top:1px solid var(--border);
+  border-left:1px solid var(--border);
+  border-radius:var(--r) var(--r) 0 0;
+  overflow:hidden;
+  margin-top:auto;
+  position:relative;z-index:2;
+}
+.strip-item{
+  flex:1;padding:1.25rem 1.5rem;
+  border-right:1px solid var(--border);
+  transition:background 0.2s;
+}
+.strip-item:hover{background:var(--bg2);}
+.strip-num{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:1.4rem;font-weight:800;
+  color:var(--orange);letter-spacing:-0.03em;
+  line-height:1;margin-bottom:0.3rem;
+}
+.strip-label{font-size:0.75rem;color:var(--text3);font-weight:300;}
+
+/* MARQUEE */
+.marquee-wrap{
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:0.85rem 0;overflow:hidden;
+  position:relative;background:var(--bg2);
+}
+.marquee-wrap::before,.marquee-wrap::after{
+  content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;
+}
+.marquee-wrap::before{left:0;background:linear-gradient(90deg,var(--bg2),transparent);}
+.marquee-wrap::after{right:0;background:linear-gradient(-90deg,var(--bg2),transparent);}
+.marquee-inner{
+  display:flex;gap:3rem;width:max-content;
+  animation:scroll 30s linear infinite;
+}
+@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.m-item{
+  display:flex;align-items:center;gap:8px;
+  font-size:0.75rem;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--text3);white-space:nowrap;
+}
+.m-sep{width:3px;height:3px;border-radius:50%;background:var(--orange);flex-shrink:0;}
+
+/* SECTIONS */
+.section{padding:5rem 2.5rem;}
+.section-alt{background:var(--bg2);}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:0.7rem;font-weight:600;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--orange);margin-bottom:1rem;
+}
+.eyebrow::before{content:'';width:16px;height:1px;background:var(--orange);}
+
+.s-title{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:clamp(2rem,3.5vw,3rem);
+  font-weight:800;letter-spacing:-0.03em;
+  line-height:1.05;color:var(--text);
+  margin-bottom:1rem;
+}
+.s-title em{
+  font-family:'Instrument Serif',serif;
+  font-style:italic;font-weight:400;
+  color:var(--orange);
+}
+.s-sub{
+  font-size:0.95rem;color:var(--text2);
+  font-weight:300;line-height:1.75;
+  max-width:460px;
+}
+
+/* SERVICES */
+.svc-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);
+  border-radius:var(--r);overflow:hidden;
+  margin-top:3.5rem;
+}
+.svc-card{
+  background:var(--bg);
+  padding:2rem;
+  position:relative;overflow:hidden;
+  transition:background 0.25s;
+}
+.svc-card:hover{background:var(--bg3);}
+.svc-card::after{
+  content:'';position:absolute;
+  inset:0;background:radial-gradient(circle at 0% 0%,var(--orange-glow),transparent 60%);
+  opacity:0;transition:opacity 0.3s;
+}
+.svc-card:hover::after{opacity:1;}
+.svc-n{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:0.65rem;font-weight:700;
+  color:var(--text3);letter-spacing:0.1em;
+  margin-bottom:1.5rem;display:block;
+}
+.svc-icon{
+  width:36px;height:36px;border-radius:6px;
+  background:var(--bg3);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;margin-bottom:1rem;
+  position:relative;z-index:1;
+}
+.svc-card h3{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:1rem;font-weight:700;
+  color:var(--text);margin-bottom:0.6rem;
+  letter-spacing:-0.02em;
+  position:relative;z-index:1;
+}
+.svc-card p{
+  font-size:0.82rem;color:var(--text2);
+  font-weight:300;line-height:1.65;
+  position:relative;z-index:1;
+}
+.svc-link{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:0.75rem;font-weight:500;color:var(--orange);
+  text-decoration:none;margin-top:1rem;
+  opacity:0;transform:translateY(4px);
+  transition:opacity 0.2s,transform 0.2s;
+  position:relative;z-index:1;
+}
+.svc-card:hover .svc-link{opacity:1;transform:translateY(0);}
+
+/* BENTO */
+.bento{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  grid-template-rows:auto;
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);
+  border-radius:var(--r);overflow:hidden;
+  margin-top:3.5rem;
+}
+.bento-cell{
+  background:var(--bg2);
+  padding:2rem;
+  transition:background 0.2s;
+}
+.bento-cell:hover{background:var(--bg3);}
+
+.b1{grid-column:span 5;}
+.b2{grid-column:span 7;}
+.b3{grid-column:span 4;}
+.b4{grid-column:span 4;}
+.b5{grid-column:span 4;}
+
+.bento-cell h3{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:1.05rem;font-weight:700;
+  color:var(--text);letter-spacing:-0.02em;
+  margin-bottom:0.6rem;
+}
+.bento-cell p{
+  font-size:0.82rem;color:var(--text2);
+  font-weight:300;line-height:1.65;
+}
+
+.bento-big-num{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:3.5rem;font-weight:800;
+  letter-spacing:-0.04em;
+  line-height:1;margin-bottom:0.5rem;
+}
+.bento-big-num.orange{color:var(--orange);}
+
+.bento-list{
+  list-style:none;margin-top:1rem;
+  display:flex;flex-direction:column;gap:0.5rem;
+}
+.bento-list li{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:0.8rem;color:var(--text2);font-weight:300;
+}
+.bento-list li::before{
+  content:'→';color:var(--orange);
+  flex-shrink:0;font-size:0.75rem;margin-top:1px;
+}
+
+.bento-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem;}
+
+/* PROCESS */
+.process-steps{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;margin-top:3.5rem;
+  border:1px solid var(--border);
+  border-radius:var(--r);overflow:hidden;
+}
+.p-step{
+  padding:2rem 1.75rem;
+  border-right:1px solid var(--border);
   position:relative;
+  transition:background 0.2s;
+}
+.p-step:last-child{border-right:none;}
+.p-step:hover{background:var(--bg3);}
+
+.p-step-n{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:2.5rem;font-weight:800;
+  color:rgba(255,107,43,0.1);
+  line-height:1;margin-bottom:1.25rem;
+  letter-spacing:-0.04em;
   transition:color 0.2s;
 }
-.cta-email::after{
-  content:'';
-  position:absolute;bottom:-4px;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--accent2),transparent);
-  transform:scaleX(0);transition:transform 0.3s;
+.p-step:hover .p-step-n{color:rgba(255,107,43,0.2);}
+.p-badge{
+  display:inline-block;
+  font-size:0.65rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--orange);
+  background:rgba(255,107,43,0.08);
+  border:1px solid rgba(255,107,43,0.15);
+  padding:3px 8px;border-radius:3px;
+  margin-bottom:1rem;
 }
-.cta-email:hover{color:#fff;}
-.cta-email:hover::after{transform:scaleX(1);}
+.p-step h4{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:0.95rem;font-weight:700;
+  color:var(--text);margin-bottom:0.5rem;
+  letter-spacing:-0.02em;
+}
+.p-step p{font-size:0.8rem;color:var(--text2);font-weight:300;line-height:1.6;}
+
+/* INDUSTRIES */
+.ind-grid{
+  display:flex;flex-wrap:wrap;gap:0.5rem;
+  margin-top:3rem;
+}
+.ind-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:0.5rem 1rem;
+  border:1px solid var(--border);
+  border-radius:100px;
+  font-size:0.8rem;color:var(--text2);font-weight:400;
+  transition:all 0.15s;cursor:default;
+}
+.ind-pill:hover{
+  border-color:rgba(255,107,43,0.35);
+  color:var(--orange2);
+  background:rgba(255,107,43,0.05);
+}
+.ind-dot{
+  width:4px;height:4px;border-radius:50%;
+  background:var(--orange);opacity:0.4;
+  transition:opacity 0.15s;
+}
+.ind-pill:hover .ind-dot{opacity:1;}
+
+/* CTA */
+.cta{
+  padding:6rem 2.5rem;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta::before{
+  content:'';position:absolute;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  width:700px;height:400px;
+  background:radial-gradient(ellipse,rgba(255,107,43,0.08),transparent 70%);
+  pointer-events:none;
+}
+.cta-title{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:clamp(2.5rem,5vw,5rem);
+  font-weight:800;letter-spacing:-0.04em;
+  line-height:0.97;color:var(--text);
+  margin-bottom:1.5rem;
+  position:relative;z-index:1;
+}
+.cta-title em{
+  font-family:'Instrument Serif',serif;
+  font-style:italic;font-weight:400;color:var(--orange);
+}
+.cta-sub{
+  font-size:1rem;color:var(--text2);font-weight:300;
+  max-width:400px;margin:0 auto 2.5rem;line-height:1.75;
+  position:relative;z-index:1;
+}
+.cta-email{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-size:clamp(1.2rem,2.5vw,2rem);
+  font-weight:800;letter-spacing:-0.03em;
+  color:var(--orange);text-decoration:none;
+  border-bottom:1px solid rgba(255,107,43,0.3);
+  padding-bottom:3px;
+  transition:color 0.2s,border-color 0.2s;
+  position:relative;z-index:1;
+  display:inline-block;
+}
+.cta-email:hover{color:var(--orange2);border-color:var(--orange2);}
 
 /* FOOTER */
 footer{
-  padding:2rem 5rem;
+  padding:1.5rem 2.5rem;
   border-top:1px solid var(--border);
-  display:flex;align-items:center;
-  justify-content:space-between;
+  display:flex;align-items:center;justify-content:space-between;
 }
-footer p{font-size:0.8rem;color:var(--muted);}
+footer p{font-size:0.75rem;color:var(--text3);}
 
-/* REVEAL ANIMATIONS */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease, transform 0.7s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px);}
-  to{opacity:1;transform:translateY(0);}
-}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  nav{padding:1rem 1.5rem;}
-  .nav-links{display:none;}
-  section,.hero,.cta-section{padding:5rem 1.5rem;}
-  .hero h1{font-size:3rem;}
-  .services-grid,.process-grid,.why-grid{grid-template-columns:1fr;}
-  footer{flex-direction:column;gap:0.5rem;text-align:center;padding:2rem 1.5rem;}
+  nav{padding:0 1.25rem;}
+  .nav-center{display:none;}
+  .hero,.section,.cta{padding:5rem 1.25rem 2.5rem;}
+  .hero{padding-top:80px;}
+  .hero-top{flex-direction:column;}
+  .hero-right{width:100%;}
+  .hero-strip{display:none;}
+  .svc-grid,.process-steps{grid-template-columns:1fr;}
+  .bento{display:flex;flex-direction:column;}
+  footer{flex-direction:column;gap:0.5rem;text-align:center;}
 }
 </style>
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<nav id="nav">
-  <a href="#" class="logo">Theorrem<span class="logo-dot">.</span></a>
-  <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#process">Process</a>
-    <a href="#why">Why us</a>
-    <a href="#contact" class="nav-cta">Start a project</a>
+<nav>
+  <a href="#" class="logo">
+    Theorrem
+    <span class="logo-badge">AI</span>
+  </a>
+  <div class="nav-center">
+    <a href="#services" class="nav-link">Services</a>
+    <a href="#why" class="nav-link">Why us</a>
+    <a href="#process" class="nav-link">Process</a>
+    <a href="#industries" class="nav-link">Industries</a>
+  </div>
+  <div class="nav-right">
+    <a href="#contact" class="nav-btn nav-btn-ghost">hello@theorrem.com</a>
+    <a href="#contact" class="nav-btn nav-btn-solid">Start a project →</a>
   </div>
 </nav>
 
 <section class="hero">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="hero-inner">
-    <div class="hero-eyebrow">
-      <span class="eyebrow-line"></span>
-      AI Automation Systems
+  <div class="hero-grid-bg"></div>
+  <div class="hero-top">
+    <div class="hero-left">
+      <div class="hero-tag">
+        <span class="hero-tag-dot"></span>
+        Now accepting new clients — 2025
+      </div>
+      <h1>
+        We build AI<br>systems that<br>
+        <span class="accent">actually work.</span>
+      </h1>
+      <p class="hero-sub">Theorrem designs and deploys intelligent automation for businesses ready to stop doing things manually. Custom-built. Production-grade. Delivered fast.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-orange">Start a project →</a>
+        <a href="#services" class="btn-outline">See our services</a>
+      </div>
     </div>
-    <h1>
-      We build systems
-      <span class="line-2">that think.</span>
-    </h1>
-    <p class="hero-desc">Theorrem designs and deploys intelligent AI systems that replace manual workflows, automate complex operations, and unlock scale — across any industry.</p>
-    <div class="hero-ctas">
-      <a href="#contact" class="btn-primary">Start a project <span>→</span></a>
-      <a href="#services" class="btn-ghost">Explore services <span class="arrow">→</span></a>
+    <div class="hero-right">
+      <div class="hero-card hero-card-orange">
+        <div class="hero-card-label">Response time</div>
+        <div class="hero-card-val">&lt; 2s</div>
+        <div class="hero-card-sub">Average AI response across all deployments</div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-label">Availability</div>
+        <div class="hero-card-val">24 / 7</div>
+        <div class="hero-card-sub">No downtime. No breaks. No missed messages.</div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-label">What we build</div>
+        <div class="hero-card-tags">
+          <span class="tag tag-orange">AI Chatbots</span>
+          <span class="tag tag-orange">WhatsApp Bots</span>
+          <span class="tag">RAG Systems</span>
+          <span class="tag">Workflow Automation</span>
+          <span class="tag">Agentic AI</span>
+          <span class="tag">Integrations</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-strip">
+    <div class="strip-item">
+      <div class="strip-num">10×</div>
+      <div class="strip-label">Faster than manual ops</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-num">∞</div>
+      <div class="strip-label">Concurrent sessions</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-num">0</div>
+      <div class="strip-label">Vendor lock-in</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-num">Wks</div>
+      <div class="strip-label">Time to production</div>
     </div>
   </div>
 </section>
 
-<div class="marquee-section">
-  <div class="marquee-track" id="marquee">
-    <div class="marquee-item"><span class="marquee-dot"></span>Workflow Automation</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>AI Chatbots</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Process Intelligence</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>WhatsApp Integration</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Legacy Modernization</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Natural Language Systems</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>RAG Pipelines</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Agentic AI</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Workflow Automation</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>AI Chatbots</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Process Intelligence</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>WhatsApp Integration</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Legacy Modernization</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Natural Language Systems</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>RAG Pipelines</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Agentic AI</div>
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <div class="m-item"><span class="m-sep"></span>Conversational AI</div>
+    <div class="m-item"><span class="m-sep"></span>WhatsApp Automation</div>
+    <div class="m-item"><span class="m-sep"></span>RAG Pipelines</div>
+    <div class="m-item"><span class="m-sep"></span>Workflow Automation</div>
+    <div class="m-item"><span class="m-sep"></span>Legacy Modernization</div>
+    <div class="m-item"><span class="m-sep"></span>Agentic Systems</div>
+    <div class="m-item"><span class="m-sep"></span>LLM Integration</div>
+    <div class="m-item"><span class="m-sep"></span>Knowledge Systems</div>
+    <div class="m-item"><span class="m-sep"></span>Process Intelligence</div>
+    <div class="m-item"><span class="m-sep"></span>Conversational AI</div>
+    <div class="m-item"><span class="m-sep"></span>WhatsApp Automation</div>
+    <div class="m-item"><span class="m-sep"></span>RAG Pipelines</div>
+    <div class="m-item"><span class="m-sep"></span>Workflow Automation</div>
+    <div class="m-item"><span class="m-sep"></span>Legacy Modernization</div>
+    <div class="m-item"><span class="m-sep"></span>Agentic Systems</div>
+    <div class="m-item"><span class="m-sep"></span>LLM Integration</div>
+    <div class="m-item"><span class="m-sep"></span>Knowledge Systems</div>
+    <div class="m-item"><span class="m-sep"></span>Process Intelligence</div>
   </div>
 </div>
 
-<section class="services" id="services">
+<section class="section" id="services">
   <div class="reveal">
-    <div class="section-label">What we do</div>
-    <h2 class="section-title">Intelligence, engineered<br>for your business</h2>
-    <p class="section-sub">We don't sell software. We build custom AI systems tailored to your exact operations and goals.</p>
+    <div class="eyebrow">What we build</div>
+    <h2 class="s-title">Every system, <em>custom-made</em><br>for your operation</h2>
+    <p class="s-sub">No templates. No cookie-cutter tools. Each system is architected from the ground up for your specific workflows and goals.</p>
   </div>
-  <div class="services-grid reveal">
-    <div class="service-card">
-      <span class="service-num">01</span>
-      <span class="service-icon">🧠</span>
+  <div class="svc-grid reveal">
+    <div class="svc-card">
+      <span class="svc-n">01</span>
+      <div class="svc-icon">🧠</div>
       <h3>Conversational AI</h3>
-      <p>Intelligent chatbots and virtual assistants that understand context, remember history, and resolve queries — deployed on web, WhatsApp, or any channel.</p>
-      <span class="service-arrow">↗</span>
+      <p>Intelligent chatbots that understand context, remember conversation history, and resolve complex queries — deployed on web, WhatsApp, or any interface.</p>
+      <a href="#contact" class="svc-link">Learn more →</a>
     </div>
-    <div class="service-card">
-      <span class="service-num">02</span>
-      <span class="service-icon">⚡</span>
+    <div class="svc-card">
+      <span class="svc-n">02</span>
+      <div class="svc-icon">⚡</div>
       <h3>Workflow Automation</h3>
-      <p>End-to-end automation of repetitive business processes. From data entry to complex decision pipelines — we eliminate the manual layer entirely.</p>
-      <span class="service-arrow">↗</span>
+      <p>End-to-end automation of repetitive business processes. From simple data tasks to multi-step decision pipelines — we eliminate the manual layer.</p>
+      <a href="#contact" class="svc-link">Learn more →</a>
     </div>
-    <div class="service-card">
-      <span class="service-num">03</span>
-      <span class="service-icon">🔍</span>
-      <h3>Knowledge Systems</h3>
-      <p>RAG-powered systems that make your internal knowledge instantly searchable and actionable — turning documents, databases, and data into live intelligence.</p>
-      <span class="service-arrow">↗</span>
-    </div>
-    <div class="service-card">
-      <span class="service-num">04</span>
-      <span class="service-icon">📲</span>
+    <div class="svc-card">
+      <span class="svc-n">03</span>
+      <div class="svc-icon">📲</div>
       <h3>WhatsApp Automation</h3>
-      <p>Custom WhatsApp Business API integrations that handle inbound inquiries, qualify leads, and send proactive updates — at any scale.</p>
-      <span class="service-arrow">↗</span>
+      <p>Custom WhatsApp Business API systems that handle inbound inquiries, qualify leads, and send automated responses — at unlimited scale.</p>
+      <a href="#contact" class="svc-link">Learn more →</a>
     </div>
-    <div class="service-card">
-      <span class="service-num">05</span>
-      <span class="service-icon">🔗</span>
+    <div class="svc-card">
+      <span class="svc-n">04</span>
+      <div class="svc-icon">🔍</div>
+      <h3>Knowledge Systems</h3>
+      <p>RAG-powered systems that turn your documents, databases, and internal data into live, queryable intelligence your team and customers can access instantly.</p>
+      <a href="#contact" class="svc-link">Learn more →</a>
+    </div>
+    <div class="svc-card">
+      <span class="svc-n">05</span>
+      <div class="svc-icon">🔗</div>
       <h3>System Integration</h3>
-      <p>Connecting AI capabilities to your existing CRM, ERP, or legacy infrastructure. New intelligence layered on top of what you already have.</p>
-      <span class="service-arrow">↗</span>
+      <p>AI capabilities connected to your existing CRM, ERP, or legacy systems. New intelligence layered on top of infrastructure you already have.</p>
+      <a href="#contact" class="svc-link">Learn more →</a>
     </div>
-    <div class="service-card">
-      <span class="service-num">06</span>
-      <span class="service-icon">📊</span>
+    <div class="svc-card">
+      <span class="svc-n">06</span>
+      <div class="svc-icon">🤖</div>
       <h3>Agentic Pipelines</h3>
-      <p>Autonomous AI agents that execute multi-step tasks, make decisions, and complete goals with minimal human intervention.</p>
-      <span class="service-arrow">↗</span>
+      <p>Autonomous AI agents that execute multi-step tasks, make decisions, and complete goals with minimal human oversight. Beyond chatbots — true automation.</p>
+      <a href="#contact" class="svc-link">Learn more →</a>
     </div>
   </div>
 </section>
 
-<section id="process">
+<section class="section section-alt" id="why">
   <div class="reveal">
-    <div class="section-label">How we work</div>
-    <h2 class="section-title">From problem to<br>production, fast</h2>
-    <p class="section-sub">A focused process that moves quickly and delivers systems that actually work in the real world.</p>
+    <div class="eyebrow">Why Theorrem</div>
+    <h2 class="s-title">Built by engineers,<br>not <em>consultants</em></h2>
+    <p class="s-sub">We build real systems that run in production. Not slide decks, not proofs-of-concept that never ship.</p>
   </div>
-  <div class="process-grid reveal">
-    <div class="process-item">
-      <div class="process-num">01</div>
-      <span class="process-tag">Discovery</span>
-      <h3>Understand the operation</h3>
-      <p>We map your current workflows, identify automation opportunities, and define what success looks like — before writing a single line of code.</p>
+  <div class="bento reveal">
+    <div class="bento-cell b1">
+      <div class="bento-big-num orange">100%</div>
+      <h3>Custom-built</h3>
+      <p>Every system is designed from scratch for your use case. No off-the-shelf tools with our logo on top. You get something built specifically for how you operate.</p>
     </div>
-    <div class="process-item">
-      <div class="process-num">02</div>
-      <span class="process-tag">Design</span>
-      <h3>Architect the system</h3>
-      <p>We design the AI architecture — models, pipelines, integrations, interfaces. Every component chosen for your specific use case, not a template.</p>
-    </div>
-    <div class="process-item">
-      <div class="process-num">03</div>
-      <span class="process-tag">Build</span>
-      <h3>Build and iterate</h3>
-      <p>Rapid development with continuous feedback. You see working prototypes early, not six months in. We iterate until it's right.</p>
-    </div>
-    <div class="process-item">
-      <div class="process-num">04</div>
-      <span class="process-tag">Deploy</span>
-      <h3>Deploy and support</h3>
-      <p>Production deployment with monitoring, performance tuning, and ongoing support. We stay involved as your system scales.</p>
-    </div>
-  </div>
-</section>
-
-<section class="why" id="why">
-  <div class="why-grid">
-    <div class="why-left reveal">
-      <div class="section-label">Why Theorrem</div>
-      <h2 class="section-title">Built by engineers,<br>not consultants</h2>
-      <p class="section-sub">We're a technical team that builds real systems — not slide decks and recommendations.</p>
-      <div class="why-list">
-        <div class="why-item">
-          <span class="why-item-num">01</span>
-          <div class="why-item-content">
-            <h4>Custom, not cookie-cutter</h4>
-            <p>Every system is built from scratch for your use case. No generic SaaS tools with our logo on top.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="why-item-num">02</span>
-          <div class="why-item-content">
-            <h4>Fast delivery</h4>
-            <p>Working systems in weeks, not quarters. We move fast because we've solved these problems before.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="why-item-num">03</span>
-          <div class="why-item-content">
-            <h4>Full ownership</h4>
-            <p>You own the code, the data, the system. No vendor lock-in, no recurring platform fees.</p>
-          </div>
-        </div>
-        <div class="why-item">
-          <span class="why-item-num">04</span>
-          <div class="why-item-content">
-            <h4>Local context, global standards</h4>
-            <p>Based in Pakistan, built to international engineering standards. We understand your market and your customers.</p>
-          </div>
-        </div>
+    <div class="bento-cell b2">
+      <h3>What you own after we're done</h3>
+      <ul class="bento-list">
+        <li>Full source code — no black boxes</li>
+        <li>All data stays with you — no third-party lock-in</li>
+        <li>Documentation so your team can maintain it</li>
+        <li>Deployment on your own infrastructure if preferred</li>
+      </ul>
+      <div class="bento-tags">
+        <span class="tag tag-orange">Zero lock-in</span>
+        <span class="tag tag-orange">Full ownership</span>
+        <span class="tag">Open architecture</span>
       </div>
     </div>
-    <div class="why-right reveal">
-      <div class="why-visual">
-        <div class="metric-grid">
-          <div class="metric">
-            <div class="metric-val">24/7</div>
-            <div class="metric-label">System uptime</div>
-          </div>
-          <div class="metric">
-            <div class="metric-val">&lt; 2s</div>
-            <div class="metric-label">Response time</div>
-          </div>
-          <div class="metric">
-            <div class="metric-val">10x</div>
-            <div class="metric-label">Faster than manual</div>
-          </div>
-          <div class="metric">
-            <div class="metric-val">∞</div>
-            <div class="metric-label">Concurrent sessions</div>
-          </div>
-        </div>
-        <p class="why-visual-desc">AI systems don't take breaks, make typos, or miss messages. They handle volume that would require entire teams — at a fraction of the cost.</p>
-      </div>
+    <div class="bento-cell b3">
+      <div class="bento-big-num orange">Wks</div>
+      <h3>Not months</h3>
+      <p>Working systems delivered in weeks. You see a live prototype early — not after six months of invisible work.</p>
+    </div>
+    <div class="bento-cell b4">
+      <h3>Local context</h3>
+      <p>Based in Karachi. We understand Pakistani businesses, your customers, and the market you operate in. We also build to international engineering standards.</p>
+    </div>
+    <div class="bento-cell b5">
+      <h3>Ongoing support</h3>
+      <p>We stay involved after deployment. Monitoring, tuning, and updates as your system scales and your needs evolve.</p>
     </div>
   </div>
 </section>
 
-<section id="industries">
+<section class="section" id="process">
   <div class="reveal">
-    <div class="section-label">Industries</div>
-    <h2 class="section-title">Any industry with<br>repetitive workflows</h2>
-    <p class="section-sub">If your team spends time on tasks that follow patterns, we can automate them. Industry is secondary — the problem is universal.</p>
+    <div class="eyebrow">How we work</div>
+    <h2 class="s-title">From problem to production,<br><em>without the friction</em></h2>
+    <p class="s-sub">A direct process that moves fast and keeps you in the loop at every step.</p>
   </div>
-  <div class="industries-grid reveal">
-    <div class="industry-pill"><span class="industry-pill-dot"></span>Real Estate</div>
-    <div class="industry-pill"><span class="industry-pill-dot"></span>E-commerce</div>
-    <div class="industry-pill"><span class="industry-pill-dot"></span>Legal</div>
-    <div class="industry-pill"><span class="industry-pill-dot"></span>HR & Recruitment</div>
-    <div class="industry-pill"><span class="industry-pill-dot"></span>Healthcare</div>
-    <div class="industry-pill"><span class="industry-pill-dot"></span>Finance</div>
-    <div class="industry-pill"><span class="industry-pill-dot"></span>Logistics</div>
-    <div class="industry-pill"><span class="industry-pill-dot"></span>Education</div>
-    <div class="industry-pill"><span class="industry-pill-dot"></span>Retail</div>
-    <div class="industry-pill"><span class="industry-pill-dot"></span>Insurance</div>
-    <div class="industry-pill"><span class="industry-pill-dot"></span>Manufacturing</div>
-    <div class="industry-pill"><span class="industry-pill-dot"></span>+ Any other</div>
+  <div class="process-steps reveal">
+    <div class="p-step">
+      <div class="p-step-n">01</div>
+      <span class="p-badge">Discover</span>
+      <h4>Map the operation</h4>
+      <p>We study your workflows, identify where automation adds real value, and define clear success criteria — before writing any code.</p>
+    </div>
+    <div class="p-step">
+      <div class="p-step-n">02</div>
+      <span class="p-badge">Design</span>
+      <h4>Architect the system</h4>
+      <p>We design the full AI architecture — models, pipelines, data flows, interfaces. Every component selected for your specific context.</p>
+    </div>
+    <div class="p-step">
+      <div class="p-step-n">03</div>
+      <span class="p-badge">Build</span>
+      <h4>Build and iterate</h4>
+      <p>Rapid development with real feedback loops. You see working software early and often. We iterate until it's right.</p>
+    </div>
+    <div class="p-step">
+      <div class="p-step-n">04</div>
+      <span class="p-badge">Deploy</span>
+      <h4>Ship and scale</h4>
+      <p>Production deployment with monitoring and support. We stay involved as your system grows and your requirements evolve.</p>
+    </div>
   </div>
 </section>
 
-<section class="cta-section" id="contact">
+<section class="section section-alt" id="industries">
   <div class="reveal">
-    <div class="section-label">Start a project</div>
-    <h2 class="section-title">Ready to automate?</h2>
-    <p class="section-sub">Tell us what you're working on. We'll respond within 24 hours with a clear picture of what's possible.</p>
+    <div class="eyebrow">Industries</div>
+    <h2 class="s-title">If it has <em>repetitive workflows,</em><br>we can automate it</h2>
+    <p class="s-sub">Industry is secondary. The problem — manual, slow, error-prone operations — is universal. We've solved it across many sectors.</p>
+  </div>
+  <div class="ind-grid reveal">
+    <div class="ind-pill"><span class="ind-dot"></span>Real Estate</div>
+    <div class="ind-pill"><span class="ind-dot"></span>E-commerce</div>
+    <div class="ind-pill"><span class="ind-dot"></span>Legal</div>
+    <div class="ind-pill"><span class="ind-dot"></span>HR & Recruitment</div>
+    <div class="ind-pill"><span class="ind-dot"></span>Healthcare</div>
+    <div class="ind-pill"><span class="ind-dot"></span>Finance & Banking</div>
+    <div class="ind-pill"><span class="ind-dot"></span>Logistics</div>
+    <div class="ind-pill"><span class="ind-dot"></span>Education</div>
+    <div class="ind-pill"><span class="ind-dot"></span>Retail</div>
+    <div class="ind-pill"><span class="ind-dot"></span>Insurance</div>
+    <div class="ind-pill"><span class="ind-dot"></span>Manufacturing</div>
+    <div class="ind-pill"><span class="ind-dot"></span>Hospitality</div>
+    <div class="ind-pill"><span class="ind-dot"></span>+ Any other</div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="reveal">
+    <div class="eyebrow" style="justify-content:center;margin-bottom:1.5rem;">Start a project</div>
+    <h2 class="cta-title">Ready to stop<br>doing it <em>manually?</em></h2>
+    <p class="cta-sub">Tell us what you're working on. We'll respond within 24 hours with a clear picture of what's possible.</p>
     <a href="mailto:hello@theorrem.com" class="cta-email">hello@theorrem.com</a>
   </div>
 </section>
 
 <footer>
-  <a href="#" class="logo">Theorrem<span class="logo-dot">.</span></a>
+  <a href="#" class="logo">Theorrem <span class="logo-badge">AI</span></a>
   <p>© 2025 Theorrem. AI Automation Systems. Karachi, Pakistan.</p>
 </footer>
 
 <script>
-// CURSOR
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  cursor.style.left=mx-4+'px';
-  cursor.style.top=my-4+'px';
-});
-function animateRing(){
-  rx+=(mx-rx)*0.12;
-  ry+=(my-ry)*0.12;
-  ring.style.left=rx-16+'px';
-  ring.style.top=ry-16+'px';
-  requestAnimationFrame(animateRing);
-}
-animateRing();
-document.querySelectorAll('a,button,.service-card,.why-item,.industry-pill').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{
-    ring.style.width='48px';ring.style.height='48px';
-    ring.style.borderColor='rgba(200,171,255,0.6)';
-  });
-  el.addEventListener('mouseleave',()=>{
-    ring.style.width='32px';ring.style.height='32px';
-    ring.style.borderColor='rgba(200,171,255,0.4)';
-  });
-});
-
-// NAV SCROLL
-const nav = document.getElementById('nav');
-window.addEventListener('scroll',()=>{
-  nav.classList.toggle('scrolled',window.scrollY>50);
-});
-
-// REVEAL ON SCROLL
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach((entry,i)=>{
-    if(entry.isIntersecting){
-      setTimeout(()=>entry.target.classList.add('visible'),i*80);
-    }
+// SCROLL REVEAL
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('in');
   });
 },{threshold:0.1});
-reveals.forEach(el=>observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// NAV ACTIVE
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.nav-link');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{
+    if(window.scrollY>=s.offsetTop-100) current=s.id;
+  });
+  navLinks.forEach(l=>{
+    l.style.color=l.getAttribute('href')==='#'+current?'var(--text)':'';
+  });
+});
 </script>
 </body>
 </html>
