@@ -3,559 +3,890 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Theorrem — AI Systems for Real Estate</title>
-<meta name="description" content="Theorrem builds AI-powered chatbots and WhatsApp automation for real estate businesses in Pakistan. Qualify leads 24/7, automate property search, and close more deals.">
+<title>Theorrem — AI Automation Systems</title>
+<meta name="description" content="Theorrem builds intelligent AI systems that transform how businesses operate. We automate complex workflows, eliminate manual processes, and unlock growth at scale.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#060608;
+  --bg2:#0a0a0f;
+  --bg3:#0f0f18;
+  --border:rgba(255,255,255,0.06);
+  --border2:rgba(255,255,255,0.12);
+  --text:#e8e6f0;
+  --muted:#6b6880;
+  --muted2:#9996aa;
+  --accent:#7b5ea7;
+  --accent2:#a07fd4;
+  --accent3:#c8abff;
+  --glow:rgba(123,94,167,0.15);
+  --glow2:rgba(123,94,167,0.06);
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
 
-  :root {
-    --bg: #0d0d0d;
-    --bg2: #141414;
-    --bg3: #1a1a1a;
-    --border: rgba(255,255,255,0.08);
-    --text: #f0ede8;
-    --muted: #888880;
-    --accent: #c8b89a;
-    --accent2: #e8ddd0;
-    --green: #4a9e6e;
-  }
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px;}
 
-  html { scroll-behavior: smooth; }
+/* CURSOR */
+.cursor{
+  position:fixed;width:8px;height:8px;
+  background:var(--accent3);border-radius:50%;
+  pointer-events:none;z-index:9999;
+  transition:transform 0.1s;
+  mix-blend-mode:difference;
+}
+.cursor-ring{
+  position:fixed;width:32px;height:32px;
+  border:1px solid rgba(200,171,255,0.4);
+  border-radius:50%;pointer-events:none;z-index:9998;
+  transition:transform 0.15s, width 0.2s, height 0.2s, opacity 0.2s;
+}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
+/* NOISE OVERLAY */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:1000;opacity:0.4;
+}
 
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.25rem 4rem;
-    border-bottom: 1px solid var(--border);
-    background: rgba(13,13,13,0.85);
-    backdrop-filter: blur(12px);
-  }
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.5rem 5rem;
+  transition:background 0.3s, border-color 0.3s;
+}
+nav.scrolled{
+  background:rgba(6,6,8,0.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.logo{
+  font-family:'Syne',sans-serif;
+  font-size:1.3rem;
+  font-weight:800;
+  color:var(--text);
+  text-decoration:none;
+  letter-spacing:-0.02em;
+}
+.logo-dot{color:var(--accent2);}
+.nav-links{display:flex;gap:2.5rem;align-items:center;}
+.nav-links a{
+  color:var(--muted2);font-size:0.85rem;
+  text-decoration:none;font-weight:400;
+  transition:color 0.2s;letter-spacing:0.01em;
+}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{
+  background:transparent !important;
+  border:1px solid var(--border2) !important;
+  color:var(--text) !important;
+  padding:0.5rem 1.25rem;
+  border-radius:4px;
+  font-size:0.85rem !important;
+  font-weight:500 !important;
+  transition:border-color 0.2s, background 0.2s !important;
+}
+.nav-cta:hover{border-color:var(--accent2) !important;background:var(--glow2) !important;}
 
-  .logo {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.4rem;
-    color: var(--accent2);
-    letter-spacing: -0.02em;
-    text-decoration: none;
-  }
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:center;
+  padding:0 5rem;
+  position:relative;
+  overflow:hidden;
+}
 
-  .logo span { color: var(--accent); }
+/* GRID BACKGROUND */
+.hero::before{
+  content:'';
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(123,94,167,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(123,94,167,0.07) 1px, transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 80%);
+}
 
-  nav a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.875rem;
-    font-weight: 400;
-    transition: color 0.2s;
-  }
+/* GLOW ORBS */
+.orb{
+  position:absolute;border-radius:50%;
+  filter:blur(80px);pointer-events:none;
+}
+.orb-1{
+  width:500px;height:500px;
+  background:radial-gradient(circle, rgba(123,94,167,0.2) 0%, transparent 70%);
+  top:-100px;right:-100px;
+  animation:float1 8s ease-in-out infinite;
+}
+.orb-2{
+  width:300px;height:300px;
+  background:radial-gradient(circle, rgba(160,127,212,0.12) 0%, transparent 70%);
+  bottom:100px;left:-50px;
+  animation:float2 10s ease-in-out infinite;
+}
 
-  nav a:hover { color: var(--text); }
+@keyframes float1{
+  0%,100%{transform:translate(0,0);}
+  50%{transform:translate(-30px,30px);}
+}
+@keyframes float2{
+  0%,100%{transform:translate(0,0);}
+  50%{transform:translate(20px,-20px);}
+}
 
-  .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+.hero-inner{position:relative;z-index:2;max-width:900px;}
 
-  .nav-cta {
-    color: var(--bg) !important;
-    background: var(--accent);
-    padding: 0.5rem 1.25rem;
-    border-radius: 4px;
-    font-weight: 500 !important;
-    transition: background 0.2s !important;
-  }
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:0.75rem;
+  font-size:0.75rem;font-weight:500;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--accent2);margin-bottom:2rem;
+  opacity:0;animation:fadeUp 0.8s 0.1s ease both;
+}
+.eyebrow-line{
+  width:30px;height:1px;background:var(--accent2);
+}
 
-  .nav-cta:hover { background: var(--accent2) !important; }
+.hero h1{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(3.5rem,7vw,6.5rem);
+  font-weight:800;
+  line-height:0.95;
+  letter-spacing:-0.04em;
+  color:var(--text);
+  margin-bottom:2rem;
+  opacity:0;animation:fadeUp 0.8s 0.2s ease both;
+}
+.hero h1 .line-2{
+  display:block;
+  background:linear-gradient(135deg, var(--accent3) 0%, var(--accent2) 50%, #7b5ea7 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 8rem 4rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
+.hero-desc{
+  font-size:1.1rem;color:var(--muted2);
+  max-width:480px;font-weight:300;line-height:1.8;
+  margin-bottom:3rem;
+  opacity:0;animation:fadeUp 0.8s 0.3s ease both;
+}
 
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -200px; right: -200px;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(200,184,154,0.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
+.hero-ctas{
+  display:flex;gap:1rem;align-items:center;
+  opacity:0;animation:fadeUp 0.8s 0.4s ease both;
+}
 
-  .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-  }
+.btn-primary{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:var(--accent);color:#fff;
+  padding:0.875rem 2rem;border-radius:4px;
+  font-size:0.875rem;font-weight:500;
+  text-decoration:none;
+  border:1px solid var(--accent);
+  transition:background 0.2s, transform 0.15s, box-shadow 0.2s;
+  position:relative;overflow:hidden;
+}
+.btn-primary::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,0.1),transparent);
+  opacity:0;transition:opacity 0.2s;
+}
+.btn-primary:hover{
+  background:var(--accent2);
+  box-shadow:0 0 30px rgba(123,94,167,0.4);
+  transform:translateY(-1px);
+}
+.btn-primary:hover::before{opacity:1;}
 
-  .hero-tag::before {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--green);
-    display: inline-block;
-  }
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  color:var(--muted2);font-size:0.875rem;
+  text-decoration:none;
+  transition:color 0.2s;
+  padding:0.875rem 0;
+}
+.btn-ghost:hover{color:var(--text);}
+.btn-ghost .arrow{transition:transform 0.2s;}
+.btn-ghost:hover .arrow{transform:translateX(4px);}
 
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(3rem, 6vw, 5.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: var(--accent2);
-    max-width: 800px;
-    margin-bottom: 1.5rem;
-  }
+/* MARQUEE */
+.marquee-section{
+  padding:3rem 0;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  overflow:hidden;
+  position:relative;
+}
+.marquee-section::before,.marquee-section::after{
+  content:'';position:absolute;top:0;bottom:0;width:150px;z-index:2;
+}
+.marquee-section::before{left:0;background:linear-gradient(90deg,var(--bg),transparent);}
+.marquee-section::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent);}
 
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
+.marquee-track{
+  display:flex;gap:4rem;
+  animation:marquee 25s linear infinite;
+  width:max-content;
+}
+.marquee-track:hover{animation-play-state:paused;}
 
-  .hero p {
-    font-size: 1.125rem;
-    color: var(--muted);
-    max-width: 520px;
-    margin-bottom: 2.5rem;
-    font-weight: 300;
-    line-height: 1.7;
-  }
+@keyframes marquee{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
 
-  .hero-ctas { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+.marquee-item{
+  display:flex;align-items:center;gap:0.75rem;
+  font-size:0.8rem;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--muted);white-space:nowrap;
+}
+.marquee-dot{
+  width:4px;height:4px;border-radius:50%;
+  background:var(--accent);flex-shrink:0;
+}
 
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--accent);
-    color: var(--bg);
-    padding: 0.875rem 2rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.15s;
-  }
+/* SECTIONS */
+section{padding:7rem 5rem;}
 
-  .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+.section-label{
+  font-size:0.7rem;font-weight:600;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--accent2);margin-bottom:1.25rem;
+  display:flex;align-items:center;gap:0.75rem;
+}
+.section-label::before{
+  content:'';width:20px;height:1px;background:var(--accent2);
+}
 
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--muted);
-    font-size: 0.9rem;
-    text-decoration: none;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 2px;
-    transition: color 0.2s;
-  }
+.section-title{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(2.2rem,4vw,3.5rem);
+  font-weight:800;
+  letter-spacing:-0.03em;
+  line-height:1.05;
+  color:var(--text);
+  margin-bottom:1.25rem;
+}
 
-  .btn-secondary:hover { color: var(--text); }
+.section-sub{
+  color:var(--muted2);font-size:1rem;
+  max-width:500px;font-weight:300;line-height:1.8;
+}
 
-  .hero-stat {
-    margin-top: 5rem;
-    display: flex;
-    gap: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
-  }
+/* SERVICES */
+.services{background:var(--bg2);}
 
-  .stat-item { }
-  .stat-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2rem;
-    color: var(--accent2);
-    letter-spacing: -0.02em;
-  }
-  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  margin-top:5rem;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:8px;
+  overflow:hidden;
+}
 
-  /* SECTION */
-  section { padding: 6rem 4rem; }
+.service-card{
+  background:var(--bg2);
+  padding:2.5rem;
+  position:relative;
+  overflow:hidden;
+  transition:background 0.3s;
+  cursor:default;
+}
+.service-card::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 0%, var(--glow), transparent 70%);
+  opacity:0;transition:opacity 0.4s;
+}
+.service-card:hover{background:var(--bg3);}
+.service-card:hover::before{opacity:1;}
 
-  .section-tag {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1rem;
-  }
+.service-num{
+  font-family:'Syne',sans-serif;
+  font-size:0.7rem;font-weight:700;
+  letter-spacing:0.15em;color:var(--muted);
+  margin-bottom:2rem;
+  display:block;
+}
 
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 3.5vw, 3rem);
-    letter-spacing: -0.02em;
-    color: var(--accent2);
-    line-height: 1.15;
-    margin-bottom: 1rem;
-    max-width: 600px;
-  }
+.service-icon{
+  font-size:1.5rem;margin-bottom:1.25rem;
+  display:block;
+}
 
-  .section-sub {
-    color: var(--muted);
-    font-size: 1rem;
-    max-width: 480px;
-    font-weight: 300;
-    line-height: 1.7;
-  }
+.service-card h3{
+  font-family:'Syne',sans-serif;
+  font-size:1.1rem;font-weight:700;
+  color:var(--text);margin-bottom:0.75rem;
+  letter-spacing:-0.02em;
+}
 
-  /* PRODUCTS */
-  .products { background: var(--bg2); }
+.service-card p{
+  font-size:0.875rem;color:var(--muted2);
+  font-weight:300;line-height:1.7;
+}
 
-  .products-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5px;
-    margin-top: 4rem;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-  }
+.service-arrow{
+  position:absolute;bottom:2rem;right:2rem;
+  color:var(--accent);font-size:1rem;
+  opacity:0;transform:translate(-4px,4px);
+  transition:opacity 0.2s, transform 0.2s;
+}
+.service-card:hover .service-arrow{opacity:1;transform:translate(0,0);}
 
-  .product-card {
-    background: var(--bg2);
-    padding: 2.5rem;
-    position: relative;
-    border-right: 1.5px solid var(--border);
-    transition: background 0.2s;
-  }
+/* PROCESS */
+.process-grid{
+  margin-top:5rem;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:8px;
+  overflow:hidden;
+}
 
-  .product-card:last-child { border-right: none; }
-  .product-card:hover { background: var(--bg3); }
+.process-item{
+  background:var(--bg);
+  padding:3rem;
+  position:relative;
+}
 
-  .product-icon {
-    width: 44px; height: 44px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.2rem;
-  }
+.process-item:nth-child(1),.process-item:nth-child(2){
+  border-bottom:1px solid var(--border);
+}
 
-  .product-card h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.4rem;
-    color: var(--accent2);
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.02em;
-  }
+.process-num{
+  font-family:'Syne',sans-serif;
+  font-size:4rem;font-weight:800;
+  color:rgba(123,94,167,0.08);
+  line-height:1;margin-bottom:1.5rem;
+  letter-spacing:-0.04em;
+}
 
-  .product-card p {
-    color: var(--muted);
-    font-size: 0.9rem;
-    line-height: 1.7;
-    font-weight: 300;
-    margin-bottom: 1.5rem;
-  }
+.process-item h3{
+  font-family:'Syne',sans-serif;
+  font-size:1.1rem;font-weight:700;
+  color:var(--text);margin-bottom:0.75rem;
+  letter-spacing:-0.02em;
+}
 
-  .feature-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+.process-item p{
+  font-size:0.875rem;color:var(--muted2);
+  font-weight:300;line-height:1.7;
+  max-width:320px;
+}
 
-  .feature-list li {
-    font-size: 0.85rem;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
+.process-tag{
+  display:inline-block;
+  font-size:0.7rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--accent2);
+  background:rgba(123,94,167,0.1);
+  border:1px solid rgba(123,94,167,0.2);
+  padding:0.3rem 0.75rem;
+  border-radius:2px;
+  margin-bottom:1.25rem;
+}
 
-  .feature-list li::before {
-    content: '';
-    width: 4px; height: 4px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
+/* WHY */
+.why{background:var(--bg2);}
 
-  /* HOW IT WORKS */
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    margin-top: 4rem;
-    position: relative;
-  }
+.why-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3rem;
+  margin-top:5rem;
+  align-items:start;
+}
 
-  .step {
-    padding: 2rem;
-    border-left: 1px solid var(--border);
-    position: relative;
-  }
+.why-left{}
 
-  .step:first-child { border-left: none; }
+.why-list{
+  display:flex;flex-direction:column;gap:0;
+  margin-top:2rem;
+}
 
-  .step-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 3rem;
-    color: rgba(200,184,154,0.12);
-    line-height: 1;
-    margin-bottom: 1rem;
-    letter-spacing: -0.04em;
-  }
+.why-item{
+  padding:1.5rem 0;
+  border-bottom:1px solid var(--border);
+  display:flex;gap:1.5rem;
+  align-items:flex-start;
+  cursor:default;
+}
+.why-item:first-child{border-top:1px solid var(--border);}
 
-  .step h4 {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--accent2);
-    margin-bottom: 0.5rem;
-  }
+.why-item-num{
+  font-family:'Syne',sans-serif;
+  font-size:0.7rem;font-weight:700;
+  color:var(--accent);
+  margin-top:3px;flex-shrink:0;
+  letter-spacing:0.1em;
+}
 
-  .step p {
-    font-size: 0.85rem;
-    color: var(--muted);
-    font-weight: 300;
-    line-height: 1.6;
-  }
+.why-item-content h4{
+  font-family:'Syne',sans-serif;
+  font-size:0.95rem;font-weight:700;
+  color:var(--text);margin-bottom:0.4rem;
+  letter-spacing:-0.01em;
+}
+.why-item-content p{
+  font-size:0.85rem;color:var(--muted2);
+  font-weight:300;line-height:1.6;
+}
 
-  /* WHO */
-  .who-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-top: 3rem;
-  }
+.why-right{
+  position:sticky;top:8rem;
+}
 
-  .who-card {
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 1.5rem;
-    background: var(--bg2);
-    transition: border-color 0.2s;
-  }
+.why-visual{
+  background:var(--bg3);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:2.5rem;
+  position:relative;
+  overflow:hidden;
+}
+.why-visual::before{
+  content:'';position:absolute;
+  top:-100px;right:-100px;
+  width:300px;height:300px;
+  background:radial-gradient(circle,var(--glow),transparent 70%);
+}
 
-  .who-card:hover { border-color: rgba(200,184,154,0.25); }
+.metric-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);
+  border-radius:6px;overflow:hidden;
+  margin-bottom:1.5rem;
+}
 
-  .who-card h4 {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--accent2);
-    margin-bottom: 0.5rem;
-  }
+.metric{
+  background:var(--bg2);
+  padding:1.5rem;
+}
+.metric-val{
+  font-family:'Syne',sans-serif;
+  font-size:1.8rem;font-weight:800;
+  color:var(--accent3);letter-spacing:-0.03em;
+  line-height:1;margin-bottom:0.4rem;
+}
+.metric-label{
+  font-size:0.75rem;color:var(--muted);
+  font-weight:400;
+}
 
-  .who-card p {
-    font-size: 0.85rem;
-    color: var(--muted);
-    font-weight: 300;
-    line-height: 1.6;
-  }
+.why-visual-desc{
+  font-size:0.85rem;color:var(--muted2);
+  font-weight:300;line-height:1.7;
+}
 
-  /* CONTACT */
-  .contact { background: var(--bg2); text-align: center; }
+/* INDUSTRIES */
+.industries-grid{
+  display:flex;flex-wrap:wrap;gap:0.75rem;
+  margin-top:3rem;
+}
 
-  .contact .section-title { max-width: 100%; }
-  .contact .section-sub { max-width: 420px; margin: 0 auto 2.5rem; }
+.industry-pill{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.6rem 1.25rem;
+  border:1px solid var(--border);
+  border-radius:100px;
+  font-size:0.85rem;color:var(--muted2);
+  transition:border-color 0.2s, color 0.2s, background 0.2s;
+  cursor:default;
+}
+.industry-pill:hover{
+  border-color:var(--accent);
+  color:var(--accent3);
+  background:var(--glow2);
+}
+.industry-pill-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--accent);flex-shrink:0;
+  opacity:0.5;
+  transition:opacity 0.2s;
+}
+.industry-pill:hover .industry-pill-dot{opacity:1;}
 
-  .contact-email {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.5rem;
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(200,184,154,0.3);
-    padding-bottom: 4px;
-    transition: color 0.2s;
-  }
+/* CTA SECTION */
+.cta-section{
+  background:var(--bg2);
+  padding:7rem 5rem;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(123,94,167,0.1),transparent 70%);
+  pointer-events:none;
+}
 
-  .contact-email:hover { color: var(--accent2); }
+.cta-section .section-label{justify-content:center;}
+.cta-section .section-label::before{display:none;}
+.cta-section .section-title{margin:0 auto 1rem;}
+.cta-section .section-sub{margin:0 auto 3rem;}
 
-  /* FOOTER */
-  footer {
-    padding: 2rem 4rem;
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+.cta-email{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(1.5rem,3vw,2.5rem);
+  font-weight:800;
+  letter-spacing:-0.03em;
+  color:var(--accent3);
+  text-decoration:none;
+  display:inline-block;
+  position:relative;
+  transition:color 0.2s;
+}
+.cta-email::after{
+  content:'';
+  position:absolute;bottom:-4px;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent2),transparent);
+  transform:scaleX(0);transition:transform 0.3s;
+}
+.cta-email:hover{color:#fff;}
+.cta-email:hover::after{transform:scaleX(1);}
 
-  footer p { font-size: 0.8rem; color: var(--muted); }
+/* FOOTER */
+footer{
+  padding:2rem 5rem;
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;
+  justify-content:space-between;
+}
+footer p{font-size:0.8rem;color:var(--muted);}
 
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+/* REVEAL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease, transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
 
-  .hero-tag, .hero h1, .hero p, .hero-ctas, .hero-stat {
-    animation: fadeUp 0.7s ease both;
-  }
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
 
-  .hero h1 { animation-delay: 0.1s; }
-  .hero p { animation-delay: 0.2s; }
-  .hero-ctas { animation-delay: 0.3s; }
-  .hero-stat { animation-delay: 0.4s; }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    section, .hero { padding: 4rem 1.5rem; }
-    .hero { padding-top: 7rem; }
-    .products-grid, .steps, .who-grid { grid-template-columns: 1fr; }
-    .product-card { border-right: none; border-bottom: 1.5px solid var(--border); }
-    .step { border-left: none; border-top: 1px solid var(--border); }
-    .hero-stat { gap: 2rem; flex-wrap: wrap; }
-    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
-  }
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  section,.hero,.cta-section{padding:5rem 1.5rem;}
+  .hero h1{font-size:3rem;}
+  .services-grid,.process-grid,.why-grid{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:0.5rem;text-align:center;padding:2rem 1.5rem;}
+}
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="#" class="logo">Theorrem<span>.</span></a>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav id="nav">
+  <a href="#" class="logo">Theorrem<span class="logo-dot">.</span></a>
   <div class="nav-links">
-    <a href="#products">Products</a>
-    <a href="#how">How it works</a>
-    <a href="#who">Who we serve</a>
-    <a href="#contact" class="nav-cta">Get in touch</a>
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#why">Why us</a>
+    <a href="#contact" class="nav-cta">Start a project</a>
   </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-tag">AI systems for real estate</div>
-  <h1>Turn every inquiry into<br><em>a qualified lead</em></h1>
-  <p>Theorrem builds AI-powered chatbots and WhatsApp automation for property businesses in Pakistan. Respond instantly, qualify buyers 24/7, and never miss a deal.</p>
-  <div class="hero-ctas">
-    <a href="#contact" class="btn-primary">Request a demo →</a>
-    <a href="#products" class="btn-secondary">See our products</a>
-  </div>
-  <div class="hero-stat">
-    <div class="stat-item">
-      <div class="stat-num">24/7</div>
-      <div class="stat-label">Lead qualification</div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-line"></span>
+      AI Automation Systems
     </div>
-    <div class="stat-item">
-      <div class="stat-num">< 2s</div>
-      <div class="stat-label">Response time</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">WhatsApp</div>
-      <div class="stat-label">Native integration</div>
+    <h1>
+      We build systems
+      <span class="line-2">that think.</span>
+    </h1>
+    <p class="hero-desc">Theorrem designs and deploys intelligent AI systems that replace manual workflows, automate complex operations, and unlock scale — across any industry.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Start a project <span>→</span></a>
+      <a href="#services" class="btn-ghost">Explore services <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
 
-<section class="products" id="products">
-  <div class="section-tag">Our products</div>
-  <h2 class="section-title">Two ways to engage your buyers</h2>
-  <p class="section-sub">Whether your customers find you on the web or message you on WhatsApp, Theorrem has you covered.</p>
+<div class="marquee-section">
+  <div class="marquee-track" id="marquee">
+    <div class="marquee-item"><span class="marquee-dot"></span>Workflow Automation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>AI Chatbots</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Process Intelligence</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>WhatsApp Integration</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Legacy Modernization</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Natural Language Systems</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>RAG Pipelines</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Agentic AI</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Workflow Automation</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>AI Chatbots</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Process Intelligence</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>WhatsApp Integration</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Legacy Modernization</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Natural Language Systems</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>RAG Pipelines</div>
+    <div class="marquee-item"><span class="marquee-dot"></span>Agentic AI</div>
+  </div>
+</div>
 
-  <div class="products-grid">
-    <div class="product-card">
-      <div class="product-icon">🌐</div>
-      <h3>Web Chatbot</h3>
-      <p>An intelligent property search assistant embedded directly on your website. Buyers describe what they want — the AI finds and presents matching listings instantly.</p>
-      <ul class="feature-list">
-        <li>Natural language property search</li>
-        <li>Filters by location, budget, bedrooms, type</li>
-        <li>Remembers conversation context</li>
-        <li>Shows agent contact details</li>
-        <li>Fully branded to your business</li>
-      </ul>
+<section class="services" id="services">
+  <div class="reveal">
+    <div class="section-label">What we do</div>
+    <h2 class="section-title">Intelligence, engineered<br>for your business</h2>
+    <p class="section-sub">We don't sell software. We build custom AI systems tailored to your exact operations and goals.</p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <span class="service-num">01</span>
+      <span class="service-icon">🧠</span>
+      <h3>Conversational AI</h3>
+      <p>Intelligent chatbots and virtual assistants that understand context, remember history, and resolve queries — deployed on web, WhatsApp, or any channel.</p>
+      <span class="service-arrow">↗</span>
     </div>
-    <div class="product-card">
-      <div class="product-icon">💬</div>
-      <h3>WhatsApp Bot</h3>
-      <p>The same intelligence, delivered through WhatsApp — where Pakistani buyers actually are. Respond to inquiries automatically, around the clock, without adding headcount.</p>
-      <ul class="feature-list">
-        <li>Instant replies on WhatsApp Business</li>
-        <li>Property listings sent as formatted messages</li>
-        <li>Handles multiple conversations simultaneously</li>
-        <li>Escalates to human agent when needed</li>
-        <li>Works on your existing business number</li>
-      </ul>
+    <div class="service-card">
+      <span class="service-num">02</span>
+      <span class="service-icon">⚡</span>
+      <h3>Workflow Automation</h3>
+      <p>End-to-end automation of repetitive business processes. From data entry to complex decision pipelines — we eliminate the manual layer entirely.</p>
+      <span class="service-arrow">↗</span>
+    </div>
+    <div class="service-card">
+      <span class="service-num">03</span>
+      <span class="service-icon">🔍</span>
+      <h3>Knowledge Systems</h3>
+      <p>RAG-powered systems that make your internal knowledge instantly searchable and actionable — turning documents, databases, and data into live intelligence.</p>
+      <span class="service-arrow">↗</span>
+    </div>
+    <div class="service-card">
+      <span class="service-num">04</span>
+      <span class="service-icon">📲</span>
+      <h3>WhatsApp Automation</h3>
+      <p>Custom WhatsApp Business API integrations that handle inbound inquiries, qualify leads, and send proactive updates — at any scale.</p>
+      <span class="service-arrow">↗</span>
+    </div>
+    <div class="service-card">
+      <span class="service-num">05</span>
+      <span class="service-icon">🔗</span>
+      <h3>System Integration</h3>
+      <p>Connecting AI capabilities to your existing CRM, ERP, or legacy infrastructure. New intelligence layered on top of what you already have.</p>
+      <span class="service-arrow">↗</span>
+    </div>
+    <div class="service-card">
+      <span class="service-num">06</span>
+      <span class="service-icon">📊</span>
+      <h3>Agentic Pipelines</h3>
+      <p>Autonomous AI agents that execute multi-step tasks, make decisions, and complete goals with minimal human intervention.</p>
+      <span class="service-arrow">↗</span>
     </div>
   </div>
 </section>
 
-<section id="how">
-  <div class="section-tag">How it works</div>
-  <h2 class="section-title">Up and running in days, not months</h2>
-  <p class="section-sub">We handle the entire setup. You provide your property data and branding — we deliver a working AI system.</p>
-
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">01</div>
-      <h4>Share your inventory</h4>
-      <p>Provide your property listings in any format. We process and index everything into the AI's knowledge base.</p>
+<section id="process">
+  <div class="reveal">
+    <div class="section-label">How we work</div>
+    <h2 class="section-title">From problem to<br>production, fast</h2>
+    <p class="section-sub">A focused process that moves quickly and delivers systems that actually work in the real world.</p>
+  </div>
+  <div class="process-grid reveal">
+    <div class="process-item">
+      <div class="process-num">01</div>
+      <span class="process-tag">Discovery</span>
+      <h3>Understand the operation</h3>
+      <p>We map your current workflows, identify automation opportunities, and define what success looks like — before writing a single line of code.</p>
     </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <h4>We configure the AI</h4>
-      <p>The system is trained on your listings, tuned to your market, and branded to your business identity.</p>
+    <div class="process-item">
+      <div class="process-num">02</div>
+      <span class="process-tag">Design</span>
+      <h3>Architect the system</h3>
+      <p>We design the AI architecture — models, pipelines, integrations, interfaces. Every component chosen for your specific use case, not a template.</p>
     </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <h4>Go live</h4>
-      <p>Embed the chatbot on your site or connect it to your WhatsApp Business number. Takes minutes.</p>
+    <div class="process-item">
+      <div class="process-num">03</div>
+      <span class="process-tag">Build</span>
+      <h3>Build and iterate</h3>
+      <p>Rapid development with continuous feedback. You see working prototypes early, not six months in. We iterate until it's right.</p>
     </div>
-    <div class="step">
-      <div class="step-num">04</div>
-      <h4>Leads qualify themselves</h4>
-      <p>Buyers get instant answers. Your agents focus on serious prospects. You close more deals.</p>
+    <div class="process-item">
+      <div class="process-num">04</div>
+      <span class="process-tag">Deploy</span>
+      <h3>Deploy and support</h3>
+      <p>Production deployment with monitoring, performance tuning, and ongoing support. We stay involved as your system scales.</p>
     </div>
   </div>
 </section>
 
-<section id="who">
-  <div class="section-tag">Who we serve</div>
-  <h2 class="section-title">Built for Pakistan's property market</h2>
-  <p class="section-sub">From large portals to independent dealers, Theorrem adapts to your scale and workflow.</p>
-
-  <div class="who-grid">
-    <div class="who-card">
-      <h4>Property portals</h4>
-      <p>Handle thousands of daily inquiries without scaling your support team. AI qualifies buyers before they reach your agents.</p>
+<section class="why" id="why">
+  <div class="why-grid">
+    <div class="why-left reveal">
+      <div class="section-label">Why Theorrem</div>
+      <h2 class="section-title">Built by engineers,<br>not consultants</h2>
+      <p class="section-sub">We're a technical team that builds real systems — not slide decks and recommendations.</p>
+      <div class="why-list">
+        <div class="why-item">
+          <span class="why-item-num">01</span>
+          <div class="why-item-content">
+            <h4>Custom, not cookie-cutter</h4>
+            <p>Every system is built from scratch for your use case. No generic SaaS tools with our logo on top.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="why-item-num">02</span>
+          <div class="why-item-content">
+            <h4>Fast delivery</h4>
+            <p>Working systems in weeks, not quarters. We move fast because we've solved these problems before.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="why-item-num">03</span>
+          <div class="why-item-content">
+            <h4>Full ownership</h4>
+            <p>You own the code, the data, the system. No vendor lock-in, no recurring platform fees.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="why-item-num">04</span>
+          <div class="why-item-content">
+            <h4>Local context, global standards</h4>
+            <p>Based in Pakistan, built to international engineering standards. We understand your market and your customers.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="who-card">
-      <h4>Marketing firms</h4>
-      <p>Automate lead capture across your project portfolio. Never let a WhatsApp inquiry go unanswered again.</p>
-    </div>
-    <div class="who-card">
-      <h4>Authorized dealers</h4>
-      <p>Compete at the same level as large agencies. A 24/7 AI assistant on your WhatsApp gives buyers instant responses.</p>
+    <div class="why-right reveal">
+      <div class="why-visual">
+        <div class="metric-grid">
+          <div class="metric">
+            <div class="metric-val">24/7</div>
+            <div class="metric-label">System uptime</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">&lt; 2s</div>
+            <div class="metric-label">Response time</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">10x</div>
+            <div class="metric-label">Faster than manual</div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">∞</div>
+            <div class="metric-label">Concurrent sessions</div>
+          </div>
+        </div>
+        <p class="why-visual-desc">AI systems don't take breaks, make typos, or miss messages. They handle volume that would require entire teams — at a fraction of the cost.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="contact" id="contact">
-  <div class="section-tag">Get in touch</div>
-  <h2 class="section-title">Ready to see it in action?</h2>
-  <p class="section-sub">We offer a free demo tailored to your property inventory. See exactly how it would work for your business.</p>
-  <a href="mailto:hello@theorrem.com" class="contact-email">hello@theorrem.com</a>
+<section id="industries">
+  <div class="reveal">
+    <div class="section-label">Industries</div>
+    <h2 class="section-title">Any industry with<br>repetitive workflows</h2>
+    <p class="section-sub">If your team spends time on tasks that follow patterns, we can automate them. Industry is secondary — the problem is universal.</p>
+  </div>
+  <div class="industries-grid reveal">
+    <div class="industry-pill"><span class="industry-pill-dot"></span>Real Estate</div>
+    <div class="industry-pill"><span class="industry-pill-dot"></span>E-commerce</div>
+    <div class="industry-pill"><span class="industry-pill-dot"></span>Legal</div>
+    <div class="industry-pill"><span class="industry-pill-dot"></span>HR & Recruitment</div>
+    <div class="industry-pill"><span class="industry-pill-dot"></span>Healthcare</div>
+    <div class="industry-pill"><span class="industry-pill-dot"></span>Finance</div>
+    <div class="industry-pill"><span class="industry-pill-dot"></span>Logistics</div>
+    <div class="industry-pill"><span class="industry-pill-dot"></span>Education</div>
+    <div class="industry-pill"><span class="industry-pill-dot"></span>Retail</div>
+    <div class="industry-pill"><span class="industry-pill-dot"></span>Insurance</div>
+    <div class="industry-pill"><span class="industry-pill-dot"></span>Manufacturing</div>
+    <div class="industry-pill"><span class="industry-pill-dot"></span>+ Any other</div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="reveal">
+    <div class="section-label">Start a project</div>
+    <h2 class="section-title">Ready to automate?</h2>
+    <p class="section-sub">Tell us what you're working on. We'll respond within 24 hours with a clear picture of what's possible.</p>
+    <a href="mailto:hello@theorrem.com" class="cta-email">hello@theorrem.com</a>
+  </div>
 </section>
 
 <footer>
-  <a href="#" class="logo" style="font-size: 1.1rem;">Theorrem<span>.</span></a>
-  <p>© 2025 Theorrem. AI systems for real estate businesses in Pakistan.</p>
+  <a href="#" class="logo">Theorrem<span class="logo-dot">.</span></a>
+  <p>© 2025 Theorrem. AI Automation Systems. Karachi, Pakistan.</p>
 </footer>
 
+<script>
+// CURSOR
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  cursor.style.left=mx-4+'px';
+  cursor.style.top=my-4+'px';
+});
+function animateRing(){
+  rx+=(mx-rx)*0.12;
+  ry+=(my-ry)*0.12;
+  ring.style.left=rx-16+'px';
+  ring.style.top=ry-16+'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+document.querySelectorAll('a,button,.service-card,.why-item,.industry-pill').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{
+    ring.style.width='48px';ring.style.height='48px';
+    ring.style.borderColor='rgba(200,171,255,0.6)';
+  });
+  el.addEventListener('mouseleave',()=>{
+    ring.style.width='32px';ring.style.height='32px';
+    ring.style.borderColor='rgba(200,171,255,0.4)';
+  });
+});
+
+// NAV SCROLL
+const nav = document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>50);
+});
+
+// REVEAL ON SCROLL
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach((entry,i)=>{
+    if(entry.isIntersecting){
+      setTimeout(()=>entry.target.classList.add('visible'),i*80);
+    }
+  });
+},{threshold:0.1});
+reveals.forEach(el=>observer.observe(el));
+</script>
 </body>
 </html>
