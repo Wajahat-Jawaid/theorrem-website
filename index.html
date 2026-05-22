@@ -4,551 +4,457 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Theorrem — AI Automation Systems</title>
-<meta name="description" content="Theorrem builds intelligent AI systems that transform how businesses operate.">
+<meta name="description" content="Theorrem builds intelligent AI systems that transform how businesses operate. Custom-built automation for any industry.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-
 :root{
-  --bg:#0a0a0a;
-  --bg2:#111111;
-  --bg3:#161616;
-  --bg4:#1c1c1c;
-  --border:rgba(255,255,255,0.07);
-  --border2:rgba(255,255,255,0.12);
-  --border3:rgba(255,255,255,0.18);
-  --text:#f2f0eb;
-  --text2:#a8a49c;
-  --text3:#6b6760;
-  --orange:#ff6b2b;
-  --orange2:#ff8c55;
-  --orange-glow:rgba(255,107,43,0.15);
-  --orange-glow2:rgba(255,107,43,0.06);
-  --green:#22c55e;
-  --r:6px;
+  --bg:#f6f8fa;
+  --white:#ffffff;
+  --border:#e4e8ed;
+  --border2:#d0d7e0;
+  --text:#0d1117;
+  --text2:#57606a;
+  --text3:#8c959f;
+  --blue:#0969da;
+  --blue-bg:#dbeafe;
+  --blue-light:#f0f6ff;
+  --green:#1a7f37;
+  --green-bg:#dcfce7;
+  --purple:#8250df;
+  --purple-bg:#f3f0ff;
+  --r:12px;
+  --r2:8px;
+  --shadow:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
+  --shadow2:0 4px 12px rgba(0,0,0,0.08),0 1px 3px rgba(0,0,0,0.04);
 }
-
 html{scroll-behavior:smooth;}
 body{
-  font-family:'DM Sans',sans-serif;
-  background:var(--bg);
-  color:var(--text);
+  font-family:'Geist',system-ui,sans-serif;
+  background:var(--bg);color:var(--text);
   -webkit-font-smoothing:antialiased;
+  font-size:15px;line-height:1.6;
   overflow-x:hidden;
 }
-
-/* SCROLLBAR */
-::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background:var(--bg);}
-::-webkit-scrollbar-thumb{background:var(--orange);border-radius:2px;}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
 
 /* NAV */
 nav{
-  position:fixed;top:0;left:0;right:0;z-index:500;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 2.5rem;height:60px;
-  background:rgba(10,10,10,0.8);
+  position:sticky;top:0;z-index:100;
+  background:rgba(246,248,250,0.85);
   backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border);
+  padding:0 2rem;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
 }
 .logo{
-  font-family:'Bricolage Grotesque',sans-serif;
-  font-size:1.2rem;font-weight:800;
+  font-size:1.05rem;font-weight:700;
   color:var(--text);text-decoration:none;
+  letter-spacing:-0.02em;
+  display:flex;align-items:center;gap:8px;
+}
+.logo-icon{
+  width:26px;height:26px;border-radius:6px;
+  background:var(--text);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.7rem;font-weight:800;color:var(--white);
   letter-spacing:-0.03em;
-  display:flex;align-items:center;gap:6px;
 }
-.logo-badge{
-  background:var(--orange);
-  color:#fff;font-size:0.55rem;font-weight:700;
-  letter-spacing:0.08em;text-transform:uppercase;
-  padding:2px 6px;border-radius:3px;
-  vertical-align:middle;
+.nav-links{display:flex;gap:0.25rem;}
+.nav-a{
+  color:var(--text2);font-size:0.85rem;font-weight:400;
+  text-decoration:none;padding:0.35rem 0.75rem;
+  border-radius:6px;transition:all 0.15s;
 }
-.nav-center{display:flex;gap:0.25rem;align-items:center;}
-.nav-link{
-  color:var(--text2);font-size:0.8rem;font-weight:400;
-  text-decoration:none;padding:0.4rem 0.85rem;
-  border-radius:4px;transition:color 0.15s,background 0.15s;
-}
-.nav-link:hover{color:var(--text);background:rgba(255,255,255,0.05);}
-.nav-right{display:flex;align-items:center;gap:0.75rem;}
-.nav-btn{
-  font-size:0.8rem;font-weight:500;
-  padding:0.45rem 1rem;border-radius:5px;
+.nav-a:hover{color:var(--text);background:rgba(0,0,0,0.04);}
+.nav-right{display:flex;gap:0.5rem;align-items:center;}
+.btn-sm{
+  font-size:0.82rem;font-weight:500;
+  padding:0.4rem 0.9rem;border-radius:6px;
   text-decoration:none;transition:all 0.15s;
+  display:inline-flex;align-items:center;gap:5px;
 }
-.nav-btn-ghost{color:var(--text2);border:1px solid var(--border2);}
-.nav-btn-ghost:hover{color:var(--text);border-color:var(--border3);}
-.nav-btn-solid{
-  background:var(--orange);color:#fff;
-  border:1px solid var(--orange);
-}
-.nav-btn-solid:hover{background:var(--orange2);}
+.btn-ghost-sm{color:var(--text2);border:1px solid var(--border2);}
+.btn-ghost-sm:hover{color:var(--text);border-color:var(--text3);}
+.btn-dark{background:var(--text);color:var(--white);border:1px solid var(--text);}
+.btn-dark:hover{background:#1a1a1a;}
 
 /* HERO */
 .hero{
-  padding:120px 2.5rem 0;
-  min-height:100vh;
-  display:flex;flex-direction:column;
-  position:relative;overflow:hidden;
+  padding:5rem 2rem 0;
+  max-width:1100px;margin:0 auto;
+  text-align:center;
+  position:relative;
 }
-
-/* GRID */
-.hero-grid-bg{
-  position:absolute;inset:0;
-  background-image:
-    linear-gradient(var(--border) 1px,transparent 1px),
-    linear-gradient(90deg,var(--border) 1px,transparent 1px);
-  background-size:40px 40px;
-  mask-image:radial-gradient(ellipse 100% 80% at 50% 0%,black 20%,transparent 75%);
-  pointer-events:none;
-}
-
-.hero-top{
-  display:flex;align-items:flex-start;
-  justify-content:space-between;
-  gap:2rem;
-  position:relative;z-index:2;
-}
-
-.hero-left{flex:1;max-width:680px;}
-
-.hero-tag{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--bg3);border:1px solid var(--border2);
-  border-radius:100px;padding:5px 12px 5px 8px;
-  font-size:0.72rem;font-weight:500;
-  color:var(--text2);margin-bottom:2rem;
-  letter-spacing:0.01em;
-}
-.hero-tag-dot{
-  width:6px;height:6px;border-radius:50%;
-  background:var(--green);flex-shrink:0;
-  box-shadow:0 0 6px var(--green);
-}
-
-.hero h1{
-  font-family:'Bricolage Grotesque',sans-serif;
-  font-size:clamp(3.2rem,6.5vw,6rem);
-  font-weight:800;line-height:0.97;
-  letter-spacing:-0.04em;
-  color:var(--text);
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--white);border:1px solid var(--border);
+  border-radius:100px;padding:4px 12px 4px 8px;
+  font-size:0.75rem;font-weight:500;color:var(--text2);
   margin-bottom:1.75rem;
+  box-shadow:var(--shadow);
 }
-
-.hero h1 .accent{
-  color:var(--orange);
-  font-style:italic;
-  font-family:'Instrument Serif',serif;
-  font-weight:400;
+.badge-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#22c55e;box-shadow:0 0 5px #22c55e;
 }
-
+.hero h1{
+  font-size:clamp(2.8rem,5.5vw,4.5rem);
+  font-weight:800;letter-spacing:-0.04em;
+  line-height:1.05;color:var(--text);
+  margin-bottom:1.5rem;
+  max-width:820px;margin-left:auto;margin-right:auto;
+}
+.hero h1 span{
+  background:linear-gradient(135deg,#0969da,#8250df);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
 .hero-sub{
-  font-size:1rem;color:var(--text2);
-  font-weight:300;line-height:1.75;
-  max-width:440px;margin-bottom:2.5rem;
+  font-size:1.05rem;color:var(--text2);font-weight:400;
+  max-width:520px;margin:0 auto 2.25rem;line-height:1.75;
 }
-
-.hero-actions{display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;margin-bottom:4rem;}
-
-.btn-orange{
+.hero-btns{
+  display:flex;gap:0.75rem;justify-content:center;
+  margin-bottom:4rem;
+}
+.btn-lg{
+  font-size:0.9rem;font-weight:600;
+  padding:0.65rem 1.5rem;border-radius:8px;
+  text-decoration:none;transition:all 0.15s;
   display:inline-flex;align-items:center;gap:6px;
-  background:var(--orange);color:#fff;
-  padding:0.7rem 1.5rem;border-radius:5px;
-  font-size:0.875rem;font-weight:500;
-  text-decoration:none;
-  transition:background 0.15s,transform 0.1s,box-shadow 0.2s;
-  border:1px solid var(--orange);
 }
-.btn-orange:hover{
-  background:var(--orange2);
-  box-shadow:0 0 24px rgba(255,107,43,0.35);
-  transform:translateY(-1px);
+.btn-dark-lg{
+  background:var(--text);color:var(--white);
+  border:1px solid var(--text);
+  box-shadow:0 1px 3px rgba(0,0,0,0.15);
 }
-.btn-outline{
-  display:inline-flex;align-items:center;gap:6px;
-  color:var(--text2);
-  padding:0.7rem 1.5rem;border-radius:5px;
-  font-size:0.875rem;font-weight:400;
-  text-decoration:none;
+.btn-dark-lg:hover{background:#1a1a1a;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.2);}
+.btn-white-lg{
+  background:var(--white);color:var(--text);
   border:1px solid var(--border2);
-  transition:all 0.15s;
+  box-shadow:var(--shadow);
 }
-.btn-outline:hover{color:var(--text);border-color:var(--border3);}
+.btn-white-lg:hover{border-color:var(--text3);transform:translateY(-1px);}
 
-/* HERO RIGHT CARDS */
-.hero-right{
-  width:320px;flex-shrink:0;
-  display:flex;flex-direction:column;gap:0.75rem;
-  padding-top:0.5rem;
-}
-
-.hero-card{
-  background:var(--bg2);
+/* HERO VISUAL */
+.hero-visual{
+  background:var(--white);
   border:1px solid var(--border);
-  border-radius:var(--r);
-  padding:1rem 1.25rem;
-  transition:border-color 0.2s;
-}
-.hero-card:hover{border-color:var(--border2);}
-
-.hero-card-label{
-  font-size:0.7rem;font-weight:500;
-  color:var(--text3);letter-spacing:0.08em;
-  text-transform:uppercase;margin-bottom:0.5rem;
-}
-.hero-card-val{
-  font-family:'Bricolage Grotesque',sans-serif;
-  font-size:1.6rem;font-weight:800;
-  color:var(--text);letter-spacing:-0.03em;
-  line-height:1;margin-bottom:0.25rem;
-}
-.hero-card-sub{font-size:0.78rem;color:var(--text3);font-weight:300;}
-
-.hero-card-orange .hero-card-val{color:var(--orange);}
-
-.hero-card-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:0.75rem;}
-.tag{
-  font-size:0.7rem;font-weight:500;
-  padding:3px 8px;border-radius:3px;
-  background:var(--bg3);border:1px solid var(--border);
-  color:var(--text2);
-}
-.tag-orange{background:rgba(255,107,43,0.1);border-color:rgba(255,107,43,0.2);color:var(--orange2);}
-
-/* HERO BOTTOM STRIP */
-.hero-strip{
-  display:flex;gap:0;
-  border-top:1px solid var(--border);
-  border-left:1px solid var(--border);
   border-radius:var(--r) var(--r) 0 0;
+  box-shadow:0 8px 32px rgba(0,0,0,0.08);
   overflow:hidden;
-  margin-top:auto;
-  position:relative;z-index:2;
+  position:relative;
 }
-.strip-item{
-  flex:1;padding:1.25rem 1.5rem;
-  border-right:1px solid var(--border);
-  transition:background 0.2s;
+.hero-visual-bar{
+  background:var(--bg);
+  border-bottom:1px solid var(--border);
+  padding:0.6rem 1rem;
+  display:flex;align-items:center;gap:0.5rem;
 }
-.strip-item:hover{background:var(--bg2);}
-.strip-num{
-  font-family:'Bricolage Grotesque',sans-serif;
-  font-size:1.4rem;font-weight:800;
-  color:var(--orange);letter-spacing:-0.03em;
-  line-height:1;margin-bottom:0.3rem;
+.dot{width:10px;height:10px;border-radius:50%;}
+.dot-r{background:#ff5f57;}
+.dot-y{background:#febc2e;}
+.dot-g{background:#28c840;}
+.url-bar{
+  flex:1;background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:5px;padding:3px 10px;
+  font-size:0.72rem;color:var(--text3);
+  margin:0 1rem;text-align:center;
+  max-width:300px;margin-left:auto;margin-right:auto;
 }
-.strip-label{font-size:0.75rem;color:var(--text3);font-weight:300;}
+.hero-visual-inner{
+  padding:2rem;
+  background:linear-gradient(180deg,var(--white) 0%,var(--bg) 100%);
+  min-height:280px;
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:1rem;
+}
+.mini-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--r2);
+  padding:1.25rem;
+  box-shadow:var(--shadow);
+}
+.mini-card-label{
+  font-size:0.68rem;font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--text3);margin-bottom:0.6rem;
+}
+.mini-card-val{
+  font-size:1.6rem;font-weight:800;
+  letter-spacing:-0.03em;line-height:1;
+  margin-bottom:0.25rem;color:var(--text);
+}
+.mini-card-sub{font-size:0.72rem;color:var(--text3);}
+.pill{
+  display:inline-block;font-size:0.7rem;font-weight:500;
+  padding:2px 8px;border-radius:100px;
+  margin:2px;
+}
+.pill-blue{background:var(--blue-bg);color:var(--blue);}
+.pill-green{background:var(--green-bg);color:var(--green);}
+.pill-purple{background:var(--purple-bg);color:var(--purple);}
+.mini-chat{display:flex;flex-direction:column;gap:8px;}
+.chat-msg{
+  border-radius:8px;padding:8px 10px;
+  font-size:0.75rem;line-height:1.4;
+  max-width:85%;
+}
+.chat-msg.user{
+  background:var(--text);color:var(--white);
+  align-self:flex-end;border-radius:8px 8px 2px 8px;
+}
+.chat-msg.bot{
+  background:var(--bg);border:1px solid var(--border);
+  color:var(--text2);border-radius:8px 8px 8px 2px;
+}
 
-/* MARQUEE */
-.marquee-wrap{
+/* LOGOS */
+.logos{
+  padding:2.5rem 2rem;
   border-top:1px solid var(--border);
   border-bottom:1px solid var(--border);
-  padding:0.85rem 0;overflow:hidden;
-  position:relative;background:var(--bg2);
+  background:var(--white);
 }
-.marquee-wrap::before,.marquee-wrap::after{
-  content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;
+.logos-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:center;
+  gap:3rem;flex-wrap:wrap;
 }
-.marquee-wrap::before{left:0;background:linear-gradient(90deg,var(--bg2),transparent);}
-.marquee-wrap::after{right:0;background:linear-gradient(-90deg,var(--bg2),transparent);}
-.marquee-inner{
-  display:flex;gap:3rem;width:max-content;
-  animation:scroll 30s linear infinite;
+.logos p{
+  font-size:0.78rem;color:var(--text3);
+  font-weight:500;letter-spacing:0.04em;
+  text-transform:uppercase;white-space:nowrap;
 }
-@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.m-item{
-  display:flex;align-items:center;gap:8px;
-  font-size:0.75rem;font-weight:500;
-  letter-spacing:0.08em;text-transform:uppercase;
-  color:var(--text3);white-space:nowrap;
+.logo-name{
+  font-size:0.9rem;font-weight:700;
+  color:var(--border2);letter-spacing:-0.02em;
+  transition:color 0.2s;
 }
-.m-sep{width:3px;height:3px;border-radius:50%;background:var(--orange);flex-shrink:0;}
+.logo-name:hover{color:var(--text3);}
 
-/* SECTIONS */
-.section{padding:5rem 2.5rem;}
-.section-alt{background:var(--bg2);}
+/* SECTION */
+.section{padding:5rem 2rem;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-white{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 
 .eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:0.7rem;font-weight:600;
-  letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--orange);margin-bottom:1rem;
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:0.72rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:0.875rem;
 }
-.eyebrow::before{content:'';width:16px;height:1px;background:var(--orange);}
-
 .s-title{
-  font-family:'Bricolage Grotesque',sans-serif;
-  font-size:clamp(2rem,3.5vw,3rem);
+  font-size:clamp(1.8rem,3vw,2.75rem);
   font-weight:800;letter-spacing:-0.03em;
-  line-height:1.05;color:var(--text);
-  margin-bottom:1rem;
-}
-.s-title em{
-  font-family:'Instrument Serif',serif;
-  font-style:italic;font-weight:400;
-  color:var(--orange);
+  line-height:1.1;color:var(--text);
+  margin-bottom:0.875rem;
 }
 .s-sub{
   font-size:0.95rem;color:var(--text2);
-  font-weight:300;line-height:1.75;
-  max-width:460px;
+  max-width:480px;line-height:1.75;
 }
 
 /* SERVICES */
 .svc-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:1px;background:var(--border);
-  border:1px solid var(--border);
-  border-radius:var(--r);overflow:hidden;
-  margin-top:3.5rem;
+  gap:1rem;margin-top:3rem;
 }
 .svc-card{
-  background:var(--bg);
-  padding:2rem;
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:1.5rem;
+  box-shadow:var(--shadow);
+  transition:all 0.2s;
   position:relative;overflow:hidden;
-  transition:background 0.25s;
 }
-.svc-card:hover{background:var(--bg3);}
-.svc-card::after{
+.svc-card::before{
   content:'';position:absolute;
-  inset:0;background:radial-gradient(circle at 0% 0%,var(--orange-glow),transparent 60%);
-  opacity:0;transition:opacity 0.3s;
+  top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--purple));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.3s;
 }
-.svc-card:hover::after{opacity:1;}
-.svc-n{
-  font-family:'Bricolage Grotesque',sans-serif;
-  font-size:0.65rem;font-weight:700;
-  color:var(--text3);letter-spacing:0.1em;
-  margin-bottom:1.5rem;display:block;
-}
-.svc-icon{
-  width:36px;height:36px;border-radius:6px;
-  background:var(--bg3);border:1px solid var(--border);
+.svc-card:hover{transform:translateY(-2px);box-shadow:var(--shadow2);}
+.svc-card:hover::before{transform:scaleX(1);}
+.svc-icon-wrap{
+  width:36px;height:36px;border-radius:8px;
+  background:var(--bg);border:1px solid var(--border);
   display:flex;align-items:center;justify-content:center;
   font-size:1rem;margin-bottom:1rem;
-  position:relative;z-index:1;
 }
 .svc-card h3{
-  font-family:'Bricolage Grotesque',sans-serif;
-  font-size:1rem;font-weight:700;
-  color:var(--text);margin-bottom:0.6rem;
-  letter-spacing:-0.02em;
-  position:relative;z-index:1;
-}
-.svc-card p{
-  font-size:0.82rem;color:var(--text2);
-  font-weight:300;line-height:1.65;
-  position:relative;z-index:1;
-}
-.svc-link{
-  display:inline-flex;align-items:center;gap:4px;
-  font-size:0.75rem;font-weight:500;color:var(--orange);
-  text-decoration:none;margin-top:1rem;
-  opacity:0;transform:translateY(4px);
-  transition:opacity 0.2s,transform 0.2s;
-  position:relative;z-index:1;
-}
-.svc-card:hover .svc-link{opacity:1;transform:translateY(0);}
-
-/* BENTO */
-.bento{
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  grid-template-rows:auto;
-  gap:1px;background:var(--border);
-  border:1px solid var(--border);
-  border-radius:var(--r);overflow:hidden;
-  margin-top:3.5rem;
-}
-.bento-cell{
-  background:var(--bg2);
-  padding:2rem;
-  transition:background 0.2s;
-}
-.bento-cell:hover{background:var(--bg3);}
-
-.b1{grid-column:span 5;}
-.b2{grid-column:span 7;}
-.b3{grid-column:span 4;}
-.b4{grid-column:span 4;}
-.b5{grid-column:span 4;}
-
-.bento-cell h3{
-  font-family:'Bricolage Grotesque',sans-serif;
-  font-size:1.05rem;font-weight:700;
-  color:var(--text);letter-spacing:-0.02em;
-  margin-bottom:0.6rem;
-}
-.bento-cell p{
-  font-size:0.82rem;color:var(--text2);
-  font-weight:300;line-height:1.65;
-}
-
-.bento-big-num{
-  font-family:'Bricolage Grotesque',sans-serif;
-  font-size:3.5rem;font-weight:800;
-  letter-spacing:-0.04em;
-  line-height:1;margin-bottom:0.5rem;
-}
-.bento-big-num.orange{color:var(--orange);}
-
-.bento-list{
-  list-style:none;margin-top:1rem;
-  display:flex;flex-direction:column;gap:0.5rem;
-}
-.bento-list li{
-  display:flex;align-items:flex-start;gap:8px;
-  font-size:0.8rem;color:var(--text2);font-weight:300;
-}
-.bento-list li::before{
-  content:'→';color:var(--orange);
-  flex-shrink:0;font-size:0.75rem;margin-top:1px;
-}
-
-.bento-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem;}
-
-/* PROCESS */
-.process-steps{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:0;margin-top:3.5rem;
-  border:1px solid var(--border);
-  border-radius:var(--r);overflow:hidden;
-}
-.p-step{
-  padding:2rem 1.75rem;
-  border-right:1px solid var(--border);
-  position:relative;
-  transition:background 0.2s;
-}
-.p-step:last-child{border-right:none;}
-.p-step:hover{background:var(--bg3);}
-
-.p-step-n{
-  font-family:'Bricolage Grotesque',sans-serif;
-  font-size:2.5rem;font-weight:800;
-  color:rgba(255,107,43,0.1);
-  line-height:1;margin-bottom:1.25rem;
-  letter-spacing:-0.04em;
-  transition:color 0.2s;
-}
-.p-step:hover .p-step-n{color:rgba(255,107,43,0.2);}
-.p-badge{
-  display:inline-block;
-  font-size:0.65rem;font-weight:600;
-  letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--orange);
-  background:rgba(255,107,43,0.08);
-  border:1px solid rgba(255,107,43,0.15);
-  padding:3px 8px;border-radius:3px;
-  margin-bottom:1rem;
-}
-.p-step h4{
-  font-family:'Bricolage Grotesque',sans-serif;
   font-size:0.95rem;font-weight:700;
   color:var(--text);margin-bottom:0.5rem;
-  letter-spacing:-0.02em;
+  letter-spacing:-0.01em;
 }
-.p-step p{font-size:0.8rem;color:var(--text2);font-weight:300;line-height:1.6;}
+.svc-card p{font-size:0.83rem;color:var(--text2);line-height:1.65;}
+
+/* BENTO WHY */
+.bento-grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  grid-template-rows:auto auto;
+  gap:1rem;margin-top:3rem;
+}
+.bc{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:1.5rem;
+  box-shadow:var(--shadow);
+}
+.bc:hover{box-shadow:var(--shadow2);}
+.bc-1{grid-column:span 4;}
+.bc-2{grid-column:span 8;}
+.bc-3{grid-column:span 6;}
+.bc-4{grid-column:span 6;}
+.bc h3{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;letter-spacing:-0.01em;}
+.bc p{font-size:0.82rem;color:var(--text2);line-height:1.65;}
+.bc-big{
+  font-size:3rem;font-weight:800;
+  letter-spacing:-0.05em;line-height:1;
+  margin-bottom:0.5rem;
+}
+.bc-big-blue{
+  background:linear-gradient(135deg,var(--blue),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.bc-list{list-style:none;margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;}
+.bc-list li{
+  font-size:0.8rem;color:var(--text2);
+  display:flex;align-items:flex-start;gap:8px;
+  padding:6px 0;border-bottom:1px solid var(--border);
+}
+.bc-list li:last-child{border-bottom:none;}
+.bc-list li::before{content:'✓';color:var(--green);font-weight:700;font-size:0.75rem;flex-shrink:0;margin-top:1px;}
+.tag-group{display:flex;flex-wrap:wrap;gap:5px;margin-top:0.75rem;}
+
+/* PROCESS */
+.process-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1rem;margin-top:3rem;
+}
+.p-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:1.5rem;
+  box-shadow:var(--shadow);
+  position:relative;
+}
+.p-num{
+  font-size:2.5rem;font-weight:800;
+  letter-spacing:-0.05em;line-height:1;
+  color:var(--border);margin-bottom:1rem;
+}
+.p-chip{
+  display:inline-block;
+  font-size:0.65rem;font-weight:600;
+  letter-spacing:0.08em;text-transform:uppercase;
+  background:var(--blue-bg);color:var(--blue);
+  padding:2px 8px;border-radius:4px;
+  margin-bottom:0.75rem;
+}
+.p-card h4{font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:0.4rem;letter-spacing:-0.01em;}
+.p-card p{font-size:0.8rem;color:var(--text2);line-height:1.6;}
 
 /* INDUSTRIES */
-.ind-grid{
-  display:flex;flex-wrap:wrap;gap:0.5rem;
-  margin-top:3rem;
-}
-.ind-pill{
+.ind-wrap{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:2.5rem;}
+.ind-tag{
   display:inline-flex;align-items:center;gap:6px;
-  padding:0.5rem 1rem;
-  border:1px solid var(--border);
-  border-radius:100px;
-  font-size:0.8rem;color:var(--text2);font-weight:400;
+  padding:6px 14px;border-radius:100px;
+  font-size:0.82rem;color:var(--text2);font-weight:500;
+  background:var(--white);border:1px solid var(--border);
+  box-shadow:var(--shadow);
   transition:all 0.15s;cursor:default;
 }
-.ind-pill:hover{
-  border-color:rgba(255,107,43,0.35);
-  color:var(--orange2);
-  background:rgba(255,107,43,0.05);
-}
-.ind-dot{
-  width:4px;height:4px;border-radius:50%;
-  background:var(--orange);opacity:0.4;
-  transition:opacity 0.15s;
-}
-.ind-pill:hover .ind-dot{opacity:1;}
+.ind-tag:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light);}
+.ind-dot{width:5px;height:5px;border-radius:50%;background:var(--border2);}
+.ind-tag:hover .ind-dot{background:var(--blue);}
 
 /* CTA */
 .cta{
-  padding:6rem 2.5rem;
+  padding:5rem 2rem;
   text-align:center;
+  background:var(--text);
   position:relative;overflow:hidden;
 }
 .cta::before{
-  content:'';position:absolute;
-  top:50%;left:50%;transform:translate(-50%,-50%);
-  width:700px;height:400px;
-  background:radial-gradient(ellipse,rgba(255,107,43,0.08),transparent 70%);
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 30% 50%,rgba(9,105,218,0.2),transparent),
+    radial-gradient(ellipse 60% 50% at 70% 50%,rgba(130,80,223,0.2),transparent);
   pointer-events:none;
 }
-.cta-title{
-  font-family:'Bricolage Grotesque',sans-serif;
-  font-size:clamp(2.5rem,5vw,5rem);
+.cta-inner{max-width:600px;margin:0 auto;position:relative;z-index:1;}
+.cta h2{
+  font-size:clamp(2rem,4vw,3.5rem);
   font-weight:800;letter-spacing:-0.04em;
-  line-height:0.97;color:var(--text);
-  margin-bottom:1.5rem;
-  position:relative;z-index:1;
+  line-height:1.05;color:var(--white);
+  margin-bottom:1rem;
 }
-.cta-title em{
-  font-family:'Instrument Serif',serif;
-  font-style:italic;font-weight:400;color:var(--orange);
+.cta h2 span{
+  background:linear-gradient(135deg,#60a5fa,#c084fc);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
 }
-.cta-sub{
-  font-size:1rem;color:var(--text2);font-weight:300;
-  max-width:400px;margin:0 auto 2.5rem;line-height:1.75;
-  position:relative;z-index:1;
+.cta p{
+  font-size:0.95rem;color:rgba(255,255,255,0.6);
+  margin-bottom:2rem;line-height:1.75;
 }
 .cta-email{
-  font-family:'Bricolage Grotesque',sans-serif;
-  font-size:clamp(1.2rem,2.5vw,2rem);
-  font-weight:800;letter-spacing:-0.03em;
-  color:var(--orange);text-decoration:none;
-  border-bottom:1px solid rgba(255,107,43,0.3);
-  padding-bottom:3px;
-  transition:color 0.2s,border-color 0.2s;
-  position:relative;z-index:1;
   display:inline-block;
+  font-size:1.25rem;font-weight:700;
+  letter-spacing:-0.02em;
+  color:var(--white);
+  text-decoration:none;
+  border-bottom:2px solid rgba(255,255,255,0.25);
+  padding-bottom:2px;
+  transition:border-color 0.2s;
 }
-.cta-email:hover{color:var(--orange2);border-color:var(--orange2);}
+.cta-email:hover{border-color:rgba(255,255,255,0.6);}
 
 /* FOOTER */
 footer{
-  padding:1.5rem 2.5rem;
+  padding:2rem;
   border-top:1px solid var(--border);
+  background:var(--bg);
   display:flex;align-items:center;justify-content:space-between;
+  max-width:100%;
 }
-footer p{font-size:0.75rem;color:var(--text3);}
+.footer-inner{
+  max-width:1100px;margin:0 auto;
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+}
+footer p{font-size:0.78rem;color:var(--text3);}
 
 /* REVEAL */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity 0.55s ease,transform 0.55s ease;}
 .reveal.in{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:0.1s;}
+.reveal-delay-2{transition-delay:0.2s;}
 
 /* RESPONSIVE */
-@media(max-width:900px){
-  nav{padding:0 1.25rem;}
-  .nav-center{display:none;}
-  .hero,.section,.cta{padding:5rem 1.25rem 2.5rem;}
-  .hero{padding-top:80px;}
-  .hero-top{flex-direction:column;}
-  .hero-right{width:100%;}
-  .hero-strip{display:none;}
-  .svc-grid,.process-steps{grid-template-columns:1fr;}
-  .bento{display:flex;flex-direction:column;}
-  footer{flex-direction:column;gap:0.5rem;text-align:center;}
+@media(max-width:860px){
+  .nav-links{display:none;}
+  .hero{padding:3rem 1.25rem 0;}
+  .section{padding:3.5rem 1.25rem;}
+  .svc-grid,.bento-grid,.process-grid{grid-template-columns:1fr;}
+  .bc-1,.bc-2,.bc-3,.bc-4{grid-column:span 1;}
+  .hero-visual-inner{grid-template-columns:1fr;}
+  .logos-inner{gap:1.5rem;}
+  footer{padding:1.5rem 1.25rem;}
+  .cta{padding:3.5rem 1.25rem;}
 }
 </style>
 </head>
@@ -556,292 +462,253 @@ footer p{font-size:0.75rem;color:var(--text3);}
 
 <nav>
   <a href="#" class="logo">
+    <div class="logo-icon">T</div>
     Theorrem
-    <span class="logo-badge">AI</span>
   </a>
-  <div class="nav-center">
-    <a href="#services" class="nav-link">Services</a>
-    <a href="#why" class="nav-link">Why us</a>
-    <a href="#process" class="nav-link">Process</a>
-    <a href="#industries" class="nav-link">Industries</a>
+  <div class="nav-links">
+    <a href="#services" class="nav-a">Services</a>
+    <a href="#why" class="nav-a">Why us</a>
+    <a href="#process" class="nav-a">Process</a>
+    <a href="#industries" class="nav-a">Industries</a>
   </div>
   <div class="nav-right">
-    <a href="#contact" class="nav-btn nav-btn-ghost">hello@theorrem.com</a>
-    <a href="#contact" class="nav-btn nav-btn-solid">Start a project →</a>
+    <a href="mailto:hello@theorrem.com" class="btn-sm btn-ghost-sm">hello@theorrem.com</a>
+    <a href="#contact" class="btn-sm btn-dark">Start a project →</a>
   </div>
 </nav>
 
 <section class="hero">
-  <div class="hero-grid-bg"></div>
-  <div class="hero-top">
-    <div class="hero-left">
-      <div class="hero-tag">
-        <span class="hero-tag-dot"></span>
-        Now accepting new clients — 2025
-      </div>
-      <h1>
-        We build AI<br>systems that<br>
-        <span class="accent">actually work.</span>
-      </h1>
-      <p class="hero-sub">Theorrem designs and deploys intelligent automation for businesses ready to stop doing things manually. Custom-built. Production-grade. Delivered fast.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-orange">Start a project →</a>
-        <a href="#services" class="btn-outline">See our services</a>
-      </div>
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    Now accepting new clients — 2025
+  </div>
+  <h1>AI systems that<br><span>automate your business</span></h1>
+  <p class="hero-sub">Theorrem designs and deploys intelligent automation for businesses ready to leave manual operations behind. Custom-built, production-grade, delivered fast.</p>
+  <div class="hero-btns">
+    <a href="#contact" class="btn-lg btn-dark-lg">Start a project →</a>
+    <a href="#services" class="btn-lg btn-white-lg">See our services</a>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-visual-bar">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+      <div class="url-bar">theorrem.com/dashboard</div>
     </div>
-    <div class="hero-right">
-      <div class="hero-card hero-card-orange">
-        <div class="hero-card-label">Response time</div>
-        <div class="hero-card-val">&lt; 2s</div>
-        <div class="hero-card-sub">Average AI response across all deployments</div>
+    <div class="hero-visual-inner">
+      <div class="mini-card">
+        <div class="mini-card-label">Response time</div>
+        <div class="mini-card-val">&lt; 2s</div>
+        <div class="mini-card-sub">Average across all deployments</div>
+        <div class="tag-group" style="margin-top:0.75rem;">
+          <span class="pill pill-green">● Live</span>
+          <span class="pill pill-blue">24/7</span>
+        </div>
       </div>
-      <div class="hero-card">
-        <div class="hero-card-label">Availability</div>
-        <div class="hero-card-val">24 / 7</div>
-        <div class="hero-card-sub">No downtime. No breaks. No missed messages.</div>
+      <div class="mini-card">
+        <div class="mini-card-label">AI Chatbot</div>
+        <div class="mini-chat">
+          <div class="chat-msg user">I need a 3 bed apartment in DHA under 2 crore</div>
+          <div class="chat-msg bot">Found 4 matching properties in DHA Phase 6. Top pick: 3 bed, 1,800 sqft — PKR 1.85 Cr. Want details?</div>
+        </div>
       </div>
-      <div class="hero-card">
-        <div class="hero-card-label">What we build</div>
-        <div class="hero-card-tags">
-          <span class="tag tag-orange">AI Chatbots</span>
-          <span class="tag tag-orange">WhatsApp Bots</span>
-          <span class="tag">RAG Systems</span>
-          <span class="tag">Workflow Automation</span>
-          <span class="tag">Agentic AI</span>
-          <span class="tag">Integrations</span>
+      <div class="mini-card">
+        <div class="mini-card-label">Automations active</div>
+        <div class="mini-card-val">∞</div>
+        <div class="mini-card-sub">Concurrent sessions handled</div>
+        <div class="tag-group" style="margin-top:0.75rem;">
+          <span class="pill pill-purple">WhatsApp</span>
+          <span class="pill pill-blue">Web</span>
+          <span class="pill pill-green">API</span>
         </div>
       </div>
     </div>
   </div>
-  <div class="hero-strip">
-    <div class="strip-item">
-      <div class="strip-num">10×</div>
-      <div class="strip-label">Faster than manual ops</div>
-    </div>
-    <div class="strip-item">
-      <div class="strip-num">∞</div>
-      <div class="strip-label">Concurrent sessions</div>
-    </div>
-    <div class="strip-item">
-      <div class="strip-num">0</div>
-      <div class="strip-label">Vendor lock-in</div>
-    </div>
-    <div class="strip-item">
-      <div class="strip-num">Wks</div>
-      <div class="strip-label">Time to production</div>
-    </div>
-  </div>
 </section>
 
-<div class="marquee-wrap">
-  <div class="marquee-inner">
-    <div class="m-item"><span class="m-sep"></span>Conversational AI</div>
-    <div class="m-item"><span class="m-sep"></span>WhatsApp Automation</div>
-    <div class="m-item"><span class="m-sep"></span>RAG Pipelines</div>
-    <div class="m-item"><span class="m-sep"></span>Workflow Automation</div>
-    <div class="m-item"><span class="m-sep"></span>Legacy Modernization</div>
-    <div class="m-item"><span class="m-sep"></span>Agentic Systems</div>
-    <div class="m-item"><span class="m-sep"></span>LLM Integration</div>
-    <div class="m-item"><span class="m-sep"></span>Knowledge Systems</div>
-    <div class="m-item"><span class="m-sep"></span>Process Intelligence</div>
-    <div class="m-item"><span class="m-sep"></span>Conversational AI</div>
-    <div class="m-item"><span class="m-sep"></span>WhatsApp Automation</div>
-    <div class="m-item"><span class="m-sep"></span>RAG Pipelines</div>
-    <div class="m-item"><span class="m-sep"></span>Workflow Automation</div>
-    <div class="m-item"><span class="m-sep"></span>Legacy Modernization</div>
-    <div class="m-item"><span class="m-sep"></span>Agentic Systems</div>
-    <div class="m-item"><span class="m-sep"></span>LLM Integration</div>
-    <div class="m-item"><span class="m-sep"></span>Knowledge Systems</div>
-    <div class="m-item"><span class="m-sep"></span>Process Intelligence</div>
+<div class="logos">
+  <div class="logos-inner">
+    <p>Trusted in industries like</p>
+    <span class="logo-name">Real Estate</span>
+    <span class="logo-name">E-commerce</span>
+    <span class="logo-name">Legal</span>
+    <span class="logo-name">HR & Recruitment</span>
+    <span class="logo-name">Finance</span>
+    <span class="logo-name">Healthcare</span>
   </div>
 </div>
 
 <section class="section" id="services">
-  <div class="reveal">
-    <div class="eyebrow">What we build</div>
-    <h2 class="s-title">Every system, <em>custom-made</em><br>for your operation</h2>
-    <p class="s-sub">No templates. No cookie-cutter tools. Each system is architected from the ground up for your specific workflows and goals.</p>
-  </div>
-  <div class="svc-grid reveal">
-    <div class="svc-card">
-      <span class="svc-n">01</span>
-      <div class="svc-icon">🧠</div>
-      <h3>Conversational AI</h3>
-      <p>Intelligent chatbots that understand context, remember conversation history, and resolve complex queries — deployed on web, WhatsApp, or any interface.</p>
-      <a href="#contact" class="svc-link">Learn more →</a>
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="eyebrow">What we build</div>
+      <h2 class="s-title">Every system built<br>from scratch for you</h2>
+      <p class="s-sub">No templates, no off-the-shelf tools. Each system is architected for your specific workflows and goals.</p>
     </div>
-    <div class="svc-card">
-      <span class="svc-n">02</span>
-      <div class="svc-icon">⚡</div>
-      <h3>Workflow Automation</h3>
-      <p>End-to-end automation of repetitive business processes. From simple data tasks to multi-step decision pipelines — we eliminate the manual layer.</p>
-      <a href="#contact" class="svc-link">Learn more →</a>
-    </div>
-    <div class="svc-card">
-      <span class="svc-n">03</span>
-      <div class="svc-icon">📲</div>
-      <h3>WhatsApp Automation</h3>
-      <p>Custom WhatsApp Business API systems that handle inbound inquiries, qualify leads, and send automated responses — at unlimited scale.</p>
-      <a href="#contact" class="svc-link">Learn more →</a>
-    </div>
-    <div class="svc-card">
-      <span class="svc-n">04</span>
-      <div class="svc-icon">🔍</div>
-      <h3>Knowledge Systems</h3>
-      <p>RAG-powered systems that turn your documents, databases, and internal data into live, queryable intelligence your team and customers can access instantly.</p>
-      <a href="#contact" class="svc-link">Learn more →</a>
-    </div>
-    <div class="svc-card">
-      <span class="svc-n">05</span>
-      <div class="svc-icon">🔗</div>
-      <h3>System Integration</h3>
-      <p>AI capabilities connected to your existing CRM, ERP, or legacy systems. New intelligence layered on top of infrastructure you already have.</p>
-      <a href="#contact" class="svc-link">Learn more →</a>
-    </div>
-    <div class="svc-card">
-      <span class="svc-n">06</span>
-      <div class="svc-icon">🤖</div>
-      <h3>Agentic Pipelines</h3>
-      <p>Autonomous AI agents that execute multi-step tasks, make decisions, and complete goals with minimal human oversight. Beyond chatbots — true automation.</p>
-      <a href="#contact" class="svc-link">Learn more →</a>
+    <div class="svc-grid reveal reveal-delay-1">
+      <div class="svc-card">
+        <div class="svc-icon-wrap">🧠</div>
+        <h3>Conversational AI</h3>
+        <p>Intelligent chatbots that understand context, remember history, and resolve queries — on web, WhatsApp, or any channel.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon-wrap">⚡</div>
+        <h3>Workflow Automation</h3>
+        <p>End-to-end automation of repetitive processes. From simple data tasks to complex multi-step decision pipelines.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon-wrap">📲</div>
+        <h3>WhatsApp Automation</h3>
+        <p>Custom WhatsApp Business API systems that handle inbound inquiries, qualify leads, and respond instantly at scale.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon-wrap">🔍</div>
+        <h3>Knowledge Systems</h3>
+        <p>RAG-powered systems that make your documents, databases, and internal data instantly searchable and actionable.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon-wrap">🔗</div>
+        <h3>System Integration</h3>
+        <p>AI connected to your existing CRM, ERP, or legacy infrastructure. New intelligence layered on what you already have.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon-wrap">🤖</div>
+        <h3>Agentic Pipelines</h3>
+        <p>Autonomous AI agents that execute multi-step tasks and complete goals with minimal human oversight.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section section-alt" id="why">
-  <div class="reveal">
-    <div class="eyebrow">Why Theorrem</div>
-    <h2 class="s-title">Built by engineers,<br>not <em>consultants</em></h2>
-    <p class="s-sub">We build real systems that run in production. Not slide decks, not proofs-of-concept that never ship.</p>
-  </div>
-  <div class="bento reveal">
-    <div class="bento-cell b1">
-      <div class="bento-big-num orange">100%</div>
-      <h3>Custom-built</h3>
-      <p>Every system is designed from scratch for your use case. No off-the-shelf tools with our logo on top. You get something built specifically for how you operate.</p>
+<section class="section section-white" id="why">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="eyebrow">Why Theorrem</div>
+      <h2 class="s-title">Built by engineers,<br>not consultants</h2>
+      <p class="s-sub">We build real systems that run in production — not slide decks and recommendations that sit in inboxes.</p>
     </div>
-    <div class="bento-cell b2">
-      <h3>What you own after we're done</h3>
-      <ul class="bento-list">
-        <li>Full source code — no black boxes</li>
-        <li>All data stays with you — no third-party lock-in</li>
-        <li>Documentation so your team can maintain it</li>
-        <li>Deployment on your own infrastructure if preferred</li>
-      </ul>
-      <div class="bento-tags">
-        <span class="tag tag-orange">Zero lock-in</span>
-        <span class="tag tag-orange">Full ownership</span>
-        <span class="tag">Open architecture</span>
+    <div class="bento-grid reveal reveal-delay-1">
+      <div class="bc bc-1">
+        <div class="bc-big bc-big-blue">100%</div>
+        <h3>Custom-built</h3>
+        <p>Every system designed from scratch. No off-the-shelf tools with our logo on top.</p>
       </div>
-    </div>
-    <div class="bento-cell b3">
-      <div class="bento-big-num orange">Wks</div>
-      <h3>Not months</h3>
-      <p>Working systems delivered in weeks. You see a live prototype early — not after six months of invisible work.</p>
-    </div>
-    <div class="bento-cell b4">
-      <h3>Local context</h3>
-      <p>Based in Karachi. We understand Pakistani businesses, your customers, and the market you operate in. We also build to international engineering standards.</p>
-    </div>
-    <div class="bento-cell b5">
-      <h3>Ongoing support</h3>
-      <p>We stay involved after deployment. Monitoring, tuning, and updates as your system scales and your needs evolve.</p>
+      <div class="bc bc-2">
+        <h3>What you own when we're done</h3>
+        <ul class="bc-list">
+          <li>Full source code — no black boxes, no hidden dependencies</li>
+          <li>All your data stays with you — no third-party lock-in</li>
+          <li>Complete documentation so your team can maintain it</li>
+          <li>Deploy on your own infrastructure if you prefer</li>
+        </ul>
+      </div>
+      <div class="bc bc-3">
+        <div class="bc-big bc-big-blue">Weeks</div>
+        <h3>Not months</h3>
+        <p>Working systems delivered fast. You see a live prototype early — not after six months of invisible work. We iterate until it's exactly right.</p>
+        <div class="tag-group">
+          <span class="pill pill-blue">Fast delivery</span>
+          <span class="pill pill-green">Live prototypes</span>
+        </div>
+      </div>
+      <div class="bc bc-4">
+        <h3>Local context, global standards</h3>
+        <p>Based in Karachi — we understand Pakistani businesses, your customers, and the local market. We build to international engineering standards with ongoing support after deployment.</p>
+        <div class="tag-group">
+          <span class="pill pill-purple">Karachi-based</span>
+          <span class="pill pill-blue">Ongoing support</span>
+          <span class="pill pill-green">Zero lock-in</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="section" id="process">
-  <div class="reveal">
-    <div class="eyebrow">How we work</div>
-    <h2 class="s-title">From problem to production,<br><em>without the friction</em></h2>
-    <p class="s-sub">A direct process that moves fast and keeps you in the loop at every step.</p>
-  </div>
-  <div class="process-steps reveal">
-    <div class="p-step">
-      <div class="p-step-n">01</div>
-      <span class="p-badge">Discover</span>
-      <h4>Map the operation</h4>
-      <p>We study your workflows, identify where automation adds real value, and define clear success criteria — before writing any code.</p>
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="eyebrow">How we work</div>
+      <h2 class="s-title">From problem to production,<br>without the friction</h2>
+      <p class="s-sub">A direct process that moves fast and keeps you in the loop at every step.</p>
     </div>
-    <div class="p-step">
-      <div class="p-step-n">02</div>
-      <span class="p-badge">Design</span>
-      <h4>Architect the system</h4>
-      <p>We design the full AI architecture — models, pipelines, data flows, interfaces. Every component selected for your specific context.</p>
-    </div>
-    <div class="p-step">
-      <div class="p-step-n">03</div>
-      <span class="p-badge">Build</span>
-      <h4>Build and iterate</h4>
-      <p>Rapid development with real feedback loops. You see working software early and often. We iterate until it's right.</p>
-    </div>
-    <div class="p-step">
-      <div class="p-step-n">04</div>
-      <span class="p-badge">Deploy</span>
-      <h4>Ship and scale</h4>
-      <p>Production deployment with monitoring and support. We stay involved as your system grows and your requirements evolve.</p>
+    <div class="process-grid reveal reveal-delay-1">
+      <div class="p-card">
+        <div class="p-num">01</div>
+        <div class="p-chip">Discover</div>
+        <h4>Map the operation</h4>
+        <p>We study your workflows, find automation opportunities, and define success — before any code is written.</p>
+      </div>
+      <div class="p-card">
+        <div class="p-num">02</div>
+        <div class="p-chip">Design</div>
+        <h4>Architect the system</h4>
+        <p>Full AI architecture designed — models, pipelines, data flows, interfaces — all selected for your context.</p>
+      </div>
+      <div class="p-card">
+        <div class="p-num">03</div>
+        <div class="p-chip">Build</div>
+        <h4>Build and iterate</h4>
+        <p>Rapid development with real feedback loops. Working software in your hands early and often.</p>
+      </div>
+      <div class="p-card">
+        <div class="p-num">04</div>
+        <div class="p-chip">Deploy</div>
+        <h4>Ship and scale</h4>
+        <p>Production deployment with monitoring and support. We stay as your system grows.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section section-alt" id="industries">
-  <div class="reveal">
-    <div class="eyebrow">Industries</div>
-    <h2 class="s-title">If it has <em>repetitive workflows,</em><br>we can automate it</h2>
-    <p class="s-sub">Industry is secondary. The problem — manual, slow, error-prone operations — is universal. We've solved it across many sectors.</p>
-  </div>
-  <div class="ind-grid reveal">
-    <div class="ind-pill"><span class="ind-dot"></span>Real Estate</div>
-    <div class="ind-pill"><span class="ind-dot"></span>E-commerce</div>
-    <div class="ind-pill"><span class="ind-dot"></span>Legal</div>
-    <div class="ind-pill"><span class="ind-dot"></span>HR & Recruitment</div>
-    <div class="ind-pill"><span class="ind-dot"></span>Healthcare</div>
-    <div class="ind-pill"><span class="ind-dot"></span>Finance & Banking</div>
-    <div class="ind-pill"><span class="ind-dot"></span>Logistics</div>
-    <div class="ind-pill"><span class="ind-dot"></span>Education</div>
-    <div class="ind-pill"><span class="ind-dot"></span>Retail</div>
-    <div class="ind-pill"><span class="ind-dot"></span>Insurance</div>
-    <div class="ind-pill"><span class="ind-dot"></span>Manufacturing</div>
-    <div class="ind-pill"><span class="ind-dot"></span>Hospitality</div>
-    <div class="ind-pill"><span class="ind-dot"></span>+ Any other</div>
+<section class="section section-white" id="industries">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="eyebrow">Industries</div>
+      <h2 class="s-title">Any industry with<br>repetitive workflows</h2>
+      <p class="s-sub">If your team does tasks that follow patterns, we can automate them. The problem is universal — industry is secondary.</p>
+    </div>
+    <div class="ind-wrap reveal reveal-delay-1">
+      <div class="ind-tag"><span class="ind-dot"></span>Real Estate</div>
+      <div class="ind-tag"><span class="ind-dot"></span>E-commerce</div>
+      <div class="ind-tag"><span class="ind-dot"></span>Legal</div>
+      <div class="ind-tag"><span class="ind-dot"></span>HR & Recruitment</div>
+      <div class="ind-tag"><span class="ind-dot"></span>Healthcare</div>
+      <div class="ind-tag"><span class="ind-dot"></span>Finance & Banking</div>
+      <div class="ind-tag"><span class="ind-dot"></span>Logistics</div>
+      <div class="ind-tag"><span class="ind-dot"></span>Education</div>
+      <div class="ind-tag"><span class="ind-dot"></span>Retail</div>
+      <div class="ind-tag"><span class="ind-dot"></span>Insurance</div>
+      <div class="ind-tag"><span class="ind-dot"></span>Manufacturing</div>
+      <div class="ind-tag"><span class="ind-dot"></span>Hospitality</div>
+      <div class="ind-tag"><span class="ind-dot"></span>+ Any other</div>
+    </div>
   </div>
 </section>
 
 <section class="cta" id="contact">
-  <div class="reveal">
-    <div class="eyebrow" style="justify-content:center;margin-bottom:1.5rem;">Start a project</div>
-    <h2 class="cta-title">Ready to stop<br>doing it <em>manually?</em></h2>
-    <p class="cta-sub">Tell us what you're working on. We'll respond within 24 hours with a clear picture of what's possible.</p>
+  <div class="cta-inner reveal">
+    <h2>Ready to stop<br>doing it <span>manually?</span></h2>
+    <p>Tell us what you're working on. We'll respond within 24 hours with a clear picture of what's possible.</p>
     <a href="mailto:hello@theorrem.com" class="cta-email">hello@theorrem.com</a>
   </div>
 </section>
 
 <footer>
-  <a href="#" class="logo">Theorrem <span class="logo-badge">AI</span></a>
-  <p>© 2025 Theorrem. AI Automation Systems. Karachi, Pakistan.</p>
+  <div class="footer-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">T</div>
+      Theorrem
+    </a>
+    <p>© 2025 Theorrem. AI Automation Systems. Karachi, Pakistan.</p>
+  </div>
 </footer>
 
 <script>
-// SCROLL REVEAL
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting) e.target.classList.add('in');
-  });
-},{threshold:0.1});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+},{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-// NAV ACTIVE
-const sections=document.querySelectorAll('section[id]');
-const navLinks=document.querySelectorAll('.nav-link');
-window.addEventListener('scroll',()=>{
-  let current='';
-  sections.forEach(s=>{
-    if(window.scrollY>=s.offsetTop-100) current=s.id;
-  });
-  navLinks.forEach(l=>{
-    l.style.color=l.getAttribute('href')==='#'+current?'var(--text)':'';
-  });
-});
 </script>
 </body>
 </html>
