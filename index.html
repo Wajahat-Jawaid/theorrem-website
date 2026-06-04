@@ -7,650 +7,233 @@
 <meta name="description" content="Theorrem designs and deploys custom AI systems for businesses. No templates. No consultants. Working software, fast.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800;9..144,900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ─── TOKENS ──────────────────────────────────────────────── */
+/* ── TOKENS ─────────────────────────────────────────────────── */
 :root {
-  --bg:           #FFFFFF;
-  --text:         #0A0A0A;
-  --text-2:       #6B7280;
-  --text-3:       #9CA3AF;
-  --accent:       #7C3AED;
-  --accent-light: #F5F3FF;
-  --accent-mid:   #DDD6FE;
-  --border:       #E5E7EB;
-
-  --lavender:     #EDE9FE;
-  --sage:         #DCFCE7;
-  --peach:        #FEE2E2;
-  --sky:          #DBEAFE;
-  --amber:        #FEF3C7;
-
-  --lavender-dark: #C4B5FD;
-  --sage-dark:     #86EFAC;
-  --peach-dark:    #FCA5A5;
-  --sky-dark:      #93C5FD;
-  --amber-dark:    #FCD34D;
-
-  --teal:         #0D9488;
-
-  --shadow-sm:    0 2px 12px rgba(0,0,0,0.06);
-  --shadow-md:    0 8px 32px rgba(0,0,0,0.10);
-  --shadow-lg:    0 16px 48px rgba(0,0,0,0.13);
-
-  --r:            16px;
-  --r-sm:         10px;
-  --r-pill:       100px;
-
-  --font-head:    'Bricolage Grotesque', system-ui, sans-serif;
-  --font-body:    'Inter', system-ui, sans-serif;
+  --bg-cream: #F0EEE6;
+  --bg-white: #FFFFFF;
+  --text-primary: #0A0A0A;
+  --text-secondary: #4B5563;
+  --text-on-dark: #FFFFFF;
+  --card-purple: #3B0764;
+  --card-green: #14532D;
+  --card-blue: #1E3A8A;
+  --testimonial-1: #84CC16;
+  --testimonial-2: #F97316;
+  --testimonial-3: #3B82F6;
+  --testimonial-4: #06B6D4;
+  --btn-dark-bg: #0A0A0A;
+  --btn-dark-text: #FFFFFF;
+  --radius-card: 24px;
+  --radius-btn: 100px;
+  --border-light: #E5E7EB;
+  --font-head: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
 }
 
-/* ─── RESET ───────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font-body);
-  background: var(--bg);
-  color: var(--text);
-  -webkit-font-smoothing: antialiased;
-  font-size: 15px;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-a { color: inherit; text-decoration: none; }
-img, svg { display: block; }
-button { cursor: pointer; border: none; background: none; font: inherit; }
+/* ── RESET ──────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg-cream);color:var(--text-primary);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,svg{display:block}
+button{cursor:pointer;border:none;background:none;font:inherit}
 
-/* ─── NAV ─────────────────────────────────────────────────── */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 200;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.25s ease, background 0.25s ease;
-  padding: 0 2rem;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-nav.scrolled {
-  border-bottom-color: var(--border);
-  background: rgba(255,255,255,0.95);
-}
-.nav-logo {
-  font-family: var(--font-head);
-  font-size: 1.15rem;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: var(--text);
-  flex-shrink: 0;
-}
-.nav-links {
-  display: flex;
-  gap: 0.125rem;
-  flex: 1;
-  justify-content: center;
-}
-.nav-link {
-  font-size: 0.875rem;
-  font-weight: 400;
-  color: var(--text-2);
-  padding: 0.4rem 0.9rem;
-  border-radius: 8px;
-  transition: color 0.15s, background 0.15s;
-}
-.nav-link:hover { color: var(--text); background: rgba(0,0,0,0.04); }
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-shrink: 0;
-}
-.nav-email {
-  font-size: 0.8rem;
-  color: var(--text-3);
-  transition: color 0.15s;
-}
-.nav-email:hover { color: var(--text-2); }
-.btn-nav {
-  font-size: 0.825rem;
-  font-weight: 500;
-  padding: 0.5rem 1.1rem;
-  border-radius: var(--r-pill);
-  background: var(--accent);
-  color: #fff;
-  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
-  white-space: nowrap;
-  box-shadow: 0 2px 10px rgba(124,58,237,0.28);
-}
-.btn-nav:hover { background: #6D28D9; transform: translateY(-1px); box-shadow: 0 4px 18px rgba(124,58,237,0.38); }
-.nav-hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 4.5px;
-  padding: 6px;
-}
-.nav-hamburger span { display: block; width: 20px; height: 1.5px; background: var(--text); transition: all 0.2s; border-radius: 2px; }
-.nav-mobile-menu {
-  display: none;
-  position: fixed;
-  top: 64px;
-  left: 0; right: 0;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  padding: 1rem 2rem 1.5rem;
-  z-index: 199;
-  flex-direction: column;
-  gap: 0;
-}
-.nav-mobile-menu.open { display: flex; }
-.nav-mobile-link {
-  font-size: 0.925rem;
-  color: var(--text-2);
-  padding: 0.65rem 0;
-  border-bottom: 1px solid var(--border);
-}
-.nav-mobile-link:last-of-type { border-bottom: none; }
-.nav-mobile-cta {
-  margin-top: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 0.7rem 1.5rem;
-  border-radius: var(--r-pill);
-  background: var(--accent);
-  color: #fff;
-}
+/* ── NAV ────────────────────────────────────────────────────── */
+nav{position:sticky;top:0;z-index:200;background:#fff;border-bottom:1px solid var(--border-light);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,3vw,2rem);gap:1rem}
+.nav-logo{font-family:var(--font-body);font-size:1.1rem;font-weight:700;letter-spacing:-0.02em;color:var(--text-primary);flex-shrink:0}
+.nav-links{display:flex;gap:.25rem;flex:1;justify-content:center}
+.nav-link{font-size:.875rem;color:var(--text-secondary);padding:.4rem .9rem;border-radius:8px;transition:color .15s,background .15s}
+.nav-link:hover{color:var(--text-primary);background:rgba(0,0,0,.04)}
+.nav-right{display:flex;align-items:center;gap:1rem;flex-shrink:0}
+.nav-email{font-size:.8rem;color:var(--text-secondary);transition:color .15s}
+.nav-email:hover{color:var(--text-primary)}
+.btn-nav{font-size:.825rem;font-weight:500;padding:.5rem 1.25rem;border-radius:var(--radius-btn);background:var(--btn-dark-bg);color:var(--btn-dark-text);transition:opacity .15s,transform .15s;white-space:nowrap}
+.btn-nav:hover{opacity:.85;transform:translateY(-1px)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;padding:6px}
+.nav-hamburger span{display:block;width:20px;height:1.5px;background:var(--text-primary);border-radius:2px;transition:all .2s}
+.nav-mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--bg-white);border-bottom:1px solid var(--border-light);padding:1rem 1.5rem 1.5rem;z-index:199;flex-direction:column}
+.nav-mobile-menu.open{display:flex}
+.nav-mobile-link{font-size:.925rem;color:var(--text-secondary);padding:.65rem 0;border-bottom:1px solid var(--border-light)}
+.nav-mobile-cta{margin-top:1rem;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:500;padding:.75rem 1.5rem;border-radius:var(--radius-btn);background:var(--btn-dark-bg);color:var(--btn-dark-text)}
 
-/* ─── SECTION SHARED ──────────────────────────────────────── */
-.section { padding: 6rem 2rem; }
-.section-inner { max-width: 1140px; margin: 0 auto; }
-.section-header { margin-bottom: 3.5rem; }
-.pill-badge {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-light);
-  border: 1px solid var(--accent-mid);
-  padding: 4px 12px;
-  border-radius: var(--r-pill);
-  margin-bottom: 1rem;
-}
-.s-title {
-  font-family: var(--font-head);
-  font-size: clamp(2.25rem, 3.5vw, 3.5rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1.06;
-  color: var(--text);
-  margin-bottom: 1rem;
-}
-.s-sub {
-  font-size: 1rem;
-  color: var(--text-2);
-  max-width: 520px;
-  line-height: 1.75;
-}
+/* ── PAGE WRAP ──────────────────────────────────────────────── */
+.page-wrap{max-width:1248px;margin:0 auto;padding:12px 24px 24px;display:flex;flex-direction:column;gap:12px}
 
-/* ─── HERO ────────────────────────────────────────────────── */
-.hero-wrap {
-  position: relative;
-  overflow: hidden;
-  background: var(--bg);
-}
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-.hero-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 70% 80% at 20% 10%, rgba(237,233,254,0.85) 0%, transparent 65%),
-    radial-gradient(ellipse 50% 60% at 80% 80%, rgba(254,226,226,0.70) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 50% at 60% 20%, rgba(219,234,254,0.55) 0%, transparent 55%),
-    radial-gradient(ellipse 35% 40% at 10% 80%, rgba(220,252,231,0.50) 0%, transparent 55%);
-}
-.hero-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 5.5rem 2rem 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-}
-.hero-text { padding-bottom: 5.5rem; }
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: var(--lavender);
-  border: 1px solid var(--lavender-dark);
-  padding: 5px 13px;
-  border-radius: var(--r-pill);
-  margin-bottom: 1.75rem;
-}
-.hero-eyebrow-dot {
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-.hero h1 {
-  font-family: var(--font-head);
-  font-size: clamp(3rem, 5.5vw, 4.75rem);
-  font-weight: 800;
-  letter-spacing: -0.045em;
-  line-height: 1.04;
-  color: var(--text);
-  margin-bottom: 1.5rem;
-}
-.hero-sub {
-  font-size: 1.05rem;
-  color: var(--text-2);
-  max-width: 420px;
-  line-height: 1.75;
-  margin-bottom: 2.25rem;
-}
-.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-.btn-primary {
-  font-size: 0.925rem;
-  font-weight: 500;
-  padding: 0.7rem 1.6rem;
-  border-radius: var(--r-pill);
-  background: var(--accent);
-  color: #fff;
-  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
-  box-shadow: 0 3px 14px rgba(124,58,237,0.32);
-}
-.btn-primary:hover { background: #6D28D9; transform: translateY(-2px); box-shadow: 0 6px 22px rgba(124,58,237,0.40); }
-.btn-ghost {
-  font-size: 0.925rem;
-  font-weight: 400;
-  color: var(--text-2);
-  padding: 0.7rem 0.25rem;
-  border-bottom: 1px solid transparent;
-  transition: color 0.15s, border-color 0.15s;
-}
-.btn-ghost:hover { color: var(--text); border-bottom-color: var(--text); }
+/* ── SHARED BUTTONS ─────────────────────────────────────────── */
+.btn-dark{display:inline-flex;align-items:center;font-size:.925rem;font-weight:500;padding:.75rem 1.6rem;border-radius:var(--radius-btn);background:var(--btn-dark-bg);color:var(--btn-dark-text);transition:opacity .15s,transform .15s;white-space:nowrap}
+.btn-dark:hover{opacity:.85;transform:translateY(-2px)}
+.btn-outline{display:inline-flex;align-items:center;font-size:.925rem;font-weight:400;padding:.72rem 1.6rem;border-radius:var(--radius-btn);background:transparent;color:var(--text-primary);border:1.5px solid var(--text-primary);transition:background .15s,transform .15s;white-space:nowrap}
+.btn-outline:hover{background:rgba(0,0,0,.05);transform:translateY(-2px)}
+.btn-white{display:inline-flex;align-items:center;font-size:.925rem;font-weight:500;padding:.75rem 1.6rem;border-radius:var(--radius-btn);background:#fff;color:var(--text-primary);transition:opacity .15s,transform .15s;white-space:nowrap}
+.btn-white:hover{opacity:.9;transform:translateY(-2px)}
+.btn-ghost-white{display:inline-flex;align-items:center;font-size:.925rem;padding:.72rem 1.6rem;border-radius:var(--radius-btn);background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5);transition:background .15s,transform .15s;white-space:nowrap}
+.btn-ghost-white:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
 
-/* hero visual */
-.hero-visual {
-  padding-bottom: 5.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.flow-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-  width: 100%;
-  max-width: 520px;
-  animation: floatCard 4s ease-in-out infinite;
-}
-@keyframes floatCard {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-.flow-card-bar {
-  background: #FAFAFA;
-  border-bottom: 1px solid var(--border);
-  padding: 0.6rem 1rem;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.flow-dot { width: 10px; height: 10px; border-radius: 50%; }
-.flow-dot-r { background: #FF5F57; }
-.flow-dot-y { background: #FEBC2E; }
-.flow-dot-g { background: #28C840; }
-.flow-card-body {
-  padding: 2rem 1.75rem 1.75rem;
-  background: linear-gradient(160deg, #FAFAFE 0%, #FFF 100%);
-}
+/* ── HERO ───────────────────────────────────────────────────── */
+.hero-card{background:var(--bg-cream);padding:100px 80px 80px;text-align:center;position:relative;overflow:hidden;border-radius:var(--radius-card)}
+.hero-card::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px}
+.hero-inner{position:relative;z-index:1;max-width:720px;margin:0 auto}
+.hero-card h1{font-family:var(--font-head);font-size:clamp(42px,7vw,72px);font-weight:900;letter-spacing:-.02em;line-height:1.05;color:var(--text-primary);margin-bottom:1.5rem}
+.hero-sub{font-size:18px;color:var(--text-secondary);max-width:520px;margin:0 auto 2rem;line-height:1.65}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:4rem}
 
-/* ─── SERVICES ────────────────────────────────────────────── */
-#services { background: var(--bg); }
-.svc-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-.svc-card {
-  border-radius: var(--r);
-  padding: 1.75rem;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid transparent;
-}
-.svc-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-.svc-card-white { background: #fff; border-color: var(--border); }
-.svc-card-lavender { background: var(--lavender); border-color: var(--lavender-dark); }
-.svc-card-sage { background: var(--sage); border-color: var(--sage-dark); }
-.svc-card-peach { background: var(--peach); border-color: var(--peach-dark); }
-.svc-card-sky { background: var(--sky); border-color: var(--sky-dark); }
-.svc-card-amber { background: var(--amber); border-color: var(--amber-dark); }
+/* workflow nodes */
+.hero-workflow{display:flex;flex-direction:column;align-items:center;max-width:380px;margin:0 auto 3rem}
+.flow-node{background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:14px;padding:14px 18px;width:100%;display:flex;align-items:center;gap:14px;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s}
+.flow-node:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.1)}
+.flow-node-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.flow-node-text{text-align:left;flex:1}
+.flow-node-label{font-size:.875rem;font-weight:600;color:var(--text-primary);line-height:1.3}
+.flow-node-sub{font-size:.75rem;color:var(--text-secondary);margin-top:1px}
+.flow-node-tag{font-size:.65rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--text-secondary);background:rgba(0,0,0,.04);padding:3px 9px;border-radius:100px;flex-shrink:0}
+.flow-arrow{display:flex;align-items:center;justify-content:center;height:28px}
 
-.svc-icon {
-  width: 40px; height: 40px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.25rem;
-  flex-shrink: 0;
-}
-.svc-card-white .svc-icon   { background: var(--lavender); }
-.svc-card-lavender .svc-icon { background: rgba(255,255,255,0.6); }
-.svc-card-sage .svc-icon    { background: rgba(255,255,255,0.6); }
-.svc-card-peach .svc-icon   { background: rgba(255,255,255,0.6); }
-.svc-card-sky .svc-icon     { background: rgba(255,255,255,0.6); }
-.svc-card-amber .svc-icon   { background: rgba(255,255,255,0.6); }
-.svc-icon svg { width: 20px; height: 20px; }
-.svc-card h3 {
-  font-family: var(--font-head);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-}
-.svc-card p { font-size: 0.875rem; color: var(--text-2); line-height: 1.7; }
+/* marquee */
+.marquee-wrap{overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(to right,transparent,black 12%,black 88%,transparent);mask-image:linear-gradient(to right,transparent,black 12%,black 88%,transparent)}
+.marquee-track{display:inline-flex;animation:marquee 28s linear infinite;white-space:nowrap}
+.marquee-track span{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary);padding:0 1.5rem}
+.marquee-sep{opacity:.35}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ─── PROCESS ─────────────────────────────────────────────── */
-#process { background: #FAFAFA; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-.process-step { text-align: center; }
-.process-num {
-  font-family: var(--font-head);
-  font-size: 0.825rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  color: var(--accent);
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.5rem;
-}
-.process-step:nth-child(1) .process-num { background: var(--lavender); }
-.process-step:nth-child(2) .process-num { background: var(--sage); color: #065F46; }
-.process-step:nth-child(3) .process-num { background: var(--sky); color: #1E40AF; }
-.process-step h3 {
-  font-family: var(--font-head);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 0.6rem;
-  letter-spacing: -0.025em;
-}
-.process-step p { font-size: 0.9rem; color: var(--text-2); line-height: 1.7; max-width: 260px; margin: 0 auto; }
+/* ── FEATURE BLOCKS ─────────────────────────────────────────── */
+.feat-card{padding:72px 80px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;border-radius:var(--radius-card)}
+.feat-label{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem}
+.feat-heading{font-family:var(--font-head);font-size:clamp(30px,3.2vw,46px);font-weight:800;letter-spacing:-.02em;line-height:1.1;color:#fff;margin-bottom:1.25rem}
+.feat-body{font-size:.95rem;color:rgba(255,255,255,.68);line-height:1.75;margin-bottom:1.5rem;max-width:420px}
+.feat-bullets{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+.feat-bullets li{font-size:.875rem;color:rgba(255,255,255,.72);display:flex;gap:10px;align-items:flex-start;line-height:1.55}
+.feat-bullets li::before{content:'';width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.45);margin-top:7px;flex-shrink:0}
+.feat-bullets li strong{color:#fff;font-weight:600}
+.feat-stat{margin-top:1.75rem;display:inline-flex;flex-direction:column;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 22px}
+.feat-stat-num{font-family:var(--font-head);font-size:2rem;font-weight:900;color:#fff;line-height:1}
+.feat-stat-label{font-size:.75rem;color:rgba(255,255,255,.55);margin-top:4px}
+.feat-visual{background:#fff;border-radius:16px;padding:24px;overflow:hidden}
 
-/* ─── WORK ────────────────────────────────────────────────── */
-#work { background: var(--bg); }
-.work-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-}
-.work-card {
-  border-radius: var(--r);
-  padding: 2rem;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid transparent;
-}
-.work-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-.work-card-1 { background: var(--lavender); border-color: var(--lavender-dark); }
-.work-card-2 { background: var(--sage); border-color: var(--sage-dark); }
-.work-card-3 { background: var(--sky); border-color: var(--sky-dark); }
-.work-tag {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: var(--r-pill);
-  margin-bottom: 1.25rem;
-  align-self: flex-start;
-}
-.work-card-1 .work-tag { background: rgba(255,255,255,0.6); color: var(--accent); border: 1px solid rgba(124,58,237,0.2); }
-.work-card-2 .work-tag { background: rgba(255,255,255,0.6); color: #065F46; border: 1px solid rgba(6,95,70,0.2); }
-.work-card-3 .work-tag { background: rgba(255,255,255,0.6); color: #1E40AF; border: 1px solid rgba(30,64,175,0.2); }
-.work-card h3 {
-  font-family: var(--font-head);
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--text);
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-}
-.work-card p { font-size: 0.875rem; color: var(--text-2); line-height: 1.7; flex: 1; margin-bottom: 1.5rem; }
-.work-result {
-  padding: 1rem;
-  border-radius: 10px;
-  font-size: 0.825rem;
-  line-height: 1.5;
-}
-.work-card-1 .work-result { background: rgba(124,58,237,0.1); color: #5B21B6; }
-.work-card-2 .work-result { background: rgba(6,95,70,0.1); color: #065F46; }
-.work-card-3 .work-result { background: rgba(30,64,175,0.1); color: #1E40AF; }
-.work-result strong { display: block; font-weight: 600; margin-bottom: 0.1rem; }
+/* chat visual */
+.chat-header{display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--border-light);margin-bottom:14px}
+.chat-avatar{width:32px;height:32px;border-radius:50%;background:#EDE9FE;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.chat-title{font-size:.85rem;font-weight:600;color:var(--text-primary)}
+.chat-status{font-size:.7rem;color:#22C55E}
+.chat-msgs{display:flex;flex-direction:column;gap:8px}
+.chat-msg{padding:10px 14px;border-radius:12px;font-size:.82rem;line-height:1.55;max-width:88%}
+.chat-msg-user{background:#0A0A0A;color:#fff;align-self:flex-end;border-bottom-right-radius:3px}
+.chat-msg-ai{background:#F3F4F6;color:var(--text-primary);align-self:flex-start;border-bottom-left-radius:3px}
 
-/* ─── WHY ─────────────────────────────────────────────────── */
-#why { background: #FAFAFA; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-}
-.why-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  padding: 2rem;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border-top-width: 3px;
-}
-.why-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-.why-card-1 { border-top-color: var(--accent); }
-.why-card-2 { border-top-color: var(--teal); }
-.why-card-3 { border-top-color: #D97706; }
-.why-card h3 {
-  font-family: var(--font-head);
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: var(--text);
-  margin-bottom: 0.65rem;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-}
-.why-card p { font-size: 0.875rem; color: var(--text-2); line-height: 1.7; }
+/* workflow visual */
+.wf-steps{display:flex;flex-direction:column;align-items:stretch;gap:0}
+.wf-step{background:#F9FAFB;border:1px solid var(--border-light);border-radius:100px;padding:10px 18px;display:flex;align-items:center;gap:10px;font-size:.82rem;font-weight:500;color:var(--text-primary)}
+.wf-step-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.wf-arr{height:22px;display:flex;align-items:center;justify-content:center;padding-left:14px}
 
-/* ─── INDUSTRIES ──────────────────────────────────────────── */
-#industries { background: var(--bg); }
-.ind-sub { font-size: 1rem; color: var(--text-2); line-height: 1.75; margin-top: 0.25rem; max-width: 460px; }
-.ind-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 2.5rem;
-}
-.ind-tag {
-  font-size: 0.875rem;
-  font-weight: 400;
-  color: var(--text-2);
-  background: var(--bg);
-  border: 1px solid var(--border);
-  padding: 7px 18px;
-  border-radius: var(--r-pill);
-  cursor: default;
-  transition: color 0.15s, border-color 0.15s, background 0.15s, transform 0.15s;
-  box-shadow: var(--shadow-sm);
-}
-.ind-tag:nth-child(3n+1):hover { background: var(--lavender); border-color: var(--lavender-dark); color: var(--accent); transform: translateY(-2px); }
-.ind-tag:nth-child(3n+2):hover { background: var(--sage); border-color: var(--sage-dark); color: #065F46; transform: translateY(-2px); }
-.ind-tag:nth-child(3n):hover   { background: var(--sky); border-color: var(--sky-dark); color: #1E40AF; transform: translateY(-2px); }
+/* whatsapp visual */
+.wa-wrap{border-radius:12px;overflow:hidden;border:1px solid var(--border-light)}
+.wa-header{background:#075E54;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.wa-avatar{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.wa-name{font-size:.875rem;font-weight:600;color:#fff}
+.wa-stat{font-size:.7rem;color:rgba(255,255,255,.75)}
+.wa-body{background:#ECE5DD;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.wa-msg{padding:8px 12px;border-radius:8px;font-size:.78rem;line-height:1.5;max-width:86%}
+.wa-msg-in{background:#fff;align-self:flex-start;border-top-left-radius:2px}
+.wa-msg-out{background:#DCF8C6;align-self:flex-end;border-top-right-radius:2px}
+.wa-time{font-size:.62rem;color:rgba(0,0,0,.38);text-align:right;margin-top:2px}
 
-/* ─── CTA ─────────────────────────────────────────────────── */
-.cta-section {
-  position: relative;
-  overflow: hidden;
-  padding: 7rem 2rem;
-  text-align: center;
-}
-.cta-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 100% at 30% 0%, rgba(237,233,254,0.9) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 70% 100%, rgba(254,226,226,0.75) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 60% at 80% 20%, rgba(219,234,254,0.60) 0%, transparent 55%);
-  pointer-events: none;
-}
-.cta-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 640px;
-  margin: 0 auto;
-}
-.cta-pill { margin-bottom: 1.5rem; }
-.cta-section h2 {
-  font-family: var(--font-head);
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 800;
-  letter-spacing: -0.045em;
-  line-height: 1.06;
-  color: var(--text);
-  margin-bottom: 1rem;
-}
-.cta-section p {
-  font-size: 1rem;
-  color: var(--text-2);
-  margin-bottom: 2.25rem;
-  line-height: 1.75;
-}
-.cta-email-link {
-  display: inline-block;
-  font-family: var(--font-head);
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: var(--text);
-  border-bottom: 3px solid var(--accent-mid);
-  padding-bottom: 3px;
-  transition: color 0.2s, border-color 0.2s;
-}
-.cta-email-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+/* ── USE CASES ──────────────────────────────────────────────── */
+.usecases-card{background:var(--bg-cream);padding:80px;border-radius:var(--radius-card);display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.uc-heading{font-family:var(--font-head);font-size:clamp(30px,3vw,46px);font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--text-primary);margin-bottom:1rem}
+.uc-body{font-size:.95rem;color:var(--text-secondary);line-height:1.75;margin-bottom:2rem;max-width:400px}
+.uc-mini-flow{display:flex;flex-direction:column;align-items:flex-start;max-width:260px}
+.uc-mini-node{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:9px 14px;display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:500;color:var(--text-primary);width:100%;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+.uc-mini-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.uc-mini-arr{height:18px;display:flex;align-items:center;padding-left:14px}
+.uc-pills{display:flex;flex-direction:column;gap:10px}
+.uc-pill{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:100px;padding:12px 20px;display:flex;align-items:center;gap:12px;font-size:.875rem;font-weight:500;color:var(--text-primary);box-shadow:0 1px 6px rgba(0,0,0,.04);transition:transform .2s,box-shadow .2s}
+.uc-pill:hover{transform:translateX(4px);box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.uc-pill-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 
-/* ─── FOOTER ──────────────────────────────────────────────── */
-footer {
-  background: var(--bg);
-  border-top: 1px solid var(--border);
-  padding: 1.75rem 2rem;
-}
-.footer-inner {
-  max-width: 1140px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-.footer-logo { font-family: var(--font-head); font-size: 1rem; font-weight: 800; letter-spacing: -0.04em; color: var(--text); }
-.footer-copy { font-size: 0.8rem; color: var(--text-3); }
-.footer-email { font-size: 0.8rem; color: var(--text-3); transition: color 0.15s; }
-.footer-email:hover { color: var(--text-2); }
+/* ── WHY THEORREM ───────────────────────────────────────────── */
+.why-outer{background:var(--bg-cream);padding:80px;border-radius:var(--radius-card)}
+.why-heading{font-family:var(--font-head);font-size:clamp(30px,3.5vw,52px);font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--text-primary);text-align:center;margin-bottom:3rem}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.why-item{background:#fff;border-radius:18px;padding:32px 28px;display:flex;flex-direction:column;box-shadow:0 1px 6px rgba(0,0,0,.04);transition:transform .2s,box-shadow .2s}
+.why-item:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.1)}
+.why-title{font-family:var(--font-head);font-size:1.2rem;font-weight:800;color:var(--text-primary);letter-spacing:-.02em;margin-bottom:.75rem;line-height:1.2}
+.why-body{font-size:.875rem;color:var(--text-secondary);line-height:1.7;flex:1}
+.why-stat{font-family:var(--font-head);font-size:2.25rem;font-weight:900;color:var(--text-primary);margin-top:1.5rem;letter-spacing:-.04em;line-height:1}
 
-/* ─── REVEAL ANIMATION ────────────────────────────────────── */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.reveal.in { opacity: 1; transform: translateY(0); }
-.reveal-d1 { transition-delay: 0.08s; }
-.reveal-d2 { transition-delay: 0.16s; }
-.reveal-d3 { transition-delay: 0.24s; }
-.reveal-d4 { transition-delay: 0.10s; }
-.reveal-d5 { transition-delay: 0.20s; }
-.reveal-d6 { transition-delay: 0.30s; }
+/* ── TESTIMONIALS ───────────────────────────────────────────── */
+.testi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.testi-card{border-radius:var(--radius-card);padding:40px 32px;display:flex;flex-direction:column;justify-content:space-between;min-height:300px;transition:transform .2s,box-shadow .2s}
+.testi-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.15)}
+.testi-co{font-family:var(--font-head);font-size:1.25rem;font-weight:800;color:rgba(0,0,0,.7);line-height:1.2;margin-bottom:1.25rem}
+.testi-quote{font-size:.9rem;color:rgba(0,0,0,.65);line-height:1.7;flex:1;font-style:italic}
+.testi-attr{display:flex;align-items:center;gap:10px;margin-top:1.5rem}
+.testi-avatar{width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.18);flex-shrink:0}
+.testi-name{font-size:.75rem;font-weight:500;color:rgba(0,0,0,.6);line-height:1.4}
 
-/* ─── RESPONSIVE ──────────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .svc-grid { grid-template-columns: repeat(2, 1fr); }
-  .why-grid { grid-template-columns: repeat(2, 1fr); }
-  .work-grid { grid-template-columns: 1fr; gap: 1rem; }
-  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
-  .hero-visual { padding-bottom: 5.5rem; }
+/* ── INDUSTRIES ─────────────────────────────────────────────── */
+.industries-card{background:var(--bg-cream);padding:80px;border-radius:var(--radius-card);text-align:center}
+.sec-heading{font-family:var(--font-head);font-size:clamp(30px,3.5vw,52px);font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--text-primary);margin-bottom:1rem}
+.sec-sub{font-size:1rem;color:var(--text-secondary);max-width:480px;margin:0 auto 2.5rem;line-height:1.7}
+.ind-tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.ind-tag{font-size:.875rem;color:var(--text-secondary);background:#fff;border:1px solid rgba(0,0,0,.1);padding:8px 20px;border-radius:100px;cursor:default;transition:color .15s,background .15s,transform .15s;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.ind-tag:hover{background:var(--text-primary);color:#fff;transform:translateY(-2px)}
+
+/* ── CTA CARD ───────────────────────────────────────────────── */
+.cta-card{background:var(--card-purple);padding:100px 80px;border-radius:var(--radius-card);text-align:center}
+.cta-heading{font-family:var(--font-head);font-size:clamp(40px,5vw,64px);font-weight:900;letter-spacing:-.02em;line-height:1.05;color:#fff;margin-bottom:1.25rem}
+.cta-sub{font-size:1rem;color:rgba(255,255,255,.6);max-width:420px;margin:0 auto 2.5rem;line-height:1.7}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* ── FOOTER ─────────────────────────────────────────────────── */
+footer{background:#fff;border-top:1px solid var(--border-light);padding:1.5rem 2rem}
+.footer-inner{max-width:1248px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.footer-logo{font-family:var(--font-body);font-size:.925rem;font-weight:700;color:var(--text-primary)}
+.footer-copy{font-size:.8rem;color:var(--text-secondary)}
+.footer-email{font-size:.8rem;color:var(--text-secondary);transition:color .15s}
+.footer-email:hover{color:var(--text-primary)}
+
+/* ── REVEAL ─────────────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.08s}.rd2{transition-delay:.16s}.rd3{transition-delay:.24s}.rd4{transition-delay:.32s}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media(max-width:1024px){
+  .feat-card{grid-template-columns:1fr;gap:40px;padding:56px 48px}
+  .testi-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(2,1fr)}
+  .usecases-card{grid-template-columns:1fr;gap:40px;padding:56px 48px}
 }
-@media (max-width: 860px) {
-  .nav-links, .nav-email { display: none; }
-  .nav-hamburger { display: flex; }
-  .section { padding: 4.5rem 1.5rem; }
-  .svc-grid { grid-template-columns: 1fr; }
-  .why-grid { grid-template-columns: 1fr; }
-  .process-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  .process-step { text-align: left; display: flex; gap: 1.25rem; align-items: flex-start; }
-  .process-num { margin: 0; flex-shrink: 0; }
-  .process-step p { margin: 0; max-width: none; }
-  footer { padding: 1.5rem 1.5rem; }
-  .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-  nav { padding: 0 1.5rem; }
-  .hero-inner { padding: 4rem 1.5rem 0; }
-  .hero-text { padding-bottom: 0; }
-  .hero-visual { padding-bottom: 4rem; }
+@media(max-width:768px){
+  .page-wrap{padding:8px 12px 16px;gap:8px}
+  .hero-card{padding:64px 28px 56px}
+  .feat-card{padding:48px 24px}
+  .usecases-card{padding:48px 24px}
+  .why-outer{padding:48px 24px}
+  .industries-card{padding:56px 24px}
+  .cta-card{padding:72px 28px}
+  .why-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .nav-links,.nav-email{display:none}
+  .nav-hamburger{display:flex}
+  nav{padding:0 1rem}
+  .hero-btns{flex-direction:column;align-items:center}
+  .cta-btns{flex-direction:column;align-items:center}
+  footer{padding:1.25rem 1rem}
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:.4rem}
 }
-@media (max-width: 600px) {
-  .hero h1 { font-size: 2.6rem; }
-  .s-title { font-size: 2rem; }
+@media(max-width:480px){
+  .hero-card h1{font-size:38px}
+  .hero-sub{font-size:16px}
+  .feat-heading{font-size:28px}
 }
 </style>
 </head>
 <body>
 
-<!-- ─── NAV ───────────────────────────────────────────────── -->
+<!-- NAV -->
 <nav id="main-nav">
   <a href="#" class="nav-logo">Theorrem</a>
   <div class="nav-links">
@@ -675,326 +258,453 @@ footer {
   <a href="#contact" class="nav-mobile-cta">Start a project →</a>
 </div>
 
-<!-- ─── HERO ──────────────────────────────────────────────── -->
-<div class="hero-wrap">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="hero-inner">
+<div class="page-wrap">
 
-    <div class="hero-text reveal">
-      <div class="hero-eyebrow">
-        <span class="hero-eyebrow-dot"></span>
-        Global AI Automation
-      </div>
-      <h1>Automate the work.<br>Keep the people.</h1>
-      <p class="hero-sub">Theorrem designs and deploys custom AI systems for businesses. No templates. No consultants. Working software, fast.</p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn-primary">Start a project →</a>
-        <a href="#services" class="btn-ghost">See what we build</a>
-      </div>
+<!-- ── HERO ── -->
+<section class="hero-card reveal">
+  <div class="hero-inner">
+    <h1>Automate the work.<br>Keep the people.</h1>
+    <p class="hero-sub">Theorrem designs and deploys custom AI systems for businesses. No templates. No consultants. Working software, fast.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-dark">Start a project →</a>
+      <a href="#services" class="btn-outline">See what we build</a>
     </div>
 
-    <div class="hero-visual reveal reveal-d2">
-      <div class="flow-card">
-        <div class="flow-card-bar">
-          <div class="flow-dot flow-dot-r"></div>
-          <div class="flow-dot flow-dot-y"></div>
-          <div class="flow-dot flow-dot-g"></div>
+    <!-- Workflow nodes -->
+    <div class="hero-workflow">
+
+      <div class="flow-node">
+        <div class="flow-node-icon" style="background:#EDE9FE">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2.25 11.25h3.375a.75.75 0 01.75.75A2.625 2.625 0 009 14.625 2.625 2.625 0 0011.625 12a.75.75 0 01.75-.75H15.75V5.25a1.5 1.5 0 00-1.5-1.5h-10.5a1.5 1.5 0 00-1.5 1.5v6z" stroke="#7C3AED" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 8h7M5.5 10.5h4.5" stroke="#7C3AED" stroke-width="1.3" stroke-linecap="round"/></svg>
         </div>
-        <div class="flow-card-body">
-          <svg viewBox="0 0 480 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="AI workflow diagram showing Inquiry through AI Engine, CRM, WhatsApp to completion" role="img" style="width:100%;height:auto;">
-            <!-- Node: Inquiry -->
-            <rect x="8" y="102" width="80" height="52" rx="10" fill="#EDE9FE" stroke="#C4B5FD" stroke-width="1.5"/>
-            <text x="48" y="123" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" font-weight="600" fill="#6D28D9">Inquiry</text>
-            <text x="48" y="140" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#8B5CF6">New lead</text>
-
-            <!-- Arrow 1 -->
-            <path d="M88 128 L106 128" stroke="#C4B5FD" stroke-width="1.5" stroke-dasharray="3 2.5"/>
-            <polygon points="106,124.5 113,128 106,131.5" fill="#C4B5FD"/>
-
-            <!-- Node: AI Engine (central, larger) -->
-            <rect x="113" y="84" width="120" height="88" rx="12" fill="#7C3AED" stroke="#7C3AED" stroke-width="0"/>
-            <text x="173" y="117" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="rgba(255,255,255,0.75)">AI Engine</text>
-            <text x="173" y="134" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.65)">Context · Reasoning</text>
-            <text x="173" y="150" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.65)">Decision Making</text>
-            <!-- dot -->
-            <circle cx="173" cy="102" r="5" fill="rgba(255,255,255,0.25)"/>
-            <circle cx="173" cy="102" r="3" fill="rgba(255,255,255,0.9)"/>
-
-            <!-- Arrow 2 -->
-            <path d="M233 128 L252 128" stroke="#C4B5FD" stroke-width="1.5" stroke-dasharray="3 2.5"/>
-            <polygon points="252,124.5 259,128 252,131.5" fill="#C4B5FD"/>
-
-            <!-- Node: CRM -->
-            <rect x="259" y="102" width="80" height="52" rx="10" fill="#DCFCE7" stroke="#86EFAC" stroke-width="1.5"/>
-            <text x="299" y="123" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" font-weight="600" fill="#065F46">CRM</text>
-            <text x="299" y="140" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#059669">Data sync</text>
-
-            <!-- Arrow 3 -->
-            <path d="M339 128 L358 128" stroke="#86EFAC" stroke-width="1.5" stroke-dasharray="3 2.5"/>
-            <polygon points="358,124.5 365,128 358,131.5" fill="#86EFAC"/>
-
-            <!-- Node: WhatsApp -->
-            <rect x="365" y="102" width="80" height="52" rx="10" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1.5"/>
-            <text x="405" y="123" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" font-weight="600" fill="#1E40AF">WhatsApp</text>
-            <text x="405" y="140" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#3B82F6">Send reply</text>
-
-            <!-- Curved arrow down to Done -->
-            <path d="M405 154 Q405 190 350 210 Q295 230 240 218" stroke="#93C5FD" stroke-width="1.5" stroke-dasharray="3 2.5" fill="none"/>
-            <polygon points="237,214 240,221 244,215" fill="#93C5FD"/>
-
-            <!-- Node: Done -->
-            <rect x="172" y="196" width="80" height="48" rx="10" fill="#ECFDF5" stroke="#6EE7B7" stroke-width="1.5"/>
-            <text x="212" y="215" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" font-weight="700" fill="#059669">Done ✓</text>
-            <text x="212" y="232" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#059669">Zero manual</text>
-
-            <!-- Label -->
-            <text x="240" y="50" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#9CA3AF" letter-spacing="0.06em">AUTOMATED · REAL-TIME · PRODUCTION-GRADE</text>
-          </svg>
+        <div class="flow-node-text">
+          <div class="flow-node-label">Inbound Inquiry</div>
+          <div class="flow-node-sub">Web, WhatsApp, email</div>
         </div>
+        <span class="flow-node-tag">Source</span>
+      </div>
+
+      <div class="flow-arrow">
+        <svg width="10" height="26" viewBox="0 0 10 26"><line x1="5" y1="0" x2="5" y2="19" stroke="rgba(0,0,0,.15)" stroke-width="1.5"/><polygon points="2,19 5,25 8,19" fill="rgba(0,0,0,.18)"/></svg>
+      </div>
+
+      <div class="flow-node">
+        <div class="flow-node-icon" style="background:#DBEAFE">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="4.5" y="4.5" width="9" height="9" rx="2" stroke="#1D4ED8" stroke-width="1.3"/><path d="M6.5 4.5V3M9 4.5V3M11.5 4.5V3M6.5 15v-1.5M9 15v-1.5M11.5 15v-1.5M4.5 6.5H3M4.5 9H3M4.5 11.5H3M15 6.5h-1.5M15 9h-1.5M15 11.5h-1.5" stroke="#1D4ED8" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="flow-node-text">
+          <div class="flow-node-label">AI Engine</div>
+          <div class="flow-node-sub">Understands, decides, acts</div>
+        </div>
+        <span class="flow-node-tag">Process</span>
+      </div>
+
+      <div class="flow-arrow">
+        <svg width="10" height="26" viewBox="0 0 10 26"><line x1="5" y1="0" x2="5" y2="19" stroke="rgba(0,0,0,.15)" stroke-width="1.5"/><polygon points="2,19 5,25 8,19" fill="rgba(0,0,0,.18)"/></svg>
+      </div>
+
+      <div class="flow-node">
+        <div class="flow-node-icon" style="background:#DCFCE7">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7.5 10.5a3.75 3.75 0 005.303.003l2.25-2.25a3.75 3.75 0 00-5.304-5.304L8.505 4.2" stroke="#15803D" stroke-width="1.3" stroke-linecap="round"/><path d="M10.5 7.5a3.75 3.75 0 00-5.303-.003L2.947 9.747a3.75 3.75 0 005.304 5.304l1.24-1.24" stroke="#15803D" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </div>
+        <div class="flow-node-text">
+          <div class="flow-node-label">CRM + WhatsApp</div>
+          <div class="flow-node-sub">Syncs, notifies, routes</div>
+        </div>
+        <span class="flow-node-tag">Route</span>
+      </div>
+
+      <div class="flow-arrow">
+        <svg width="10" height="26" viewBox="0 0 10 26"><line x1="5" y1="0" x2="5" y2="19" stroke="rgba(0,0,0,.15)" stroke-width="1.5"/><polygon points="2,19 5,25 8,19" fill="rgba(0,0,0,.18)"/></svg>
+      </div>
+
+      <div class="flow-node">
+        <div class="flow-node-icon" style="background:#D1FAE5">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6.75" stroke="#059669" stroke-width="1.3"/><path d="M6 9l2.25 2.25L12 6.75" stroke="#059669" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="flow-node-text">
+          <div class="flow-node-label">Done</div>
+          <div class="flow-node-sub">Zero manual effort</div>
+        </div>
+        <span class="flow-node-tag">Delivered</span>
+      </div>
+
+    </div><!-- /hero-workflow -->
+
+    <!-- Marquee -->
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <span>BUILDING AI SYSTEMS FOR REAL ESTATE</span><span class="marquee-sep">·</span>
+        <span>E-COMMERCE</span><span class="marquee-sep">·</span>
+        <span>LEGAL</span><span class="marquee-sep">·</span>
+        <span>HR</span><span class="marquee-sep">·</span>
+        <span>FINANCE</span><span class="marquee-sep">·</span>
+        <span>LOGISTICS</span><span class="marquee-sep">·</span>
+        <span>BUILDING AI SYSTEMS FOR REAL ESTATE</span><span class="marquee-sep">·</span>
+        <span>E-COMMERCE</span><span class="marquee-sep">·</span>
+        <span>LEGAL</span><span class="marquee-sep">·</span>
+        <span>HR</span><span class="marquee-sep">·</span>
+        <span>FINANCE</span><span class="marquee-sep">·</span>
+        <span>LOGISTICS</span><span class="marquee-sep">·</span>
       </div>
     </div>
 
   </div>
+</section><!-- /hero -->
+
+
+<!-- ── SECTION 2: Conversational AI (purple) ── -->
+<section class="feat-card reveal" id="services" style="background:var(--card-purple)">
+
+  <!-- LEFT: visual -->
+  <div>
+    <div class="feat-visual">
+      <div class="chat-header">
+        <div class="chat-avatar">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="3.5" y="4.5" width="9" height="7" rx="2" stroke="#7C3AED" stroke-width="1.2"/><path d="M5.5 7.5h.01M10.5 7.5h.01" stroke="#7C3AED" stroke-width="1.4" stroke-linecap="round"/><path d="M8 4.5V3" stroke="#7C3AED" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="2.25" r=".85" fill="#7C3AED"/><path d="M5.5 11.5V13M10.5 11.5V13" stroke="#7C3AED" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="chat-title">Theorrem AI Agent</div>
+          <div class="chat-status">Online · responds in &lt;2s</div>
+        </div>
+      </div>
+      <div class="chat-msgs">
+        <div class="chat-msg chat-msg-user">Hi, I'm looking for a 3-bed apartment near the city centre</div>
+        <div class="chat-msg chat-msg-ai">Found 6 listings matching your criteria. What's your budget?</div>
+        <div class="chat-msg chat-msg-user">Around $2,000/month max</div>
+        <div class="chat-msg chat-msg-ai">4 options within budget. Want me to book viewings for the top 2?</div>
+      </div>
+    </div>
+    <div class="feat-stat">
+      <span class="feat-stat-num">400+</span>
+      <span class="feat-stat-label">Daily inquiries handled without a human</span>
+    </div>
+  </div>
+
+  <!-- RIGHT: text -->
+  <div>
+    <div class="feat-label">Conversational AI</div>
+    <h2 class="feat-heading">Handle every inquiry, across every channel</h2>
+    <p class="feat-body">Theorrem builds intelligent agents that understand context, remember history, and resolve queries — on web, WhatsApp, or any channel you operate.</p>
+    <ul class="feat-bullets">
+      <li><strong>Multi-channel:</strong> Web, WhatsApp, SMS, email — one unified AI brain</li>
+      <li><strong>Context-aware:</strong> Remembers conversation history, user preferences, past interactions</li>
+      <li><strong>Always on:</strong> 24/7 with sub-2-second response times at any scale</li>
+    </ul>
+  </div>
+
+</section>
+
+
+<!-- ── SECTION 3: Workflow Automation (green) ── -->
+<section class="feat-card reveal" id="work" style="background:var(--card-green)">
+
+  <!-- LEFT: text -->
+  <div>
+    <div class="feat-label">Workflow Automation</div>
+    <h2 class="feat-heading">Automate the repetitive. Free your team for what matters.</h2>
+    <p class="feat-body">End-to-end automation of any process that follows a pattern. From simple data tasks to complex multi-step decision pipelines.</p>
+    <ul class="feat-bullets">
+      <li><strong>Trigger-based:</strong> Kicks off automatically from any event — form fill, message, payment, webhook</li>
+      <li><strong>Multi-step:</strong> Chains decisions, API calls, and data transforms in sequence</li>
+      <li><strong>Zero downtime:</strong> Runs 24/7, handles errors gracefully, logs everything</li>
+    </ul>
+    <div class="feat-stat">
+      <span class="feat-stat-num">80%</span>
+      <span class="feat-stat-label">Reduction in manual processing time</span>
+    </div>
+  </div>
+
+  <!-- RIGHT: visual -->
+  <div>
+    <div class="feat-visual">
+      <div class="wf-steps">
+
+        <div class="wf-step">
+          <div class="wf-step-icon" style="background:#FEF3C7">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.75v1.75M7 10.5v1.75M1.75 7h1.75M10.5 7h1.75M3.343 3.343l1.237 1.237M9.42 9.42l1.237 1.237M3.343 10.657l1.237-1.237M9.42 4.58l1.237-1.237" stroke="#D97706" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          Trigger
+        </div>
+
+        <div class="wf-arr">
+          <svg width="10" height="20" viewBox="0 0 10 20"><line x1="5" y1="0" x2="5" y2="14" stroke="#D1D5DB" stroke-width="1.5"/><polygon points="2,14 5,19 8,14" fill="#D1D5DB"/></svg>
+        </div>
+
+        <div class="wf-step">
+          <div class="wf-step-icon" style="background:#DBEAFE">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="3" y="3" width="8" height="8" rx="1.5" stroke="#1D4ED8" stroke-width="1.2"/><path d="M5 7h4M7 5v4" stroke="#1D4ED8" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          Process
+        </div>
+
+        <div class="wf-arr">
+          <svg width="10" height="20" viewBox="0 0 10 20"><line x1="5" y1="0" x2="5" y2="14" stroke="#D1D5DB" stroke-width="1.5"/><polygon points="2,14 5,19 8,14" fill="#D1D5DB"/></svg>
+        </div>
+
+        <div class="wf-step">
+          <div class="wf-step-icon" style="background:#EDE9FE">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2l1.4 4.2H13L9.3 8.6l1.4 4.2L7 10.4l-3.7 2.4 1.4-4.2L1 6.2h4.6L7 2z" stroke="#7C3AED" stroke-width="1.1" stroke-linejoin="round"/></svg>
+          </div>
+          Decide
+        </div>
+
+        <div class="wf-arr">
+          <svg width="10" height="20" viewBox="0 0 10 20"><line x1="5" y1="0" x2="5" y2="14" stroke="#D1D5DB" stroke-width="1.5"/><polygon points="2,14 5,19 8,14" fill="#D1D5DB"/></svg>
+        </div>
+
+        <div class="wf-step">
+          <div class="wf-step-icon" style="background:#D1FAE5">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.333 7l3.5 3.5 5.834-7" stroke="#059669" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          Act
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ── SECTION 4: WhatsApp (navy) ── -->
+<section class="feat-card reveal" style="background:var(--card-blue)">
+
+  <!-- LEFT: visual -->
+  <div>
+    <div class="feat-visual" style="padding:0">
+      <div class="wa-wrap">
+        <div class="wa-header">
+          <div class="wa-avatar">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2.25a6.75 6.75 0 100 13.5A6.75 6.75 0 009 2.25z" stroke="rgba(255,255,255,.8)" stroke-width="1.2"/><path d="M6.188 11.813c.375.75 1.5 2.062 3 1.687 2.062-.375 3-2.625 2.25-4.5-.563-1.125-1.5-1.875-2.25-1.875" stroke="rgba(255,255,255,.8)" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="wa-name">Theorrem AI</div>
+            <div class="wa-stat">Online</div>
+          </div>
+        </div>
+        <div class="wa-body">
+          <div class="wa-msg wa-msg-in">Hi, is the office space on Market Street still available?</div>
+          <div class="wa-msg wa-msg-out">Yes! 2,400 sqft, fully furnished. Book a viewing?<div class="wa-time">10:04</div></div>
+          <div class="wa-msg wa-msg-in">What's your earliest slot this week?</div>
+          <div class="wa-msg wa-msg-out">Thursday 2pm or Friday 10am — which works?<div class="wa-time">10:04</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: text -->
+  <div>
+    <div class="feat-label">WhatsApp Automation</div>
+    <h2 class="feat-heading">Your business, always on WhatsApp</h2>
+    <p class="feat-body">Custom WhatsApp Business API systems that handle inbound inquiries, qualify leads, and respond instantly — at any scale.</p>
+    <ul class="feat-bullets">
+      <li><strong>Instant replies:</strong> Responds to every message in under 2 seconds</li>
+      <li><strong>Lead qualification:</strong> Asks the right questions, scores the lead, routes to sales</li>
+      <li><strong>Broadcast + drip:</strong> Send campaigns, follow-ups, and reminders at scale</li>
+    </ul>
+    <div class="feat-stat">
+      <span class="feat-stat-num">&lt; 2s</span>
+      <span class="feat-stat-label">Average response time across all deployments</span>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ── SECTION 5: Use Cases (cream) ── -->
+<section class="usecases-card reveal" id="process">
+
+  <!-- LEFT -->
+  <div>
+    <h2 class="uc-heading">AI systems that unlock any automation use case</h2>
+    <p class="uc-body">Use the right system architecture alongside custom-built workflows to turn any automation idea into reality.</p>
+    <div class="uc-mini-flow">
+      <div class="uc-mini-node">
+        <div class="uc-mini-dot" style="background:#3B82F6"></div>
+        Receive input
+      </div>
+      <div class="uc-mini-arr">
+        <svg width="8" height="16" viewBox="0 0 8 16"><line x1="4" y1="0" x2="4" y2="11" stroke="#D1D5DB" stroke-width="1.5"/><polygon points="1.5,11 4,15.5 6.5,11" fill="#D1D5DB"/></svg>
+      </div>
+      <div class="uc-mini-node">
+        <div class="uc-mini-dot" style="background:#8B5CF6"></div>
+        Process with AI
+      </div>
+      <div class="uc-mini-arr">
+        <svg width="8" height="16" viewBox="0 0 8 16"><line x1="4" y1="0" x2="4" y2="11" stroke="#D1D5DB" stroke-width="1.5"/><polygon points="1.5,11 4,15.5 6.5,11" fill="#D1D5DB"/></svg>
+      </div>
+      <div class="uc-mini-node">
+        <div class="uc-mini-dot" style="background:#22C55E"></div>
+        Deliver outcome
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: pills -->
+  <div>
+    <div class="uc-pills">
+
+      <div class="uc-pill">
+        <div class="uc-pill-icon" style="background:#DBEAFE">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 10.5h2.5a.625.625 0 01.625.625A2.125 2.125 0 008 13.25a2.125 2.125 0 002.875-2.125.625.625 0 01.625-.625H14V4a1.25 1.25 0 00-1.25-1.25H3.25A1.25 1.25 0 002 4v6.5z" stroke="#1D4ED8" stroke-width="1.1" stroke-linejoin="round"/></svg>
+        </div>
+        Inbound lead qualification
+      </div>
+
+      <div class="uc-pill">
+        <div class="uc-pill-icon" style="background:#D1FAE5">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="3" stroke="#059669" stroke-width="1.1"/><path d="M5.5 8h5M8 5.5v5" stroke="#059669" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        CRM sync and enrichment
+      </div>
+
+      <div class="uc-pill">
+        <div class="uc-pill-icon" style="background:#EDE9FE">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5.5" r="2.5" stroke="#7C3AED" stroke-width="1.1"/><path d="M2.5 14c0-3.038 2.462-5.5 5.5-5.5s5.5 2.462 5.5 5.5" stroke="#7C3AED" stroke-width="1.1" stroke-linecap="round"/></svg>
+        </div>
+        Candidate screening pipeline
+      </div>
+
+      <div class="uc-pill">
+        <div class="uc-pill-icon" style="background:#FEF3C7">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 3H2C1.45 3 1 3.45 1 4v8c0 .55.45 1 1 1h2.5L6 15l1.5-2H14c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1z" stroke="#D97706" stroke-width="1.1" stroke-linejoin="round"/><path d="M4 7.5h8M4 10h5" stroke="#D97706" stroke-width="1.1" stroke-linecap="round"/></svg>
+        </div>
+        Customer support automation
+      </div>
+
+      <div class="uc-pill">
+        <div class="uc-pill-icon" style="background:#F0FDF4">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.25" stroke="#16A34A" stroke-width="1.1"/><path d="M10.25 10.25l3 3" stroke="#16A34A" stroke-width="1.2" stroke-linecap="round"/></svg>
+        </div>
+        Knowledge base search
+      </div>
+
+      <div class="uc-pill">
+        <div class="uc-pill-icon" style="background:#FDF2F8">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6.5 9.5a3 3 0 004.243.002L12.5 7.745a3 3 0 00-4.244-4.244L7.197 4.56" stroke="#DB2777" stroke-width="1.1" stroke-linecap="round"/><path d="M9.5 6.5a3 3 0 00-4.243-.002L3.5 8.255a3 3 0 004.244 4.244l1.053-1.053" stroke="#DB2777" stroke-width="1.1" stroke-linecap="round"/></svg>
+        </div>
+        Legacy system integration
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ── SECTION 6: Why Theorrem ── -->
+<section class="why-outer reveal" id="why">
+  <h2 class="why-heading">Built by engineers, not consultants</h2>
+  <div class="why-grid">
+
+    <div class="why-item reveal rd1">
+      <div class="why-title">You own everything</div>
+      <p class="why-body">Full source code, your data, your infrastructure. No black boxes. No lock-in. Ever.</p>
+      <div class="why-stat">100%</div>
+    </div>
+
+    <div class="why-item reveal rd2">
+      <div class="why-title">Weeks, not quarters</div>
+      <p class="why-body">Working systems delivered fast. You see a live prototype early — not after months of invisible work.</p>
+      <div class="why-stat">2–4 wks</div>
+    </div>
+
+    <div class="why-item reveal rd3">
+      <div class="why-title">Engineers, not consultants</div>
+      <p class="why-body">Real systems that run in production. Not slide decks that sit in inboxes.</p>
+      <div class="why-stat">0 decks</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── SECTION 7: Testimonial-style outcome cards ── -->
+<div class="testi-grid">
+
+  <div class="testi-card reveal" style="background:var(--testimonial-1)">
+    <div>
+      <div class="testi-co">Real Estate Agency</div>
+      <p class="testi-quote">"Our WhatsApp inbox used to be chaos. Now every inquiry is handled, qualified, and logged before our team even wakes up."</p>
+    </div>
+    <div class="testi-attr">
+      <div class="testi-avatar"></div>
+      <span class="testi-name">Operations Lead<br>Property Portal</span>
+    </div>
+  </div>
+
+  <div class="testi-card reveal rd1" style="background:var(--testimonial-2)">
+    <div>
+      <div class="testi-co">E-commerce Brand</div>
+      <p class="testi-quote">"We went from 6-hour response times to instant replies. Our support team now only handles escalations."</p>
+    </div>
+    <div class="testi-attr">
+      <div class="testi-avatar"></div>
+      <span class="testi-name">Founder<br>E-commerce Company</span>
+    </div>
+  </div>
+
+  <div class="testi-card reveal rd2" style="background:var(--testimonial-3)">
+    <div>
+      <div class="testi-co">HR Company</div>
+      <p class="testi-quote">"Screening 300 applications used to take us a week. The pipeline Theorrem built does it in an hour."</p>
+    </div>
+    <div class="testi-attr">
+      <div class="testi-avatar"></div>
+      <span class="testi-name">Head of Talent<br>Recruitment Firm</span>
+    </div>
+  </div>
+
+  <div class="testi-card reveal rd3" style="background:var(--testimonial-4)">
+    <div>
+      <div class="testi-co">Legal Firm</div>
+      <p class="testi-quote">"Our document search used to mean calling someone. Now anyone on the team finds what they need in seconds."</p>
+    </div>
+    <div class="testi-attr">
+      <div class="testi-avatar"></div>
+      <span class="testi-name">Managing Partner<br>Law Firm</span>
+    </div>
+  </div>
+
 </div>
 
-<!-- ─── SERVICES ──────────────────────────────────────────── -->
-<section class="section" id="services">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <div class="pill-badge">Services</div>
-      <h2 class="s-title">Every system built<br>from scratch for you</h2>
-      <p class="s-sub">No templates, no off-the-shelf tools. Each system is architected for your specific workflows and goals.</p>
-    </div>
-    <div class="svc-grid">
 
-      <!-- 1 -->
-      <div class="svc-card svc-card-white reveal reveal-d1">
-        <div class="svc-icon">
-          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16 3H4C3.45 3 3 3.45 3 4v10c0 .55.45 1 1 1h3l2.5 2.5L12 15h4c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1z" stroke="#7C3AED" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M6 8.5h8M6 11.5h5" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>Conversational AI</h3>
-        <p>Intelligent agents that understand context, handle queries, and operate across web, WhatsApp, or any channel.</p>
-      </div>
-
-      <!-- 2 -->
-      <div class="svc-card svc-card-lavender reveal reveal-d2">
-        <div class="svc-icon">
-          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="4" cy="10" r="2.5" stroke="#7C3AED" stroke-width="1.5"/>
-            <circle cx="16" cy="10" r="2.5" stroke="#7C3AED" stroke-width="1.5"/>
-            <circle cx="10" cy="4" r="2.5" stroke="#7C3AED" stroke-width="1.5"/>
-            <circle cx="10" cy="16" r="2.5" stroke="#7C3AED" stroke-width="1.5"/>
-            <path d="M6.5 10h3M10.5 10h3M10 6.5v1M10 12.5v1" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>Workflow Automation</h3>
-        <p>End-to-end automation of repetitive processes, from data tasks to complex multi-step decision pipelines.</p>
-      </div>
-
-      <!-- 3 -->
-      <div class="svc-card svc-card-white reveal reveal-d3">
-        <div class="svc-icon">
-          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 2C5.58 2 2 5.58 2 10c0 1.46.39 2.83 1.06 4.02L2 18l4.04-1.1A8 8 0 1010 2z" stroke="#7C3AED" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M7 8.5c0 2.5 2.5 4.5 5 4" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>WhatsApp Automation</h3>
-        <p>Custom WhatsApp Business API systems that handle inbound inquiries, qualify leads, and respond at scale.</p>
-      </div>
-
-      <!-- 4 -->
-      <div class="svc-card svc-card-sage reveal reveal-d4">
-        <div class="svc-icon">
-          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="10" cy="5.5" rx="6.5" ry="2.5" stroke="#7C3AED" stroke-width="1.5"/>
-            <path d="M3.5 5.5v4.5c0 1.38 2.91 2.5 6.5 2.5s6.5-1.12 6.5-2.5V5.5" stroke="#7C3AED" stroke-width="1.5"/>
-            <path d="M3.5 10v4.5C3.5 15.88 6.41 17 10 17s6.5-1.12 6.5-2.5V10" stroke="#7C3AED" stroke-width="1.5"/>
-          </svg>
-        </div>
-        <h3>Knowledge Systems</h3>
-        <p>RAG-powered systems that make your documents, databases, and internal data searchable and actionable.</p>
-      </div>
-
-      <!-- 5 -->
-      <div class="svc-card svc-card-sky reveal reveal-d5">
-        <div class="svc-icon">
-          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="2" width="6.5" height="6.5" rx="2" stroke="#7C3AED" stroke-width="1.5"/>
-            <rect x="11.5" y="2" width="6.5" height="6.5" rx="2" stroke="#7C3AED" stroke-width="1.5"/>
-            <rect x="2" y="11.5" width="6.5" height="6.5" rx="2" stroke="#7C3AED" stroke-width="1.5"/>
-            <rect x="11.5" y="11.5" width="6.5" height="6.5" rx="2" stroke="#7C3AED" stroke-width="1.5"/>
-            <path d="M8.5 5.25h3M5.25 8.5v3M14.75 8.5v3M8.5 14.75h3" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <h3>System Integration</h3>
-        <p>AI connected to your existing CRM, ERP, or legacy infrastructure. New intelligence on what you already have.</p>
-      </div>
-
-      <!-- 6 -->
-      <div class="svc-card svc-card-amber reveal reveal-d6">
-        <div class="svc-icon">
-          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 3A7 7 0 1117 10" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M17 5v5h-5" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="10" cy="10" r="2.25" stroke="#7C3AED" stroke-width="1.5"/>
-          </svg>
-        </div>
-        <h3>Agentic Pipelines</h3>
-        <p>Autonomous AI agents that execute multi-step tasks with minimal human oversight.</p>
-      </div>
-
-    </div>
+<!-- ── SECTION 8: Industries ── -->
+<section class="industries-card reveal" id="industries">
+  <h2 class="sec-heading">Any industry with repetitive workflows</h2>
+  <p class="sec-sub">If your team does tasks that follow patterns, we can automate them.</p>
+  <div class="ind-tags">
+    <span class="ind-tag">Real Estate</span>
+    <span class="ind-tag">E-commerce</span>
+    <span class="ind-tag">Legal</span>
+    <span class="ind-tag">HR &amp; Recruitment</span>
+    <span class="ind-tag">Healthcare</span>
+    <span class="ind-tag">Finance &amp; Banking</span>
+    <span class="ind-tag">Logistics</span>
+    <span class="ind-tag">Education</span>
+    <span class="ind-tag">Retail</span>
+    <span class="ind-tag">Insurance</span>
+    <span class="ind-tag">Manufacturing</span>
+    <span class="ind-tag">Hospitality</span>
+    <span class="ind-tag">+ More</span>
   </div>
 </section>
 
-<!-- ─── PROCESS ────────────────────────────────────────────── -->
-<section class="section" id="process">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <div class="pill-badge">Process</div>
-      <h2 class="s-title">From problem to production,<br>without the friction</h2>
-    </div>
-    <div class="process-grid">
-      <div class="process-step reveal reveal-d1">
-        <div class="process-num">01</div>
-        <div>
-          <h3>Discover</h3>
-          <p>Map your workflows, find automation opportunities, define success before any code is written.</p>
-        </div>
-      </div>
-      <div class="process-step reveal reveal-d2">
-        <div class="process-num">02</div>
-        <div>
-          <h3>Build</h3>
-          <p>Rapid development with real feedback loops. Working software in your hands early and often.</p>
-        </div>
-      </div>
-      <div class="process-step reveal reveal-d3">
-        <div class="process-num">03</div>
-        <div>
-          <h3>Deploy</h3>
-          <p>Production deployment with monitoring and support. We stay as your system grows.</p>
-        </div>
-      </div>
-    </div>
+
+<!-- ── SECTION 9: CTA ── -->
+<section class="cta-card reveal" id="contact">
+  <h2 class="cta-heading">Ready to stop doing<br>it manually?</h2>
+  <p class="cta-sub">Tell us what you're working on. We'll respond within 24 hours.</p>
+  <div class="cta-btns">
+    <a href="mailto:hello@theorrem.com" class="btn-white">Start a project →</a>
+    <a href="mailto:hello@theorrem.com" class="btn-ghost-white">hello@theorrem.com</a>
   </div>
 </section>
 
-<!-- ─── EXAMPLE SYSTEMS ────────────────────────────────────── -->
-<section class="section" id="work">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <div class="pill-badge">Work</div>
-      <h2 class="s-title">Systems we build</h2>
-      <p class="s-sub">Explore the types of systems Theorrem designs and deploys across industries.</p>
-    </div>
-    <div class="work-grid">
+</div><!-- /page-wrap -->
 
-      <div class="work-card work-card-1 reveal reveal-d1">
-        <div class="work-tag">Real Estate</div>
-        <h3>Inbound Lead Qualification System</h3>
-        <p>Handles property inquiries across WhatsApp and web, qualifies leads, and routes them instantly — no human in the loop.</p>
-        <div class="work-result">
-          <strong>400+ daily inquiries handled</strong>
-          Zero manual responses.
-        </div>
-      </div>
-
-      <div class="work-card work-card-2 reveal reveal-d2">
-        <div class="work-tag">E-commerce</div>
-        <h3>Order &amp; Support Automation</h3>
-        <p>Automates order status updates, returns, and customer queries across WhatsApp and chat. No human queue, no delays.</p>
-        <div class="work-result">
-          <strong>Under 2s response time</strong>
-          24/7 uptime.
-        </div>
-      </div>
-
-      <div class="work-card work-card-3 reveal reveal-d3">
-        <div class="work-tag">HR &amp; Recruitment</div>
-        <h3>Candidate Screening Pipeline</h3>
-        <p>Ingests applications, screens against role criteria, and shortlists — fully automated from submission to interview invite.</p>
-        <div class="work-result">
-          <strong>80% reduction in manual screening</strong>
-          time across all active roles.
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ─── WHY THEORREM ──────────────────────────────────────── -->
-<section class="section" id="why">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <div class="pill-badge">Why us</div>
-      <h2 class="s-title">Built by engineers,<br>not consultants</h2>
-    </div>
-    <div class="why-grid">
-
-      <div class="why-card why-card-1 reveal reveal-d1">
-        <h3>You own everything</h3>
-        <p>Full source code, your data, your infrastructure. No black boxes. No lock-in. Ever.</p>
-      </div>
-
-      <div class="why-card why-card-2 reveal reveal-d2">
-        <h3>Weeks, not quarters</h3>
-        <p>Working systems delivered fast. You see a live prototype early — not after months of invisible work.</p>
-      </div>
-
-      <div class="why-card why-card-3 reveal reveal-d3">
-        <h3>Engineers, not consultants</h3>
-        <p>We build real systems that run in production. Not slide decks and recommendations that sit in inboxes.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ─── INDUSTRIES ─────────────────────────────────────────── -->
-<section class="section" id="industries">
-  <div class="section-inner">
-    <div class="reveal">
-      <div class="pill-badge">Industries</div>
-      <h2 class="s-title">Any industry with<br>repetitive workflows</h2>
-      <p class="ind-sub">If your team does tasks that follow patterns, we can automate them.</p>
-    </div>
-    <div class="ind-grid reveal reveal-d1">
-      <span class="ind-tag">Real Estate</span>
-      <span class="ind-tag">E-commerce</span>
-      <span class="ind-tag">Legal</span>
-      <span class="ind-tag">HR &amp; Recruitment</span>
-      <span class="ind-tag">Healthcare</span>
-      <span class="ind-tag">Finance &amp; Banking</span>
-      <span class="ind-tag">Logistics</span>
-      <span class="ind-tag">Education</span>
-      <span class="ind-tag">Retail</span>
-      <span class="ind-tag">Insurance</span>
-      <span class="ind-tag">Manufacturing</span>
-      <span class="ind-tag">Hospitality</span>
-      <span class="ind-tag">+ More</span>
-    </div>
-  </div>
-</section>
-
-<!-- ─── CTA ───────────────────────────────────────────────── -->
-<section class="cta-section" id="contact">
-  <div class="cta-inner reveal">
-    <div class="cta-pill">
-      <span class="pill-badge">Get started</span>
-    </div>
-    <h2>Ready to stop<br>doing it manually?</h2>
-    <p>Tell us what you're working on. We'll respond within 24 hours.</p>
-    <a href="mailto:hello@theorrem.com" class="cta-email-link">hello@theorrem.com</a>
-  </div>
-</section>
-
-<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<!-- FOOTER BAR -->
 <footer>
   <div class="footer-inner">
     <span class="footer-logo">Theorrem</span>
@@ -1004,30 +714,20 @@ footer {
 </footer>
 
 <script>
-(function () {
-  var nav = document.getElementById('main-nav');
-  window.addEventListener('scroll', function () {
-    nav.classList.toggle('scrolled', window.scrollY > 50);
-  }, { passive: true });
-
-  var hamburger = document.getElementById('hamburger');
-  var mobileMenu = document.getElementById('mobile-menu');
-  hamburger.addEventListener('click', function () {
-    mobileMenu.classList.toggle('open');
-  });
-  mobileMenu.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', function () { mobileMenu.classList.remove('open'); });
+(function(){
+  var ham = document.getElementById('hamburger');
+  var menu = document.getElementById('mobile-menu');
+  ham.addEventListener('click', function(){ menu.classList.toggle('open'); });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ menu.classList.remove('open'); });
   });
 
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        observer.unobserve(e.target);
-      }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
     });
   }, { threshold: 0.07 });
-  document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 })();
 </script>
 </body>
