@@ -1,11 +1,11 @@
-# Theorem Usecases v11
+# Theorem Usecases v12
 
 Changes:
-- Removed Quality nav item since the quality/eval section was removed.
-- Fixed playbook heading alignment and reduced the large 3-line heading size.
-- Rebuilt usecases into visual pastel cards inspired by the provided reference screenshots.
-- Uses CSS-only UI mockups, no external images.
-- Keeps soft pastel direction, but with more interesting larger usecase cards.
+- Fixed usecase section alignment by using one dedicated max-width container.
+- Reduced intro heading size so it is no longer a huge 3-line block.
+- Changed usecases to equal 6 cards: 2 columns x 3 rows.
+- Removed the one full-width top card.
+- Adjusted card text and mockup sizing so everything fits cleaner.
 
 Replace:
 - index.html
