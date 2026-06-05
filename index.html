@@ -3,1581 +3,931 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Theorrem — Custom AI Systems for Business</title>
-<meta name="description" content="Theorrem designs and deploys custom AI systems for businesses. No templates. No consultants. Working software, fast.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<title>Theorrem | The Enterprise Platform for AI Automation</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ── RESET & BASE ──────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --cream: #F0EEE6;
-  --black: #0A0A0A;
-  --purple: #3B0764;
-  --green: #14532D;
-  --navy: #1E3A8A;
-  --chartreuse: #84CC16;
-  --orange: #F97316;
-  --blue: #3B82F6;
-  --cyan: #06B6D4;
-  --serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
-  --sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --r24: 24px;
-  --gap: 8px;
-  --mw: 1200px;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--cream);
-  font-family: var(--sans);
-  color: var(--black);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
-a { text-decoration: none; color: inherit; }
-ul { list-style: none; }
-button { cursor: pointer; font-family: inherit; border: none; }
-
-/* ── NOISE TEXTURE ─────────────────────────────────────────────── */
-/* Applied via inline SVG positioned absolutely inside hero */
-
-/* ── NAVIGATION ────────────────────────────────────────────────── */
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: #fff;
-  border-bottom: 1px solid #e8e8e8;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  padding: 0 40px;
-  gap: 32px;
-}
-
-.nav-logo {
-  font-family: var(--serif);
-  font-size: 21px;
-  font-weight: 400;
-  color: var(--black);
-  letter-spacing: -0.01em;
-  flex-shrink: 0;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  flex: 1;
-  justify-content: center;
-}
-
-.nav-links a {
-  font-size: 14px;
-  font-weight: 500;
-  color: #444;
-  transition: color .15s;
-}
-.nav-links a:hover { color: var(--black); }
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  flex-shrink: 0;
-}
-
-.nav-email {
-  font-size: 13px;
-  color: #888;
-  transition: color .15s;
-}
-.nav-email:hover { color: #444; }
-
-/* ── BUTTONS ───────────────────────────────────────────────────── */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 20px;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 600;
-  font-family: var(--sans);
-  transition: all .18s;
-  cursor: pointer;
-  border: none;
-  text-decoration: none;
-}
-
-.btn-black {
-  background: var(--black);
-  color: #fff;
-}
-.btn-black:hover {
-  background: #222;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(0,0,0,.2);
-}
-
-.btn-outline-dark {
-  background: transparent;
-  color: var(--black);
-  border: 1.5px solid var(--black);
-}
-.btn-outline-dark:hover {
-  background: var(--black);
-  color: #fff;
-}
-
-.btn-lg {
-  padding: 13px 28px;
-  font-size: 15px;
-}
-
-.btn-white-solid {
-  background: #fff;
-  color: var(--black);
-}
-.btn-white-solid:hover {
-  background: #f5f5f5;
-  transform: translateY(-1px);
-}
-
-.btn-white-outline {
-  background: transparent;
-  color: #fff;
-  border: 1.5px solid rgba(255,255,255,.45);
-}
-.btn-white-outline:hover {
-  border-color: #fff;
-  background: rgba(255,255,255,.08);
-}
-
-/* ── PAGE WRAPPER ──────────────────────────────────────────────── */
-.page {
-  padding: var(--gap);
-}
-
-/* ── HERO ──────────────────────────────────────────────────────── */
-.hero {
-  background: var(--cream);
-  border-radius: var(--r24);
-  padding: 96px 48px 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: var(--gap);
-}
-
-/* Noise texture SVG fills hero */
-.hero-noise {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  border-radius: var(--r24);
-  opacity: 1;
-}
-
-.hero-inner {
-  position: relative;
-  z-index: 1;
-  max-width: 820px;
-  margin: 0 auto;
-}
-
-.hero h1 {
-  font-family: var(--serif);
-  font-size: clamp(44px, 6.5vw, 80px);
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
-  color: var(--black);
-  margin-bottom: 22px;
-}
-
-.hero-sub {
-  font-size: clamp(15px, 1.8vw, 18px);
-  color: #666;
-  line-height: 1.65;
-  max-width: 560px;
-  margin: 0 auto 36px;
-}
-
-.hero-ctas {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 68px;
-}
-
-/* Workflow nodes */
-.workflow {
-  max-width: 480px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.w-node {
-  background: #fff;
-  border-radius: 16px;
-  padding: 14px 22px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  box-shadow: 0 2px 16px rgba(0,0,0,.07);
-  border: 1px solid rgba(0,0,0,.04);
-}
-
-.w-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.w-icon svg { width: 17px; height: 17px; }
-
-.ic-teal   { background: #0D9488; }
-.ic-purple { background: #7C3AED; }
-.ic-blue   { background: #2563EB; }
-.ic-green  { background: #16A34A; }
-
-.w-label {
-  flex: 1;
-  text-align: left;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--black);
-}
-
-.w-tag {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .07em;
-  text-transform: uppercase;
-  background: #f0f0f0;
-  color: #777;
-  padding: 3px 9px;
-  border-radius: 999px;
-}
-
-.w-arrow {
-  width: 1px;
-  height: 26px;
-  background: #d4d4d4;
-  position: relative;
-  flex-shrink: 0;
-}
-.w-arrow::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 6px solid #c4c4c4;
-}
-
-/* Marquee */
-.marquee-wrap {
-  overflow: hidden;
-  margin-top: 56px;
-  border-top: 1px solid rgba(0,0,0,.07);
-  padding: 22px 0;
-}
-
-.marquee-track {
-  display: flex;
-  white-space: nowrap;
-  width: max-content;
-  animation: scroll-left 24s linear infinite;
-}
-
-.marquee-item {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-  color: #999;
-  padding: 0 36px;
-}
-
-@keyframes scroll-left {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* ── SECTION CARDS ─────────────────────────────────────────────── */
-.sc {
-  border-radius: var(--r24);
-  padding: 72px;
-  margin: 0 auto var(--gap);
-  max-width: var(--mw);
-}
-
-.sc-purple { background: var(--purple); }
-.sc-green  { background: var(--green); }
-.sc-navy   { background: var(--navy); }
-
-.feat-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 72px;
-  align-items: center;
-}
-
-/* Feature text */
-.feat-label {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.45);
-  margin-bottom: 14px;
-}
-
-.feat-h2 {
-  font-family: var(--serif);
-  font-size: clamp(36px, 4vw, 52px);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: #fff;
-  margin-bottom: 18px;
-}
-
-.feat-body {
-  font-size: 15px;
-  color: rgba(255,255,255,.7);
-  line-height: 1.7;
-  margin-bottom: 26px;
-}
-
-.feat-bullets {
-  display: flex;
-  flex-direction: column;
-  gap: 11px;
-  margin-bottom: 36px;
-}
-
-.feat-bullets li {
-  display: flex;
-  align-items: flex-start;
-  gap: 11px;
-  font-size: 14px;
-  color: rgba(255,255,255,.78);
-  line-height: 1.55;
-}
-
-.feat-bullets li::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.4);
-  flex-shrink: 0;
-  margin-top: 7px;
-}
-
-.feat-bullets strong { color: #fff; }
-
-.stat-block {
-  background: rgba(255,255,255,.1);
-  border-radius: 16px;
-  padding: 22px 28px;
-  display: inline-block;
-  backdrop-filter: blur(4px);
-}
-
-.stat-num {
-  font-family: var(--serif);
-  font-size: 52px;
-  font-weight: 400;
-  color: #fff;
-  line-height: 1;
-  margin-bottom: 6px;
-  letter-spacing: -0.02em;
-}
-
-.stat-desc {
-  font-size: 13px;
-  color: rgba(255,255,255,.55);
-  line-height: 1.45;
-  max-width: 200px;
-}
-
-/* Visual panels */
-.vis-wrap {
-  background: rgba(255,255,255,.08);
-  border-radius: 20px;
-  padding: 8px;
-}
-
-.vis-inner {
-  background: #fff;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,.3);
-}
-
-/* ── CHAT UI ───────────────────────────────────────────────────── */
-.chat-ui {
-  padding: 18px;
-}
-
-.chat-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid #f0f0f0;
-  margin-bottom: 18px;
-}
-
-.chat-ava {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%);
-  flex-shrink: 0;
-}
-
-.chat-hname { font-size: 12px; font-weight: 700; color: #111; }
-.chat-hstat { font-size: 10px; color: #22C55E; margin-top: 1px; }
-
-.chat-msgs {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.bubble {
-  max-width: 82%;
-  padding: 9px 13px;
-  border-radius: 14px;
-  font-size: 12px;
-  line-height: 1.5;
-}
-
-.bubble-in {
-  background: #f4f4f5;
-  color: #111;
-  align-self: flex-start;
-  border-bottom-left-radius: 4px;
-}
-
-.bubble-out {
-  background: #7C3AED;
-  color: #fff;
-  align-self: flex-end;
-  border-bottom-right-radius: 4px;
-}
-
-.chat-t {
-  font-size: 9px;
-  color: #c0c0c0;
-  margin-top: 3px;
-}
-.chat-t.right { text-align: right; }
-
-/* ── WORKFLOW UI ───────────────────────────────────────────────── */
-.flow-ui {
-  padding: 18px;
-}
-
-.flow-ui-hdr {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  color: #aaa;
-  margin-bottom: 14px;
-}
-
-.f-step {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  background: #fff;
-  border: 1px solid #efefef;
-  border-radius: 10px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.04);
-}
-
-.f-num {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: 700;
-  color: #fff;
-}
-
-.f-text { flex: 1; }
-.f-name { font-size: 12px; font-weight: 600; color: #111; }
-.f-desc { font-size: 10px; color: #999; }
-
-.f-badge {
-  font-size: 10px;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 999px;
-}
-.f-done    { background: #DCFCE7; color: #16A34A; }
-.f-running { background: #FEF3C7; color: #D97706; }
-.f-wait    { background: #F1F5F9; color: #94A3B8; }
-
-.f-line {
-  height: 10px;
-  width: 1px;
-  background: #e4e4e4;
-  margin: 0 0 0 22px;
-}
-
-/* ── WHATSAPP UI ───────────────────────────────────────────────── */
-.wa-ui { background: #EAE6DF; }
-
-.wa-hdr {
-  background: #075E54;
-  padding: 11px 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.wa-ava {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #25D366;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.wa-hname { font-size: 13px; font-weight: 600; color: #fff; }
-.wa-hstat { font-size: 10px; color: rgba(255,255,255,.65); }
-
-.wa-msgs {
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.wa-b {
-  max-width: 84%;
-  padding: 7px 11px;
-  border-radius: 8px;
-  font-size: 12px;
-  line-height: 1.45;
-}
-
-.wa-in {
-  background: #fff;
-  color: #111;
-  align-self: flex-start;
-  border-top-left-radius: 2px;
-}
-
-.wa-out {
-  background: #DCF8C6;
-  color: #111;
-  align-self: flex-end;
-  border-top-right-radius: 2px;
-}
-
-.wa-t { font-size: 9px; color: #aaa; margin-top: 2px; text-align: right; }
-
-/* ── CREAM SECTIONS ────────────────────────────────────────────── */
-.cream-section {
-  max-width: var(--mw);
-  margin: 0 auto;
-  padding: 80px 48px;
-}
-
-/* Use cases */
-.uc-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-
-.uc-h2 {
-  font-family: var(--serif);
-  font-size: clamp(30px, 3.5vw, 42px);
-  font-weight: 400;
-  line-height: 1.15;
-  color: var(--black);
-  margin-bottom: 16px;
-}
-
-.uc-body {
-  font-size: 15px;
-  color: #666;
-  line-height: 1.65;
-  margin-bottom: 36px;
-}
-
-/* Mini diagram */
-.mini-diag {
-  background: #fff;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 2px 14px rgba(0,0,0,.06);
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.md-center {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--black);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.md-center svg { width: 22px; height: 22px; }
-
-.md-nodes {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.md-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.md-line {
-  width: 32px;
-  height: 0;
-  border-top: 1.5px dashed #ccc;
-}
-
-.md-node {
-  background: #f7f7f7;
-  border: 1px solid #e8e8e8;
-  border-radius: 8px;
-  padding: 6px 12px;
-  font-size: 11px;
-  font-weight: 600;
-  color: #444;
-}
-
-/* Pill list */
-.pill-list {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-}
-
-.pill-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 13px 18px;
-  background: #fff;
-  border: 1px solid #e8e8e8;
-  border-radius: 12px;
-  font-size: 13px;
-  font-weight: 500;
-  color: #333;
-  cursor: pointer;
-  transition: all .18s;
-}
-.pill-item:hover {
-  border-color: #c8c8c8;
-  transform: translateX(4px);
-  box-shadow: 0 2px 10px rgba(0,0,0,.06);
-}
-
-.pill-ico {
-  width: 26px;
-  height: 26px;
-  border-radius: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.pill-ico svg { width: 13px; height: 13px; }
-
-/* ── WHY SECTION ───────────────────────────────────────────────── */
-.why-h2 {
-  font-family: var(--serif);
-  font-size: clamp(34px, 4vw, 52px);
-  font-weight: 400;
-  line-height: 1.1;
-  text-align: center;
-  color: var(--black);
-  margin-bottom: 48px;
-  letter-spacing: -0.02em;
-}
-
-.why-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.why-card {
-  background: #fff;
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 2px 16px rgba(0,0,0,.06);
-  transition: all .2s;
-}
-.why-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 36px rgba(0,0,0,.1);
-}
-
-.why-ctitle {
-  font-size: 13px;
-  font-weight: 700;
-  color: #555;
-  margin-bottom: 16px;
-  text-transform: uppercase;
-  letter-spacing: .04em;
-}
-
-.why-stat {
-  font-family: var(--serif);
-  font-size: 58px;
-  font-weight: 400;
-  color: var(--black);
-  line-height: 1;
-  margin-bottom: 14px;
-  letter-spacing: -0.02em;
-}
-
-.why-desc {
-  font-size: 14px;
-  color: #777;
-  line-height: 1.6;
-}
-
-/* ── TESTIMONIALS ──────────────────────────────────────────────── */
-.test-h2 {
-  font-family: var(--serif);
-  font-size: clamp(28px, 3.5vw, 42px);
-  font-weight: 400;
-  color: var(--black);
-  margin-bottom: 32px;
-}
-
-.test-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-
-.test-card {
-  border-radius: 20px;
-  padding: 36px;
-  display: flex;
-  flex-direction: column;
-  min-height: 380px;
-}
-
-.test-company {
-  font-size: 20px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 18px;
-  line-height: 1.2;
-}
-
-.test-quote {
-  font-size: 14px;
-  font-style: italic;
-  color: rgba(255,255,255,.88);
-  line-height: 1.7;
-  flex: 1;
-}
-
-.test-footer {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding-top: 20px;
-  margin-top: 24px;
-  border-top: 1px solid rgba(255,255,255,.18);
-}
-
-.test-ava {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.28);
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 700;
-  color: #fff;
-}
-
-.test-name { font-size: 13px; font-weight: 700; color: #fff; }
-.test-title { font-size: 11px; color: rgba(255,255,255,.6); margin-top: 1px; }
-
-/* ── INDUSTRIES ────────────────────────────────────────────────── */
-.ind-section {
-  max-width: var(--mw);
-  margin: 0 auto;
-  padding: 80px 48px;
-  text-align: center;
-}
-
-.ind-h2 {
-  font-family: var(--serif);
-  font-size: clamp(32px, 4vw, 52px);
-  font-weight: 400;
-  color: var(--black);
-  margin-bottom: 40px;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-.ind-pills {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-.ind-pill {
-  padding: 11px 22px;
-  background: #fff;
-  border: 1.5px solid #e0e0e0;
-  border-radius: 999px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #444;
-  transition: all .18s;
-  cursor: default;
-}
-.ind-pill:hover {
-  border-color: #bbb;
-  box-shadow: 0 2px 8px rgba(0,0,0,.06);
-}
-
-/* ── FOOTER CTA CARD ───────────────────────────────────────────── */
-.footer-cta {
-  background: var(--purple);
-  border-radius: var(--r24);
-  padding: 100px 48px;
-  margin: 0 auto var(--gap);
-  max-width: var(--mw);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.footer-cta-noise {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: .6;
-}
-
-.footer-cta-inner { position: relative; z-index: 1; }
-
-.fca-h2 {
-  font-family: var(--serif);
-  font-size: clamp(36px, 5vw, 60px);
-  font-weight: 400;
-  color: #fff;
-  line-height: 1.05;
-  margin-bottom: 16px;
-  letter-spacing: -0.025em;
-}
-
-.fca-sub {
-  font-size: 17px;
-  color: rgba(255,255,255,.6);
-  margin-bottom: 40px;
-}
-
-.fca-btns {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-/* ── FOOTER BAR ────────────────────────────────────────────────── */
-.foot {
-  padding: 24px 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.foot-copy { font-size: 13px; color: #999; }
-.foot-mail { font-size: 13px; color: #888; transition: color .15s; }
-.foot-mail:hover { color: #444; }
-
-/* ── MOBILE NAV ────────────────────────────────────────────────── */
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  padding: 4px;
-  cursor: pointer;
-  flex-direction: column;
-  gap: 5px;
-}
-.hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--black);
-  border-radius: 2px;
-  transition: all .2s;
-}
-
-.mobile-menu {
-  display: none;
-  position: fixed;
-  top: 64px;
-  left: 0;
-  right: 0;
-  background: #fff;
-  border-bottom: 1px solid #e8e8e8;
-  padding: 20px 24px;
-  z-index: 99;
-  flex-direction: column;
-  gap: 16px;
-}
-.mobile-menu.open { display: flex; }
-.mobile-menu a {
-  font-size: 15px;
-  font-weight: 500;
-  color: #333;
-  padding: 6px 0;
-}
-
-/* ── RESPONSIVE ────────────────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .sc { padding: 56px 40px; }
-  .feat-grid { gap: 48px; }
-}
-
-@media (max-width: 900px) {
-  .nav { padding: 0 24px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-
-  .hero { padding: 72px 24px 0; }
-  .hero-ctas { flex-wrap: wrap; }
-
-  .sc { padding: 48px 28px; }
-  .feat-grid { grid-template-columns: 1fr; gap: 36px; }
-  /* Ensure visual always comes after text on mobile */
-  .feat-vis-first .feat-grid > .vis-wrap { order: 2; }
-  .feat-vis-first .feat-grid > .feat-text { order: 1; }
-
-  .uc-grid { grid-template-columns: 1fr; gap: 40px; }
-  .why-cards { grid-template-columns: 1fr; gap: 14px; }
-  .test-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-
-  .cream-section,
-  .ind-section { padding: 56px 28px; }
-  .foot { padding: 20px 24px; }
-  .footer-cta { padding: 72px 28px; }
-  .fca-btns { flex-direction: column; align-items: center; }
-}
-
-@media (max-width: 580px) {
-  .test-grid { grid-template-columns: 1fr; }
-  .why-stat { font-size: 48px; }
-}
-
-/* ── SCROLL REVEAL ─────────────────────────────────────────────── */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .6s ease, transform .6s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0a;
+  --bg2:#111111;
+  --bg3:#161616;
+  --bg4:#1c1c1c;
+  --border:#2a2a2a;
+  --border2:#333;
+  --text:#f0f0f0;
+  --text2:#a0a0a0;
+  --text3:#666;
+  --accent:#e8ff47;
+  --accent2:#c8e820;
+  --white:#ffffff;
+  --radius:8px;
+  --radius2:12px;
+  --radius3:16px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;padding:0 32px}
+.nav-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;align-items:center;gap:0}
+.nav-logo{font-size:19px;font-weight:700;color:var(--white);letter-spacing:-0.5px;text-decoration:none;margin-right:36px}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:4px;flex:1}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:14px;font-weight:400;padding:6px 12px;border-radius:6px;transition:color .15s,background .15s}
+.nav-links a:hover{color:var(--text);background:var(--bg3)}
+.nav-links .dropdown{position:relative;display:flex;align-items:center}
+.nav-links .dropdown>a::after{content:'▾';margin-left:4px;font-size:10px}
+.nav-right{display:flex;align-items:center;gap:10px}
+.btn-ghost{color:var(--text2);background:none;border:1px solid var(--border2);padding:7px 16px;border-radius:var(--radius);font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;transition:all .15s}
+.btn-ghost:hover{color:var(--text);border-color:var(--text3)}
+.btn-accent{background:var(--accent);color:#000;border:none;padding:7px 16px;border-radius:var(--radius);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .15s}
+.btn-accent:hover{background:var(--accent2)}
+
+/* HERO */
+.hero{padding:140px 32px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(232,255,71,0.06) 0%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border2);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--text2);margin-bottom:28px}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block}
+.hero h1{font-size:clamp(36px,5vw,62px);font-weight:700;line-height:1.1;letter-spacing:-1.5px;max-width:860px;margin:0 auto 24px;color:var(--white)}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-sub{font-size:18px;color:var(--text2);max-width:560px;margin:0 auto 36px;line-height:1.7;font-weight:400}
+.hero-ctas{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:56px}
+.btn-primary{background:var(--white);color:#000;border:none;padding:12px 24px;border-radius:var(--radius);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s}
+.btn-primary:hover{background:#e8e8e8}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border2);padding:12px 24px;border-radius:var(--radius);font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s}
+.btn-secondary:hover{border-color:var(--text2);background:var(--bg3)}
+.hero-integrations{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--text3)}
+.integration-icon{width:28px;height:28px;border-radius:6px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px}
+.integration-count{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:12px;color:var(--text2)}
+
+/* LOGOS MARQUEE */
+.logos-section{padding:32px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;position:relative}
+.logos-section::before,.logos-section::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2}
+.logos-section::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
+.logos-section::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
+.logos-track{display:flex;gap:0;animation:marquee 30s linear infinite;width:max-content}
+.logos-track:hover{animation-play-state:paused}
+.logo-item{display:flex;align-items:center;padding:0 40px;opacity:.45;transition:opacity .2s;white-space:nowrap;font-size:13px;font-weight:600;color:var(--text);letter-spacing:0.5px;text-transform:uppercase}
+.logo-item:hover{opacity:.8}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SOCIAL PROOF CARDS */
+.proof-section{padding:64px 32px;max-width:1200px;margin:0 auto}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.proof-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius2);padding:24px;display:flex;flex-direction:column;gap:16px;transition:border-color .2s}
+.proof-card:hover{border-color:var(--border2)}
+.proof-client{font-size:13px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.5px}
+.proof-headline{font-size:16px;font-weight:500;color:var(--text);line-height:1.4}
+.proof-stats{display:flex;flex-direction:column;gap:6px;padding-top:8px;border-top:1px solid var(--border)}
+.proof-stat{font-size:13px;color:var(--text2);display:flex;align-items:center;gap:8px}
+.proof-stat::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.proof-stat strong{color:var(--text)}
+.proof-link{font-size:13px;color:var(--accent);text-decoration:none;font-weight:500;margin-top:auto}
+.proof-link:hover{text-decoration:underline}
+
+/* SECTION HEADERS */
+.section{padding:80px 32px;max-width:1200px;margin:0 auto}
+.section-label{font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
+.section-title{font-size:clamp(28px,3.5vw,44px);font-weight:700;letter-spacing:-1px;line-height:1.15;color:var(--white);max-width:700px;margin-bottom:16px}
+.section-sub{font-size:16px;color:var(--text2);max-width:560px;line-height:1.7}
+
+/* ROI SECTION */
+.roi-section{padding:80px 0;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.roi-inner{max-width:1200px;margin:0 auto;padding:0 32px}
+.roi-levels{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:var(--radius2);overflow:hidden;margin-top:48px}
+.roi-level{padding:28px 24px;border-right:1px solid var(--border);position:relative}
+.roi-level:last-child{border-right:none}
+.roi-level.active{background:var(--bg3)}
+.roi-level-tag{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.roi-level-num{font-size:28px;font-weight:800;color:var(--white);margin-bottom:4px;letter-spacing:-1px}
+.roi-level-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:8px}
+.roi-level-desc{font-size:12px;color:var(--text3);line-height:1.5}
+.roi-level-badge{display:inline-block;font-size:10px;padding:2px 8px;border-radius:4px;margin-top:10px;font-weight:600}
+.badge-gray{background:var(--bg4);color:var(--text3);border:1px solid var(--border)}
+.badge-accent{background:rgba(232,255,71,0.12);color:var(--accent);border:1px solid rgba(232,255,71,0.3)}
+.roi-example{margin-top:40px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius2);padding:32px;overflow-x:auto}
+.roi-example-title{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px}
+.roi-example-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.roi-step{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.roi-step-tag{font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.roi-step-item{font-size:12px;color:var(--text2);display:flex;align-items:flex-start;gap:6px;margin-bottom:6px;line-height:1.4}
+.roi-step-item::before{content:'→';color:var(--accent);flex-shrink:0;font-size:11px;margin-top:1px}
+
+/* BUILD SECTION */
+.build-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+.build-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius2);padding:28px;transition:border-color .2s}
+.build-card:hover{border-color:var(--border2)}
+.build-card-tag{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.build-card-title{font-size:18px;font-weight:600;color:var(--white);margin-bottom:8px;letter-spacing:-0.3px}
+.build-card-desc{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:20px}
+.build-card-audience{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text3);background:var(--bg3);padding:4px 10px;border-radius:4px;border:1px solid var(--border)}
+.build-card-terminal{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px;font-family:monospace;font-size:12px;color:var(--text2);margin-top:16px;line-height:1.8}
+.build-card-terminal .cmd{color:var(--accent)}
+.build-card-terminal .out{color:var(--text3)}
+
+/* EVALS */
+.eval-section{padding:80px 0;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);border-top:1px solid var(--border)}
+.eval-inner{max-width:1200px;margin:0 auto;padding:0 32px}
+.eval-demo{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius2);padding:28px;margin-top:40px;max-width:800px}
+.eval-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:gap}
+.eval-title{font-size:14px;font-weight:600;color:var(--text)}
+.eval-subtitle{font-size:12px;color:var(--text3)}
+.eval-bar-wrap{margin-bottom:12px}
+.eval-bar-label{display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-bottom:5px}
+.eval-bar{height:5px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.eval-bar-fill{height:100%;border-radius:3px;background:var(--accent);transition:width .8s ease}
+.eval-results{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
+.eval-result-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:14px;display:flex;align-items:center;justify-content:space-between}
+.eval-result-name{font-size:13px;color:var(--text2)}
+.eval-result-status{font-size:11px;font-weight:600;color:#22c55e;display:flex;align-items:center;gap:4px}
+.eval-result-status::before{content:'✓';font-size:10px}
+
+/* OVERSIGHT */
+.oversight-section{padding:80px 0;border-top:1px solid var(--border)}
+.oversight-inner{max-width:1200px;margin:0 auto;padding:0 32px}
+.task-table{margin-top:40px;border:1px solid var(--border);border-radius:var(--radius2);overflow:hidden}
+.task-table-header{background:var(--bg2);display:grid;grid-template-columns:1fr auto auto auto;gap:16px;padding:12px 20px;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border)}
+.task-row{display:grid;grid-template-columns:1fr auto auto auto;gap:16px;padding:14px 20px;border-bottom:1px solid var(--border);align-items:center;font-size:13px;transition:background .15s}
+.task-row:last-child{border-bottom:none}
+.task-row:hover{background:var(--bg2)}
+.task-time{font-size:12px;color:var(--text3);white-space:nowrap}
+.task-name{color:var(--text);display:flex;flex-direction:column;gap:3px}
+.task-agent{font-size:11px;color:var(--text3)}
+.task-cost{font-size:12px;color:var(--text2);text-align:right;white-space:nowrap}
+.task-saved{font-size:12px;text-align:right;white-space:nowrap}
+.task-saved.pos{color:#22c55e}
+.task-saved.neg{color:var(--text3)}
+.status-pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:4px;white-space:nowrap}
+.status-complete{background:rgba(34,197,94,0.1);color:#22c55e;border:1px solid rgba(34,197,94,0.2)}
+.status-escalated{background:rgba(251,191,36,0.1);color:#fbbf24;border:1px solid rgba(251,191,36,0.2)}
+.status-error{background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.2)}
+
+/* SECURITY */
+.security-section{padding:80px 0;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.security-inner{max-width:1200px;margin:0 auto;padding:0 32px}
+.security-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.security-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius2);padding:24px;transition:border-color .2s}
+.security-card:hover{border-color:var(--border2)}
+.security-icon{width:36px;height:36px;border-radius:8px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:12px}
+.security-card-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px}
+.security-card-desc{font-size:13px;color:var(--text2);line-height:1.6}
+
+/* MODEL SECTION */
+.model-section{padding:80px 0;border-top:1px solid var(--border)}
+.model-inner{max-width:1200px;margin:0 auto;padding:0 32px}
+.model-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius2);padding:28px;margin-top:40px;max-width:680px}
+.model-card-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.agent-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;flex-shrink:0}
+.model-agent-info{flex:1}
+.model-agent-name{font-size:14px;font-weight:600;color:var(--text)}
+.model-agent-status{font-size:12px;color:#22c55e;display:flex;align-items:center;gap:4px}
+.model-agent-status::before{content:'';width:5px;height:5px;border-radius:50%;background:#22c55e;display:inline-block}
+.model-table{width:100%;border-collapse:collapse}
+.model-table th{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;padding:8px 0;text-align:left;border-bottom:1px solid var(--border)}
+.model-table th:not(:first-child){text-align:right}
+.model-table td{padding:10px 0;font-size:13px;color:var(--text2);border-bottom:1px solid var(--border)}
+.model-table td:not(:first-child){text-align:right}
+.model-table tr:last-child td{border-bottom:none}
+.model-table tr.recommended td{color:var(--text)}
+.model-rec-badge{background:rgba(232,255,71,0.1);color:var(--accent);font-size:10px;font-weight:600;padding:2px 7px;border-radius:3px;border:1px solid rgba(232,255,71,.25);margin-left:6px}
+.model-provider{display:flex;align-items:center;gap:6px}
+.model-dot{width:16px;height:16px;border-radius:50%;background:var(--bg3);border:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px}
+
+/* INTEGRATIONS */
+.integrations-section{padding:80px 0;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.integrations-inner{max-width:1200px;margin:0 auto;padding:0 32px}
+.integrations-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+.integration-chip{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:8px 14px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2);transition:all .15s;cursor:default}
+.integration-chip:hover{border-color:var(--border2);color:var(--text)}
+.chip-icon{width:20px;height:20px;border-radius:4px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+
+/* COMPARE */
+.compare-section{padding:80px 0;border-top:1px solid var(--border)}
+.compare-inner{max-width:1200px;margin:0 auto;padding:0 32px}
+.compare-table{margin-top:48px;border:1px solid var(--border);border-radius:var(--radius2);overflow:hidden}
+.compare-head{display:grid;grid-template-columns:2fr 1fr 1fr;background:var(--bg2);border-bottom:1px solid var(--border)}
+.compare-head-cell{padding:16px 20px;font-size:13px;font-weight:600;color:var(--text)}
+.compare-head-cell.highlight{background:rgba(232,255,71,0.05);border-left:1px solid rgba(232,255,71,.2)}
+.compare-head-cell.highlight .ch-name{color:var(--accent)}
+.compare-row{display:grid;grid-template-columns:2fr 1fr 1fr;border-bottom:1px solid var(--border)}
+.compare-row:last-child{border-bottom:none}
+.compare-row:hover{background:var(--bg2)}
+.compare-cell{padding:16px 20px;font-size:13px;color:var(--text2);line-height:1.5}
+.compare-cell.highlight{background:rgba(232,255,71,0.03);border-left:1px solid rgba(232,255,71,.15)}
+.compare-cell.good{color:var(--text)}
+.compare-cell.question{color:var(--text);font-weight:500}
+.check{color:#22c55e;font-size:15px}
+.cross{color:var(--text3);font-size:15px}
+
+/* PRESS */
+.press-section{padding:64px 32px;max-width:1200px;margin:0 auto;border-top:1px solid var(--border)}
+.press-logos{display:flex;align-items:center;gap:32px;flex-wrap:wrap;justify-content:center;margin-bottom:40px}
+.press-logo{font-size:18px;font-weight:800;color:var(--text3);letter-spacing:-0.5px;text-transform:uppercase;text-decoration:none;transition:color .15s}
+.press-logo:hover{color:var(--text2)}
+.awards-row{display:flex;align-items:stretch;gap:16px;flex-wrap:wrap;justify-content:center}
+.award-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius2);padding:20px 24px;text-align:center;flex:1;min-width:180px;max-width:240px}
+.award-org{font-size:14px;font-weight:700;color:var(--text2);margin-bottom:6px}
+.award-label{font-size:12px;color:var(--text3);line-height:1.4}
+
+/* CTA SECTION */
+.cta-section{padding:100px 32px;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--border)}
+.cta-section::before{content:'';position:absolute;bottom:-200px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(232,255,71,0.07) 0%,transparent 70%);pointer-events:none}
+.cta-title{font-size:clamp(28px,4vw,50px);font-weight:700;letter-spacing:-1px;color:var(--white);max-width:680px;margin:0 auto 16px;line-height:1.15}
+.cta-sub{font-size:17px;color:var(--text2);margin-bottom:36px}
+.cta-ctas{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:64px 32px 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr repeat(4,1fr);gap:40px;margin-bottom:48px}
+.footer-brand .logo{font-size:18px;font-weight:700;color:var(--white);margin-bottom:8px;letter-spacing:-0.5px}
+.footer-brand .logo span{color:var(--accent)}
+.footer-brand .tagline{font-size:13px;color:var(--text3);margin-bottom:20px;line-height:1.5}
+.footer-social{display:flex;gap:10px}
+.social-btn{width:32px;height:32px;border-radius:var(--radius);background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text2);text-decoration:none;transition:all .15s}
+.social-btn:hover{border-color:var(--border2);color:var(--text)}
+.footer-col h5{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.footer-col a{display:block;font-size:13px;color:var(--text2);text-decoration:none;margin-bottom:10px;transition:color .15s}
+.footer-col a:hover{color:var(--text)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:12px;color:var(--text3)}
+.footer-legal{display:flex;gap:20px}
+.footer-legal a{font-size:12px;color:var(--text3);text-decoration:none}
+.footer-legal a:hover{color:var(--text2)}
+
+/* TESTIMONIALS */
+.testimonials-section{padding:80px 0;background:var(--bg2);border-top:1px solid var(--border)}
+.testimonials-inner{max-width:1200px;margin:0 auto;padding:0 32px}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.testimonial-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius2);padding:28px;display:flex;flex-direction:column;gap:16px;transition:border-color .2s}
+.testimonial-card:hover{border-color:var(--border2)}
+.testimonial-client{font-size:12px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
+.testimonial-quote{font-size:15px;color:var(--text);line-height:1.65;font-style:italic}
+.testimonial-author{font-size:13px;color:var(--text2)}
+.testimonial-author strong{color:var(--text);font-style:normal;display:block}
+
+/* DIVIDERS */
+.full-border{border-top:1px solid var(--border)}
+
+/* UTIL */
+.center{text-align:center}
+.mt4{margin-top:4px}
+.mt8{margin-top:8px}
+.mt16{margin-top:16px}
+.mt24{margin-top:24px}
+.mt32{margin-top:32px}
+.mt48{margin-top:48px}
+.text2{color:var(--text2)}
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════
-     NAVIGATION
-═══════════════════════════════════════════ -->
-<nav class="nav">
-  <a href="#" class="nav-logo">Theorrem</a>
-  <ul class="nav-links">
-    <li><a href="#">Services</a></li>
-    <li><a href="#">Work</a></li>
-    <li><a href="#">Process</a></li>
-    <li><a href="#">Industries</a></li>
-  </ul>
-  <div class="nav-right">
-    <a href="mailto:hello@theorrem.com" class="nav-email">hello@theorrem.com</a>
-    <a href="mailto:hello@theorrem.com" class="btn btn-black">Start a project &rarr;</a>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">theorr<span>em</span></a>
+    <div class="nav-links">
+      <div class="dropdown"><a href="#">Platform</a></div>
+      <div class="dropdown"><a href="#">Agents</a></div>
+      <div class="dropdown"><a href="#">Solutions</a></div>
+      <a href="#">Enterprise</a>
+      <a href="#">Pricing</a>
+    </div>
+    <div class="nav-right">
+      <a href="#" class="btn-ghost">Sign in</a>
+      <a href="#" class="btn-accent">Book a demo</a>
+    </div>
   </div>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
 
-<!-- Mobile menu -->
-<div class="mobile-menu" id="mobile-menu">
-  <a href="#">Services</a>
-  <a href="#">Work</a>
-  <a href="#">Process</a>
-  <a href="#">Industries</a>
-  <a href="mailto:hello@theorrem.com">hello@theorrem.com</a>
-  <a href="mailto:hello@theorrem.com" class="btn btn-black" style="width:fit-content;">Start a project &rarr;</a>
-</div>
-
-<!-- ═══════════════════════════════════════════
-     PAGE
-═══════════════════════════════════════════ -->
-<main class="page">
-
-<!-- ── HERO ──────────────────────────────────────────────────── -->
+<!-- HERO -->
 <section class="hero">
-
-  <!-- Noise SVG texture -->
-  <svg class="hero-noise" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <filter id="hero-n">
-      <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="4" stitchTiles="stitch"/>
-      <feColorMatrix type="saturate" values="0"/>
-    </filter>
-    <rect width="100%" height="100%" filter="url(#hero-n)" opacity="0.035"/>
-  </svg>
-
-  <div class="hero-inner">
-    <h1>Automate the work.<br>Keep the people.</h1>
-    <p class="hero-sub">Theorrem designs and deploys custom AI systems for businesses.<br>No templates. No consultants. Working software, fast.</p>
-    <div class="hero-ctas">
-      <a href="mailto:hello@theorrem.com" class="btn btn-black btn-lg">Start a project &rarr;</a>
-      <a href="#work" class="btn btn-outline-dark btn-lg">See what we build</a>
-    </div>
-
-    <!-- Workflow nodes -->
-    <div class="workflow">
-      <div class="w-node">
-        <div class="w-icon ic-teal">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
-          </svg>
-        </div>
-        <span class="w-label">Inbound Inquiry</span>
-        <span class="w-tag">Source</span>
-      </div>
-      <div class="w-arrow"></div>
-      <div class="w-node">
-        <div class="w-icon ic-purple">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-          </svg>
-        </div>
-        <span class="w-label">AI Engine</span>
-        <span class="w-tag">Process</span>
-      </div>
-      <div class="w-arrow"></div>
-      <div class="w-node">
-        <div class="w-icon ic-blue">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-          </svg>
-        </div>
-        <span class="w-label">CRM + WhatsApp</span>
-        <span class="w-tag">Route</span>
-      </div>
-      <div class="w-arrow"></div>
-      <div class="w-node">
-        <div class="w-icon ic-green">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-        </div>
-        <span class="w-label">Done</span>
-        <span class="w-tag">Delivered</span>
-      </div>
-    </div>
+  <div class="hero-badge">The AI Automation Platform for Enterprise</div>
+  <h1>AI agents that drive <em>real business impact</em>, built for your team</h1>
+  <p class="hero-sub">Where your domain experts and AI agents achieve results together — safely, at enterprise scale. No templates. No consultants. Just outcomes.</p>
+  <div class="hero-ctas">
+    <a href="#" class="btn-primary">Talk to sales</a>
+    <a href="#" class="btn-secondary">See the platform →</a>
   </div>
-
-  <!-- Marquee -->
-  <div class="marquee-wrap">
-    <div class="marquee-track" aria-hidden="true">
-      <span class="marquee-item">BUILDING AI SYSTEMS FOR REAL ESTATE &nbsp;&middot;&nbsp; E-COMMERCE &nbsp;&middot;&nbsp; LEGAL &nbsp;&middot;&nbsp; HR &nbsp;&middot;&nbsp; FINANCE</span>
-      <span class="marquee-item">BUILDING AI SYSTEMS FOR REAL ESTATE &nbsp;&middot;&nbsp; E-COMMERCE &nbsp;&middot;&nbsp; LEGAL &nbsp;&middot;&nbsp; HR &nbsp;&middot;&nbsp; FINANCE</span>
-      <span class="marquee-item">BUILDING AI SYSTEMS FOR REAL ESTATE &nbsp;&middot;&nbsp; E-COMMERCE &nbsp;&middot;&nbsp; LEGAL &nbsp;&middot;&nbsp; HR &nbsp;&middot;&nbsp; FINANCE</span>
-      <span class="marquee-item">BUILDING AI SYSTEMS FOR REAL ESTATE &nbsp;&middot;&nbsp; E-COMMERCE &nbsp;&middot;&nbsp; LEGAL &nbsp;&middot;&nbsp; HR &nbsp;&middot;&nbsp; FINANCE</span>
-      <span class="marquee-item">BUILDING AI SYSTEMS FOR REAL ESTATE &nbsp;&middot;&nbsp; E-COMMERCE &nbsp;&middot;&nbsp; LEGAL &nbsp;&middot;&nbsp; HR &nbsp;&middot;&nbsp; FINANCE</span>
-      <span class="marquee-item">BUILDING AI SYSTEMS FOR REAL ESTATE &nbsp;&middot;&nbsp; E-COMMERCE &nbsp;&middot;&nbsp; LEGAL &nbsp;&middot;&nbsp; HR &nbsp;&middot;&nbsp; FINANCE</span>
-    </div>
+  <div class="hero-integrations">
+    <div class="integration-icon">💼</div>
+    <div class="integration-icon">📊</div>
+    <div class="integration-icon">💬</div>
+    <div class="integration-icon">📧</div>
+    <div class="integration-icon">🔗</div>
+    <div class="integration-icon">📱</div>
+    <span class="integration-count">100+ integrations</span>
   </div>
 </section>
 
-<!-- ── FEATURE 1: CONVERSATIONAL AI (PURPLE) ─────────────────── -->
-<div class="sc sc-purple reveal">
-  <div class="feat-grid">
-
-    <!-- Visual: Left -->
-    <div class="vis-wrap">
-      <div class="vis-inner">
-        <div class="chat-ui">
-          <div class="chat-header">
-            <div class="chat-ava"></div>
-            <div>
-              <div class="chat-hname">Theorrem AI</div>
-              <div class="chat-hstat">&#9679; Online now</div>
-            </div>
-          </div>
-          <div class="chat-msgs">
-            <div>
-              <div class="bubble bubble-in">Hi — I'm interested in the 3-bed on Oak Street. Is it still available?</div>
-              <div class="chat-t">9:41 AM</div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:flex-end">
-              <div class="bubble bubble-out">Yes, Oak Street is available! I can check viewing slots right now. What days work for you?</div>
-              <div class="chat-t right">9:41 AM</div>
-            </div>
-            <div>
-              <div class="bubble bubble-in">Tomorrow afternoon if possible.</div>
-              <div class="chat-t">9:42 AM</div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:flex-end">
-              <div class="bubble bubble-out">Confirmed — tomorrow at 2:00 PM. I've notified the agent and sent you a calendar invite.</div>
-              <div class="chat-t right">9:42 AM</div>
-            </div>
-            <div>
-              <div class="bubble bubble-in">That was fast. Thank you!</div>
-              <div class="chat-t">9:43 AM</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Text: Right -->
-    <div class="feat-text">
-      <div class="feat-label">Conversational AI</div>
-      <h2 class="feat-h2">Handle every inquiry, across every channel</h2>
-      <p class="feat-body">Deploy AI that understands context, remembers history, and responds instantly — whether it's email, WhatsApp, or web chat.</p>
-      <ul class="feat-bullets">
-        <li><span><strong>Multi-channel</strong> &mdash; One AI, all your platforms.</span></li>
-        <li><span><strong>Context-aware</strong> &mdash; Remembers every conversation.</span></li>
-        <li><span><strong>Always on</strong> &mdash; Zero downtime, 24/7.</span></li>
-      </ul>
-      <div class="stat-block">
-        <div class="stat-num">400+</div>
-        <div class="stat-desc">Daily inquiries handled without a human</div>
-      </div>
-    </div>
-
+<!-- LOGOS MARQUEE -->
+<div class="logos-section">
+  <div class="logos-track" id="marqueeTrack">
+    <div class="logo-item">Zameen.com</div>
+    <div class="logo-item">Emirates NBD</div>
+    <div class="logo-item">Aryana Health</div>
+    <div class="logo-item">Engel & Völkers</div>
+    <div class="logo-item">Bayut</div>
+    <div class="logo-item">Techlogix</div>
+    <div class="logo-item">Systems Ltd</div>
+    <div class="logo-item">Gaditek</div>
+    <div class="logo-item">Netsol</div>
+    <div class="logo-item">Foree</div>
+    <div class="logo-item">Zones</div>
+    <div class="logo-item">Waada</div>
+    <!-- Duplicate for infinite scroll -->
+    <div class="logo-item">Zameen.com</div>
+    <div class="logo-item">Emirates NBD</div>
+    <div class="logo-item">Aryana Health</div>
+    <div class="logo-item">Engel & Völkers</div>
+    <div class="logo-item">Bayut</div>
+    <div class="logo-item">Techlogix</div>
+    <div class="logo-item">Systems Ltd</div>
+    <div class="logo-item">Gaditek</div>
+    <div class="logo-item">Netsol</div>
+    <div class="logo-item">Foree</div>
+    <div class="logo-item">Zones</div>
+    <div class="logo-item">Waada</div>
   </div>
 </div>
 
-<!-- ── FEATURE 2: WORKFLOW AUTOMATION (GREEN) ────────────────── -->
-<div class="sc sc-green reveal">
-  <div class="feat-grid">
-
-    <!-- Text: Left -->
-    <div class="feat-text">
-      <div class="feat-label">Workflow Automation</div>
-      <h2 class="feat-h2">Automate the repetitive. Free your team for what matters.</h2>
-      <p class="feat-body">Connect your tools, trigger actions automatically, and eliminate the manual steps that slow your team down.</p>
-      <ul class="feat-bullets">
-        <li><span><strong>Trigger-based</strong> &mdash; Event-driven from any input.</span></li>
-        <li><span><strong>Multi-step</strong> &mdash; Complex flows, zero code.</span></li>
-        <li><span><strong>Zero downtime</strong> &mdash; Runs 24/7 without babysitting.</span></li>
-      </ul>
-      <div class="stat-block">
-        <div class="stat-num">80%</div>
-        <div class="stat-desc">Reduction in manual processing time</div>
-      </div>
-    </div>
-
-    <!-- Visual: Right -->
-    <div class="vis-wrap">
-      <div class="vis-inner">
-        <div class="flow-ui">
-          <div class="flow-ui-hdr">Automation Flow</div>
-
-          <div class="f-step">
-            <div class="f-num" style="background:#2563EB">1</div>
-            <div class="f-text">
-              <div class="f-name">Form submitted</div>
-              <div class="f-desc">Trigger: New lead captured</div>
-            </div>
-            <span class="f-badge f-done">Done</span>
-          </div>
-          <div class="f-line"></div>
-
-          <div class="f-step">
-            <div class="f-num" style="background:#7C3AED">2</div>
-            <div class="f-text">
-              <div class="f-name">AI qualification</div>
-              <div class="f-desc">Score and categorize lead</div>
-            </div>
-            <span class="f-badge f-done">Done</span>
-          </div>
-          <div class="f-line"></div>
-
-          <div class="f-step">
-            <div class="f-num" style="background:#D97706">3</div>
-            <div class="f-text">
-              <div class="f-name">CRM sync</div>
-              <div class="f-desc">Push to HubSpot / Salesforce</div>
-            </div>
-            <span class="f-badge f-running">Running</span>
-          </div>
-          <div class="f-line"></div>
-
-          <div class="f-step">
-            <div class="f-num" style="background:#9CA3AF">4</div>
-            <div class="f-text">
-              <div class="f-name">WhatsApp notification</div>
-              <div class="f-desc">Alert assigned rep</div>
-            </div>
-            <span class="f-badge f-wait">Waiting</span>
-          </div>
-          <div class="f-line"></div>
-
-          <div class="f-step">
-            <div class="f-num" style="background:#9CA3AF">5</div>
-            <div class="f-text">
-              <div class="f-name">Follow-up sequence</div>
-              <div class="f-desc">Drip over 3 days</div>
-            </div>
-            <span class="f-badge f-wait">Waiting</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
+<!-- PROOF CARDS -->
+<div class="proof-section">
+  <div class="center mt8">
+    <div class="section-label">Results that matter</div>
+    <h2 class="section-title center" style="margin:0 auto 48px">Businesses that moved faster with Theorrem</h2>
   </div>
-</div>
-
-<!-- ── FEATURE 3: WHATSAPP (NAVY) ────────────────────────────── -->
-<div class="sc sc-navy reveal">
-  <div class="feat-grid">
-
-    <!-- Visual: Left -->
-    <div class="vis-wrap">
-      <div class="vis-inner">
-        <div class="wa-ui">
-          <div class="wa-hdr">
-            <div class="wa-ava">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.123 1.528 5.855L.057 23.428l5.716-1.5A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.5-5.179-1.373l-.371-.222-3.795.996.991-3.723-.243-.388A9.96 9.96 0 012 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10z"/></svg>
-            </div>
-            <div>
-              <div class="wa-hname">Theorrem Bot</div>
-              <div class="wa-hstat">Typically replies instantly</div>
-            </div>
-          </div>
-          <div class="wa-msgs">
-            <div>
-              <div class="wa-b wa-in">Hi, I saw your ad. How much does the starter plan cost?</div>
-              <div class="wa-t">10:02</div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:flex-end">
-              <div class="wa-b wa-out">Hi! Starter plan is $99/month. What are you mainly looking to automate?</div>
-              <div class="wa-t">10:02 &#10003;&#10003;</div>
-            </div>
-            <div>
-              <div class="wa-b wa-in">Customer support. We get about 200 queries a day.</div>
-              <div class="wa-t">10:03</div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:flex-end">
-              <div class="wa-b wa-out">Perfect fit. I've flagged your account — a team member will reach out within the hour.</div>
-              <div class="wa-t">10:03 &#10003;&#10003;</div>
-            </div>
-            <div>
-              <div class="wa-b wa-in">That was fast. Thanks!</div>
-              <div class="wa-t">10:04</div>
-            </div>
-          </div>
-        </div>
+  <div class="proof-grid">
+    <div class="proof-card">
+      <div class="proof-client">Real Estate</div>
+      <p class="proof-headline">Property firm generated 3× more qualified leads with AI-first sales coverage</p>
+      <div class="proof-stats">
+        <div class="proof-stat"><strong>3× increase</strong> in qualified pipeline</div>
+        <div class="proof-stat"><strong>24/7 AI</strong> lead qualification & follow-up</div>
+        <div class="proof-stat"><strong>65%</strong> faster average response time</div>
       </div>
+      <a href="#" class="proof-link">Read the story →</a>
     </div>
-
-    <!-- Text: Right -->
-    <div class="feat-text">
-      <div class="feat-label">WhatsApp Automation</div>
-      <h2 class="feat-h2">Your business, always on WhatsApp</h2>
-      <p class="feat-body">Qualify leads, answer questions, and nurture customers — all through WhatsApp, automatically.</p>
-      <ul class="feat-bullets">
-        <li><span><strong>Instant replies</strong> &mdash; Response in under 2 seconds.</span></li>
-        <li><span><strong>Lead qualification</strong> &mdash; Filter and score automatically.</span></li>
-        <li><span><strong>Broadcast + drip</strong> &mdash; Campaigns that convert.</span></li>
-      </ul>
-      <div class="stat-block">
-        <div class="stat-num">&lt;&thinsp;2s</div>
-        <div class="stat-desc">Average response time</div>
+    <div class="proof-card">
+      <div class="proof-client">Law Firm</div>
+      <p class="proof-headline">Corporate law firm saves 35 hours weekly by automating document review</p>
+      <div class="proof-stats">
+        <div class="proof-stat"><strong>35 hrs saved</strong> weekly per associate</div>
+        <div class="proof-stat"><strong>AI-powered</strong> contract analysis</div>
+        <div class="proof-stat"><strong>1000s of docs</strong> processed automatically</div>
       </div>
+      <a href="#" class="proof-link">Read the story →</a>
     </div>
-
-  </div>
-</div>
-
-<!-- ── USE CASES ──────────────────────────────────────────────── -->
-<section id="work" class="cream-section reveal" style="padding-top: 88px; padding-bottom: 0;">
-  <div class="uc-grid">
-
-    <!-- Left -->
-    <div>
-      <h2 class="uc-h2">AI systems that unlock any automation use case</h2>
-      <p class="uc-body">From first touch to final delivery, we map your workflow and build the system that runs it — without consultants, decks, or delays.</p>
-      <div class="mini-diag">
-        <div class="md-center">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round">
-            <circle cx="12" cy="12" r="3"/>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
-          </svg>
-        </div>
-        <div class="md-nodes">
-          <div class="md-row">
-            <div class="md-line"></div>
-            <div class="md-node">AI Engine</div>
-          </div>
-          <div class="md-row">
-            <div class="md-line"></div>
-            <div class="md-node">Integrations</div>
-          </div>
-        </div>
+    <div class="proof-card">
+      <div class="proof-client">E-Commerce</div>
+      <p class="proof-headline">Online retailer drives 28% more conversions with automated customer engagement</p>
+      <div class="proof-stats">
+        <div class="proof-stat"><strong>28% increase</strong> in customer conversion</div>
+        <div class="proof-stat"><strong>24/7 AI</strong> support & upselling</div>
+        <div class="proof-stat"><strong>55% faster</strong> average resolution time</div>
       </div>
-    </div>
-
-    <!-- Right: pill list -->
-    <div class="pill-list">
-      <div class="pill-item">
-        <div class="pill-ico" style="background:#FEF3C7">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-        </div>
-        Inbound lead qualification
-      </div>
-      <div class="pill-item">
-        <div class="pill-ico" style="background:#DBEAFE">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-        </div>
-        CRM sync and enrichment
-      </div>
-      <div class="pill-item">
-        <div class="pill-ico" style="background:#F3E8FF">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-        </div>
-        Candidate screening pipeline
-      </div>
-      <div class="pill-item">
-        <div class="pill-ico" style="background:#DCFCE7">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        Customer support automation
-      </div>
-      <div class="pill-item">
-        <div class="pill-ico" style="background:#FEE2E2">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </div>
-        Knowledge base search
-      </div>
-      <div class="pill-item">
-        <div class="pill-ico" style="background:#E0F2FE">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#0284C7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
-        </div>
-        Legacy system integration
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── WHY SECTION ────────────────────────────────────────────── -->
-<section class="cream-section reveal">
-  <h2 class="why-h2">Built by engineers, not consultants</h2>
-  <div class="why-cards">
-    <div class="why-card">
-      <div class="why-ctitle">You own everything</div>
-      <div class="why-stat">100%</div>
-      <div class="why-desc">Full IP ownership. No vendor lock-in. Your code, your system, yours forever.</div>
-    </div>
-    <div class="why-card">
-      <div class="why-ctitle">Weeks, not quarters</div>
-      <div class="why-stat">2&ndash;4 wks</div>
-      <div class="why-desc">Scoped, built, deployed &mdash; while others are still writing proposals.</div>
-    </div>
-    <div class="why-card">
-      <div class="why-ctitle">Engineers, not consultants</div>
-      <div class="why-stat">0 decks</div>
-      <div class="why-desc">We build. We don't advise, strategize, or present. We ship.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ── TESTIMONIALS ───────────────────────────────────────────── -->
-<section class="cream-section reveal" style="padding-top: 0;">
-  <h2 class="test-h2">What our clients say&hellip;</h2>
-  <div class="test-grid">
-
-    <div class="test-card" style="background: var(--chartreuse)">
-      <div class="test-company">Real Estate Agency</div>
-      <div class="test-quote">"We automated our entire inbound inquiry process. Response time went from 4 hours to 4 seconds. Our agents only talk to qualified leads now."</div>
-      <div class="test-footer">
-        <div class="test-ava">S</div>
-        <div>
-          <div class="test-name">Sarah M.</div>
-          <div class="test-title">Operations Director</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="test-card" style="background: var(--orange)">
-      <div class="test-company">E-commerce Brand</div>
-      <div class="test-quote">"Theorrem connected our store, WhatsApp, and CRM in two weeks. We went from manual order updates to fully automated customer journeys."</div>
-      <div class="test-footer">
-        <div class="test-ava">J</div>
-        <div>
-          <div class="test-name">James K.</div>
-          <div class="test-title">Founder</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="test-card" style="background: var(--blue)">
-      <div class="test-company">HR Company</div>
-      <div class="test-quote">"The candidate screening pipeline saved our recruiters 20+ hours per week. Every applicant gets an instant response and only qualified ones reach our team."</div>
-      <div class="test-footer">
-        <div class="test-ava">P</div>
-        <div>
-          <div class="test-name">Priya L.</div>
-          <div class="test-title">Head of Talent</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="test-card" style="background: var(--cyan)">
-      <div class="test-company">Legal Firm</div>
-      <div class="test-quote">"Client intake used to take our staff half a day. Now it's automated — intake form, conflict check, and welcome message — all before we even open the file."</div>
-      <div class="test-footer">
-        <div class="test-ava">D</div>
-        <div>
-          <div class="test-name">David R.</div>
-          <div class="test-title">Managing Partner</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── INDUSTRIES ─────────────────────────────────────────────── -->
-<section class="ind-section reveal">
-  <h2 class="ind-h2">Any industry with repetitive workflows</h2>
-  <div class="ind-pills">
-    <span class="ind-pill">Real Estate</span>
-    <span class="ind-pill">E-commerce</span>
-    <span class="ind-pill">Legal</span>
-    <span class="ind-pill">HR &amp; Recruitment</span>
-    <span class="ind-pill">Finance</span>
-    <span class="ind-pill">Healthcare</span>
-    <span class="ind-pill">Logistics</span>
-    <span class="ind-pill">Education</span>
-    <span class="ind-pill">SaaS</span>
-    <span class="ind-pill">Hospitality</span>
-  </div>
-</section>
-
-<!-- ── FOOTER CTA CARD ────────────────────────────────────────── -->
-<div class="footer-cta reveal">
-  <!-- Noise SVG texture -->
-  <svg class="footer-cta-noise" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <filter id="footer-n">
-      <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" stitchTiles="stitch"/>
-      <feColorMatrix type="saturate" values="0"/>
-    </filter>
-    <rect width="100%" height="100%" filter="url(#footer-n)" opacity="0.04"/>
-  </svg>
-  <div class="footer-cta-inner">
-    <h2 class="fca-h2">Ready to stop doing<br>it manually?</h2>
-    <p class="fca-sub">Let's build something that works while you sleep.</p>
-    <div class="fca-btns">
-      <a href="mailto:hello@theorrem.com" class="btn btn-white-solid btn-lg">Start a project &rarr;</a>
-      <a href="#work" class="btn btn-white-outline btn-lg">See what we build &rarr;</a>
+      <a href="#" class="proof-link">Read the story →</a>
     </div>
   </div>
 </div>
 
-</main>
+<!-- ROI SECTION -->
+<div class="roi-section">
+  <div class="roi-inner">
+    <div class="section-label">The path to ROI</div>
+    <h2 class="section-title">Unlock the agentic ROI you promised your board</h2>
+    <p class="section-sub">Theorrem maps the path from assisted AI to full autonomy. Real business impact starts at L3/L4.</p>
+    <div class="roi-levels">
+      <div class="roi-level">
+        <div class="roi-level-tag">L1</div>
+        <div class="roi-level-num">Assisted</div>
+        <div class="roi-level-desc">Human sends requests one at a time. Generic AI tools. No memory, no context, no integration.</div>
+        <span class="roi-level-badge badge-gray">ChatGPT / Claude</span>
+      </div>
+      <div class="roi-level">
+        <div class="roi-level-tag">L2</div>
+        <div class="roi-level-num">Copilot</div>
+        <div class="roi-level-desc">Human triggers an agent skill. Agent takes multiple actions. Human reviews output.</div>
+        <span class="roi-level-badge badge-gray">Copilots / Code tools</span>
+      </div>
+      <div class="roi-level active">
+        <div class="roi-level-tag">L3</div>
+        <div class="roi-level-num">Autopilot</div>
+        <div class="roi-level-desc">Events trigger agents automatically. Multi-agent coordination. Humans manage, not execute.</div>
+        <span class="roi-level-badge badge-accent">Theorrem platform ✦</span>
+      </div>
+      <div class="roi-level active">
+        <div class="roi-level-tag">L4</div>
+        <div class="roi-level-num">Self-Driving</div>
+        <div class="roi-level-desc">Business goals set strategy. Agents experiment, iterate, and optimize autonomously.</div>
+        <span class="roi-level-badge badge-accent">Theorrem platform ✦</span>
+      </div>
+    </div>
+    <div class="roi-example">
+      <div class="roi-example-title">Example — Lead qualification</div>
+      <div class="roi-example-steps">
+        <div class="roi-step">
+          <div class="roi-step-tag">L1</div>
+          <div class="roi-step-item">Reps research each lead one prompt at a time</div>
+          <div class="roi-step-item">Manual copy-paste between tools</div>
+          <div class="roi-step-item">One action → one response</div>
+        </div>
+        <div class="roi-step">
+          <div class="roi-step-tag">L2</div>
+          <div class="roi-step-item">Rep uses qualification skill, handles output</div>
+          <div class="roi-step-item">Agent researches, scores & drafts</div>
+          <div class="roi-step-item">Rep reviews and sends</div>
+        </div>
+        <div class="roi-step" style="border-color:rgba(232,255,71,0.25);background:rgba(232,255,71,0.04)">
+          <div class="roi-step-tag">L3</div>
+          <div class="roi-step-item">New leads qualify and get contacted automatically</div>
+          <div class="roi-step-item">3 agents coordinate: research → score → outreach</div>
+          <div class="roi-step-item">Escalates to human if unsure</div>
+        </div>
+        <div class="roi-step" style="border-color:rgba(232,255,71,0.25);background:rgba(232,255,71,0.04)">
+          <div class="roi-step-tag">L4</div>
+          <div class="roi-step-item">Agents optimize outreach strategy on their own</div>
+          <div class="roi-step-item">A/B test messaging variants</div>
+          <div class="roi-step-item">Reply rate up 72% this quarter</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- ── FOOTER BAR ─────────────────────────────────────────────── -->
-<footer class="foot">
-  <span class="foot-copy">&copy; 2025 Theorrem</span>
-  <a href="mailto:hello@theorrem.com" class="foot-mail">hello@theorrem.com</a>
+<!-- BUILD SECTION -->
+<div class="section">
+  <div class="section-label">Platform</div>
+  <h2 class="section-title">Build agents that run your playbooks</h2>
+  <p class="section-sub">Your domain experts design the playbooks. Your agents execute them autonomously. Together, they scale what used to take entire teams.</p>
+  <div class="build-grid">
+    <div class="build-card">
+      <div class="build-card-tag">For domain experts</div>
+      <div class="build-card-title">Build with natural language</div>
+      <div class="build-card-desc">Describe what you want in plain language. Theorrem builds the agents, tools, and workflows for you — no code required.</div>
+      <div class="build-card-terminal">
+        <span class="cmd">&gt; Build me an outbound SDR workforce</span><br>
+        <span class="out">● Creating agents for research, outreach, follow-up</span><br>
+        <span class="out">● Lead Researcher ✓</span><br>
+        <span class="out">● Email Copywriter ✓</span><br>
+        <span class="out">● Outbound Sender ✓</span><br>
+        <span class="out">● Connecting CRM + Gmail ✓</span><br>
+        <span class="cmd">⠸ Configuring triggers...</span>
+      </div>
+      <div class="build-card-audience mt16">Ops & revenue teams</div>
+    </div>
+    <div class="build-card">
+      <div class="build-card-tag">For GTM engineers</div>
+      <div class="build-card-title">Build with drag & drop or code</div>
+      <div class="build-card-desc">Refine what you started in plain language, or build agents from scratch in our no-code builder. Use our API for full programmatic control.</div>
+      <div class="build-card-terminal">
+        <span class="out">// Connect via API or MCP</span><br>
+        <span class="cmd">POST /v1/agents/create</span><br>
+        <span class="out">{</span><br>
+        <span class="out">&nbsp;&nbsp;"name": "Inbound Qualifier",</span><br>
+        <span class="out">&nbsp;&nbsp;"trigger": "crm_webhook",</span><br>
+        <span class="out">&nbsp;&nbsp;"tools": ["enrich", "score"]</span><br>
+        <span class="out">}</span>
+      </div>
+      <div class="build-card-audience mt16">GTM engineers & developers</div>
+    </div>
+  </div>
+</div>
+
+<!-- EVALS SECTION -->
+<div class="eval-section">
+  <div class="eval-inner">
+    <div class="section-label">Quality assurance</div>
+    <h2 class="section-title">Your team sets the quality bar</h2>
+    <p class="section-sub">Domain experts define what good looks like — then Evals holds your agents to that standard across every task, every day.</p>
+    <div class="eval-demo">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+        <div>
+          <div style="font-size:14px;font-weight:600;color:var(--text)">Sales Agent — eval results</div>
+          <div style="font-size:12px;color:var(--text3)">Last run: 2 hours ago</div>
+        </div>
+        <div style="font-size:12px;color:var(--text3)">Overall: <span style="color:#22c55e;font-weight:600">94%</span></div>
+      </div>
+      <div class="eval-bar-wrap">
+        <div class="eval-bar-label"><span>Email quality</span><span style="color:var(--text)">96%</span></div>
+        <div class="eval-bar"><div class="eval-bar-fill" style="width:96%"></div></div>
+      </div>
+      <div class="eval-bar-wrap">
+        <div class="eval-bar-label"><span>Lead qualification accuracy</span><span style="color:var(--text)">91%</span></div>
+        <div class="eval-bar"><div class="eval-bar-fill" style="width:91%"></div></div>
+      </div>
+      <div class="eval-bar-wrap">
+        <div class="eval-bar-label"><span>Response time SLA</span><span style="color:var(--text)">98%</span></div>
+        <div class="eval-bar"><div class="eval-bar-fill" style="width:98%"></div></div>
+      </div>
+      <div class="eval-bar-wrap">
+        <div class="eval-bar-label"><span>CRM data completeness</span><span style="color:var(--text)">88%</span></div>
+        <div class="eval-bar"><div class="eval-bar-fill" style="width:88%"></div></div>
+      </div>
+      <div class="eval-results">
+        <div class="eval-result-item">
+          <span class="eval-result-name">Email quality</span>
+          <span class="eval-result-status">Passing</span>
+        </div>
+        <div class="eval-result-item">
+          <span class="eval-result-name">Lead qualification</span>
+          <span class="eval-result-status">Passing</span>
+        </div>
+        <div class="eval-result-item">
+          <span class="eval-result-name">Response SLA</span>
+          <span class="eval-result-status">Passing</span>
+        </div>
+        <div class="eval-result-item">
+          <span class="eval-result-name">CRM data</span>
+          <span class="eval-result-status">Passing</span>
+        </div>
+      </div>
+      <div style="margin-top:16px;font-size:12px;color:#22c55e;font-weight:500">4 of 4 evals passing — safe to deploy</div>
+    </div>
+  </div>
+</div>
+
+<!-- OVERSIGHT / TASK TABLE -->
+<div class="oversight-section">
+  <div class="oversight-inner">
+    <div class="section-label">Oversight</div>
+    <h2 class="section-title">Nothing runs without your oversight</h2>
+    <p class="section-sub">Every task, decision, and escalation visible in one place. Your team stays in control at every step.</p>
+    <div class="task-table">
+      <div class="task-table-header">
+        <div>Task</div>
+        <div style="text-align:right">Cost</div>
+        <div style="text-align:right">Saved</div>
+        <div style="text-align:right">Status</div>
+      </div>
+      <div class="task-row">
+        <div class="task-name">
+          <span>Send follow-up sequence to 12 prospects</span>
+          <span class="task-agent">Outbound SDR Agent · 1:07 PM</span>
+        </div>
+        <div class="task-cost">$0.45</div>
+        <div class="task-saved pos">+$180</div>
+        <div><span class="status-pill status-complete">Complete</span></div>
+      </div>
+      <div class="task-row">
+        <div class="task-name">
+          <span>Research LinkedIn profiles for Meridian deal</span>
+          <span class="task-agent">Data Enrichment Agent · 11:30 AM</span>
+        </div>
+        <div class="task-cost">$0.18</div>
+        <div class="task-saved pos">−45m</div>
+        <div><span class="status-pill status-complete">Complete</span></div>
+      </div>
+      <div class="task-row">
+        <div class="task-name">
+          <span>Triage support email — needs human review</span>
+          <span class="task-agent">Email Triage Agent · 2:30 PM</span>
+        </div>
+        <div class="task-cost">$0.08</div>
+        <div class="task-saved neg">−8m</div>
+        <div><span class="status-pill status-escalated">Escalated</span></div>
+      </div>
+      <div class="task-row">
+        <div class="task-name">
+          <span>Qualify MQL from CRM webhook</span>
+          <span class="task-agent">Lead Scoring Agent · 12:08 PM</span>
+        </div>
+        <div class="task-cost">$0.03</div>
+        <div class="task-saved neg">−15m</div>
+        <div><span class="status-pill status-error">Error</span></div>
+      </div>
+      <div class="task-row">
+        <div class="task-name">
+          <span>Score inbound lead from contact form</span>
+          <span class="task-agent">Lead Scoring Agent · 4:13 PM</span>
+        </div>
+        <div class="task-cost">$0.03</div>
+        <div class="task-saved neg">−12m</div>
+        <div><span class="status-pill status-error">Error</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECURITY -->
+<div class="security-section">
+  <div class="security-inner">
+    <div class="section-label">Enterprise-grade</div>
+    <h2 class="section-title">Security & governance at every layer</h2>
+    <p class="section-sub">Autonomous agents require serious governance. Granular access controls for your team, your agents, and the systems they touch.</p>
+    <div class="security-grid">
+      <div class="security-card">
+        <div class="security-icon">📊</div>
+        <div class="security-card-title">Monitoring dashboards</div>
+        <div class="security-card-desc">Real-time visibility into every agent's activity, performance, and cost. No blind spots.</div>
+      </div>
+      <div class="security-card">
+        <div class="security-icon">🔐</div>
+        <div class="security-card-title">RBAC</div>
+        <div class="security-card-desc">Role-based access controls for your team and your agents. Control who can build, edit, and deploy.</div>
+      </div>
+      <div class="security-card">
+        <div class="security-icon">🌍</div>
+        <div class="security-card-title">Data residency</div>
+        <div class="security-card-desc">Multi-region deployment ensures your data stays within your required geography.</div>
+      </div>
+      <div class="security-card">
+        <div class="security-icon">📋</div>
+        <div class="security-card-title">Audit logs</div>
+        <div class="security-card-desc">Every action, every decision, every tool call — fully logged and exportable.</div>
+      </div>
+      <div class="security-card">
+        <div class="security-icon">👤</div>
+        <div class="security-card-title">Human-in-the-loop</div>
+        <div class="security-card-desc">Set approval gates on any action. Agents escalate when confidence is low.</div>
+      </div>
+      <div class="security-card">
+        <div class="security-icon">🔏</div>
+        <div class="security-card-title">SSO / SAML</div>
+        <div class="security-card-desc">Enterprise single sign-on with SAML 2.0. Centralize identity and access management.</div>
+      </div>
+      <div class="security-card">
+        <div class="security-icon">🕵️</div>
+        <div class="security-card-title">PII masking</div>
+        <div class="security-card-desc">Automatically detect and redact personally identifiable information before it reaches the model.</div>
+      </div>
+      <div class="security-card">
+        <div class="security-icon">🔄</div>
+        <div class="security-card-title">Version control</div>
+        <div class="security-card-desc">Full version history on every agent. Roll back to any previous state instantly.</div>
+      </div>
+      <div class="security-card">
+        <div class="security-icon">📡</div>
+        <div class="security-card-title">Full observability</div>
+        <div class="security-card-desc">Export telemetry via OpenTelemetry and Delta Sharing for complete observability pipelines.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODEL SECTION -->
+<div class="model-section">
+  <div class="model-inner">
+    <div class="section-label">Model agnostic</div>
+    <h2 class="section-title">Your agents get better every quarter</h2>
+    <p class="section-sub">Never locked to a single LLM provider. Theorrem agents can use whatever model delivers the best balance of performance and cost for your task.</p>
+    <div class="model-card">
+      <div class="model-card-header">
+        <div class="agent-avatar">S</div>
+        <div class="model-agent-info">
+          <div class="model-agent-name">Sales Development Agent</div>
+          <div class="model-agent-status">Active</div>
+        </div>
+      </div>
+      <table class="model-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Eval score</th>
+            <th>Cost / 1k runs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="model-provider"><div class="model-dot">A</div>Claude Opus 4</div></td>
+            <td>97%</td>
+            <td>$18.40</td>
+          </tr>
+          <tr class="recommended">
+            <td><div class="model-provider"><div class="model-dot">A</div>Claude Sonnet 4 <span class="model-rec-badge">Recommended</span></div></td>
+            <td>94%</td>
+            <td>$4.20</td>
+          </tr>
+          <tr>
+            <td><div class="model-provider"><div class="model-dot">G</div>GPT-4o</div></td>
+            <td>91%</td>
+            <td>$5.80</td>
+          </tr>
+          <tr>
+            <td><div class="model-provider"><div class="model-dot">G</div>Gemini 1.5 Pro</div></td>
+            <td>89%</td>
+            <td>$3.50</td>
+          </tr>
+          <tr>
+            <td><div class="model-provider"><div class="model-dot">A</div>Claude Haiku</div></td>
+            <td>82%</td>
+            <td>$0.90</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top:14px;font-size:12px;color:var(--accent);font-weight:500">Claude Sonnet 4 recommended — best eval score per dollar</div>
+    </div>
+  </div>
+</div>
+
+<!-- INTEGRATIONS -->
+<div class="integrations-section">
+  <div class="integrations-inner">
+    <div class="section-label">Integrations</div>
+    <h2 class="section-title">Connect to 1,000+ apps</h2>
+    <p class="section-sub">Native connectors for the tools your team already uses. Plus MCP support and the ability to build custom connectors.</p>
+    <div class="integrations-grid">
+      <div class="integration-chip"><div class="chip-icon">💼</div>Salesforce</div>
+      <div class="integration-chip"><div class="chip-icon">🟠</div>HubSpot</div>
+      <div class="integration-chip"><div class="chip-icon">💬</div>Slack</div>
+      <div class="integration-chip"><div class="chip-icon">📧</div>Gmail</div>
+      <div class="integration-chip"><div class="chip-icon">📊</div>Google Sheets</div>
+      <div class="integration-chip"><div class="chip-icon">🔗</div>LinkedIn</div>
+      <div class="integration-chip"><div class="chip-icon">📱</div>WhatsApp</div>
+      <div class="integration-chip"><div class="chip-icon">📝</div>Notion</div>
+      <div class="integration-chip"><div class="chip-icon">🌊</div>Twilio</div>
+      <div class="integration-chip"><div class="chip-icon">📦</div>Shopify</div>
+      <div class="integration-chip"><div class="chip-icon">🔷</div>Microsoft</div>
+      <div class="integration-chip"><div class="chip-icon">❄️</div>Snowflake</div>
+      <div class="integration-chip"><div class="chip-icon">🗄️</div>Databricks</div>
+      <div class="integration-chip"><div class="chip-icon">📬</div>SendGrid</div>
+      <div class="integration-chip"><div class="chip-icon">🌐</div>Webflow</div>
+      <div class="integration-chip"><div class="chip-icon">🎯</div>Apollo</div>
+      <div class="integration-chip"><div class="chip-icon">📋</div>Airtable</div>
+      <div class="integration-chip"><div class="chip-icon">🐙</div>GitHub</div>
+      <div class="integration-chip"><div class="chip-icon">🔧</div>Zapier</div>
+      <div class="integration-chip"><div class="chip-icon">➕</div>+980 more</div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARE -->
+<div class="compare-section">
+  <div class="compare-inner">
+    <div class="section-label">Why Theorrem</div>
+    <h2 class="section-title">For teams who own the number</h2>
+    <p class="section-sub">Building an agent is easy. Theorrem is designed for what comes next — your domain experts owning agent quality, operations, and outcomes at scale.</p>
+    <div class="compare-table">
+      <div class="compare-head">
+        <div class="compare-head-cell"></div>
+        <div class="compare-head-cell highlight"><span class="ch-name">Theorrem</span></div>
+        <div class="compare-head-cell">Generic AI tools</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell question">Who manages agents day-to-day?</div>
+        <div class="compare-cell highlight good">Your ops and revenue teams — the people closest to the work, with dashboards designed for agent management.</div>
+        <div class="compare-cell">Your engineers. Requires YAML, containers, and API calls.</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell question">Who owns agent quality?</div>
+        <div class="compare-cell highlight good">Domain experts, with pre-deployment scenarios, production checks, and monitoring they can manage themselves.</div>
+        <div class="compare-cell">Your engineers, via runtime self-healing. No pre-deployment testing framework.</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell question">How do agents receive tasks?</div>
+        <div class="compare-cell highlight good">Native triggers for CRMs, email, calendar, and more. Plus webhooks, cron, and custom triggers.</div>
+        <div class="compare-cell">No native triggers. You need to build external orchestration.</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell question">What can my agents access?</div>
+        <div class="compare-cell highlight good">1,000+ native connectors plus MCP support and custom connector builder.</div>
+        <div class="compare-cell">MCP only. No native connectors — must self-host tool servers.</div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-cell question">How much can I tune cost?</div>
+        <div class="compare-cell highlight good">Full. Route to any model provider and optimize cost per agent, per task.</div>
+        <div class="compare-cell">Limited. Locked to one model family.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testimonials-section">
+  <div class="testimonials-inner">
+    <div class="center">
+      <div class="section-label">What clients say</div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-client">Real Estate</div>
+        <p class="testimonial-quote">"The ability to have agents that actually understand our property database and qualify leads in real time — without any manual work — has transformed our sales operations."</p>
+        <div class="testimonial-author">
+          <strong>Head of Sales Operations</strong>
+          Property Development Group
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-client">Professional Services</div>
+        <p class="testimonial-quote">"What took our associates two full days of document review now happens in under an hour. The accuracy is better than we expected, and the audit trail gives us complete confidence."</p>
+        <div class="testimonial-author">
+          <strong>Managing Partner</strong>
+          Corporate Law Firm
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-client">E-Commerce</div>
+        <p class="testimonial-quote">"We went live in under two weeks. The integration with our existing stack was seamless, and the agents started delivering measurable results from day one."</p>
+        <div class="testimonial-author">
+          <strong>Chief Operating Officer</strong>
+          Online Retail Platform
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRESS / AWARDS -->
+<div class="press-section">
+  <div class="awards-row">
+    <div class="award-card">
+      <div class="award-org">Forbes</div>
+      <div class="award-label">"Companies to Watch in Enterprise AI"</div>
+    </div>
+    <div class="award-card">
+      <div class="award-org">CB Insights</div>
+      <div class="award-label">"Leading Enterprise Agent Vendor"</div>
+    </div>
+    <div class="award-card">
+      <div class="award-org">G2</div>
+      <div class="award-label">4.8 stars · Top Rated AI Automation</div>
+    </div>
+    <div class="award-card">
+      <div class="award-org">Product Hunt</div>
+      <div class="award-label">#1 Product of the Day</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <p class="section-label center">Get started</p>
+  <h2 class="cta-title">Your team is buried in tasks humans shouldn't do anymore</h2>
+  <p class="cta-sub">Let Theorrem build the AI workforce that handles it — at enterprise scale.</p>
+  <div class="cta-ctas">
+    <a href="#" class="btn-primary">Book a demo</a>
+    <a href="#" class="btn-secondary">See the platform →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">theorr<span>em</span></div>
+        <p class="tagline">The home of the AI workforce. Custom AI systems for businesses. No templates. No consultants.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn">in</a>
+          <a href="#" class="social-btn">tw</a>
+          <a href="#" class="social-btn">yt</a>
+          <a href="#" class="social-btn">gh</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <a href="#">AI Agents</a>
+        <a href="#">Agent Workforce</a>
+        <a href="#">Multi-Agent Systems</a>
+        <a href="#">Integrations</a>
+        <a href="#">Evals & Quality</a>
+        <a href="#">Enterprise</a>
+      </div>
+      <div class="footer-col">
+        <h5>Solutions</h5>
+        <a href="#">Real Estate</a>
+        <a href="#">Law Firms</a>
+        <a href="#">HR & Recruitment</a>
+        <a href="#">E-Commerce</a>
+        <a href="#">Financial Services</a>
+        <a href="#">Sales & GTM</a>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <a href="#">Documentation</a>
+        <a href="#">API Reference</a>
+        <a href="#">Blog</a>
+        <a href="#">Case Studies</a>
+        <a href="#">Changelog</a>
+        <a href="#">Community</a>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#">About</a>
+        <a href="#">Careers</a>
+        <a href="#">Partners</a>
+        <a href="#">Trust & Security</a>
+        <a href="#">Contact</a>
+        <a href="#">Book a demo</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Theorrem. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Security Policy</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <script>
-  // Mobile nav toggle
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-    const bars = hamburger.querySelectorAll('span');
-    if (mobileMenu.classList.contains('open')) {
-      bars[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-      bars[1].style.opacity = '0';
-      bars[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-    } else {
-      bars[0].style.transform = '';
-      bars[1].style.opacity = '';
-      bars[2].style.transform = '';
-    }
-  });
-
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-  reveals.forEach(r => observer.observe(r));
+document.querySelectorAll('.eval-bar-fill').forEach(function(bar) {
+  var w = bar.style.width;
+  bar.style.width = '0%';
+  setTimeout(function() { bar.style.width = w; }, 400);
+});
 </script>
 </body>
 </html>
