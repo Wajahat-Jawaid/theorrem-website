@@ -580,3 +580,59 @@
     margin-left:0 !important;
   }
 }
+
+
+/* =========================
+   HERO FIX v8
+   - nav a bit more right
+   - lighter/normal nav + hero fonts
+   ========================= */
+
+/* Move nav links more to the right so they do not feel glued to the left/logo area */
+.nav-links{
+  margin-left: 125px !important;
+}
+
+/* Make nav/header text less bold and cleaner */
+.nav-links a{
+  font-weight: 500 !important;
+  letter-spacing: -0.012em !important;
+}
+
+.nav-actions .btn{
+  font-weight: 600 !important;
+}
+
+.brand{
+  font-weight: 650 !important;
+}
+
+/* Hero headline: normal/lighter, less blocky */
+.hero h1{
+  font-weight: 520 !important;
+  letter-spacing: -0.052em !important;
+}
+
+.hero h1 span{
+  font-weight: 520 !important;
+}
+
+/* Eyebrow and button text slightly less bold */
+.hero .eyebrow{
+  font-weight: 650 !important;
+}
+
+.hero .btn{
+  font-weight: 600 !important;
+}
+
+.hero-copy{
+  font-weight: 400 !important;
+}
+
+/* Keep mobile nav from inheriting desktop offset */
+@media(max-width:860px){
+  .nav-links{
+    margin-left:0 !important;
+  }
+}
