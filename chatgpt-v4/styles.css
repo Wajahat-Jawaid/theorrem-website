@@ -1422,3 +1422,47 @@
     font-size: 34px !important;
   }
 }
+
+
+/* =========================
+   v13: fix usecase section breathing room from grid rails
+   ========================= */
+
+/* Pull the whole usecase section in from the vertical page rails so nothing touches them */
+.usecases-container{
+  max-width: 980px !important;
+  width: min(980px, calc(100% - 120px)) !important;
+  padding-left: 6px !important;
+  padding-right: 6px !important;
+}
+
+.playbook-intro{
+  max-width: 700px !important;
+}
+
+.playbook-intro h2{
+  max-width: 700px !important;
+}
+
+.playbook-subcopy{
+  max-width: 680px !important;
+}
+
+/* Keep equal spacing on both sides of the cards */
+.usecase-grid.usecase-grid-six{
+  gap: 22px !important;
+}
+
+@media(max-width: 1100px){
+  .usecases-container{
+    width: min(980px, calc(100% - 84px)) !important;
+  }
+}
+
+@media(max-width: 640px){
+  .usecases-container{
+    width: calc(100% - 28px) !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}

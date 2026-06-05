@@ -1,13 +1,11 @@
-# Theorem Usecases v12
+# Theorem Usecases v13
 
 Changes:
-- Fixed usecase section alignment by using one dedicated max-width container.
-- Reduced intro heading size so it is no longer a huge 3-line block.
-- Changed usecases to equal 6 cards: 2 columns x 3 rows.
-- Removed the one full-width top card.
-- Adjusted card text and mockup sizing so everything fits cleaner.
+- Fixed the playbooks/usecases section horizontal breathing room.
+- Pulled the intro and cards inward so they no longer sit on the page grid rails.
+- Kept the 6-card 2x3 layout.
 
-Replace:
+Replace files:
 - index.html
 - styles.css
 - script.js
