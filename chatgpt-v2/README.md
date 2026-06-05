@@ -1,17 +1,15 @@
-# Theorem Site v2
+# Theorem Hero Fix v4
 
-Replace your existing files with:
+Replace your current files with these.
 
+Focused fixes only:
+- Hero font adjusted closer to Relevance AI: lighter, less chunky, better line-height.
+- Removed internal vertical grid lines crossing the hero content.
+- Hero content width/position adjusted closer to reference.
+- Hero integration mini-icons now use real brand icons via Simple Icons CDN.
+- Small decorative squares repositioned away from headline.
+
+Files:
 - index.html
 - styles.css
 - script.js
-
-Changes:
-- Auren AI -> Theorem
-- Removed Sign in button
-- Header CTA -> Contact sales
-- Hero CTA -> Talk to sales + View agent playbooks
-- Replaced weak industry strip with practical agent playbooks
-- Improved integrations with styled icon tiles
-- Improved final CTA and footer
-- Cleaner vertical grid lines and better decorative square positioning
