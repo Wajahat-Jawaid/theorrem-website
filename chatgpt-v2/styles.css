@@ -507,3 +507,76 @@
     margin-left:0 !important;
   }
 }
+
+
+/* =========================
+   HERO FIX v7
+   ========================= */
+
+/* Nav links should not be stuck to the left rail.
+   They now start roughly aligned with hero content/reference nav area. */
+.nav-links{
+  margin-left: 92px !important;
+  margin-right: auto !important;
+}
+
+/* Better integration cluster: closer to Relevance AI, no white circular placeholders. */
+.integration-cluster.relevance-style-icons{
+  display:flex !important;
+  align-items:center !important;
+  gap:0 !important;
+  margin-left:10px !important;
+}
+
+.integration-cluster.relevance-style-icons .si{
+  width:20px !important;
+  height:20px !important;
+  min-width:20px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin-left:-2px !important;
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  overflow:visible !important;
+}
+
+.integration-cluster.relevance-style-icons .si:first-child{
+  margin-left:0 !important;
+}
+
+.integration-cluster.relevance-style-icons svg{
+  width:20px !important;
+  height:20px !important;
+  display:block !important;
+}
+
+.integration-cluster.relevance-style-icons .salesforce svg{
+  width:24px !important;
+}
+
+.integration-cluster.relevance-style-icons .gmail svg{
+  width:24px !important;
+}
+
+.integration-cluster.relevance-style-icons .integration-text{
+  margin-left:14px !important;
+  color:#747b8d !important;
+  font-size:15px !important;
+  font-weight:450 !important;
+}
+
+/* Hide old icon implementations aggressively */
+.integration-cluster .brand-icon,
+.integration-cluster .mini-logo{
+  display:none !important;
+}
+
+/* Keep the nav mobile behavior clean */
+@media(max-width:860px){
+  .nav-links{
+    margin-left:0 !important;
+  }
+}

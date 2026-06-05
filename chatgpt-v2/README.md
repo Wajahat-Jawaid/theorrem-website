@@ -1,11 +1,10 @@
-# Theorem Hero Fix v6
+# Theorem Hero Fix v7
 
-Focused changes:
-- Nav menu is now left-aligned after the logo, with Contact sales pushed to the right.
-- Hero integration icons replaced with inline SVG brand-style icons: HubSpot, Salesforce, Slack, Gmail, Google Sheets.
-- No external image icons, so no broken placeholders.
-- Added more subtle random square boxes in the hero.
-- Lines/header behavior from v5 preserved.
+Focused fixes:
+- Nav links now have proper left margin and are not stuck to the vertical line.
+- Hero integration icons are replaced with larger inline SVG marks closer to the Relevance AI cluster style.
+- No image URLs, no broken placeholders.
+- Previous line fixes and random boxes are preserved.
 
 Replace:
 - index.html
