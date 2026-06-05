@@ -389,3 +389,121 @@
 .hero .p2{left:38%;bottom:7% !important;}
 .hero .p3{right:34%;top:18% !important;background:#e3e5eb !important;}
 .hero .p4{right:8%;top:35% !important;}
+
+
+/* =========================
+   HERO FIX v6
+   - nav links left aligned like reference
+   - better inline integration icons
+   - more random boxes
+   ========================= */
+
+/* Header layout: logo left, nav immediately after logo, CTA right */
+.nav{
+  justify-content:flex-start !important;
+  gap:0 !important;
+}
+
+.nav .brand{
+  flex:0 0 auto !important;
+}
+
+.nav-links{
+  margin-left:72px !important;
+  margin-right:auto !important;
+  justify-content:flex-start !important;
+}
+
+.nav-actions{
+  margin-left:auto !important;
+}
+
+/* Better mini integration icons: no placeholders, clean real-looking SVG marks */
+.integration-cluster{
+  display:flex !important;
+  align-items:center !important;
+  gap:0 !important;
+  margin-left:10px !important;
+}
+
+.integration-cluster .brand-icon{
+  width:19px !important;
+  height:19px !important;
+  min-width:19px !important;
+  border-radius:50% !important;
+  background:#fff !important;
+  border:2px solid #fff !important;
+  box-shadow:0 7px 16px rgba(15,20,40,.10) !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+  margin-left:-3px !important;
+}
+
+.integration-cluster .brand-icon:first-child{
+  margin-left:0 !important;
+}
+
+.integration-cluster .brand-icon svg{
+  width:17px !important;
+  height:17px !important;
+  display:block !important;
+}
+
+.integration-cluster > span:last-child{
+  margin-left:12px !important;
+  color:#747b8d !important;
+}
+
+/* Hide any old mini-logo rules if cached/old markup appears */
+.integration-cluster .mini-logo{
+  display:none !important;
+}
+
+/* Double the subtle random boxes in the hero without disturbing content */
+.hero:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    linear-gradient(#e3e0ff,#e3e0ff) 12% 26% / 16px 16px no-repeat,
+    linear-gradient(#e8e9ee,#e8e9ee) 63% 20% / 17px 17px no-repeat,
+    linear-gradient(#e1ddff,#e1ddff) 92% 45% / 16px 16px no-repeat,
+    linear-gradient(#ebe9ff,#ebe9ff) 38% 92% / 18px 18px no-repeat,
+    linear-gradient(#e7e9ef,#e7e9ef) 67% 18% / 14px 14px no-repeat,
+    linear-gradient(#e6e3ff,#e6e3ff) 7% 22% / 13px 13px no-repeat,
+    linear-gradient(#e4e1ff,#e4e1ff) 91% 33% / 13px 13px no-repeat,
+    linear-gradient(#ecebff,#ecebff) 35% 88% / 13px 13px no-repeat;
+  opacity:.78;
+}
+
+.hero .pixel{
+  display:none !important;
+}
+
+.hero .container{
+  z-index:1 !important;
+}
+
+/* Slightly closer nav text appearance */
+.nav-links a{
+  font-weight:560 !important;
+  letter-spacing:-.018em !important;
+}
+
+/* Keep mobile nav usable */
+@media(max-width:860px){
+  .nav{
+    justify-content:space-between !important;
+  }
+  .nav-links{
+    margin-left:0 !important;
+    margin-right:0 !important;
+  }
+  .nav-actions{
+    margin-left:0 !important;
+  }
+}
