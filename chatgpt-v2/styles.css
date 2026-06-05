@@ -161,3 +161,231 @@
     line-height: 1.12 !important;
   }
 }
+
+
+/* =========================
+   HERO FIX v5 — exact issues from screenshot
+   ========================= */
+
+/* Make vertical boundary lines start from the very top/header too. */
+.site-header{
+  background:
+    linear-gradient(90deg,
+      rgba(255,255,255,.92) 0,
+      rgba(255,255,255,.92) calc(50% - 540px),
+      rgba(232,234,242,.78) calc(50% - 540px),
+      rgba(232,234,242,.78) calc(50% - 539px),
+      rgba(255,255,255,.92) calc(50% - 539px),
+      rgba(255,255,255,.92) calc(50% + 540px),
+      rgba(232,234,242,.78) calc(50% + 540px),
+      rgba(232,234,242,.78) calc(50% + 541px),
+      rgba(255,255,255,.92) calc(50% + 541px)
+    ) !important;
+  backdrop-filter: blur(18px);
+}
+
+/* Hero grid: only outer vertical rails, no content-cutting internal lines. */
+.hero.page-grid{
+  background:
+    linear-gradient(90deg,
+      transparent 0,
+      transparent calc(50% - 540px),
+      rgba(232,234,242,.78) calc(50% - 540px),
+      rgba(232,234,242,.78) calc(50% - 539px),
+      transparent calc(50% - 539px),
+      transparent calc(50% + 540px),
+      rgba(232,234,242,.78) calc(50% + 540px),
+      rgba(232,234,242,.78) calc(50% + 541px),
+      transparent calc(50% + 541px)
+    ) !important;
+}
+
+/* Fonts: current version was too bold/chunky. This is intentionally lighter. */
+.hero .container{
+  width: min(980px, calc(100% - 48px)) !important;
+}
+
+.hero h1{
+  max-width: 760px !important;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: clamp(48px, 5vw, 66px) !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.055em !important;
+  font-weight: 560 !important;
+  text-rendering: geometricPrecision;
+}
+
+.hero h1 span{
+  color:#6f63ff !important;
+  font-weight:560 !important;
+}
+
+.hero-copy{
+  max-width: 730px !important;
+  font-size: 20px !important;
+  line-height: 1.72 !important;
+  color:#7d8495 !important;
+  font-weight:400 !important;
+  letter-spacing:-0.018em !important;
+}
+
+.eyebrow{
+  font-weight: 700 !important;
+  letter-spacing:.105em !important;
+}
+
+/* Real-ish brand marks without external images, so no broken placeholders. */
+.integration-cluster{
+  display:flex !important;
+  align-items:center !important;
+  gap:0 !important;
+}
+
+.integration-cluster .mini-logo{
+  position:relative !important;
+  width:18px !important;
+  height:18px !important;
+  min-width:18px !important;
+  border-radius:50% !important;
+  background:#fff !important;
+  border:2px solid #fff !important;
+  margin-left:-3px !important;
+  box-shadow:0 5px 14px rgba(15,20,40,.08) !important;
+  overflow:hidden !important;
+}
+
+.integration-cluster .mini-logo:first-child{
+  margin-left:0 !important;
+}
+
+.integration-cluster .mini-logo img{
+  display:none !important;
+}
+
+/* HubSpot */
+.hubspot-mark{
+  background:#fff !important;
+}
+.hubspot-mark:before{
+  content:"";
+  position:absolute;
+  width:7px;height:7px;
+  border:2px solid #ff5c35;
+  border-radius:50%;
+  left:5px;top:5px;
+}
+.hubspot-mark:after{
+  content:"";
+  position:absolute;
+  width:9px;height:2px;
+  background:#ff5c35;
+  transform:rotate(38deg);
+  left:2px;top:4px;
+  box-shadow:6px -3px 0 -0.5px #ff5c35;
+}
+
+/* Salesforce cloud */
+.salesforce-mark{
+  background:#00a1e0 !important;
+}
+.salesforce-mark:before{
+  content:"";
+  position:absolute;
+  width:13px;height:7px;
+  border-radius:10px;
+  background:#fff;
+  left:2px;top:6px;
+}
+.salesforce-mark:after{
+  content:"";
+  position:absolute;
+  width:7px;height:7px;
+  border-radius:50%;
+  background:#fff;
+  left:5px;top:3px;
+  box-shadow:5px 2px 0 -1px #fff;
+}
+
+/* Slack-like colored plus */
+.slack-mark{
+  background:#fff !important;
+}
+.slack-mark:before{
+  content:"";
+  position:absolute;
+  width:4px;height:12px;
+  background:#36c5f0;
+  border-radius:3px;
+  left:7px;top:3px;
+  box-shadow:
+    -4px 4px 0 #2eb67d,
+    4px 0 0 #e01e5a,
+    4px 4px 0 #ecb22e;
+  transform:rotate(45deg);
+}
+
+/* Gmail envelope */
+.gmail-mark{
+  background:#fff !important;
+}
+.gmail-mark:before{
+  content:"";
+  position:absolute;
+  left:3px;right:3px;top:5px;bottom:4px;
+  border-left:2px solid #ea4335;
+  border-right:2px solid #4285f4;
+  border-bottom:2px solid #34a853;
+  border-radius:2px;
+}
+.gmail-mark:after{
+  content:"";
+  position:absolute;
+  width:10px;height:10px;
+  border-top:2px solid #ea4335;
+  border-right:2px solid #fbbc04;
+  transform:rotate(135deg);
+  left:4px;top:2px;
+}
+
+/* Google Sheets */
+.sheets-mark{
+  background:#34a853 !important;
+  border-radius:4px !important;
+}
+.sheets-mark:before{
+  content:"";
+  position:absolute;
+  left:5px;top:4px;
+  width:8px;height:10px;
+  background:#fff;
+  border-radius:1px;
+}
+.sheets-mark:after{
+  content:"";
+  position:absolute;
+  left:6px;top:7px;
+  width:6px;height:1px;
+  background:#34a853;
+  box-shadow:0 3px 0 #34a853,0 6px 0 #34a853;
+}
+
+/* Remove old color-circle classes if old markup remains somewhere. */
+.mini-logo.hub,
+.mini-logo.wa,
+.mini-logo.slack,
+.mini-logo.gm,
+.mini-logo.sheet{
+  background:#fff !important;
+  color:transparent !important;
+}
+
+.integration-cluster span:last-child{
+  margin-left:12px !important;
+  color:#7d8495 !important;
+}
+
+/* Reposition decorative squares away from text but closer to reference. */
+.hero .p1{left:7%;top:22% !important;}
+.hero .p2{left:38%;bottom:7% !important;}
+.hero .p3{right:34%;top:18% !important;background:#e3e5eb !important;}
+.hero .p4{right:8%;top:35% !important;}
