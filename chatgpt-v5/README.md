@@ -1,11 +1,12 @@
-# Theorem Master v10
+# Theorem Master v11
 
-Fixes the outcomes/comparison section:
-- Replaces old comparison/why-us section with isolated markup.
-- Heading is safely inside a 980px container, so it no longer touches/cuts off at screen left.
-- Comparison table has clean borders and proper joints.
-- Left-aligned heading kept for consistency.
-- Rest of master v9 is preserved.
+Updated final contact / CTA section and refined footer.
+
+What changed:
+- Replaced the centered CTA card with a more polished 2-column closing section.
+- Kept text left-aligned for consistency with the rest of the site.
+- Added a right-side “Typical engagement” panel with 3 clean steps.
+- Tightened footer spacing and improved overall finishing.
 
 Replace:
 - index.html
