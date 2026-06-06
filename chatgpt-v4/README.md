@@ -1,11 +1,10 @@
-# Theorem Master v5
+# Theorem Master v6
 
-Changes:
-- Made remaining section headings left-aligned for consistency.
-- Governance section heading is now left-aligned.
-- Governance cards are refined into cleaner individual cards instead of a flat table-like grid.
-- Integration, comparison, and CTA headings are also forced left-aligned.
-- Kept the stable hero, usecases, and quality/model/control work from master v4.
+Fix:
+- Corrects the broken governance heading from v5.
+- Headings remain left-aligned, but now stay inside the content container.
+- Governance cards stay in a clean 3-column card grid.
+- Keeps the stable hero, usecases, and quality/model/control work.
 
 Replace:
 - index.html
