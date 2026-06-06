@@ -12,3 +12,9 @@ Replace:
 - index.html
 - styles.css
 - script.js
+
+
+V12 notes:
+- Cleaned the final CTA section grid lines.
+- Removed internal page-grid lines from this section.
+- Kept only the outer structural vertical lines so the card looks clean.

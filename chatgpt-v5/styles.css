@@ -3485,3 +3485,39 @@ section.governance-section,
     border-radius: 12px;
   }
 }
+
+
+/* === v12: final CTA line cleanup === */
+.final-cta.page-grid{
+  background: none !important;
+  border-bottom: 1px solid var(--line2);
+}
+
+.final-cta.page-grid::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg,
+      transparent 0,
+      transparent calc(50% - 540px),
+      rgba(241,242,247,.92) calc(50% - 540px),
+      rgba(241,242,247,.92) calc(50% - 539px),
+      transparent calc(50% - 539px),
+      transparent calc(50% + 540px),
+      rgba(241,242,247,.92) calc(50% + 540px),
+      rgba(241,242,247,.92) calc(50% + 541px),
+      transparent calc(50% + 541px)
+    );
+  pointer-events: none;
+}
+
+.final-cta .container{
+  position: relative;
+  z-index: 1;
+}
+
+.cta-shell{
+  position: relative;
+  z-index: 1;
+}
