@@ -2706,9 +2706,9 @@
 }
 
 .theorem-gov-wrap{
-  width: min(980px, calc(100% - 120px)) !important;
   max-width: 980px !important;
-  margin: 0 auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   padding: 0 !important;
   box-sizing: border-box !important;
 }
@@ -2854,7 +2854,6 @@ section.governance-section,
   display:block !important;
   position:relative !important;
   padding:96px 0 112px !important;
-  overflow:hidden !important;
 }
 
 .theorem-gov-section.page-grid{
@@ -2873,9 +2872,9 @@ section.governance-section,
 }
 
 .theorem-gov-section .theorem-gov-wrap{
-  width:min(980px, calc(100% - 120px)) !important;
   max-width:980px !important;
-  margin:0 auto !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
   padding:0 !important;
   box-sizing:border-box !important;
 }
@@ -2889,6 +2888,11 @@ section.governance-section,
   text-align:left !important;
   box-sizing:border-box !important;
   transform:none !important;
+}
+
+.theorem-gov-section .theorem-gov-head .eyebrow{
+  display:block !important;
+  margin:0 0 16px !important;
 }
 
 .theorem-gov-section .theorem-gov-head h2{
