@@ -1466,3 +1466,360 @@
     padding-right: 0 !important;
   }
 }
+
+
+/* =========================
+   v11: remove old build cards and redesign quality section
+   ========================= */
+
+.quality-section{
+  padding: 94px 0 110px !important;
+}
+
+/* keep only the two outer vertical rails in this section */
+.quality-section.page-grid{
+  background:
+    linear-gradient(90deg,
+      transparent 0,
+      transparent calc(50% - 540px),
+      rgba(236,238,245,.92) calc(50% - 540px),
+      rgba(236,238,245,.92) calc(50% - 539px),
+      transparent calc(50% - 539px),
+      transparent calc(50% + 540px),
+      rgba(236,238,245,.92) calc(50% + 540px),
+      rgba(236,238,245,.92) calc(50% + 541px),
+      transparent calc(50% + 541px)
+    ) !important;
+}
+
+.quality-shell{
+  max-width: 1080px !important;
+}
+
+.quality-heading{
+  max-width: 860px;
+  margin: 0 auto 30px !important;
+}
+
+.quality-heading .eyebrow{
+  margin-bottom: 14px !important;
+}
+
+.quality-heading h2{
+  margin:0 0 14px !important;
+}
+
+.quality-heading p:last-child{
+  max-width: 760px;
+  margin:0 auto !important;
+}
+
+.quality-top-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:26px;
+  max-width: 980px;
+  margin: 0 auto 34px;
+}
+
+.provider-pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.provider-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border:1px solid #e5e8f1;
+  border-radius:999px;
+  background:#fff;
+  color:#1a1f36;
+  font-size:14px;
+  font-weight:600;
+  box-shadow:0 10px 24px rgba(20,25,50,.04);
+}
+
+.provider-icon,
+.model-mark{
+  display:grid;
+  place-items:center;
+  width:26px;
+  height:26px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+}
+
+.openai .provider-icon, .model-mark.openai{background:#eef7f5;color:#19735c}
+.anthropic .provider-icon, .model-mark.anthropic{background:#f8f1eb;color:#9a5f39}
+.gemini .provider-icon, .model-mark.gemini{background:#eef2ff;color:#5c68f5}
+.llama .provider-icon, .model-mark.llama{background:#f5efff;color:#7b58f2}
+
+.quality-top-copy{
+  flex:1;
+  max-width:460px;
+  margin:0;
+  color:#737b8f;
+  font-size:15px;
+  line-height:1.6;
+}
+
+.quality-grid-v11{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:18px;
+  max-width:980px;
+  margin:0 auto;
+}
+
+.quality-card{
+  min-height:320px;
+  border:1px solid rgba(226,229,239,.96);
+  border-radius:20px;
+  background:linear-gradient(180deg,#ffffff 0%, #fbfbfe 100%);
+  box-shadow:0 18px 40px rgba(20,25,50,.045);
+  padding:24px;
+}
+
+.quality-card-head{
+  margin-bottom:18px;
+}
+
+.quality-card-head strong{
+  display:block;
+  margin-top:10px;
+  font-size:23px;
+  line-height:1.18;
+  letter-spacing:-.04em;
+}
+
+.quality-badge{
+  display:inline-flex;
+  padding:7px 10px;
+  border-radius:999px;
+  background:#f3f2ff;
+  color:#5c52ea;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+}
+
+.eval-meter{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.eval-meter > div,
+.control-line,
+.model-example{
+  border:1px solid #e7e9f2;
+  background:#fff;
+  border-radius:14px;
+}
+
+.eval-meter > div{
+  padding:14px 14px 12px;
+}
+
+.eval-meter small{
+  display:block;
+  color:#7e8597;
+  font-size:12px;
+  margin-bottom:6px;
+}
+
+.eval-meter b{
+  font-size:26px;
+  letter-spacing:-.04em;
+}
+
+.quality-list{
+  margin:0;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:10px;
+}
+
+.quality-list li{
+  position:relative;
+  padding-left:18px;
+  color:#6e7588;
+  line-height:1.55;
+}
+
+.quality-list li:before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:10px;
+  width:7px;
+  height:7px;
+  border-radius:999px;
+  background:#6c5cff;
+}
+
+.model-examples{
+  display:grid;
+  gap:12px;
+}
+
+.model-example{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:14px;
+}
+
+.model-example b{
+  display:block;
+  margin-bottom:4px;
+  font-size:15px;
+}
+
+.model-example small{
+  display:block;
+  color:#6f7688;
+  line-height:1.5;
+  font-size:13px;
+}
+
+.control-flow{
+  display:grid;
+  gap:12px;
+  margin-bottom:16px;
+}
+
+.control-line{
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:center;
+}
+
+.control-line span{
+  color:#545c70;
+  font-size:14px;
+  line-height:1.45;
+}
+
+.control-line b{
+  font-size:13px;
+  color:#14a06f;
+  background:#edf9f3;
+  border-radius:999px;
+  padding:7px 10px;
+  white-space:nowrap;
+}
+
+.control-foot{
+  color:#6f7688;
+  line-height:1.6;
+  font-size:14px;
+}
+
+@media(max-width: 1000px){
+  .quality-top-row{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .quality-top-copy{
+    max-width:none;
+  }
+  .quality-grid-v11{
+    grid-template-columns:1fr;
+  }
+  .quality-card{
+    min-height:auto;
+  }
+}
+
+@media(max-width: 640px){
+  .quality-section{
+    padding:72px 0 82px !important;
+  }
+  .quality-heading h2{
+    font-size:40px !important;
+    line-height:1.06 !important;
+  }
+  .quality-top-row,
+  .quality-grid-v11{
+    max-width:none;
+  }
+  .provider-pills{
+    gap:8px;
+  }
+  .provider-pill{
+    padding:9px 12px;
+    font-size:13px;
+  }
+}
+
+
+
+
+/* =========================
+   MASTER v1 consolidation fixes
+   Base: theorem-usecases-v13 + quality/model/control section
+   ========================= */
+
+/* v13 had hidden quality as a safety rule. Turn the new quality section back on. */
+.quality-section{
+  display:block !important;
+}
+
+/* Keep quality content safely inside the same visual page rails. */
+.quality-shell{
+  width:min(980px, calc(100% - 120px)) !important;
+  max-width:980px !important;
+}
+
+/* Preserve one clean pair of outer vertical rails only. */
+.quality-section.page-grid,
+.playbook-strip.page-grid{
+  background:
+    linear-gradient(90deg,
+      transparent 0,
+      transparent calc(50% - 540px),
+      rgba(236,238,245,.92) calc(50% - 540px),
+      rgba(236,238,245,.92) calc(50% - 539px),
+      transparent calc(50% - 539px),
+      transparent calc(50% + 540px),
+      rgba(236,238,245,.92) calc(50% + 540px),
+      rgba(236,238,245,.92) calc(50% + 541px),
+      transparent calc(50% + 541px)
+    ) !important;
+}
+
+/* Keep usecase section breathing room from the rails. */
+.usecases-container{
+  max-width:980px !important;
+  width:min(980px, calc(100% - 120px)) !important;
+}
+
+/* Remove the old build section if any cached markup survives. */
+.build-section{
+  display:none !important;
+}
+
+@media(max-width:1100px){
+  .quality-shell,
+  .usecases-container{
+    width:min(980px, calc(100% - 84px)) !important;
+  }
+}
+
+@media(max-width:640px){
+  .quality-shell,
+  .usecases-container{
+    width:calc(100% - 28px) !important;
+  }
+}
