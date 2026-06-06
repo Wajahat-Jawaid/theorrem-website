@@ -25,7 +25,7 @@
 
       <div class="nav-links">
         <a href="#playbooks">Solutions</a>
-        <a href="#process">Process</a>
+        <a href="#quality">Quality</a>
         <a href="#governance">Governance</a>
         <a href="#comparison">Why us</a>
       </div>
@@ -175,175 +175,102 @@
       </div>
     </section>
 
-    <section class="case-section page-grid">
-      <div class="container">
-        <div class="case-heading">
-          <div class="case-title">
-            <span class="diamond-icon"></span>
-            <h2>Example: property agency automates buyer inquiries end-to-end</h2>
-          </div>
-          <a class="btn btn-secondary" href="#contact">Request a demo</a>
-        </div>
-
-        <div class="workflow-window">
-          <div class="window-bar">
-            <span></span><span></span><span></span>
-            <p>WhatsApp lead → property matching → CRM update → viewing booked</p>
-          </div>
-
-          <div class="workflow-canvas">
-            <div class="phone-mock">
-              <div class="mock-title">WhatsApp inquiry</div>
-              <div class="bubble left">Looking for 3 bed apartment in DHA under 90M</div>
-              <div class="bubble right">Got it. Any preference for floor, parking, or possession?</div>
-              <div class="bubble left">Family building, ready possession preferred.</div>
-            </div>
-
-            <div class="agent-orb">
-              <span></span><span></span><span></span>
-              <button>▶</button>
-            </div>
-
-            <div class="crm-mock">
-              <div class="crm-row active"><b>Lead score</b><strong>92%</strong></div>
-              <div class="crm-row"><b>Budget</b><span>PKR 90M</span></div>
-              <div class="crm-row"><b>Area</b><span>DHA Karachi</span></div>
-              <div class="crm-row"><b>Next action</b><span>Schedule visit</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="stats-row">
-          <div><strong>70%</strong><span>fewer manual follow-ups</span></div>
-          <div><strong>24/7</strong><span>lead response coverage</span></div>
-          <div><strong>3–5x</strong><span>faster lead handling</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="process-section page-grid" id="process">
-      <div class="container">
-        <div class="section-heading left">
-          <h2>Start safely. Expand only when the workflow proves value.</h2>
+    <section class="quality-model-section page-grid" id="quality">
+      <div class="container quality-model-container">
+        <div class="qm-intro">
+          <p class="eyebrow">Model choice, quality checks, and human control</p>
+          <h2>Ship AI agents your team can actually trust</h2>
           <p>
-            Most businesses do not need a huge AI platform on day one. They need one painful
-            process automated properly, with approvals, measurable ROI, and a path to scale.
+            We do not just connect an LLM and hope for the best. Each workflow gets the right
+            model, test cases, approval rules, escalation paths, and monitoring before it goes live.
           </p>
         </div>
 
-        <div class="levels">
-          <article>
-            <h3><span>L1.</span> Assist</h3>
-            <div class="mini-diagram"><p>Human asks</p><p>Agent drafts</p><p>Human sends</p></div>
-            <p>Best for replies, summaries, research, and document drafts.</p>
+        <div class="model-provider-row" aria-label="AI providers we can work with">
+          <span><i class="provider-logo openai-logo">◎</i>OpenAI</span>
+          <span><i class="provider-logo anthropic-logo">A</i>Anthropic</span>
+          <span><i class="provider-logo gemini-logo">✦</i>Gemini</span>
+          <span><i class="provider-logo llama-logo">∞</i>Llama</span>
+          <span><i class="provider-logo custom-logo">API</i>Custom models</span>
+        </div>
+
+        <div class="qm-card-grid">
+          <article class="qm-card qm-routing">
+            <div class="qm-card-top">
+              <span class="qm-kicker">Model routing</span>
+              <h3>Use the right model for each part of the workflow</h3>
+              <p>Extraction, reasoning, writing, and compliance checks do not always need the same model.</p>
+            </div>
+
+            <div class="routing-stack">
+              <div class="route-item">
+                <i class="provider-logo openai-logo">◎</i>
+                <div>
+                  <b>OpenAI</b>
+                  <span>Structured extraction, CRM fields, classification, tool calls.</span>
+                </div>
+              </div>
+              <div class="route-item">
+                <i class="provider-logo anthropic-logo">A</i>
+                <div>
+                  <b>Anthropic</b>
+                  <span>Nuanced replies, support drafting, long-context review.</span>
+                </div>
+              </div>
+              <div class="route-item">
+                <i class="provider-logo gemini-logo">✦</i>
+                <div>
+                  <b>Gemini</b>
+                  <span>Document-heavy workflows, spreadsheet reasoning, multimodal tasks.</span>
+                </div>
+              </div>
+            </div>
           </article>
-          <article>
-            <h3><span>L2.</span> Copilot</h3>
-            <div class="mini-diagram"><p>Lead arrives</p><p>Agent prepares</p><p>Rep approves</p></div>
-            <p>Agents reduce manual effort while your team still approves outputs.</p>
+
+          <article class="qm-card qm-evals">
+            <div class="qm-card-top">
+              <span class="qm-kicker">Quality checks</span>
+              <h3>Your team defines what “good” means</h3>
+              <p>We test agents against real examples from your business before expanding automation.</p>
+            </div>
+
+            <div class="eval-board">
+              <div><span>Email quality</span><b>94%</b></div>
+              <div><span>Lead accuracy</span><b>91%</b></div>
+              <div><span>Response SLA</span><b>98%</b></div>
+              <div class="warn"><span>CRM completeness</span><b>87%</b></div>
+            </div>
+
+            <div class="mini-bars">
+              <i style="height:54%"></i><i style="height:58%"></i><i style="height:63%"></i><i style="height:69%"></i><i style="height:72%"></i><i class="active" style="height:76%"></i><i class="active" style="height:82%"></i>
+            </div>
           </article>
-          <article class="level-active">
-            <h3><span>L3.</span> Autopilot</h3>
-            <div class="mini-diagram purple"><p>Trigger</p><p>Agent acts</p><p>Escalates exceptions</p></div>
-            <p>Routine work runs automatically; edge cases go back to humans.</p>
-          </article>
-          <article class="level-active">
-            <h3><span>L4.</span> Managed workflows</h3>
-            <div class="mini-diagram purple"><p>Business goal</p><p>Multiple agents</p><p>Weekly reporting</p></div>
-            <p>Multiple agents coordinate across sales, support, operations, and CRM.</p>
+
+          <article class="qm-card qm-control">
+            <div class="qm-card-top">
+              <span class="qm-kicker">Human control</span>
+              <h3>Automate routine work, escalate risky work</h3>
+              <p>Low-confidence outputs, sensitive customers, pricing changes, and approvals can always route back to your team.</p>
+            </div>
+
+            <div class="control-console">
+              <code>When confidence &lt; 85%</code>
+              <span>→ Escalate to human</span>
+              <span>→ Log reason</span>
+              <span>→ Ask for approval</span>
+            </div>
+
+            <div class="control-tags">
+              <span>Approval gates</span>
+              <span>Audit logs</span>
+              <span>Fallback rules</span>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="flow-section page-grid">
-      <div class="container">
-        <p class="center-label">Example — lead qualification</p>
-        <div class="timeline"><div>L1</div><div>L2</div><div class="active">L3</div><div class="active">L4</div></div>
-
-        <div class="flow-grid">
-          <article><h3>Reps research each lead manually</h3><ul><li>Read customer message</li><li>Ask budget and location</li><li>Search options manually</li><li>Update CRM later</li></ul></article>
-          <article><h3>Agent prepares qualification output</h3><ul><li>Extracts buyer intent</li><li>Scores urgency</li><li>Suggests next reply</li><li>Rep reviews and sends</li></ul></article>
-          <article class="active-flow"><h3>New leads are qualified automatically</h3><ul><li>Captures requirements</li><li>Matches inventory</li><li>Updates CRM fields</li><li>Books visit with rep</li></ul></article>
-          <article class="active-flow"><h3>Your team improves the playbook</h3><ul><li>Tracks conversion gaps</li><li>Finds weak responses</li><li>Reports weekly ROI</li><li>Improves next actions</li></ul></article>
-        </div>
-      </div>
-    </section>
-<section class="quality-section page-grid" id="quality">
-      <div class="container quality-shell">
-        <div class="section-heading centered quality-heading">
-          <p class="eyebrow">QUALITY, MODELING & CONTROL</p>
-          <h2>Your team sets the <span>quality bar</span></h2>
-          <p>We test each workflow against real business scenarios, route tasks to the right model, and keep humans in control where risk matters.</p>
-        </div>
-
-        <div class="quality-top-row">
-          <div class="provider-pills" aria-label="Supported model providers">
-            <span class="provider-pill openai"><span class="provider-icon">◎</span><span>OpenAI</span></span>
-            <span class="provider-pill anthropic"><span class="provider-icon">A</span><span>Anthropic</span></span>
-            <span class="provider-pill gemini"><span class="provider-icon">✦</span><span>Gemini</span></span>
-            <span class="provider-pill llama"><span class="provider-icon">∞</span><span>Llama</span></span>
-          </div>
-          <p class="quality-top-copy">Examples: GPT models for structured extraction, Claude for nuanced customer replies, Gemini for document reasoning, and Llama for flexible private deployments.</p>
-        </div>
-
-        <div class="quality-grid-v11">
-          <article class="quality-card qc-evals">
-            <div class="quality-card-head">
-              <span class="quality-badge">Eval coverage</span>
-              <strong>Lead qualification tests</strong>
-            </div>
-            <div class="eval-meter">
-              <div><small>Budget capture</small><b>96%</b></div>
-              <div><small>Area match</small><b>93%</b></div>
-              <div><small>Reply quality</small><b>94%</b></div>
-              <div><small>Escalation logic</small><b>99%</b></div>
-            </div>
-            <ul class="quality-list">
-              <li>Real inquiry scenarios are replayed before launch</li>
-              <li>Edge cases are logged for prompt and rule refinement</li>
-              <li>Weekly review improves weak decisions over time</li>
-            </ul>
-          </article>
-
-          <article class="quality-card qc-models">
-            <div class="quality-card-head">
-              <span class="quality-badge">Model routing</span>
-              <strong>Use the right model for the task</strong>
-            </div>
-            <div class="model-examples">
-              <div class="model-example">
-                <span class="model-mark openai">◎</span>
-                <div><b>OpenAI</b><small>Lead extraction, classification, CRM-ready fields</small></div>
-              </div>
-              <div class="model-example">
-                <span class="model-mark anthropic">A</span>
-                <div><b>Anthropic</b><small>Long-form replies, nuanced support responses, safe drafting</small></div>
-              </div>
-              <div class="model-example">
-                <span class="model-mark gemini">✦</span>
-                <div><b>Gemini</b><small>Document-heavy workflows and spreadsheet-style reasoning</small></div>
-              </div>
-            </div>
-          </article>
-
-          <article class="quality-card qc-controls">
-            <div class="quality-card-head">
-              <span class="quality-badge">Human control</span>
-              <strong>Escalate when confidence is low</strong>
-            </div>
-            <div class="control-flow">
-              <div class="control-line"><span>Confidence &lt; 85%</span><b>Review required</b></div>
-              <div class="control-line"><span>Payment or pricing change</span><b>Approval gate</b></div>
-              <div class="control-line"><span>Customer upset / unclear intent</span><b>Hand off to team</b></div>
-            </div>
-            <div class="control-foot">Every workflow can include fallback rules, approval steps, and audit logs from day one.</div>
-          </article>
-        </div>
-      </div>
-    </section>
-    
-    <section class="governance-section page-grid" id="governance">
+<section class="governance-section page-grid" id="governance">
       <div class="section-heading centered">
         <h2>Security & governance at <span>every layer</span></h2>
         <p>Custom agents need serious control. We design workflows with access limits, audit trails, escalation paths, and human approvals from day one.</p>
@@ -413,7 +340,7 @@
         <div class="socials"><a href="#">LinkedIn</a><a href="#">X</a><a href="#">YouTube</a></div>
       </div>
       <div><h4>Solutions</h4><a href="#playbooks">Sales agents</a><a href="#playbooks">Support agents</a><a href="#playbooks">Operations agents</a><a href="#playbooks">Real estate agents</a></div>
-      <div><h4>Company</h4><a href="#process">Process</a><a href="#quality">Quality</a><a href="#governance">Governance</a><a href="#contact">Contact</a></div>
+      <div><h4>Company</h4><a href="#quality">Quality</a><a href="#quality">Quality</a><a href="#governance">Governance</a><a href="#contact">Contact</a></div>
       <div><h4>Legal</h4><a href="#">Privacy policy</a><a href="#">Security policy</a><a href="#">Terms</a></div>
     </div>
   </footer>

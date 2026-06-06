@@ -1,18 +1,14 @@
-# Theorem Master v1
+# Theorem Master v3
 
-This is the consolidated master build.
+This version carefully continues from the stable v13 base.
 
-Base used:
-- theorem-usecases-v13 for the stable hero, grid-line fixes, pastel/usecase section, and alignment fixes.
-
-Merged in:
-- Redesigned quality/model/control section from theorem-playbooks-v11.
-
-Important:
-- The old "Build from your SOP / Build around your tools / Build with control" section is removed.
-- The 6-card usecase section from v13 is preserved.
-- The quality/model/control section is enabled again and placed after usecases.
-- Grid rails are kept as one clean left/right pair.
+What it does:
+- Keeps the stable hero and pastel usecase section.
+- Removes the uncertain property-example/case section.
+- Removes the old L1/L4 process section and timeline section completely.
+- Removes the old build section.
+- Adds a fresh Quality / Model Routing / Human Control section after usecases.
+- Keeps one clean pair of outer vertical rails for the new section.
 
 Replace:
 - index.html
