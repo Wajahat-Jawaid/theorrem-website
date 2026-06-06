@@ -1,20 +1,13 @@
-# Theorem Master v11
+# Theorem Master v13
 
-Updated final contact / CTA section and refined footer.
-
-What changed:
-- Replaced the centered CTA card with a more polished 2-column closing section.
-- Kept text left-aligned for consistency with the rest of the site.
-- Added a right-side “Typical engagement” panel with 3 clean steps.
-- Tightened footer spacing and improved overall finishing.
+Fixes the final CTA section spacing:
+- The CTA card now uses the same 980px width discipline as the section above.
+- The card no longer expands wider just to create spacing.
+- Inner content has proper horizontal and vertical padding inside the card borders.
+- Right “Typical engagement” panel also has better internal breathing room.
+- Background rails stay behind the section, not inside the card.
 
 Replace:
 - index.html
 - styles.css
 - script.js
-
-
-V12 notes:
-- Cleaned the final CTA section grid lines.
-- Removed internal page-grid lines from this section.
-- Kept only the outer structural vertical lines so the card looks clean.

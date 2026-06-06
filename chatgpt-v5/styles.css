@@ -3521,3 +3521,83 @@ section.governance-section,
   position: relative;
   z-index: 1;
 }
+
+
+/* === v13: final CTA inner padding + width correction === */
+
+/* Match the width discipline of the section above instead of expanding wider */
+.final-cta .container{
+  width: min(980px, calc(100% - 120px)) !important;
+  max-width: 980px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* The outer card now gives proper breathing room from all borders */
+.cta-shell{
+  width: 100% !important;
+  max-width: 980px !important;
+  margin: 0 auto !important;
+  padding: 64px 58px !important;
+  grid-template-columns: minmax(0, 1.02fr) minmax(340px, 0.98fr) !important;
+  gap: 52px !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+}
+
+/* Keep content comfortably inside the card, not visually touching top/bottom */
+.cta-copy{
+  align-self: center !important;
+}
+
+.cta-panel{
+  align-self: center !important;
+  padding: 26px !important;
+}
+
+/* Add slightly more vertical breathing inside the right panel too */
+.cta-journey{
+  gap: 14px !important;
+}
+
+.cta-step-item{
+  padding: 17px 18px !important;
+}
+
+/* The chips should not sit too close to the bottom edge */
+.cta-microproofs{
+  margin-top: 10px !important;
+}
+
+/* Keep the background rails outside the CTA card only */
+.final-cta.page-grid::before{
+  z-index: 0 !important;
+}
+
+.final-cta .container,
+.cta-shell{
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+@media (max-width: 980px){
+  .final-cta .container{
+    width: min(980px, calc(100% - 56px)) !important;
+  }
+
+  .cta-shell{
+    padding: 42px 34px !important;
+    grid-template-columns: 1fr !important;
+    gap: 34px !important;
+  }
+}
+
+@media (max-width: 640px){
+  .final-cta .container{
+    width: calc(100% - 28px) !important;
+  }
+
+  .cta-shell{
+    padding: 28px 22px !important;
+  }
+}
