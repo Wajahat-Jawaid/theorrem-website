@@ -2512,3 +2512,165 @@
     font-size: 34px !important;
   }
 }
+
+
+/* =========================
+   MASTER v7: real governance layout fix
+   ========================= */
+
+/* Governance heading and grid now live inside this container */
+.governance-section{
+  padding: 98px 0 112px !important;
+}
+
+.governance-section.page-grid{
+  background:
+    linear-gradient(90deg,
+      transparent 0,
+      transparent calc(50% - 540px),
+      rgba(236,238,245,.92) calc(50% - 540px),
+      rgba(236,238,245,.92) calc(50% - 539px),
+      transparent calc(50% - 539px),
+      transparent calc(50% + 540px),
+      rgba(236,238,245,.92) calc(50% + 540px),
+      rgba(236,238,245,.92) calc(50% + 541px),
+      transparent calc(50% + 541px)
+    ) !important;
+}
+
+.governance-container{
+  width: min(980px, calc(100% - 120px)) !important;
+  max-width: 980px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Heading is left aligned but safely inside the container */
+.governance-heading,
+.governance-section .governance-heading,
+.governance-section .section-heading{
+  width: 100% !important;
+  max-width: 760px !important;
+  margin: 0 0 42px 0 !important;
+  text-align: left !important;
+}
+
+.governance-heading h2,
+.governance-section .governance-heading h2,
+.governance-section .section-heading h2{
+  margin: 0 !important;
+  max-width: 760px !important;
+  text-align: left !important;
+  font-size: clamp(40px, 4.2vw, 58px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.058em !important;
+  font-weight: 560 !important;
+}
+
+.governance-heading p,
+.governance-section .governance-heading p,
+.governance-section .section-heading p{
+  margin: 18px 0 0 !important;
+  max-width: 720px !important;
+  text-align: left !important;
+  color: #747b8d !important;
+  font-size: 17.5px !important;
+  line-height: 1.65 !important;
+}
+
+/* Card grid. No broken table joints, no old table borders. */
+.governance-grid.governance-card-grid,
+.governance-section .governance-grid{
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+/* Kill old table border behavior fully */
+.governance-grid.governance-card-grid article,
+.governance-section .governance-grid article{
+  min-height: 210px !important;
+  padding: 26px 24px 24px !important;
+  border: 1px solid rgba(226,229,239,.96) !important;
+  border-radius: 18px !important;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfbfe 100%) !important;
+  box-shadow: 0 16px 38px rgba(18,23,42,.04) !important;
+}
+
+.governance-grid.governance-card-grid article:nth-child(3n+1),
+.governance-section .governance-grid article:nth-child(3n+1){
+  background: linear-gradient(145deg, #fbfffd 0%, #ffffff 78%) !important;
+}
+
+.governance-grid.governance-card-grid article:nth-child(3n+2),
+.governance-section .governance-grid article:nth-child(3n+2){
+  background: linear-gradient(145deg, #f9f8ff 0%, #ffffff 78%) !important;
+}
+
+.governance-grid.governance-card-grid article:nth-child(3n),
+.governance-section .governance-grid article:nth-child(3n){
+  background: linear-gradient(145deg, #fffaf4 0%, #ffffff 78%) !important;
+}
+
+.governance-grid.governance-card-grid article span,
+.governance-section .governance-grid article span{
+  display: grid !important;
+  place-items: center !important;
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 14px !important;
+  margin: 0 0 22px !important;
+  background: #f2f0ff !important;
+  color: #5b4df7 !important;
+  font-size: 16px !important;
+  box-shadow: 0 10px 24px rgba(91,77,247,.06) !important;
+}
+
+.governance-grid.governance-card-grid h3,
+.governance-section .governance-grid h3{
+  margin: 0 0 10px !important;
+  font-size: 18px !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.035em !important;
+  font-weight: 650 !important;
+}
+
+.governance-grid.governance-card-grid p,
+.governance-section .governance-grid p{
+  margin: 0 !important;
+  color: #6d7588 !important;
+  font-size: 14.5px !important;
+  line-height: 1.58 !important;
+}
+
+@media(max-width: 1100px){
+  .governance-container{
+    width: min(980px, calc(100% - 84px)) !important;
+  }
+
+  .governance-grid.governance-card-grid,
+  .governance-section .governance-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media(max-width: 640px){
+  .governance-container{
+    width: calc(100% - 28px) !important;
+  }
+
+  .governance-grid.governance-card-grid,
+  .governance-section .governance-grid{
+    grid-template-columns: 1fr !important;
+  }
+
+  .governance-heading h2,
+  .governance-section .section-heading h2{
+    font-size: 34px !important;
+  }
+}
