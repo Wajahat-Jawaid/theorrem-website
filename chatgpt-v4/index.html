@@ -181,25 +181,52 @@
           <p class="eyebrow">Model choice, quality checks, and human control</p>
           <h2>Ship AI agents your team can actually trust</h2>
           <p>
-            We do not just connect an LLM and hope for the best. Each workflow gets the right
-            model, test cases, approval rules, escalation paths, and monitoring before it goes live.
+            We don’t just connect an LLM and hope for the best. Each workflow gets the right model,
+            test cases, approval rules, escalation paths, and monitoring before it goes live.
           </p>
         </div>
 
-        <div class="model-provider-row" aria-label="AI providers we can work with">
-          <span><i class="provider-logo openai-logo">◎</i>OpenAI</span>
-          <span><i class="provider-logo anthropic-logo">A</i>Anthropic</span>
-          <span><i class="provider-logo gemini-logo">✦</i>Gemini</span>
-          <span><i class="provider-logo llama-logo">∞</i>Llama</span>
-          <span><i class="provider-logo custom-logo">API</i>Custom models</span>
+        <div class="compatibility-row" aria-label="Compatible AI providers">
+          <span class="compat-label">Compatible with</span>
+          <span class="compat-provider"><i class="provider-logo openai-logo">◎</i> OpenAI</span>
+          <span class="compat-provider"><i class="provider-logo anthropic-logo">A</i> Anthropic</span>
+          <span class="compat-provider"><i class="provider-logo gemini-logo">✦</i> Gemini</span>
+          <span class="compat-provider"><i class="provider-logo llama-logo">∞</i> Llama</span>
+          <span class="compat-provider"><i class="provider-logo custom-logo">⌘</i> Custom APIs</span>
+        </div>
+
+        <div class="example-flow-band" aria-label="Example workflow">
+          <div class="example-label">
+            <span>✦</span>
+            <strong>Example:</strong>
+          </div>
+          <div class="example-step">
+            <i>💬</i>
+            <span>Buyer inquiry</span>
+          </div>
+          <b>→</b>
+          <div class="example-step">
+            <i>👤</i>
+            <span>Lead qualification</span>
+          </div>
+          <b>→</b>
+          <div class="example-step">
+            <i>▣</i>
+            <span>CRM update</span>
+          </div>
+          <b>→</b>
+          <div class="example-step">
+            <i>🛡</i>
+            <span>Escalation if confidence is low</span>
+          </div>
         </div>
 
         <div class="qm-card-grid">
           <article class="qm-card qm-routing">
             <div class="qm-card-top">
               <span class="qm-kicker">Model routing</span>
-              <h3>Use the right model for each part of the workflow</h3>
-              <p>Extraction, reasoning, writing, and compliance checks do not always need the same model.</p>
+              <h3>Use the right model for each job</h3>
+              <p>Route tasks based on complexity, cost, and performance so every step gets the best fit.</p>
             </div>
 
             <div class="routing-stack">
@@ -207,31 +234,33 @@
                 <i class="provider-logo openai-logo">◎</i>
                 <div>
                   <b>OpenAI</b>
-                  <span>Structured extraction, CRM fields, classification, tool calls.</span>
+                  <span>Advanced reasoning, structured extraction, CRM fields.</span>
                 </div>
               </div>
               <div class="route-item">
                 <i class="provider-logo anthropic-logo">A</i>
                 <div>
                   <b>Anthropic</b>
-                  <span>Nuanced replies, support drafting, long-context review.</span>
+                  <span>Long-context review, nuanced replies, safe drafting.</span>
                 </div>
               </div>
               <div class="route-item">
                 <i class="provider-logo gemini-logo">✦</i>
                 <div>
                   <b>Gemini</b>
-                  <span>Document-heavy workflows, spreadsheet reasoning, multimodal tasks.</span>
+                  <span>Multimodal understanding and document-heavy tasks.</span>
                 </div>
               </div>
             </div>
+
+            <a class="qm-link" href="#contact">See routing rules <span>→</span></a>
           </article>
 
           <article class="qm-card qm-evals">
             <div class="qm-card-top">
               <span class="qm-kicker">Quality checks</span>
               <h3>Your team defines what “good” means</h3>
-              <p>We test agents against real examples from your business before expanding automation.</p>
+              <p>Automated evals run on real examples before anything reaches your customers.</p>
             </div>
 
             <div class="eval-board">
@@ -242,15 +271,17 @@
             </div>
 
             <div class="mini-bars">
-              <i style="height:54%"></i><i style="height:58%"></i><i style="height:63%"></i><i style="height:69%"></i><i style="height:72%"></i><i class="active" style="height:76%"></i><i class="active" style="height:82%"></i>
+              <i style="height:52%"></i><i style="height:56%"></i><i style="height:61%"></i><i style="height:68%"></i><i style="height:72%"></i><i class="active" style="height:78%"></i><i class="active" style="height:86%"></i>
             </div>
+
+            <a class="qm-link" href="#contact">View quality dashboard <span>→</span></a>
           </article>
 
           <article class="qm-card qm-control">
             <div class="qm-card-top">
               <span class="qm-kicker">Human control</span>
-              <h3>Automate routine work, escalate risky work</h3>
-              <p>Low-confidence outputs, sensitive customers, pricing changes, and approvals can always route back to your team.</p>
+              <h3>Automate routine work and escalate risky work</h3>
+              <p>Low-confidence outputs, sensitive customers, pricing changes, and approvals always route back to your team.</p>
             </div>
 
             <div class="control-console">
@@ -265,6 +296,8 @@
               <span>Audit logs</span>
               <span>Fallback rules</span>
             </div>
+
+            <a class="qm-link" href="#contact">Learn about human control <span>→</span></a>
           </article>
         </div>
       </div>

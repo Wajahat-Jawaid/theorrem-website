@@ -1,14 +1,14 @@
-# Theorem Master v3
+# Theorem Master v4
 
-This version carefully continues from the stable v13 base.
-
-What it does:
-- Keeps the stable hero and pastel usecase section.
-- Removes the uncertain property-example/case section.
-- Removes the old L1/L4 process section and timeline section completely.
-- Removes the old build section.
-- Adds a fresh Quality / Model Routing / Human Control section after usecases.
-- Keeps one clean pair of outer vertical rails for the new section.
+Changes:
+- Updated the Quality / Model / Control section to match the approved mockup.
+- Heading is now left-aligned like the usecases section.
+- Provider row is now informational, not selectable-looking.
+- Added a compact example workflow strip:
+  Buyer inquiry → Lead qualification → CRM update → Escalation.
+- Refined the 3-card layout:
+  Model routing, Quality checks, Human control.
+- Preserves the stable hero and pastel usecases from the master branch.
 
 Replace:
 - index.html
