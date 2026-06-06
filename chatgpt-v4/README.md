@@ -1,11 +1,12 @@
-# Theorem Usecases v13
+# Theorem Playbooks v11
 
 Changes:
-- Fixed the playbooks/usecases section horizontal breathing room.
-- Pulled the intro and cards inward so they no longer sit on the page grid rails.
-- Kept the 6-card 2x3 layout.
+- Removed the old "Build from your SOP / Build around your tools / Build with control" section.
+- Replaced it with a redesigned Quality section.
+- Added provider/model examples: OpenAI, Anthropic, Gemini, and Llama.
+- Added cleaner layout and fixed grid/rail alignment for this section.
 
-Replace files:
+Updated files:
 - index.html
 - styles.css
 - script.js
