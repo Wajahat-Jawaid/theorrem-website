@@ -2154,3 +2154,197 @@
     min-width:0;
   }
 }
+
+
+/* =========================
+   MASTER v5: keep all section headings left aligned
+   ========================= */
+
+/* Override older centered heading patterns for consistency */
+.section-heading.centered,
+.section-heading,
+.governance-section .section-heading,
+.integrations-section,
+.comparison-section .section-heading,
+.cta-section .cta-card{
+  text-align: left !important;
+}
+
+/* Keep heading blocks aligned to the same content column, not centered floating */
+.section-heading.centered,
+.governance-section .section-heading,
+.comparison-section .section-heading{
+  max-width: 760px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Governance section: left aligned intro + grid inside safe rails */
+.governance-section{
+  padding: 96px 0 106px !important;
+}
+
+.governance-section .container{
+  width: min(980px, calc(100% - 120px)) !important;
+  max-width: 980px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.governance-section .section-heading h2{
+  max-width: 760px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  font-size: clamp(40px, 4.2vw, 58px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.058em !important;
+  font-weight: 560 !important;
+}
+
+.governance-section .section-heading p{
+  max-width: 720px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  font-size: 17.5px !important;
+  line-height: 1.65 !important;
+}
+
+/* Governance cards: cleaner card-based grid instead of plain divided table */
+.governance-grid{
+  margin-top: 44px !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+.governance-grid .gov-item{
+  min-height: 210px !important;
+  padding: 26px 24px 24px !important;
+  border: 1px solid rgba(226,229,239,.96) !important;
+  border-radius: 18px !important;
+  background: linear-gradient(180deg, #fff 0%, #fbfbfe 100%) !important;
+  box-shadow: 0 16px 38px rgba(18,23,42,.04) !important;
+}
+
+.governance-grid .gov-item:nth-child(3n+1){
+  background: linear-gradient(145deg, #fbfffd 0%, #fff 78%) !important;
+}
+
+.governance-grid .gov-item:nth-child(3n+2){
+  background: linear-gradient(145deg, #f9f8ff 0%, #fff 78%) !important;
+}
+
+.governance-grid .gov-item:nth-child(3n){
+  background: linear-gradient(145deg, #fffaf4 0%, #fff 78%) !important;
+}
+
+.governance-grid .icon-tile{
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 14px !important;
+  margin-bottom: 22px !important;
+  background: #f2f0ff !important;
+  color: #5b4df7 !important;
+  box-shadow: 0 10px 24px rgba(91,77,247,.06) !important;
+}
+
+.governance-grid h3{
+  margin: 0 0 10px !important;
+  font-size: 18px !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.035em !important;
+  font-weight: 650 !important;
+}
+
+.governance-grid p{
+  margin: 0 !important;
+  color: #6d7588 !important;
+  font-size: 14.5px !important;
+  line-height: 1.58 !important;
+}
+
+/* Integrations section: left aligned too */
+.integrations-section{
+  padding: 98px 0 !important;
+}
+
+.integrations-section .container{
+  width: min(980px, calc(100% - 120px)) !important;
+  max-width: 980px !important;
+}
+
+.integrations-section h2{
+  text-align: left !important;
+  max-width: 760px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Comparison / CTA remaining headings left aligned */
+.comparison-section .container,
+.cta-section .container{
+  width: min(980px, calc(100% - 120px)) !important;
+  max-width: 980px !important;
+}
+
+.cta-card{
+  align-items: flex-start !important;
+}
+
+.cta-card h2,
+.cta-card p{
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Keep only clean outer rails for governance/integration zones */
+.governance-section.page-grid,
+.integrations-section.page-grid,
+.comparison-section.page-grid,
+.cta-section.page-grid{
+  background:
+    linear-gradient(90deg,
+      transparent 0,
+      transparent calc(50% - 540px),
+      rgba(236,238,245,.92) calc(50% - 540px),
+      rgba(236,238,245,.92) calc(50% - 539px),
+      transparent calc(50% - 539px),
+      transparent calc(50% + 540px),
+      rgba(236,238,245,.92) calc(50% + 540px),
+      rgba(236,238,245,.92) calc(50% + 541px),
+      transparent calc(50% + 541px)
+    ) !important;
+}
+
+@media(max-width: 1100px){
+  .governance-section .container,
+  .integrations-section .container,
+  .comparison-section .container,
+  .cta-section .container{
+    width: min(980px, calc(100% - 84px)) !important;
+  }
+
+  .governance-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media(max-width: 640px){
+  .governance-section .container,
+  .integrations-section .container,
+  .comparison-section .container,
+  .cta-section .container{
+    width: calc(100% - 28px) !important;
+  }
+
+  .governance-grid{
+    grid-template-columns: 1fr !important;
+  }
+
+  .governance-section .section-heading h2{
+    font-size: 34px !important;
+  }
+}

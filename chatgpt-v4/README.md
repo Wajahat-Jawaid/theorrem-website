@@ -1,14 +1,11 @@
-# Theorem Master v4
+# Theorem Master v5
 
 Changes:
-- Updated the Quality / Model / Control section to match the approved mockup.
-- Heading is now left-aligned like the usecases section.
-- Provider row is now informational, not selectable-looking.
-- Added a compact example workflow strip:
-  Buyer inquiry → Lead qualification → CRM update → Escalation.
-- Refined the 3-card layout:
-  Model routing, Quality checks, Human control.
-- Preserves the stable hero and pastel usecases from the master branch.
+- Made remaining section headings left-aligned for consistency.
+- Governance section heading is now left-aligned.
+- Governance cards are refined into cleaner individual cards instead of a flat table-like grid.
+- Integration, comparison, and CTA headings are also forced left-aligned.
+- Kept the stable hero, usecases, and quality/model/control work from master v4.
 
 Replace:
 - index.html
