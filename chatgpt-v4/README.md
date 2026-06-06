@@ -1,11 +1,10 @@
-# Theorem Master v7
+# Theorem Master v8
 
-Fix:
-- Governance heading is now actually inside the same content container as the grid.
-- No heading touches the viewport left edge.
-- Governance grid is now proper card grid, not a broken table.
-- Old table borders are fully overridden.
-- Footer duplicate Quality link cleaned.
+Governance fix:
+- Fully replaces the old governance section with new unique class names.
+- Old broken table/grid CSS can no longer affect this section.
+- Heading is inside the container and will not touch screen left.
+- Cards are isolated individual cards with proper gaps, so no broken table joints.
 
 Replace:
 - index.html
