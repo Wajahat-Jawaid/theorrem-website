@@ -2835,3 +2835,181 @@
     grid-template-columns: 1fr !important;
   }
 }
+
+
+/* =========================
+   MASTER v9: final governance hard reset
+   The old governance markup is removed in HTML. These rules only target new unique classes.
+   ========================= */
+
+section.governance-section,
+.governance-section,
+.governance-grid,
+.gov-item,
+.icon-tile{
+  all: revert-layer;
+}
+
+.theorem-gov-section{
+  display:block !important;
+  position:relative !important;
+  padding:96px 0 112px !important;
+  overflow:hidden !important;
+}
+
+.theorem-gov-section.page-grid{
+  background:
+    linear-gradient(90deg,
+      transparent 0,
+      transparent calc(50% - 540px),
+      rgba(236,238,245,.92) calc(50% - 540px),
+      rgba(236,238,245,.92) calc(50% - 539px),
+      transparent calc(50% - 539px),
+      transparent calc(50% + 540px),
+      rgba(236,238,245,.92) calc(50% + 540px),
+      rgba(236,238,245,.92) calc(50% + 541px),
+      transparent calc(50% + 541px)
+    ) !important;
+}
+
+.theorem-gov-section .theorem-gov-wrap{
+  width:min(980px, calc(100% - 120px)) !important;
+  max-width:980px !important;
+  margin:0 auto !important;
+  padding:0 !important;
+  box-sizing:border-box !important;
+}
+
+.theorem-gov-section .theorem-gov-head{
+  display:block !important;
+  width:100% !important;
+  max-width:760px !important;
+  margin:0 0 44px 0 !important;
+  padding:0 !important;
+  text-align:left !important;
+  box-sizing:border-box !important;
+  transform:none !important;
+}
+
+.theorem-gov-section .theorem-gov-head h2{
+  display:block !important;
+  width:100% !important;
+  max-width:760px !important;
+  margin:0 !important;
+  padding:0 !important;
+  color:#090d22 !important;
+  font-size:clamp(40px, 4.2vw, 58px) !important;
+  line-height:1.08 !important;
+  letter-spacing:-0.058em !important;
+  font-weight:560 !important;
+  text-align:left !important;
+  transform:none !important;
+}
+
+.theorem-gov-section .theorem-gov-head h2 span{
+  color:#7468ff !important;
+}
+
+.theorem-gov-section .theorem-gov-head p{
+  display:block !important;
+  width:100% !important;
+  max-width:710px !important;
+  margin:18px 0 0 !important;
+  padding:0 !important;
+  color:#747b8d !important;
+  font-size:17.5px !important;
+  line-height:1.65 !important;
+  letter-spacing:-0.02em !important;
+  text-align:left !important;
+}
+
+.theorem-gov-section .theorem-gov-cards{
+  width:100% !important;
+  margin:0 !important;
+  padding:0 !important;
+  display:grid !important;
+  grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+  gap:18px !important;
+  border:0 !important;
+  background:transparent !important;
+  box-sizing:border-box !important;
+}
+
+.theorem-gov-section .theorem-gov-cards article{
+  display:block !important;
+  min-height:210px !important;
+  margin:0 !important;
+  padding:26px 24px 24px !important;
+  border:1px solid rgba(226,229,239,.96) !important;
+  border-radius:18px !important;
+  background:linear-gradient(180deg,#fff 0%,#fbfbfe 100%) !important;
+  box-shadow:0 16px 38px rgba(18,23,42,.04) !important;
+  box-sizing:border-box !important;
+}
+
+.theorem-gov-section .theorem-gov-cards article:nth-child(3n+1){
+  background:linear-gradient(145deg,#fbfffd 0%,#fff 78%) !important;
+}
+
+.theorem-gov-section .theorem-gov-cards article:nth-child(3n+2){
+  background:linear-gradient(145deg,#f9f8ff 0%,#fff 78%) !important;
+}
+
+.theorem-gov-section .theorem-gov-cards article:nth-child(3n){
+  background:linear-gradient(145deg,#fffaf4 0%,#fff 78%) !important;
+}
+
+.theorem-gov-section .theorem-gov-cards article > span{
+  display:grid !important;
+  place-items:center !important;
+  width:46px !important;
+  height:46px !important;
+  margin:0 0 22px !important;
+  border-radius:14px !important;
+  background:#f2f0ff !important;
+  color:#5b4df7 !important;
+  font-size:16px !important;
+  box-shadow:0 10px 24px rgba(91,77,247,.06) !important;
+}
+
+.theorem-gov-section .theorem-gov-cards h3{
+  margin:0 0 10px !important;
+  padding:0 !important;
+  color:#090d22 !important;
+  font-size:18px !important;
+  line-height:1.2 !important;
+  letter-spacing:-0.035em !important;
+  font-weight:650 !important;
+}
+
+.theorem-gov-section .theorem-gov-cards p{
+  margin:0 !important;
+  padding:0 !important;
+  color:#6d7588 !important;
+  font-size:14.5px !important;
+  line-height:1.58 !important;
+}
+
+@media(max-width:1100px){
+  .theorem-gov-section .theorem-gov-wrap{
+    width:min(980px, calc(100% - 84px)) !important;
+  }
+
+  .theorem-gov-section .theorem-gov-cards{
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media(max-width:640px){
+  .theorem-gov-section .theorem-gov-wrap{
+    width:calc(100% - 28px) !important;
+  }
+
+  .theorem-gov-section .theorem-gov-head h2{
+    font-size:34px !important;
+  }
+
+  .theorem-gov-section .theorem-gov-cards{
+    grid-template-columns:1fr !important;
+  }
+}

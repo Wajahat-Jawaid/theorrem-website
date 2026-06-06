@@ -1,10 +1,11 @@
-# Theorem Master v8
+# Theorem Master v9
 
-Governance fix:
-- Fully replaces the old governance section with new unique class names.
-- Old broken table/grid CSS can no longer affect this section.
-- Heading is inside the container and will not touch screen left.
-- Cards are isolated individual cards with proper gaps, so no broken table joints.
+Hard governance reset:
+- The old governance section is removed by slicing from id="governance" to the next section.
+- A new isolated governance section is inserted with unique class names.
+- Final CSS only targets the new unique classes.
+- Heading cannot touch the viewport left because it is inside .theorem-gov-wrap.
+- Cards are individual grid cards with gaps, not a table.
 
 Replace:
 - index.html
