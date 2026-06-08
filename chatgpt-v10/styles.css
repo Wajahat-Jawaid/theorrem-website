@@ -5198,3 +5198,3176 @@ h2 span,
     width: calc(100% - 28px) !important;
   }
 }
+
+
+/* v40 — pure HTML/CSS Interakt-style industry slider, no pasted screenshots */
+.industry-slider-section{
+  padding: 94px 0 112px;
+  position: relative;
+}
+
+.industry-slider-container{
+  width: min(1280px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.industry-slider-head{
+  max-width: 980px;
+  margin: 0 0 44px;
+}
+
+.industry-slider-head .section-eyebrow{
+  margin-bottom: 18px;
+}
+
+.industry-slider-head h2{
+  margin: 0;
+  max-width: 860px;
+  color: var(--ink);
+  font-size: clamp(38px, 4.4vw, 56px);
+  line-height: 1.04;
+  letter-spacing: -0.065em;
+  font-weight: 820;
+}
+
+.industry-slider-head > p:not(.section-eyebrow){
+  margin: 22px 0 0;
+  max-width: 780px;
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1.62;
+  letter-spacing: -0.028em;
+}
+
+.industry-carousel{
+  --industry-gap: 18px;
+  position: relative;
+  padding: 0 52px;
+}
+
+.industry-window{
+  overflow: hidden;
+  border-radius: 22px;
+}
+
+.industry-track{
+  display: flex;
+  gap: var(--industry-gap);
+  will-change: transform;
+}
+
+.industry-card{
+  flex: 0 0 calc((100% - (var(--industry-gap) * 2)) / 3);
+  min-height: 402px;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(15,23,42,.055);
+  display: flex;
+  flex-direction: column;
+}
+
+.bg-cream{ background: #fff4dc; }
+.bg-mint{ background: #eaffea; }
+.bg-blue{ background: #edf4ff; }
+.bg-pink{ background: #fff0fa; }
+
+.industry-art{
+  height: 206px;
+  position: relative;
+  overflow: hidden;
+}
+
+.industry-copy{
+  padding: 28px 30px 31px;
+  flex: 1;
+}
+
+.industry-copy h3{
+  margin: 0 0 18px;
+  color: #050816;
+  font-size: 31px;
+  line-height: 1.06;
+  letter-spacing: -0.055em;
+  font-weight: 820;
+}
+
+.industry-copy p{
+  margin: 0 0 22px;
+  color: #050816;
+  font-size: 20.5px;
+  line-height: 1.48;
+  letter-spacing: -0.034em;
+}
+
+.industry-copy a{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #050816;
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 5px;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.032em;
+}
+
+.industry-copy a span{
+  font-size: 28px;
+  line-height: .6;
+}
+
+.industry-nav{
+  position: absolute;
+  top: 51%;
+  z-index: 5;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid #e5e9f2;
+  background: rgba(255,255,255,.96);
+  color: #0f152c;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 12px 30px rgba(20,24,50,.11);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.industry-nav svg{
+  width: 18px;
+  height: 18px;
+}
+
+.industry-prev{ left: 0; }
+.industry-next{ right: 0; }
+
+.industry-nav:disabled{
+  opacity: .38;
+  cursor: default;
+  box-shadow: none;
+}
+
+/* shared mini-elements */
+.wa-badge,
+.ig-badge{
+  position: absolute;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: white;
+  font-weight: 900;
+}
+
+.wa-badge{
+  width: 50px;
+  height: 50px;
+  background: #21c55d;
+  box-shadow: 0 16px 34px rgba(33,197,93,.22);
+  font-size: 23px;
+}
+
+.ig-badge{
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #654cff, #ff3d87 58%, #ff9f1c);
+  box-shadow: 0 14px 30px rgba(255,61,135,.22);
+  font-size: 24px;
+}
+
+.dotted-arc{
+  position: absolute;
+  width: 220px;
+  top: 10px;
+  left: 45%;
+}
+
+/* card 1 */
+.salon-art .ig-badge{ left: 43%; top: 22px; transform: rotate(-8deg); }
+.salon-art .wa-badge{ right: 22%; top: 28px; }
+
+.mini-social-card{
+  position: absolute;
+  left: 62px;
+  top: 60px;
+  width: 178px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 15px 32px rgba(15,23,42,.10);
+}
+
+.mini-social-head{
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  padding: 8px 10px;
+  font-size: 8px;
+}
+
+.mini-social-head span{
+  width: 19px;
+  height: 19px;
+  border-radius: 999px;
+  background: #f7c84a;
+}
+
+.mini-social-head strong,
+.mini-social-head small{
+  display: block;
+}
+
+.mini-social-head small{
+  color: #7b8291;
+  font-size: 6px;
+}
+
+.salon-photo{
+  height: 92px;
+  background:
+    radial-gradient(circle at 52% 34%, #efb78e 0 24px, transparent 25px),
+    linear-gradient(135deg, #fbd3a3 0 43%, #cdeee5 43% 100%);
+}
+
+.mini-social-footer{
+  padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+}
+
+.mini-social-footer b{
+  color: #21c55d;
+  font-size: 8px;
+}
+
+.chat-screen{
+  position: absolute;
+  right: 62px;
+  top: 68px;
+  width: 184px;
+  background: #e8dfd1;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 18px 38px rgba(15,23,42,.13);
+}
+
+.chat-head{
+  background: #075e54;
+  color: white;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 9px 12px;
+}
+
+.chat-head span{
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: #ffc83d;
+  border-radius: 999px;
+  vertical-align: -2px;
+}
+
+.chat-screen p{
+  width: fit-content;
+  max-width: 132px;
+  margin: 8px 10px;
+  padding: 7px 9px;
+  border-radius: 5px;
+  background: white;
+  color: #111827;
+  font-size: 8px;
+  line-height: 1.25;
+}
+
+.chat-screen .msg-right{
+  margin-left: auto;
+  background: #dcf8c6;
+}
+
+.chat-link{
+  width: 78px;
+  margin: 8px 10px 10px auto;
+  text-align: center;
+  background: white;
+  color: #0ea5e9;
+  font-size: 8px;
+  padding: 5px;
+}
+
+/* card 2 */
+.ecommerce-art .wa-badge{ left: 67%; top: 34px; }
+.green-note{
+  position: absolute;
+  top: 28px;
+  right: 70px;
+  width: 300px;
+  background: #dcf8c6;
+  color: #111827;
+  font-size: 18px;
+  line-height: 1.16;
+  padding: 15px 18px;
+}
+
+.invoice-doc{
+  position: absolute;
+  right: 76px;
+  top: 96px;
+  width: 302px;
+  background: rgba(255,255,255,.84);
+}
+
+.invoice-doc h4{
+  margin: 18px 22px 10px;
+  color: #9bbcf9;
+  font-size: 32px;
+  letter-spacing: .02em;
+}
+
+.doc-lines{
+  margin: 0 22px 10px;
+  display: grid;
+  gap: 7px;
+}
+
+.doc-lines i{
+  display: block;
+  height: 7px;
+  background: #d9e2f5;
+}
+
+.pdf-row{
+  background: #edf1f7;
+  padding: 12px 18px;
+  color: #374151;
+  font-size: 18px;
+}
+
+.pdf-row span{
+  display: inline-block;
+  margin-right: 10px;
+  background: #ef4444;
+  color: white;
+  border-radius: 2px;
+  padding: 5px 4px;
+  font-size: 10px;
+}
+
+.invoice-doc small{
+  display: block;
+  padding: 8px 18px 14px;
+  color: #8a94a7;
+  font-size: 13px;
+}
+
+/* card 3 */
+.restaurant-art .wa-badge{ left: 23%; top: 32px; }
+.phone-chat{
+  position: absolute;
+  top: 16px;
+  right: 76px;
+  width: 216px;
+  height: 196px;
+  overflow: hidden;
+  background: #e8dfd1;
+}
+
+.phone-head{
+  background: #075e54;
+  color: white;
+  padding: 12px 14px;
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.phone-chat p{
+  width: fit-content;
+  max-width: 150px;
+  margin: 9px 12px;
+  padding: 8px 10px;
+  background: white;
+  border-radius: 3px;
+  font-size: 10px;
+  line-height: 1.16;
+}
+
+.phone-chat .msg-right{
+  margin-left: auto;
+  background: #dcf8c6;
+}
+
+.payment-row{
+  position: absolute;
+  bottom: 10px;
+  left: 14px;
+  right: 14px;
+  background: white;
+  color: #0ea5e9;
+  text-align: center;
+  padding: 7px;
+  font-size: 11px;
+}
+
+/* health */
+.clinic-browser{
+  position: absolute;
+  left: 58px;
+  top: 26px;
+  width: 270px;
+  height: 150px;
+  background: white;
+  box-shadow: 0 18px 36px rgba(15,23,42,.10);
+  overflow: hidden;
+}
+
+.clinic-top{
+  height: 18px;
+  background: #0e3675;
+}
+
+.clinic-hero{
+  height: 132px;
+  background: linear-gradient(90deg, #0b4aa1 0 54%, #e3f8ff 54%);
+  color: white;
+  position: relative;
+  padding: 26px;
+}
+
+.doctor-shape{
+  position: absolute;
+  left: 52px;
+  bottom: 0;
+  width: 90px;
+  height: 122px;
+  border-radius: 60px 60px 0 0;
+  background: linear-gradient(180deg, #ffd9bf 0 40%, #4bc9e0 41% 100%);
+}
+
+.clinic-hero h4{
+  margin: 0 0 0 126px;
+  max-width: 120px;
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.clinic-chat{
+  position: absolute;
+  right: 58px;
+  bottom: 18px;
+  width: 150px;
+  padding: 14px;
+  background: white;
+  border-radius: 13px;
+  box-shadow: 0 18px 36px rgba(15,23,42,.16);
+  text-align: center;
+  font-size: 10px;
+}
+
+.clinic-chat strong,
+.clinic-chat span{
+  display: block;
+}
+
+.clinic-chat button{
+  margin-top: 10px;
+  border: 0;
+  background: #10b981;
+  color: white;
+  border-radius: 999px;
+  font-weight: 800;
+  padding: 7px 14px;
+  font-size: 9px;
+}
+
+/* retail */
+.cart-message{
+  position: absolute;
+  top: 34px;
+  left: 54px;
+  width: 240px;
+  background: white;
+  padding: 16px 18px;
+  box-shadow: 0 16px 32px rgba(15,23,42,.12);
+  font-size: 17px;
+  line-height: 1.15;
+}
+
+.product-message{
+  position: absolute;
+  top: 88px;
+  right: 48px;
+  width: 240px;
+  background: white;
+  padding: 13px;
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  box-shadow: 0 16px 32px rgba(15,23,42,.10);
+}
+
+.product-thumb{
+  width: 56px;
+  height: 46px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #b7791f, #f8deb0);
+}
+
+.product-message strong,
+.product-message small{
+  display: block;
+}
+
+.product-message small{
+  color: #6b7280;
+  font-size: 11px;
+}
+
+.buy-link{
+  position: absolute;
+  right: 82px;
+  bottom: 28px;
+  width: 220px;
+  background: white;
+  color: #0ea5e9;
+  text-align: center;
+  padding: 10px;
+}
+
+/* agency */
+.personalized-message{
+  position: absolute;
+  top: 35px;
+  left: 108px;
+  width: 270px;
+  background: white;
+  padding: 16px 18px;
+  box-shadow: 0 16px 32px rgba(15,23,42,.10);
+}
+
+.personalized-message p{
+  margin: 0 0 10px;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.personalized-message div{
+  color: #0ea5e9;
+  text-align: center;
+  border-top: 1px solid #edf2f7;
+  padding-top: 9px;
+}
+
+.metric-card{
+  position: absolute;
+  right: 70px;
+  bottom: 35px;
+  width: 250px;
+  background: #9cde82;
+  color: #111827;
+  padding: 16px 20px;
+  border-radius: 10px;
+}
+
+.metric-card b{
+  font-size: 30px;
+}
+
+.metric-card span{
+  display: inline;
+  font-size: 15px;
+}
+
+/* auto */
+.service-note{
+  position: absolute;
+  top: 28px;
+  left: 64px;
+  width: 250px;
+  background: white;
+  padding: 18px;
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.service-note p{
+  margin: 0 0 12px;
+}
+
+.service-note div{
+  display: flex;
+  gap: 3px;
+}
+
+.service-note span{
+  flex: 1;
+  color: #0ea5e9;
+  border-top: 1px solid #edf2f7;
+  padding-top: 8px;
+  font-size: 14px;
+}
+
+.service-pill{
+  position: absolute;
+  right: 120px;
+  bottom: 26px;
+  background: #dcf8c6;
+  padding: 14px 28px;
+  border-radius: 5px;
+  font-size: 17px;
+}
+
+/* property */
+.property-question{
+  position: absolute;
+  top: 28px;
+  right: 90px;
+  width: 260px;
+  background: #dcf8c6;
+  padding: 14px 16px;
+  font-size: 16px;
+}
+
+.property-photo{
+  position: absolute;
+  left: 155px;
+  top: 75px;
+  width: 210px;
+  height: 108px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #60a5fa, #e0f2fe 45%, #b45309 46%, #eab308);
+}
+
+.key-chip{
+  position: absolute;
+  left: 125px;
+  top: 82px;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  background: #22c55e;
+}
+
+/* freelancer */
+.design-icon{
+  position: absolute;
+  left: 90px;
+  top: 42px;
+  width: 74px;
+  height: 74px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ffe0a3;
+  color: #c08a22;
+  font-size: 34px;
+}
+
+.consultant-chat{
+  position: absolute;
+  top: 58px;
+  right: 70px;
+  width: 270px;
+}
+
+.consultant-chat p{
+  margin: 0 0 8px;
+  padding: 13px 16px;
+  background: white;
+  font-size: 15px;
+}
+
+.consultant-chat .msg-right{
+  background: #dcf8c6;
+}
+
+.consultant-chat div{
+  color: #0ea5e9;
+  background: white;
+  text-align: center;
+  padding: 10px;
+}
+
+/* finance */
+.money-mark{
+  position: absolute;
+  left: 96px;
+  top: 50px;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #ffe6ad;
+  color: #b98122;
+  font-size: 74px;
+  font-weight: 900;
+}
+
+.finance-buttons{
+  position: absolute;
+  right: 62px;
+  top: 42px;
+  display: grid;
+  gap: 14px;
+}
+
+.finance-buttons span{
+  display: block;
+  width: 230px;
+  border-radius: 999px;
+  border: 1px solid #d6a73d;
+  background: #ffe6ad;
+  color: #a36e16;
+  padding: 14px 22px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+/* travel */
+.travel-photo{
+  position: absolute;
+  left: 126px;
+  top: 28px;
+  width: 280px;
+  height: 112px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #38bdf8, #bfdbfe 45%, #facc15 46%, #fef3c7);
+}
+
+.travel-strip{
+  position: absolute;
+  left: 126px;
+  top: 140px;
+  width: 280px;
+  background: #dcf8c6;
+  color: #6aa15c;
+  text-align: center;
+  padding: 9px;
+  font-weight: 800;
+}
+
+.travel-button{
+  position: absolute;
+  left: 126px;
+  top: 181px;
+  width: 280px;
+  background: #dcf8c6;
+  color: #6aa15c;
+  text-align: center;
+  padding: 9px;
+  font-weight: 800;
+}
+
+/* beauty */
+.catalog-panel{
+  position: absolute;
+  top: 28px;
+  right: 76px;
+  width: 240px;
+  background: white;
+  border: 1px solid #9fb5dc;
+}
+
+.catalog-panel h4{
+  margin: 0;
+  padding: 14px;
+  text-align: center;
+  font-size: 20px;
+  border-bottom: 1px solid #9fb5dc;
+}
+
+.catalog-panel p{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 10px 14px;
+  font-size: 16px;
+  border-bottom: 1px solid #eef2f7;
+}
+
+.catalog-panel p span{
+  width: 18px;
+  height: 28px;
+  background: linear-gradient(#111827, #f97316);
+}
+
+.catalog-panel p b{
+  margin-left: auto;
+  color: #8db0e8;
+}
+
+.beauty-art .wa-badge{
+  left: 96px;
+  top: 30px;
+}
+
+@media (max-width: 1120px){
+  .industry-card{
+    flex-basis: calc((100% - var(--industry-gap)) / 2);
+  }
+}
+
+@media (max-width: 720px){
+  .industry-slider-section{
+    padding: 76px 0 92px;
+  }
+
+  .industry-slider-container{
+    width: calc(100% - 28px);
+  }
+
+  .industry-carousel{
+    padding: 0 38px;
+  }
+
+  .industry-card{
+    flex-basis: 100%;
+  }
+
+  .industry-copy h3{
+    font-size: 28px;
+  }
+
+  .industry-copy p{
+    font-size: 18px;
+  }
+
+  .industry-nav{
+    width: 40px;
+    height: 40px;
+  }
+}
+
+
+/* v41 — keep industry slider on the same page rail + reduce zoom */
+.industry-slider-section{
+  padding: 78px 0 98px !important;
+}
+
+.industry-slider-container{
+  width: min(980px, calc(100% - 48px)) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.industry-slider-head{
+  max-width: 760px !important;
+  margin-bottom: 34px !important;
+}
+
+.industry-slider-head .section-eyebrow{
+  margin-bottom: 14px !important;
+  font-size: 14px !important;
+}
+
+.industry-slider-head h2{
+  max-width: 720px !important;
+  font-size: clamp(30px, 3.2vw, 42px) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -0.055em !important;
+}
+
+.industry-slider-head > p:not(.section-eyebrow){
+  max-width: 680px !important;
+  margin-top: 16px !important;
+  font-size: 17px !important;
+  line-height: 1.58 !important;
+  letter-spacing: -0.024em !important;
+}
+
+.industry-carousel{
+  --industry-gap: 14px !important;
+  padding: 0 40px !important;
+}
+
+.industry-card{
+  flex-basis: calc((100% - (var(--industry-gap) * 2)) / 3) !important;
+  min-height: 326px !important;
+  border-radius: 18px !important;
+}
+
+.industry-art{
+  height: 148px !important;
+}
+
+.industry-copy{
+  padding: 20px 22px 22px !important;
+}
+
+.industry-copy h3{
+  margin-bottom: 12px !important;
+  font-size: 23px !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.047em !important;
+  font-weight: 800 !important;
+}
+
+.industry-copy p{
+  margin-bottom: 16px !important;
+  font-size: 15.5px !important;
+  line-height: 1.42 !important;
+  letter-spacing: -0.026em !important;
+}
+
+.industry-copy a{
+  font-size: 15.5px !important;
+  padding-bottom: 4px !important;
+  border-bottom-width: 1.5px !important;
+}
+
+.industry-copy a span{
+  font-size: 21px !important;
+}
+
+.industry-nav{
+  width: 38px !important;
+  height: 38px !important;
+  top: 58% !important;
+}
+
+/* Scale down card graphics so they fit the narrower common rail */
+.wa-badge{
+  width: 34px !important;
+  height: 34px !important;
+  font-size: 16px !important;
+}
+
+.ig-badge{
+  width: 34px !important;
+  height: 34px !important;
+  font-size: 17px !important;
+}
+
+.dotted-arc{
+  width: 150px !important;
+  top: 8px !important;
+  left: 40% !important;
+}
+
+/* card 1 */
+.salon-art .ig-badge{ left: 44% !important; top: 16px !important; }
+.salon-art .wa-badge{ right: 20% !important; top: 20px !important; }
+
+.mini-social-card{
+  left: 26px !important;
+  top: 52px !important;
+  width: 118px !important;
+  border-radius: 6px !important;
+}
+
+.mini-social-head{
+  padding: 5px 6px !important;
+  font-size: 5.5px !important;
+  gap: 4px !important;
+}
+
+.mini-social-head span{
+  width: 12px !important;
+  height: 12px !important;
+}
+
+.mini-social-head small{
+  font-size: 4.5px !important;
+}
+
+.salon-photo{
+  height: 58px !important;
+}
+
+.mini-social-footer{
+  padding: 5px 6px !important;
+  font-size: 6.5px !important;
+}
+
+.mini-social-footer b{
+  font-size: 5.5px !important;
+}
+
+.chat-screen{
+  right: 28px !important;
+  top: 58px !important;
+  width: 126px !important;
+  border-radius: 6px !important;
+}
+
+.chat-head{
+  padding: 6px 8px !important;
+  font-size: 6px !important;
+}
+
+.chat-head span{
+  width: 8px !important;
+  height: 8px !important;
+}
+
+.chat-screen p{
+  max-width: 86px !important;
+  margin: 5px 7px !important;
+  padding: 5px 6px !important;
+  font-size: 5.8px !important;
+}
+
+.chat-link{
+  width: 55px !important;
+  margin: 5px 7px 7px auto !important;
+  padding: 4px !important;
+  font-size: 5.8px !important;
+}
+
+/* e-commerce */
+.ecommerce-art .wa-badge{ left: auto !important; right: 58px !important; top: 26px !important; }
+
+.green-note{
+  top: 24px !important;
+  right: 40px !important;
+  width: 192px !important;
+  padding: 10px 12px !important;
+  font-size: 13px !important;
+  line-height: 1.1 !important;
+}
+
+.invoice-doc{
+  top: 76px !important;
+  right: 44px !important;
+  width: 198px !important;
+}
+
+.invoice-doc h4{
+  margin: 12px 15px 8px !important;
+  font-size: 24px !important;
+}
+
+.doc-lines{
+  margin: 0 15px 8px !important;
+  gap: 5px !important;
+}
+
+.doc-lines i{
+  height: 5px !important;
+}
+
+.pdf-row{
+  padding: 8px 12px !important;
+  font-size: 13px !important;
+}
+
+.pdf-row span{
+  font-size: 7px !important;
+  padding: 3px !important;
+  margin-right: 7px !important;
+}
+
+.invoice-doc small{
+  padding: 6px 12px 9px !important;
+  font-size: 9px !important;
+}
+
+/* restaurant */
+.restaurant-art .wa-badge{ left: 18% !important; top: 26px !important; }
+
+.phone-chat{
+  top: 16px !important;
+  right: 40px !important;
+  width: 150px !important;
+  height: 140px !important;
+}
+
+.phone-head{
+  padding: 8px 10px !important;
+  font-size: 8px !important;
+}
+
+.phone-chat p{
+  max-width: 104px !important;
+  margin: 6px 8px !important;
+  padding: 6px 7px !important;
+  font-size: 7px !important;
+}
+
+.payment-row{
+  left: 10px !important;
+  right: 10px !important;
+  bottom: 8px !important;
+  padding: 5px !important;
+  font-size: 7.5px !important;
+}
+
+/* health */
+.clinic-browser{
+  left: 32px !important;
+  top: 22px !important;
+  width: 182px !important;
+  height: 112px !important;
+}
+
+.clinic-top{
+  height: 14px !important;
+}
+
+.clinic-hero{
+  height: 98px !important;
+  padding: 18px !important;
+}
+
+.doctor-shape{
+  left: 34px !important;
+  width: 62px !important;
+  height: 90px !important;
+}
+
+.clinic-hero h4{
+  margin-left: 84px !important;
+  font-size: 14px !important;
+  max-width: 80px !important;
+}
+
+.clinic-chat{
+  right: 30px !important;
+  bottom: 16px !important;
+  width: 112px !important;
+  padding: 10px !important;
+  font-size: 7.5px !important;
+}
+
+.clinic-chat button{
+  margin-top: 7px !important;
+  padding: 5px 10px !important;
+  font-size: 6.5px !important;
+}
+
+/* retail */
+.cart-message{
+  left: 30px !important;
+  top: 26px !important;
+  width: 170px !important;
+  padding: 11px 12px !important;
+  font-size: 11px !important;
+}
+
+.product-message{
+  right: 28px !important;
+  top: 74px !important;
+  width: 172px !important;
+  padding: 9px !important;
+  gap: 9px !important;
+}
+
+.product-thumb{
+  width: 38px !important;
+  height: 32px !important;
+}
+
+.product-message strong,
+.product-message small{
+  font-size: 8px !important;
+}
+
+.buy-link{
+  right: 42px !important;
+  bottom: 22px !important;
+  width: 154px !important;
+  padding: 7px !important;
+  font-size: 9px !important;
+}
+
+/* agency */
+.personalized-message{
+  left: 42px !important;
+  top: 26px !important;
+  width: 190px !important;
+  padding: 11px 12px !important;
+}
+
+.personalized-message p{
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+}
+
+.personalized-message div{
+  padding-top: 7px !important;
+  font-size: 10px !important;
+}
+
+.metric-card{
+  right: 34px !important;
+  bottom: 26px !important;
+  width: 170px !important;
+  padding: 11px 13px !important;
+}
+
+.metric-card b{
+  font-size: 22px !important;
+}
+
+.metric-card span{
+  font-size: 10px !important;
+}
+
+/* auto */
+.service-note{
+  left: 36px !important;
+  top: 24px !important;
+  width: 178px !important;
+  padding: 12px !important;
+  font-size: 11px !important;
+}
+
+.service-note p{
+  margin-bottom: 8px !important;
+}
+
+.service-note span{
+  font-size: 8px !important;
+  padding-top: 6px !important;
+}
+
+.service-pill{
+  right: 54px !important;
+  bottom: 22px !important;
+  padding: 10px 18px !important;
+  font-size: 11px !important;
+}
+
+/* property */
+.property-question{
+  top: 24px !important;
+  right: 38px !important;
+  width: 190px !important;
+  padding: 10px 12px !important;
+  font-size: 10.5px !important;
+}
+
+.property-photo{
+  left: 70px !important;
+  top: 72px !important;
+  width: 150px !important;
+  height: 78px !important;
+}
+
+.key-chip{
+  left: 52px !important;
+  top: 78px !important;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+/* freelancer */
+.design-icon{
+  left: 54px !important;
+  top: 32px !important;
+  width: 52px !important;
+  height: 52px !important;
+  font-size: 24px !important;
+}
+
+.consultant-chat{
+  right: 34px !important;
+  top: 48px !important;
+  width: 190px !important;
+}
+
+.consultant-chat p{
+  padding: 9px 11px !important;
+  font-size: 10px !important;
+}
+
+.consultant-chat div{
+  padding: 7px !important;
+  font-size: 10px !important;
+}
+
+/* finance */
+.money-mark{
+  left: 48px !important;
+  top: 40px !important;
+  width: 84px !important;
+  height: 84px !important;
+  font-size: 52px !important;
+}
+
+.finance-buttons{
+  right: 36px !important;
+  top: 32px !important;
+  gap: 9px !important;
+}
+
+.finance-buttons span{
+  width: 162px !important;
+  padding: 10px 15px !important;
+  font-size: 13px !important;
+}
+
+/* travel */
+.travel-photo{
+  left: 52px !important;
+  top: 26px !important;
+  width: 190px !important;
+  height: 76px !important;
+}
+
+.travel-strip,
+.travel-button{
+  left: 52px !important;
+  width: 190px !important;
+  padding: 7px !important;
+  font-size: 10px !important;
+}
+
+.travel-strip{ top: 102px !important; }
+.travel-button{ top: 134px !important; }
+
+/* beauty */
+.catalog-panel{
+  top: 22px !important;
+  right: 44px !important;
+  width: 176px !important;
+}
+
+.catalog-panel h4{
+  padding: 10px !important;
+  font-size: 14px !important;
+}
+
+.catalog-panel p{
+  padding: 7px 10px !important;
+  font-size: 10px !important;
+}
+
+.catalog-panel p span{
+  width: 12px !important;
+  height: 20px !important;
+}
+
+.beauty-art .wa-badge{
+  left: 52px !important;
+  top: 24px !important;
+}
+
+@media (max-width: 1120px){
+  .industry-card{
+    flex-basis: calc((100% - var(--industry-gap)) / 2) !important;
+  }
+}
+
+@media (max-width: 720px){
+  .industry-slider-container{
+    width: calc(100% - 28px) !important;
+  }
+
+  .industry-carousel{
+    padding: 0 34px !important;
+  }
+
+  .industry-card{
+    flex-basis: 100% !important;
+  }
+}
+
+
+/* v42 — fix industry slider grid lines and align outer rail with adjacent sections */
+.industry-slider-section{
+  /* hide internal center grid lines only for this section */
+  background:
+    linear-gradient(#fff, #fff) center / min(980px, calc(100% - 48px)) 100% no-repeat !important;
+}
+
+/* keep content exactly on the same visual rail as the quality/cards section */
+.industry-slider-container{
+  width: min(980px, calc(100% - 48px)) !important;
+}
+
+/* arrows should sit inside the same rail, not push visual bounds outward */
+.industry-carousel{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.industry-window{
+  width: 100% !important;
+}
+
+/* three cards inside the same rail */
+.industry-card{
+  flex-basis: calc((100% - (var(--industry-gap) * 2)) / 3) !important;
+}
+
+/* place arrows over the card edges, not outside the section rails */
+.industry-prev{
+  left: 12px !important;
+}
+
+.industry-next{
+  right: 12px !important;
+}
+
+@media (max-width: 1120px){
+  .industry-card{
+    flex-basis: calc((100% - var(--industry-gap)) / 2) !important;
+  }
+}
+
+@media (max-width: 720px){
+  .industry-slider-section{
+    background:
+      linear-gradient(#fff, #fff) center / calc(100% - 28px) 100% no-repeat !important;
+  }
+
+  .industry-card{
+    flex-basis: 100% !important;
+  }
+
+  .industry-prev{
+    left: 8px !important;
+  }
+
+  .industry-next{
+    right: 8px !important;
+  }
+}
+
+
+/* v43 — remove only the site-wide vertical rail/grid lines */
+.page-grid,
+.hero.page-grid,
+.playbook-strip.page-grid,
+.industry-slider-section{
+  background-image: none !important;
+  background: transparent !important;
+}
+
+/* keep section/card borders intact; this only removes the decorative vertical page rails */
+
+
+/* v44 — remove ALL decorative vertical page rails everywhere.
+   Keeps normal horizontal dividers and card/table borders untouched. */
+.page-grid,
+.page-grid.page-grid,
+.hero.page-grid,
+.playbook-strip.page-grid,
+.quality-model-section.page-grid,
+.theorem-gov-section.page-grid,
+.governance-section.page-grid,
+.integrations-section.page-grid,
+.comparison-section.page-grid,
+.cta-section.page-grid,
+.final-cta.page-grid,
+.industry-slider-section,
+.industry-slider-section.page-grid{
+  background: none !important;
+  background-image: none !important;
+}
+
+/* remove rail pseudo-elements used by final/cta sections */
+.page-grid::before,
+.page-grid::after,
+.hero.page-grid::before,
+.hero.page-grid::after,
+.playbook-strip.page-grid::before,
+.playbook-strip.page-grid::after,
+.quality-model-section.page-grid::before,
+.quality-model-section.page-grid::after,
+.theorem-gov-section.page-grid::before,
+.theorem-gov-section.page-grid::after,
+.governance-section.page-grid::before,
+.governance-section.page-grid::after,
+.integrations-section.page-grid::before,
+.integrations-section.page-grid::after,
+.comparison-section.page-grid::before,
+.comparison-section.page-grid::after,
+.cta-section.page-grid::before,
+.cta-section.page-grid::after,
+.final-cta.page-grid::before,
+.final-cta.page-grid::after,
+.industry-slider-section.page-grid::before,
+.industry-slider-section.page-grid::after{
+  display: none !important;
+  content: none !important;
+  background: none !important;
+  background-image: none !important;
+}
+
+
+/* v45 — remove remaining decorative lines/boxes only */
+:root{
+  --grid-line: transparent !important;
+}
+
+/* remove nav vertical separators and header cell-like boxes */
+.site-header,
+.nav-shell,
+.nav,
+.nav a,
+.logo,
+.header-actions,
+.header-cta{
+  border-left: 0 !important;
+  border-right: 0 !important;
+  background-image: none !important;
+  box-shadow: none;
+}
+
+/* keep only the bottom header divider */
+.site-header,
+.nav-shell{
+  border-top: 0 !important;
+}
+
+/* remove random decorative hero squares/boxes */
+.hero-orb,
+.hero-square,
+.hero-squares,
+.hero .float-square,
+.hero .hero-square,
+.hero [class*="square"],
+.hero [class*="orb"]{
+  display: none !important;
+}
+
+/* remove horizontal section separator lines */
+section,
+.page-grid,
+.hero,
+.playbook-strip,
+.quality-model-section,
+.industry-slider-section,
+.theorem-gov-section,
+.governance-section,
+.comparison-section,
+.integrations-section,
+.cta-section,
+.final-cta,
+.footer{
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  background-image: none !important;
+}
+
+/* remove separator pseudo-elements that draw horizontal or vertical rules */
+section::before,
+section::after,
+.page-grid::before,
+.page-grid::after,
+.hero::before,
+.hero::after,
+.playbook-strip::before,
+.playbook-strip::after,
+.quality-model-section::before,
+.quality-model-section::after,
+.industry-slider-section::before,
+.industry-slider-section::after,
+.theorem-gov-section::before,
+.theorem-gov-section::after,
+.governance-section::before,
+.governance-section::after,
+.comparison-section::before,
+.comparison-section::after,
+.integrations-section::before,
+.integrations-section::after,
+.cta-section::before,
+.cta-section::after,
+.final-cta::before,
+.final-cta::after{
+  display: none !important;
+  content: none !important;
+  border: 0 !important;
+  background: none !important;
+  background-image: none !important;
+}
+
+/* preserve actual component borders: cards, tables, buttons, inputs */
+.card,
+.playbook-card,
+.governance-card,
+.quality-card,
+.industry-card,
+.compare-table,
+.compare-table *,
+.workflow-card,
+.timeline-card,
+button,
+.btn,
+.header-cta,
+input,
+textarea{
+  border-color: revert-layer;
+}
+
+
+/* v46 — restore footer divider, soften slider borders, tighten section rhythm, remove section eyebrow labels */
+
+/* Keep footer divider visible */
+.footer{
+  border-top: 1px solid var(--line2) !important;
+}
+
+/* Remove black-looking borders from industry slider cards */
+.industry-card{
+  border: 1px solid #d9e1ec !important;
+  box-shadow: none !important;
+}
+
+/* Remove section eyebrow/blue mini-headings across sections (keep hero untouched) */
+.playbook-strip .eyebrow,
+.quality-model-section .eyebrow,
+.industry-slider-head .section-eyebrow,
+.theorem-gov-section .eyebrow,
+.governance-section .eyebrow,
+.comparison-section .eyebrow,
+.integrations-section .eyebrow,
+.cta-section .eyebrow,
+.final-cta .eyebrow,
+#playbooks .eyebrow,
+#quality .eyebrow,
+#governance .eyebrow,
+#comparison .eyebrow,
+#why-us .eyebrow,
+#contact .eyebrow,
+[class*="section-eyebrow"]{
+  display: none !important;
+}
+
+/* Tighten whitespace between sections after divider removal */
+.playbook-strip,
+.quality-model-section,
+.industry-slider-section,
+.theorem-gov-section,
+.governance-section,
+.comparison-section,
+.integrations-section,
+.cta-section,
+.final-cta{
+  padding-top: 72px !important;
+  padding-bottom: 72px !important;
+}
+
+/* Preserve comfortable hero and footer spacing */
+.hero{
+  padding-bottom: 96px !important;
+}
+
+/* Slightly tighten intro blocks now that eyebrow labels are hidden */
+.playbook-intro,
+.qm-intro,
+.industry-slider-head,
+.theorem-outcomes-head,
+.governance-head,
+.comparison-head,
+.contact-intro,
+.cta-copy{
+  margin-bottom: 28px !important;
+}
+
+.playbook-intro > p:not(.eyebrow),
+.qm-intro > p:not(.eyebrow),
+.industry-slider-head > p:not(.section-eyebrow),
+.theorem-outcomes-head > p:not(.eyebrow),
+.governance-head > p:not(.eyebrow),
+.comparison-head > p:not(.eyebrow),
+.contact-intro > p:not(.eyebrow),
+.cta-copy > p:not(.eyebrow){
+  margin-top: 18px !important;
+}
+
+
+/* v47 — tighter hero-to-section spacing, cleaner slider cards, smaller slider heading, autoplay carousel */
+
+/* reduce the huge empty area after hero CTA */
+.hero{
+  min-height: auto !important;
+  padding-bottom: 0 !important;
+}
+
+.hero-inner{
+  padding-bottom: 72px !important;
+}
+
+/* keep section rhythm tighter after removing section divider lines */
+.playbook-strip,
+.quality-model-section,
+.industry-slider-section,
+.theorem-gov-section,
+.governance-section,
+.comparison-section,
+.integrations-section,
+.cta-section{
+  padding-top: 64px !important;
+  padding-bottom: 64px !important;
+}
+
+/* slider heading should match the rest of the site more closely */
+.industry-slider-head h2{
+  font-size: clamp(30px, 3vw, 40px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.055em !important;
+  max-width: 720px !important;
+}
+
+.industry-slider-head > p:not(.section-eyebrow){
+  font-size: 16px !important;
+  line-height: 1.55 !important;
+  max-width: 650px !important;
+}
+
+/* remove visible card outlines from this Interakt-style slider */
+.industry-card{
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+/* remove previous/next buttons; slider now auto-scrolls */
+.industry-nav{
+  display: none !important;
+}
+
+/* keep footer divider only */
+.footer{
+  border-top: 1px solid var(--line2) !important;
+}
+
+/* remove section borders without touching card internals elsewhere */
+section,
+.page-grid,
+.hero,
+.playbook-strip,
+.quality-model-section,
+.industry-slider-section,
+.theorem-gov-section,
+.governance-section,
+.comparison-section,
+.integrations-section,
+.cta-section,
+.final-cta{
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+}
+
+
+/* v48 — match Industry Playbooks heading size with Quality section heading */
+.industry-slider-head h2{
+  font-size: clamp(28px, 2.65vw, 36px) !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.055em !important;
+  max-width: 720px !important;
+  font-weight: 820 !important;
+}
+
+.industry-slider-head > p:not(.section-eyebrow){
+  font-size: 16px !important;
+  line-height: 1.55 !important;
+  max-width: 650px !important;
+}
+
+
+/* v49 — Interakt-style split cards, no Learn More links, no repeated adjacent colour */
+.industry-copy a{
+  display: none !important;
+}
+
+/* Each industry card now has a subtle lighter media half, like the reference */
+.industry-card{
+  border: 0 !important;
+  outline: 0 !important;
+  overflow: hidden !important;
+}
+
+.industry-card.bg-cream{
+  background: linear-gradient(to bottom, #fff9ec 0 47%, #fff4dc 47% 100%) !important;
+}
+
+.industry-card.bg-mint{
+  background: linear-gradient(to bottom, #f4fff3 0 47%, #eaffea 47% 100%) !important;
+}
+
+.industry-card.bg-blue{
+  background: linear-gradient(to bottom, #f7fbff 0 47%, #edf4ff 47% 100%) !important;
+}
+
+.industry-card.bg-pink{
+  background: linear-gradient(to bottom, #fff8fd 0 47%, #fff0fa 47% 100%) !important;
+}
+
+.industry-art{
+  background: transparent !important;
+}
+
+.industry-copy{
+  background: transparent !important;
+  padding-top: 22px !important;
+}
+
+.industry-copy h3{
+  margin-bottom: 18px !important;
+}
+
+.industry-copy p{
+  margin-bottom: 0 !important;
+}
+
+
+/* v50 — fix slider text weight + stop top graphics from cutting */
+.industry-card{
+  min-height: 340px !important;
+}
+
+.industry-art{
+  height: 162px !important;
+  overflow: hidden !important;
+}
+
+.industry-copy{
+  padding: 22px 24px 24px !important;
+}
+
+.industry-copy h3{
+  font-size: 21px !important;
+  line-height: 1.12 !important;
+  letter-spacing: -0.045em !important;
+  font-weight: 760 !important;
+  margin-bottom: 14px !important;
+}
+
+.industry-copy p{
+  font-size: 15px !important;
+  line-height: 1.48 !important;
+  letter-spacing: -0.022em !important;
+  font-weight: 420 !important;
+}
+
+/* finance card: keep all three pills inside the visual area */
+.money-mark{
+  top: 34px !important;
+  width: 76px !important;
+  height: 76px !important;
+  font-size: 46px !important;
+}
+
+.finance-buttons{
+  top: 26px !important;
+  gap: 8px !important;
+}
+
+.finance-buttons span{
+  width: 154px !important;
+  padding: 9px 14px !important;
+  font-size: 12px !important;
+  line-height: 1.1 !important;
+}
+
+/* travel card: keep bottom CTA strip inside the visual area */
+.travel-photo{
+  top: 22px !important;
+  height: 72px !important;
+}
+
+.travel-strip{
+  top: 94px !important;
+  padding: 6px !important;
+  font-size: 9px !important;
+}
+
+.travel-button{
+  top: 123px !important;
+  padding: 6px !important;
+  font-size: 9px !important;
+}
+
+/* freelancer card: prevent text from feeling heavy */
+.consultant-chat p,
+.consultant-chat div{
+  font-weight: 420 !important;
+}
+
+/* slider card headings across all cards should feel closer to Interakt, less heavy */
+.industry-copy h3 strong,
+.industry-copy strong{
+  font-weight: 760 !important;
+}
+
+
+/* v51 — soften Industry Playbooks heading and card text weights */
+.industry-slider-head h2{
+  font-weight: 690 !important;
+  font-size: clamp(28px, 2.55vw, 34px) !important;
+  line-height: 1.14 !important;
+  letter-spacing: -0.05em !important;
+}
+
+.industry-slider-head > p:not(.section-eyebrow){
+  font-weight: 400 !important;
+  font-size: 15.5px !important;
+  line-height: 1.58 !important;
+}
+
+.industry-copy h3{
+  font-weight: 660 !important;
+  font-size: 20px !important;
+  line-height: 1.16 !important;
+  letter-spacing: -0.04em !important;
+}
+
+.industry-copy p{
+  font-weight: 400 !important;
+  font-size: 14.75px !important;
+  line-height: 1.5 !important;
+  letter-spacing: -0.018em !important;
+}
+
+/* soften text inside the card graphics too */
+.finance-buttons span,
+.travel-strip,
+.travel-button,
+.green-note,
+.cart-message,
+.product-message strong,
+.product-message small,
+.consultant-chat p,
+.consultant-chat div,
+.catalog-panel h4,
+.catalog-panel p,
+.phone-chat p,
+.payment-row,
+.chat-screen p,
+.chat-link,
+.mini-social-footer,
+.mini-social-head,
+.service-note,
+.service-note span,
+.service-pill,
+.personalized-message p,
+.personalized-message div,
+.metric-card,
+.property-question{
+  font-weight: 500 !important;
+}
+
+.money-mark,
+.metric-card b{
+  font-weight: 650 !important;
+}
+
+
+/* v53 — subtle section differentiation without divider lines */
+.playbook-strip,
+.industry-slider-section,
+.governance-section,
+.integrations-section{
+  background: #f8fbff !important;
+}
+
+.quality-model-section,
+.theorem-gov-section,
+.comparison-section,
+.cta-section{
+  background: #ffffff !important;
+}
+
+/* keep the transition soft and intentional */
+.playbook-strip,
+.quality-model-section,
+.industry-slider-section,
+.theorem-gov-section,
+.governance-section,
+.comparison-section,
+.integrations-section,
+.cta-section{
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  padding-top: 72px !important;
+  padding-bottom: 72px !important;
+}
+
+/* remove any section pseudo separators while preserving actual card borders */
+.playbook-strip::before,
+.playbook-strip::after,
+.quality-model-section::before,
+.quality-model-section::after,
+.industry-slider-section::before,
+.industry-slider-section::after,
+.theorem-gov-section::before,
+.theorem-gov-section::after,
+.governance-section::before,
+.governance-section::after,
+.comparison-section::before,
+.comparison-section::after,
+.integrations-section::before,
+.integrations-section::after,
+.cta-section::before,
+.cta-section::after{
+  display: none !important;
+  content: none !important;
+}
+
+/* hero should remain clean white */
+.hero{
+  background: #ffffff !important;
+  padding-bottom: 56px !important;
+}
+
+/* reduce the visual jump after hero */
+.playbook-strip{
+  padding-top: 68px !important;
+}
+
+/* keep footer divider visible */
+.footer{
+  border-top: 1px solid var(--line2) !important;
+}
+
+
+/* v54 — stronger visible section differentiation */
+.playbook-strip,
+.industry-slider-section,
+.governance-section,
+.integrations-section{
+  background: #f2f7ff !important;
+}
+
+.quality-model-section,
+.theorem-gov-section,
+.comparison-section,
+.cta-section{
+  background: #ffffff !important;
+}
+
+/* rounded inner surface so the section change is visible without divider lines */
+.playbook-strip > .container,
+.quality-model-section > .container,
+.industry-slider-section > .industry-slider-container,
+.theorem-gov-section > .container,
+.governance-section > .container,
+.comparison-section > .container,
+.integrations-section > .container,
+.cta-section > .container{
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* visible but soft separation from previous/next sections */
+.playbook-strip,
+.quality-model-section,
+.industry-slider-section,
+.theorem-gov-section,
+.governance-section,
+.comparison-section,
+.integrations-section,
+.cta-section{
+  padding-top: 74px !important;
+  padding-bottom: 74px !important;
+  border: 0 !important;
+}
+
+/* remove any full-width line leftovers */
+.playbook-strip::before,
+.playbook-strip::after,
+.quality-model-section::before,
+.quality-model-section::after,
+.industry-slider-section::before,
+.industry-slider-section::after,
+.theorem-gov-section::before,
+.theorem-gov-section::after,
+.governance-section::before,
+.governance-section::after,
+.comparison-section::before,
+.comparison-section::after,
+.integrations-section::before,
+.integrations-section::after,
+.cta-section::before,
+.cta-section::after{
+  display: none !important;
+  content: none !important;
+}
+
+/* keep footer divider */
+.footer{
+  border-top: 1px solid var(--line2) !important;
+}
+
+
+/* v55 — focused blue words in section titles */
+.target-small-heading .highlight,
+.industry-slider-head h2 .highlight,
+.theorem-gov-head h2 span,
+.final-cta h2 .highlight{
+  color: var(--brand) !important;
+  display: inline !important;
+  font: inherit !important;
+  font-weight: inherit !important;
+}
+
+/* make section background change actually visible */
+.hero{
+  background: #ffffff !important;
+}
+
+.playbook-strip{
+  background: #f5f9ff !important;
+}
+
+.quality-model-section{
+  background: #ffffff !important;
+}
+
+.industry-slider-section{
+  background: #f5f9ff !important;
+}
+
+.theorem-gov-section{
+  background: #ffffff !important;
+}
+
+.final-cta{
+  background: #f5f9ff !important;
+}
+
+
+/* v56 — visible section separation without divider lines */
+
+/* Reset previous background attempts that may be hidden by inner wrappers */
+.playbook-strip,
+.quality-model-section,
+.industry-slider-section,
+.theorem-gov-section,
+.governance-section,
+.comparison-section,
+.integrations-section,
+.cta-section,
+.final-cta{
+  position: relative !important;
+  isolation: isolate !important;
+  background: #ffffff !important;
+  border: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Real visible soft panel behind each alternating section */
+.playbook-strip::before,
+.industry-slider-section::before,
+.governance-section::before,
+.final-cta::before{
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: 24px 0 !important;
+  z-index: -1 !important;
+  background: #f3f7ff !important;
+  border-radius: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Keep these sections plain white */
+.quality-model-section::before,
+.theorem-gov-section::before,
+.comparison-section::before,
+.integrations-section::before,
+.cta-section::before{
+  display: none !important;
+  content: none !important;
+}
+
+/* Remove old decorative lines, but do NOT remove our new soft panels */
+.playbook-strip::after,
+.quality-model-section::after,
+.industry-slider-section::after,
+.theorem-gov-section::after,
+.governance-section::after,
+.comparison-section::after,
+.integrations-section::after,
+.cta-section::after,
+.final-cta::after{
+  display: none !important;
+  content: none !important;
+}
+
+/* Better section rhythm after line removal */
+.playbook-strip,
+.quality-model-section,
+.industry-slider-section,
+.theorem-gov-section,
+.governance-section,
+.comparison-section,
+.integrations-section,
+.cta-section,
+.final-cta{
+  padding-top: 72px !important;
+  padding-bottom: 72px !important;
+}
+
+/* Make the focused title words work everywhere, not only hero */
+.highlight,
+.target-small-heading .highlight,
+.industry-slider-head h2 .highlight,
+.theorem-gov-head h2 span,
+.governance-head h2 span,
+.final-cta h2 .highlight{
+  color: var(--brand) !important;
+  display: inline !important;
+  font: inherit !important;
+  font-weight: inherit !important;
+}
+
+/* Keep footer divider visible */
+.footer{
+  border-top: 1px solid var(--line2) !important;
+}
+
+/* Ensure content stays above section panel */
+.playbook-strip > *,
+.quality-model-section > *,
+.industry-slider-section > *,
+.theorem-gov-section > *,
+.governance-section > *,
+.comparison-section > *,
+.integrations-section > *,
+.cta-section > *,
+.final-cta > *{
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+
+/* v57 — actual visible panels, not hidden behind section backgrounds */
+.playbook-strip,
+.quality-model-section,
+.industry-slider-section,
+.theorem-gov-section,
+.governance-section,
+.comparison-section,
+.integrations-section,
+.cta-section,
+.final-cta{
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: hidden !important;
+  border: 0 !important;
+}
+
+/* Base all sections white */
+.playbook-strip,
+.quality-model-section,
+.industry-slider-section,
+.theorem-gov-section,
+.governance-section,
+.comparison-section,
+.integrations-section,
+.cta-section,
+.final-cta{
+  background: #ffffff !important;
+}
+
+/* Visible soft panels. z-index 0 so it is ABOVE the white section background. */
+.playbook-strip::before,
+.industry-slider-section::before,
+.governance-section::before,
+.final-cta::before{
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  background: #f3f7ff !important;
+  pointer-events: none !important;
+}
+
+/* Plain white sections must not have decorative pseudo panels */
+.quality-model-section::before,
+.theorem-gov-section::before,
+.comparison-section::before,
+.integrations-section::before,
+.cta-section::before{
+  display: none !important;
+  content: none !important;
+}
+
+/* Remove only after-lines */
+.playbook-strip::after,
+.quality-model-section::after,
+.industry-slider-section::after,
+.theorem-gov-section::after,
+.governance-section::after,
+.comparison-section::after,
+.integrations-section::after,
+.cta-section::after,
+.final-cta::after{
+  display: none !important;
+  content: none !important;
+}
+
+/* Put real content above the soft panels */
+.playbook-strip > *,
+.quality-model-section > *,
+.industry-slider-section > *,
+.theorem-gov-section > *,
+.governance-section > *,
+.comparison-section > *,
+.integrations-section > *,
+.cta-section > *,
+.final-cta > *{
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Section rhythm */
+.playbook-strip,
+.quality-model-section,
+.industry-slider-section,
+.theorem-gov-section,
+.governance-section,
+.comparison-section,
+.integrations-section,
+.cta-section,
+.final-cta{
+  padding-top: 72px !important;
+  padding-bottom: 72px !important;
+}
+
+/* Global title highlight */
+.highlight,
+.hero-switch,
+.target-small-heading .highlight,
+.industry-slider-head h2 .highlight,
+.theorem-gov-head h2 span,
+.governance-head h2 span,
+.final-cta h2 .highlight{
+  color: var(--brand) !important;
+  display: inline !important;
+  font: inherit !important;
+  font-weight: inherit !important;
+}
+
+/* Keep footer divider visible */
+.footer{
+  border-top: 1px solid var(--line2) !important;
+}
+
+
+/* =========================================================
+   v8 — Section gradient differentiation
+   Replaces all flat-white gaps with a flowing gradient rhythm.
+   Each section gets its own very subtle tinted background that
+   creates visual breathing room without harsh lines or heavy color.
+   ========================================================= */
+
+/* 1 — Hero: pure white → very soft blue at base */
+.hero{
+  background: linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%) !important;
+}
+
+/* 2 — Playbook (use-case grid): soft blue band, back to white */
+.playbook-strip{
+  background: linear-gradient(180deg, #f6f9ff 0%, #edf3ff 38%, #f6f9ff 70%, #ffffff 100%) !important;
+}
+
+/* 3 — Quality / Trust section: clean white with faint warm finish */
+.quality-model-section,
+.trust-system-section{
+  background: linear-gradient(180deg, #ffffff 0%, #f9fafe 100%) !important;
+}
+
+/* 4 — Industry slider: cool neutral tint band, back to white */
+.industry-slider-section{
+  background: linear-gradient(180deg, #f9fafe 0%, #f1f5fd 38%, #f9fafe 70%, #ffffff 100%) !important;
+}
+
+/* 5 — Governance: clean white with faint warm finish */
+.theorem-gov-section{
+  background: linear-gradient(180deg, #ffffff 0%, #fafbfe 100%) !important;
+}
+
+/* 6 — Final CTA: light finishing gradient */
+.final-cta{
+  background: linear-gradient(180deg, #fafbfe 0%, #eef3ff 40%, #f6f9ff 100%) !important;
+}
+
+/* Remove ALL legacy pseudo-element section panels from previous versions */
+.playbook-strip::before,
+.playbook-strip::after,
+.quality-model-section::before,
+.quality-model-section::after,
+.trust-system-section::before,
+.trust-system-section::after,
+.industry-slider-section::before,
+.industry-slider-section::after,
+.theorem-gov-section::before,
+.theorem-gov-section::after,
+.governance-section::before,
+.governance-section::after,
+.comparison-section::before,
+.comparison-section::after,
+.integrations-section::before,
+.integrations-section::after,
+.cta-section::before,
+.cta-section::after,
+.final-cta::before,
+.final-cta::after{
+  display: none !important;
+  content: none !important;
+  background: none !important;
+}
+
+/* Uniform section rhythm — tighter than v57 to reduce the gap feeling */
+.playbook-strip,
+.quality-model-section,
+.trust-system-section,
+.industry-slider-section,
+.theorem-gov-section,
+.final-cta{
+  padding-top: 68px !important;
+  padding-bottom: 68px !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: visible !important;
+}
+
+/* Hero inner padding: reduce the big gap at bottom of hero */
+.hero-inner{
+  padding-top: 104px !important;
+  padding-bottom: 72px !important;
+}
+
+/* Content sits above gradient layer */
+.playbook-strip > *,
+.quality-model-section > *,
+.trust-system-section > *,
+.industry-slider-section > *,
+.theorem-gov-section > *,
+.final-cta > *{
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Footer */
+.footer{
+  background: #ffffff !important;
+  border-top: 1px solid #e7eaf3 !important;
+}
+
+
+/* v8.1 — make section gradients actually visible */
+
+.hero{
+  background: linear-gradient(180deg, #ffffff 0%, #e8f1ff 100%) !important;
+}
+
+.playbook-strip{
+  background: linear-gradient(180deg, #e8f1ff 0%, #d6e8ff 38%, #e8f1ff 70%, #ffffff 100%) !important;
+}
+
+.quality-model-section,
+.trust-system-section{
+  background: linear-gradient(180deg, #ffffff 0%, #f0f5ff 100%) !important;
+}
+
+.industry-slider-section{
+  background: linear-gradient(180deg, #f0f5ff 0%, #dde9ff 38%, #f0f5ff 70%, #ffffff 100%) !important;
+}
+
+.theorem-gov-section{
+  background: linear-gradient(180deg, #ffffff 0%, #f2f6ff 100%) !important;
+}
+
+.final-cta{
+  background: linear-gradient(180deg, #f2f6ff 0%, #dde9ff 40%, #eaf1ff 100%) !important;
+}
+
+
+/* v8.2 — force gradients with max specificity + explicit background-image */
+
+html body .hero,
+html body section.hero,
+html body .hero.page-grid {
+  background-color: #ffffff !important;
+  background-image: linear-gradient(180deg, #ffffff 0%, #dce9ff 100%) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+html body .playbook-strip,
+html body section.playbook-strip {
+  background-color: #dce9ff !important;
+  background-image: linear-gradient(180deg, #dce9ff 0%, #c8daff 38%, #dce9ff 70%, #ffffff 100%) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+html body .quality-model-section,
+html body .trust-system-section,
+html body section.quality-model-section {
+  background-color: #ffffff !important;
+  background-image: linear-gradient(180deg, #ffffff 0%, #e8f1ff 100%) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+html body .industry-slider-section,
+html body section.industry-slider-section {
+  background-color: #e8f1ff !important;
+  background-image: linear-gradient(180deg, #e8f1ff 0%, #d4e6ff 38%, #e8f1ff 70%, #ffffff 100%) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+html body .theorem-gov-section,
+html body section.theorem-gov-section {
+  background-color: #ffffff !important;
+  background-image: linear-gradient(180deg, #ffffff 0%, #ecf3ff 100%) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+html body .final-cta,
+html body section.final-cta {
+  background-color: #ecf3ff !important;
+  background-image: linear-gradient(180deg, #ecf3ff 0%, #d4e6ff 40%, #e8f1ff 100%) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+
+/* v8.3 — tone down gradients, less intense */
+
+html body .hero,
+html body section.hero,
+html body .hero.page-grid {
+  background-color: #ffffff !important;
+  background-image: linear-gradient(180deg, #ffffff 0%, #edf4ff 100%) !important;
+}
+
+html body .playbook-strip,
+html body section.playbook-strip {
+  background-color: #edf4ff !important;
+  background-image: linear-gradient(180deg, #edf4ff 0%, #e2edff 38%, #edf4ff 70%, #ffffff 100%) !important;
+}
+
+html body .quality-model-section,
+html body .trust-system-section,
+html body section.quality-model-section {
+  background-color: #ffffff !important;
+  background-image: linear-gradient(180deg, #ffffff 0%, #f3f8ff 100%) !important;
+}
+
+html body .industry-slider-section,
+html body section.industry-slider-section {
+  background-color: #f3f8ff !important;
+  background-image: linear-gradient(180deg, #f3f8ff 0%, #e8f1ff 38%, #f3f8ff 70%, #ffffff 100%) !important;
+}
+
+html body .theorem-gov-section,
+html body section.theorem-gov-section {
+  background-color: #ffffff !important;
+  background-image: linear-gradient(180deg, #ffffff 0%, #f4f8ff 100%) !important;
+}
+
+html body .final-cta,
+html body section.final-cta {
+  background-color: #f4f8ff !important;
+  background-image: linear-gradient(180deg, #f4f8ff 0%, #e8f1ff 40%, #f0f6ff 100%) !important;
+}
+
+
+/* v8.4 — slightly softer gradients */
+
+html body .hero,
+html body section.hero,
+html body .hero.page-grid {
+  background-image: linear-gradient(180deg, #ffffff 0%, #f3f8ff 100%) !important;
+}
+
+html body .playbook-strip,
+html body section.playbook-strip {
+  background-color: #f3f8ff !important;
+  background-image: linear-gradient(180deg, #f3f8ff 0%, #eaf2ff 38%, #f3f8ff 70%, #ffffff 100%) !important;
+}
+
+html body .quality-model-section,
+html body .trust-system-section,
+html body section.quality-model-section {
+  background-image: linear-gradient(180deg, #ffffff 0%, #f7fafe 100%) !important;
+}
+
+html body .industry-slider-section,
+html body section.industry-slider-section {
+  background-color: #f7fafe !important;
+  background-image: linear-gradient(180deg, #f7fafe 0%, #eef5ff 38%, #f7fafe 70%, #ffffff 100%) !important;
+}
+
+html body .theorem-gov-section,
+html body section.theorem-gov-section {
+  background-image: linear-gradient(180deg, #ffffff 0%, #f7fafe 100%) !important;
+}
+
+html body .final-cta,
+html body section.final-cta {
+  background-color: #f7fafe !important;
+  background-image: linear-gradient(180deg, #f7fafe 0%, #eef5ff 40%, #f3f8ff 100%) !important;
+}
+
+
+/* v8.5 — even softer gradients */
+
+html body .hero,
+html body section.hero,
+html body .hero.page-grid {
+  background-image: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%) !important;
+}
+
+html body .playbook-strip,
+html body section.playbook-strip {
+  background-color: #f8fbff !important;
+  background-image: linear-gradient(180deg, #f8fbff 0%, #f2f7ff 38%, #f8fbff 70%, #ffffff 100%) !important;
+}
+
+html body .quality-model-section,
+html body .trust-system-section,
+html body section.quality-model-section {
+  background-image: linear-gradient(180deg, #ffffff 0%, #fafcff 100%) !important;
+}
+
+html body .industry-slider-section,
+html body section.industry-slider-section {
+  background-color: #fafcff !important;
+  background-image: linear-gradient(180deg, #fafcff 0%, #f2f7ff 38%, #fafcff 70%, #ffffff 100%) !important;
+}
+
+html body .theorem-gov-section,
+html body section.theorem-gov-section {
+  background-image: linear-gradient(180deg, #ffffff 0%, #fafcff 100%) !important;
+}
+
+html body .final-cta,
+html body section.final-cta {
+  background-color: #fafcff !important;
+  background-image: linear-gradient(180deg, #fafcff 0%, #f2f7ff 40%, #f8fbff 100%) !important;
+}
+
+
+/* v8.6 — revert to v8.4 values */
+
+html body .hero,
+html body section.hero,
+html body .hero.page-grid {
+  background-image: linear-gradient(180deg, #ffffff 0%, #f3f8ff 100%) !important;
+}
+
+html body .playbook-strip,
+html body section.playbook-strip {
+  background-color: #f3f8ff !important;
+  background-image: linear-gradient(180deg, #f3f8ff 0%, #eaf2ff 38%, #f3f8ff 70%, #ffffff 100%) !important;
+}
+
+html body .quality-model-section,
+html body .trust-system-section,
+html body section.quality-model-section {
+  background-image: linear-gradient(180deg, #ffffff 0%, #f7fafe 100%) !important;
+}
+
+html body .industry-slider-section,
+html body section.industry-slider-section {
+  background-color: #f7fafe !important;
+  background-image: linear-gradient(180deg, #f7fafe 0%, #eef5ff 38%, #f7fafe 70%, #ffffff 100%) !important;
+}
+
+html body .theorem-gov-section,
+html body section.theorem-gov-section {
+  background-image: linear-gradient(180deg, #ffffff 0%, #f7fafe 100%) !important;
+}
+
+html body .final-cta,
+html body section.final-cta {
+  background-color: #f7fafe !important;
+  background-image: linear-gradient(180deg, #f7fafe 0%, #eef5ff 40%, #f3f8ff 100%) !important;
+}
+
+
+/* v63 — inner pages, legal docs, about, contact */
+.footer-grid{
+  grid-template-columns:1.35fr 1fr 1fr 1fr !important;
+  gap:70px !important;
+}
+
+.footer-bottom{
+  margin-top:54px;
+  padding-top:22px;
+  border-top:1px solid var(--line2);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  color:#7a8294;
+  font-size:13px;
+  letter-spacing:-.01em;
+}
+
+.footer-bottom span:first-child{
+  color:#111827;
+  font-weight:650;
+}
+
+.footer-bottom a{
+  color:#7a8294 !important;
+  display:inline !important;
+  margin:0 !important;
+}
+
+.nav-links a.is-active{
+  color:var(--brand);
+}
+
+.legal-page-hero{
+  padding:84px 0 110px;
+}
+
+.legal-layout{
+  display:grid;
+  grid-template-columns:270px minmax(0, 1fr);
+  gap:72px;
+  align-items:start;
+}
+
+.legal-toc{
+  position:sticky;
+  top:104px;
+  background:#f7f7fb;
+  border:1px solid var(--line2);
+  border-radius:18px;
+  padding:24px 24px 26px;
+}
+
+.legal-toc h4{
+  margin:0 0 16px;
+  font-size:18px;
+  letter-spacing:-.035em;
+}
+
+.legal-toc a{
+  display:block;
+  color:#1b2236;
+  font-size:14px;
+  line-height:1.35;
+  margin:12px 0;
+}
+
+.legal-toc a:hover{
+  color:var(--brand);
+}
+
+.legal-doc{
+  max-width:820px;
+}
+
+.legal-doc h1{
+  margin:0 0 28px;
+  font-size:clamp(54px,6vw,82px);
+  line-height:1.02;
+  letter-spacing:-.075em;
+  font-weight:720;
+}
+
+.legal-lead{
+  color:#7a8294;
+  font-size:18px;
+  line-height:1.72;
+  margin:0 0 18px;
+}
+
+.legal-updated{
+  color:#9aa1b2;
+  font-size:14px;
+  margin:0 0 52px;
+}
+
+.legal-doc h2{
+  margin:52px 0 16px;
+  font-size:38px;
+  line-height:1.12;
+  letter-spacing:-.06em;
+  font-weight:720;
+}
+
+.legal-doc p{
+  color:#737b8e;
+  font-size:17px;
+  line-height:1.76;
+  margin:0 0 18px;
+}
+
+.legal-doc a{
+  color:var(--brand);
+  text-decoration:underline;
+}
+
+.about-hero{
+  padding:112px 0 76px;
+}
+
+.about-hero-inner{
+  max-width:860px;
+}
+
+.about-hero h1,
+.contact-copy h1{
+  margin:0;
+  font-size:clamp(50px,5.5vw,76px);
+  line-height:1.06;
+  letter-spacing:-.075em;
+  font-weight:720;
+}
+
+.about-hero p:not(.eyebrow),
+.contact-copy > p{
+  max-width:760px;
+  margin:24px 0 0;
+  color:#737b8e;
+  font-size:20px;
+  line-height:1.7;
+}
+
+.about-section{
+  padding:26px 0 92px;
+}
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1.35fr 1fr 1fr 1fr;
+  gap:22px;
+}
+
+.about-grid h2,
+.founder-card h2{
+  margin:0 0 18px;
+  font-size:42px;
+  line-height:1.12;
+  letter-spacing:-.065em;
+  font-weight:720;
+}
+
+.about-grid p,
+.founder-card p{
+  color:#687184;
+  font-size:16px;
+  line-height:1.72;
+  margin:0 0 14px;
+}
+
+.about-card{
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:28px 24px;
+  background:linear-gradient(135deg,#fff,#f8fbff);
+  box-shadow:0 18px 50px rgba(20,25,50,.04);
+}
+
+.about-card span{
+  width:44px;
+  height:44px;
+  border-radius:13px;
+  display:grid;
+  place-items:center;
+  color:var(--brand);
+  background:var(--brand-soft);
+  font-weight:800;
+  margin-bottom:34px;
+}
+
+.about-card h3{
+  margin:0 0 10px;
+  font-size:22px;
+  letter-spacing:-.045em;
+}
+
+.about-founder{
+  padding:0 0 112px;
+}
+
+.founder-card{
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:48px;
+  display:grid;
+  grid-template-columns:.9fr 1.2fr;
+  gap:48px;
+  background:linear-gradient(135deg,#fff,#f7fbff);
+  box-shadow:0 24px 80px rgba(20,25,50,.055);
+}
+
+.contact-page{
+  padding:112px 0 120px;
+}
+
+.contact-layout{
+  display:grid;
+  grid-template-columns:1fr .88fr;
+  gap:72px;
+  align-items:start;
+}
+
+.contact-points{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:30px;
+}
+
+.contact-points span{
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:9px 13px;
+  color:#687184;
+  background:#fff;
+  font-size:13px;
+  font-weight:650;
+}
+
+.contact-email{
+  margin-top:28px !important;
+  font-size:16px !important;
+}
+
+.contact-email a{
+  color:var(--brand);
+  text-decoration:underline;
+}
+
+.contact-form{
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:34px;
+  background:#fff;
+  box-shadow:0 24px 80px rgba(20,25,50,.065);
+}
+
+.contact-form label{
+  display:block;
+  color:#111827;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:16px;
+}
+
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  margin-top:8px;
+  border:1px solid #dde2ec;
+  border-radius:12px;
+  padding:13px 14px;
+  font:inherit;
+  color:#111827;
+  outline:none;
+  background:#fbfcff;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+  border-color:var(--brand);
+  box-shadow:0 0 0 4px rgba(var(--brand-rgb), .1);
+}
+
+.contact-form textarea{
+  resize:vertical;
+}
+
+.contact-form button{
+  width:100%;
+  margin-top:4px;
+}
+
+.contact-form p{
+  margin:14px 0 0;
+  color:#8a92a4;
+  font-size:13px;
+  line-height:1.55;
+}
+
+@media(max-width:980px){
+  .legal-layout,
+  .contact-layout,
+  .founder-card,
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+
+  .legal-toc{
+    position:static;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr 1fr !important;
+    gap:42px !important;
+  }
+
+  .footer-bottom{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
+}
+
+@media(max-width:640px){
+  .legal-page-hero,
+  .about-hero,
+  .contact-page{
+    padding:72px 0 82px;
+  }
+
+  .legal-doc h1,
+  .about-hero h1,
+  .contact-copy h1{
+    font-size:44px;
+  }
+
+  .legal-doc h2,
+  .about-grid h2,
+  .founder-card h2{
+    font-size:32px;
+  }
+
+  .contact-form,
+  .founder-card{
+    padding:26px;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr !important;
+  }
+}
+
+
+/* v64 — about replacement and contact form polish */
+.impact-card{
+  grid-template-columns:.95fr 1.25fr !important;
+}
+
+.impact-list{
+  display:grid;
+  gap:14px;
+}
+
+.impact-list div{
+  display:grid;
+  grid-template-columns:50px 1fr;
+  align-items:start;
+  gap:16px;
+  padding:16px 0;
+  border-bottom:1px solid var(--line2);
+}
+
+.impact-list div:last-child{
+  border-bottom:0;
+}
+
+.impact-list strong{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:var(--brand-soft);
+  color:var(--brand);
+  font-size:13px;
+}
+
+.impact-list span{
+  color:#5f687a;
+  font-size:16px;
+  line-height:1.65;
+}
+
+.contact-form input[type="hidden"]{
+  display:none;
+}
+
+@media(max-width:980px){
+  .impact-card{
+    grid-template-columns:1fr !important;
+  }
+}
+
+
+
+/* v65 — align numbered steps with text */
+.impact-list div{
+  align-items:center !important;
+}
+
+.impact-list strong{
+  margin-top:0 !important;
+  flex-shrink:0;
+}
+
+.impact-list span{
+  display:block;
+  padding-top:0 !important;
+}
+
+
+/* v66 — restore original Theorrem wordmark style */
+.theorem-logo .theorem-wordmark,
+.footer .theorem-wordmark{
+  font-family:'Bai Jamjuree', Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-weight:500 !important;
+  font-size:25px !important;
+  letter-spacing:0.04em !important;
+  text-transform:uppercase !important;
+  color:#000 !important;
+  -webkit-text-stroke:1.8px #000 !important;
+}
+
+.theorem-logo{
+  gap:11px !important;
+}
+
+.theorem-mark svg{
+  width:22px !important;
+  height:auto !important;
+  display:block !important;
+}
+
+.theorem-mark rect:nth-child(1){ fill:#0a0a0a !important; }
+.theorem-mark rect:nth-child(2){ fill:#0a0a0a !important; }
+.theorem-mark rect:nth-child(3){ fill:#3b82f6 !important; }
+
+
+/* v67 — five item navigation */
+.nav-links{
+  gap:30px !important;
+}
+
+@media(max-width:1120px){
+  .nav-links{
+    gap:22px !important;
+    margin-left:72px !important;
+  }
+}
+
+
+/* v68 — nav order and final start section */
+.nav-links{
+  gap:28px !important;
+}
+
+@media(max-width:1120px){
+  .nav-links{
+    gap:20px !important;
+    margin-left:64px !important;
+  }
+}
+
+
+/* v78 — nav scroll offset for all main sections */
+/* All sections share padding-top:68px. navbar is 72px sticky.
+   scroll-margin-top:24px → heading lands at 92px from viewport top = 20px below navbar. */
+#playbooks,
+#quality,
+#usecases,
+#governance{
+  scroll-margin-top:54px;
+}

@@ -47,14 +47,3 @@ Update the `phrases` array to test different copy.
 ## v24.3
 - Removed the “For teams who need outcomes, not another platform” comparison section.
 - Left the rest of the page unchanged.
-
-
-## v27
-- Built directly from the four individually uploaded files:
-  - index(2).html
-  - styles(2).css
-  - script(2).js
-  - README(2).md
-- Removed the old “For teams who need outcomes” comparison/outcomes section.
-- Replaced the quality section with a cleaner Trust System layout.
-- Added final color enforcement so purple highlight leaks use the current brand variable.

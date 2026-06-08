@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THEORREM — Font Preview Vol.2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;300;400;700&family=Special+Elite&family=Cinzel:wght@400;700;900&family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;600;700;800&family=Orbitron:wght@400;500;700;900&family=Audiowide&family=Oxanium:wght@400;600;700;800&family=Syncopate:wght@400;700&family=Michroma&family=Russo+One&family=Teko:wght@400;500;600;700&family=Quantico:wght@400;700&family=Share+Tech&family=Aldrich&family=Saira+Condensed:wght@400;600;700;800;900&family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Arimo:wght@400;500;600;700&family=Big+Shoulders+Display:wght@400;600;700;800;900&family=Black+Han+Sans&family=Fjalla+One&family=Righteous&family=Bai+Jamjuree:wght@400;500;600;700&family=Chakra+Petch:wght@400;500;600;700&family=Electrolize&family=Nova+Square&family=Wallpoet&family=Megrim&family=Stalinist+One&family=Rye&family=Pirata+One&family=Abril+Fatface&family=Yeseva+One&family=Playfair+Display:wght@400;700;900&family=Cardo:wght@400;700&family=Uncial+Antiqua&family=MedievalSharp&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f4f4f2;font-family:system-ui,sans-serif;padding:32px 24px}
+.top-bar{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:28px;flex-wrap:wrap}
+h1{text-align:center;font-size:11px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:2px;margin-bottom:6px}
+.subtitle{text-align:center;font-size:11px;color:#ccc;margin-bottom:24px}
+.ctrl{background:#fff;border:1px solid #e0e0de;padding:6px 14px;border-radius:6px;font-size:12px;font-weight:500;color:#555;cursor:pointer;font-family:inherit;transition:all .15s}
+.ctrl:hover,.ctrl.on{background:#0a0a0a;color:#fff;border-color:#0a0a0a}
+input[type=range]{accent-color:#0a0a0a;width:100px}
+.size-wrap{display:flex;align-items:center;gap:6px;font-size:11px;color:#aaa}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:3px}
+.card{background:#fff;border:1px solid #eaeae8;padding:24px 24px 16px;position:relative;transition:border-color .15s,box-shadow .15s}
+.card:hover{border-color:#ccc;box-shadow:0 4px 16px rgba(0,0,0,0.07);z-index:1}
+.word{color:#0a0a0a;line-height:1;margin-bottom:10px;transition:font-size .1s}
+.label{font-size:10px;font-weight:700;color:#bbb;text-transform:uppercase;letter-spacing:1.2px}
+.sublabel{font-size:10px;color:#ddd;margin-top:2px;font-style:italic}
+.badge{position:absolute;top:8px;right:8px;font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.5px}
+.badge-exact{background:#0a0a0a;color:#fff}
+.badge-close{background:#f0f0ee;color:#999;border:1px solid #e0e0de}
+/* dark mode toggle */
+body.dark{background:#0a0a0a}
+body.dark .card{background:#111;border-color:#222}
+body.dark .word{color:#fff}
+body.dark .label{color:#444}
+body.dark .sublabel{color:#333}
+body.dark .ctrl{background:#1a1a1a;border-color:#333;color:#555}
+body.dark .ctrl:hover,body.dark .ctrl.on{background:#fff;color:#000;border-color:#fff}
+body.dark h1{color:#444}
+body.dark .subtitle{color:#333}
+body.dark .size-wrap{color:#444}
+body.dark .badge-close{background:#1a1a1a;color:#444;border-color:#333}
+</style>
+</head>
+<body id="bod">
+
+<h1>THEORREM — Font Preview Vol. 2</h1>
+<p class="subtitle">43 fonts · closest free matches labelled · toggle weight, size, dark mode</p>
+
+<div class="top-bar">
+  <button class="ctrl on" onclick="setW(700,this)">Bold</button>
+  <button class="ctrl" onclick="setW(600,this)">SemiBold</button>
+  <button class="ctrl" onclick="setW(500,this)">Medium</button>
+  <button class="ctrl" onclick="setW(400,this)">Regular</button>
+  <button class="ctrl" onclick="setW(300,this)">Light</button>
+  <div style="width:1px;height:18px;background:#ddd"></div>
+  <button class="ctrl" onclick="toggleDark()">Dark / Light</button>
+  <div style="width:1px;height:18px;background:#ddd"></div>
+  <div class="size-wrap">Size <input type="range" min="20" max="72" value="48" oninput="setSize(this.value)" id="sizeRange"> <span id="sizeVal">48px</span></div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const fonts = [
+  // name, font-family CSS, exact(true/false), note
+  ["Futura","'Josefin Sans',sans-serif",false,"Josefin Sans — geometric, closest free match"],
+  ["Special Elite","'Special Elite',cursive",true,"Actual font loaded — typewriter/stamp"],
+  ["Haksen","'Teko',sans-serif",false,"Teko — condensed geometric, similar weight"],
+  ["Lequire","'Raleway','Cinzel',sans-serif",false,"Raleway — elegant proportions"],
+  ["iBrand","'Exo 2',sans-serif",false,"Exo 2 — tech branding feel"],
+  ["Folkra","'Pirata One',cursive",false,"Pirata One — stylised editorial"],
+  ["Friday","'Righteous',cursive",false,"Righteous — rounded display"],
+  ["Synonym","'Barlow Condensed',sans-serif",false,"Barlow Condensed — clean compressed"],
+  ["Kregan","'Russo One',sans-serif",false,"Russo One — bold industrial"],
+  ["Darvish","'Rajdhani',sans-serif",false,"Rajdhani — sharp angular"],
+  ["Oglaso","'Quantico',sans-serif",false,"Quantico — techy, angular"],
+  ["Xioner","'Orbitron',sans-serif",false,"Orbitron — futuristic, angular"],
+  ["Kolega","'Chakra Petch',sans-serif",false,"Chakra Petch — industrial slant"],
+  ["Haldenweg","'Michroma',sans-serif",false,"Michroma — geometric precision"],
+  ["Serbie","'Cardo',serif",false,"Cardo — classical serif"],
+  ["Sovem","'Oxanium',sans-serif",false,"Oxanium — soft geometric"],
+  ["Request","'Share Tech',sans-serif",false,"Share Tech — mono-inspired"],
+  ["Qoeg","'Megrim',cursive",false,"Megrim — ultra light geometric"],
+  ["Daros","'Electrolize',sans-serif",false,"Electrolize — clean digital"],
+  ["Agatic","'Audiowide',cursive",false,"Audiowide — tech rounded"],
+  ["Gatte","'Nova Square',cursive",false,"Nova Square — square geometric"],
+  ["Deuglas","'Big Shoulders Display',cursive",false,"Big Shoulders Display — wide bold"],
+  ["Radeil Rough","'Rye',cursive",false,"Rye — rough western character"],
+  ["Astra","'Syncopate',sans-serif",false,"Syncopate — spaced geometric"],
+  ["Super Have","'Bebas Neue',cursive",false,"Bebas Neue — strong all-caps display"],
+  ["Nubars","'Saira Condensed',sans-serif",false,"Saira Condensed — narrow modern"],
+  ["Bregan","'Aldrich',sans-serif",false,"Aldrich — clean neutral"],
+  ["Polea","'Fjalla One',sans-serif",false,"Fjalla One — condensed bold"],
+  ["Laren","'Yeseva One',cursive",false,"Yeseva One — editorial serif"],
+  ["Racky","'Black Han Sans',sans-serif",false,"Black Han Sans — heavy display"],
+  ["Junkwar","'Wallpoet',cursive",false,"Wallpoet — stencil style"],
+  ["Mikea","'Arimo',sans-serif",false,"Arimo — neutral humanist"],
+  ["Sardin","'Bai Jamjuree',sans-serif",false,"Bai Jamjuree — crisp geometric"],
+  ["Jacelon Rounded","'Oxanium',sans-serif",false,"Oxanium rounded — smooth corners"],
+  ["Cottra","'Abril Fatface',cursive",false,"Abril Fatface — bold display"],
+  ["Agency","'Teko',sans-serif",false,"Teko bold — classic agency feel"],
+  ["Adyson","'Exo 2',sans-serif",false,"Exo 2 — modern tech"],
+  ["Erabura","'Cinzel',serif",false,"Cinzel — architectural serif"],
+  ["Keratus","'Stalinist One',cursive",false,"Stalinist One — monumental"],
+  ["Coffee Shop","'Special Elite',cursive",true,"Actual font — warm handcrafted"],
+  ["Global Street","'Bebas Neue',cursive",false,"Bebas Neue — strong street display"],
+  ["Bargain","'Big Shoulders Display',cursive",false,"Big Shoulders — wide impactful"],
+  ["Jumoki","'Uncial Antiqua',cursive",false,"Uncial Antiqua — calligraphic"],
+];
+
+let currentWeight = 700;
+let currentSize = 48;
+
+function build() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  fonts.forEach(([name, family, exact, note]) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="badge ${exact ? 'badge-exact' : 'badge-close'}">${exact ? 'Exact' : 'Closest'}</div>
+      <div class="word" style="font-family:${family};font-size:${currentSize}px;font-weight:${currentWeight}">${exact && name === 'Coffee Shop' ? 'THEORREM' : 'THEORREM'}</div>
+      <div class="label">${name}</div>
+      <div class="sublabel">${note}</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function setW(w, btn) {
+  currentWeight = w;
+  document.querySelectorAll('.ctrl').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.word').forEach(el => el.style.fontWeight = w);
+}
+
+function setSize(v) {
+  currentSize = v;
+  document.getElementById('sizeVal').textContent = v + 'px';
+  document.querySelectorAll('.word').forEach(el => el.style.fontSize = v + 'px');
+}
+
+function toggleDark() {
+  document.getElementById('bod').classList.toggle('dark');
+}
+
+build();
+</script>
+</body>
+</html>

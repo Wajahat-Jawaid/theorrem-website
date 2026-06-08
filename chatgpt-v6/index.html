@@ -175,66 +175,133 @@
       </div>
     </section>
 
-    
-    <section class="quality-model-section trust-system-section page-grid" id="quality">
-      <div class="container trust-system-container">
-        <div class="trust-system-intro">
+    <section class="quality-model-section page-grid" id="quality">
+      <div class="container quality-model-container">
+        <div class="qm-intro">
           <p class="eyebrow">Model choice, quality checks, and human control</p>
-          <h2 class="target-small-heading">AI agents your team can trust before they go live</h2>
+          <h2 class="target-small-heading">Ship AI agents your team can actually trust</h2>
           <p>
-            Every workflow is tested, routed through the right model, and protected with approval
-            rules before it touches real customers or business-critical systems.
+            We don’t just connect an LLM and hope for the best. Each workflow gets the right model,
+            test cases, approval rules, escalation paths, and monitoring before it goes live.
           </p>
         </div>
 
-        <div class="model-strip" aria-label="Compatible model providers">
-          <span>Built to work with</span>
-          <b>OpenAI</b>
-          <b>Anthropic</b>
-          <b>Gemini</b>
-          <b>Llama</b>
-          <b>Custom APIs</b>
+        <div class="compatibility-row" aria-label="Compatible AI providers">
+          <span class="compat-label">Compatible with</span>
+          <span class="compat-provider"><i class="provider-logo openai-logo">◎</i> OpenAI</span>
+          <span class="compat-provider"><i class="provider-logo anthropic-logo">A</i> Anthropic</span>
+          <span class="compat-provider"><i class="provider-logo gemini-logo">✦</i> Gemini</span>
+          <span class="compat-provider"><i class="provider-logo llama-logo">∞</i> Llama</span>
+          <span class="compat-provider"><i class="provider-logo custom-logo">⌘</i> Custom APIs</span>
         </div>
 
-        <div class="trust-system-panel">
-          <article class="trust-card model-card">
-            <div class="trust-icon">01</div>
-            <h3>Choose the right brain</h3>
-            <p>Different workflow steps can use different models based on speed, cost, reasoning depth, context length, or safety.</p>
-            <div class="mini-model-map">
-              <span>Qualification</span>
-              <span>Documents</span>
-              <span>Reply drafting</span>
-              <span>Internal rules</span>
+        <div class="example-flow-band" aria-label="Example workflow">
+          <div class="example-label">
+            <span>✦</span>
+            <strong>Example:</strong>
+          </div>
+          <div class="example-step">
+            <i>💬</i>
+            <span>Buyer inquiry</span>
+          </div>
+          <b>→</b>
+          <div class="example-step">
+            <i>👤</i>
+            <span>Lead qualification</span>
+          </div>
+          <b>→</b>
+          <div class="example-step">
+            <i>▣</i>
+            <span>CRM update</span>
+          </div>
+          <b>→</b>
+          <div class="example-step">
+            <i>🛡</i>
+            <span>Escalation if confidence is low</span>
+          </div>
+        </div>
+
+        <div class="qm-card-grid">
+          <article class="qm-card qm-routing">
+            <div class="qm-card-top">
+              <span class="qm-kicker">Model routing</span>
+              <h3>Use the right model for each job</h3>
+              <p>Route tasks based on complexity, cost, and performance so every step gets the best fit.</p>
             </div>
+
+            <div class="routing-stack">
+              <div class="route-item">
+                <i class="provider-logo openai-logo">◎</i>
+                <div>
+                  <b>OpenAI</b>
+                  <span>Advanced reasoning, structured extraction, CRM fields.</span>
+                </div>
+              </div>
+              <div class="route-item">
+                <i class="provider-logo anthropic-logo">A</i>
+                <div>
+                  <b>Anthropic</b>
+                  <span>Long-context review, nuanced replies, safe drafting.</span>
+                </div>
+              </div>
+              <div class="route-item">
+                <i class="provider-logo gemini-logo">✦</i>
+                <div>
+                  <b>Gemini</b>
+                  <span>Multimodal understanding and document-heavy tasks.</span>
+                </div>
+              </div>
+            </div>
+
+            <a class="qm-link" href="#contact">See routing rules <span>→</span></a>
           </article>
 
-          <article class="trust-card testing-card">
-            <div class="trust-icon">02</div>
-            <h3>Test before launch</h3>
-            <p>Agents are tested against real examples, edge cases, and workflow-specific evaluation checks before production use.</p>
-            <div class="quality-bars">
-              <div><span>Lead accuracy</span><b>94%</b></div>
-              <div><span>Reply quality</span><b>91%</b></div>
-              <div><span>Risk handling</span><b>Review</b></div>
+          <article class="qm-card qm-evals">
+            <div class="qm-card-top">
+              <span class="qm-kicker">Quality checks</span>
+              <h3>Your team defines what “good” means</h3>
+              <p>Automated evals run on real examples before anything reaches your customers.</p>
             </div>
+
+            <div class="eval-board">
+              <div><span>Email quality</span><b>94%</b></div>
+              <div><span>Lead accuracy</span><b>91%</b></div>
+              <div><span>Response SLA</span><b>98%</b></div>
+              <div class="warn"><span>CRM completeness</span><b>87%</b></div>
+            </div>
+
+            <div class="mini-bars">
+              <i style="height:52%"></i><i style="height:56%"></i><i style="height:61%"></i><i style="height:68%"></i><i style="height:72%"></i><i class="active" style="height:78%"></i><i class="active" style="height:86%"></i>
+            </div>
+
+            <a class="qm-link" href="#contact">View quality dashboard <span>→</span></a>
           </article>
 
-          <article class="trust-card approval-card-light">
-            <div class="trust-icon">03</div>
-            <h3>Keep humans in control</h3>
-            <p>Low-confidence, sensitive, or high-impact actions can pause for approval instead of running blindly.</p>
-            <div class="approval-mini">
-              <strong>Confidence below 85%</strong>
-              <span>Ask for approval</span>
-              <span>Log reason</span>
-              <span>Escalate safely</span>
+          <article class="qm-card qm-control">
+            <div class="qm-card-top">
+              <span class="qm-kicker">Human control</span>
+              <h3>Automate routine work and escalate risky work</h3>
+              <p>Low-confidence outputs, sensitive customers, pricing changes, and approvals always route back to your team.</p>
             </div>
+
+            <div class="control-console">
+              <code>When confidence &lt; 85%</code>
+              <span>→ Escalate to human</span>
+              <span>→ Log reason</span>
+              <span>→ Ask for approval</span>
+            </div>
+
+            <div class="control-tags">
+              <span>Approval gates</span>
+              <span>Audit logs</span>
+              <span>Fallback rules</span>
+            </div>
+
+            <a class="qm-link" href="#contact">Learn about human control <span>→</span></a>
           </article>
         </div>
       </div>
     </section>
-
 
     
     <section class="theorem-gov-section page-grid" id="governance">
@@ -259,8 +326,20 @@
     </section>
 
 
-    
+    <section class="comparison-section page-grid" id="comparison">
+      <div class="section-heading centered">
+        <h2>For teams who <span>need outcomes</span></h2>
+        <p>You do not need to buy a complex AI platform first. We build around your actual business process and hand over a workflow your team can operate.</p>
+      </div>
 
+      <div class="comparison-table container">
+        <div class="row head"><div></div><div>Theorem</div><div>Generic chatbot</div></div>
+        <div class="row"><div>Who designs the workflow?</div><div><span class="check">✓</span> We map your current process and convert it into an agent workflow.</div><div><span class="minus">–</span> Usually starts from a prompt or FAQ, not your real process.</div></div>
+        <div class="row"><div>Can it use business tools?</div><div><span class="check">✓</span> CRM, WhatsApp, email, sheets, calendar, databases, and custom APIs.</div><div><span class="cross">×</span> Often limited to answering questions and handing off to humans.</div></div>
+        <div class="row"><div>How are risky actions controlled?</div><div><span class="check">✓</span> Approval gates, confidence thresholds, escalation rules, and audit logs.</div><div><span class="minus">–</span> Usually little control beyond generic guardrails.</div></div>
+        <div class="row"><div>What do you receive?</div><div><span class="check">✓</span> Working workflow, documentation, training, and optional managed support.</div><div><span class="minus">–</span> A widget or tool your team still has to configure deeply.</div></div>
+      </div>
+    </section>
 <section class="final-cta page-grid" id="contact">
       <div class="container">
         <div class="cta-shell">

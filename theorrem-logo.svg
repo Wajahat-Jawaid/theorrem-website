@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 36" width="260" height="36">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&amp;display=swap');
+    </style>
+  </defs>
+  <rect x="0" y="3" width="36" height="6" rx="3" fill="#0a0a0a"/>
+  <rect x="0" y="15" width="28" height="6" rx="3" fill="#555555"/>
+  <rect x="0" y="27" width="18" height="6" rx="3" fill="#aaaaaa"/>
+  <text x="52" y="18" font-family="'Rajdhani', sans-serif" font-weight="600" font-size="34" fill="#0a0a0a" letter-spacing="3" dominant-baseline="middle">THEORREM</text>
+</svg>
