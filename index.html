@@ -1,933 +1,627 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Theorrem | The Enterprise Platform for AI Automation</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#0a0a0a;
-  --bg2:#111111;
-  --bg3:#161616;
-  --bg4:#1c1c1c;
-  --border:#2a2a2a;
-  --border2:#333;
-  --text:#f0f0f0;
-  --text2:#a0a0a0;
-  --text3:#666;
-  --accent:#e8ff47;
-  --accent2:#c8e820;
-  --white:#ffffff;
-  --radius:8px;
-  --radius2:12px;
-  --radius3:16px;
-}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;overflow-x:hidden}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;padding:0 32px}
-.nav-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;align-items:center;gap:0}
-.nav-logo{font-size:19px;font-weight:700;color:var(--white);letter-spacing:-0.5px;text-decoration:none;margin-right:36px}
-.nav-logo span{color:var(--accent)}
-.nav-links{display:flex;align-items:center;gap:4px;flex:1}
-.nav-links a{color:var(--text2);text-decoration:none;font-size:14px;font-weight:400;padding:6px 12px;border-radius:6px;transition:color .15s,background .15s}
-.nav-links a:hover{color:var(--text);background:var(--bg3)}
-.nav-links .dropdown{position:relative;display:flex;align-items:center}
-.nav-links .dropdown>a::after{content:'▾';margin-left:4px;font-size:10px}
-.nav-right{display:flex;align-items:center;gap:10px}
-.btn-ghost{color:var(--text2);background:none;border:1px solid var(--border2);padding:7px 16px;border-radius:var(--radius);font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;transition:all .15s}
-.btn-ghost:hover{color:var(--text);border-color:var(--text3)}
-.btn-accent{background:var(--accent);color:#000;border:none;padding:7px 16px;border-radius:var(--radius);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .15s}
-.btn-accent:hover{background:var(--accent2)}
-
-/* HERO */
-.hero{padding:140px 32px 80px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(232,255,71,0.06) 0%,transparent 70%);pointer-events:none}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border2);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--text2);margin-bottom:28px}
-.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block}
-.hero h1{font-size:clamp(36px,5vw,62px);font-weight:700;line-height:1.1;letter-spacing:-1.5px;max-width:860px;margin:0 auto 24px;color:var(--white)}
-.hero h1 em{font-style:normal;color:var(--accent)}
-.hero-sub{font-size:18px;color:var(--text2);max-width:560px;margin:0 auto 36px;line-height:1.7;font-weight:400}
-.hero-ctas{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:56px}
-.btn-primary{background:var(--white);color:#000;border:none;padding:12px 24px;border-radius:var(--radius);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s}
-.btn-primary:hover{background:#e8e8e8}
-.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border2);padding:12px 24px;border-radius:var(--radius);font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s}
-.btn-secondary:hover{border-color:var(--text2);background:var(--bg3)}
-.hero-integrations{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;font-size:13px;color:var(--text3)}
-.integration-icon{width:28px;height:28px;border-radius:6px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px}
-.integration-count{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:12px;color:var(--text2)}
-
-/* LOGOS MARQUEE */
-.logos-section{padding:32px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;position:relative}
-.logos-section::before,.logos-section::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2}
-.logos-section::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
-.logos-section::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
-.logos-track{display:flex;gap:0;animation:marquee 30s linear infinite;width:max-content}
-.logos-track:hover{animation-play-state:paused}
-.logo-item{display:flex;align-items:center;padding:0 40px;opacity:.45;transition:opacity .2s;white-space:nowrap;font-size:13px;font-weight:600;color:var(--text);letter-spacing:0.5px;text-transform:uppercase}
-.logo-item:hover{opacity:.8}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* SOCIAL PROOF CARDS */
-.proof-section{padding:64px 32px;max-width:1200px;margin:0 auto}
-.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.proof-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius2);padding:24px;display:flex;flex-direction:column;gap:16px;transition:border-color .2s}
-.proof-card:hover{border-color:var(--border2)}
-.proof-client{font-size:13px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.5px}
-.proof-headline{font-size:16px;font-weight:500;color:var(--text);line-height:1.4}
-.proof-stats{display:flex;flex-direction:column;gap:6px;padding-top:8px;border-top:1px solid var(--border)}
-.proof-stat{font-size:13px;color:var(--text2);display:flex;align-items:center;gap:8px}
-.proof-stat::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--accent);flex-shrink:0}
-.proof-stat strong{color:var(--text)}
-.proof-link{font-size:13px;color:var(--accent);text-decoration:none;font-weight:500;margin-top:auto}
-.proof-link:hover{text-decoration:underline}
-
-/* SECTION HEADERS */
-.section{padding:80px 32px;max-width:1200px;margin:0 auto}
-.section-label{font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
-.section-title{font-size:clamp(28px,3.5vw,44px);font-weight:700;letter-spacing:-1px;line-height:1.15;color:var(--white);max-width:700px;margin-bottom:16px}
-.section-sub{font-size:16px;color:var(--text2);max-width:560px;line-height:1.7}
-
-/* ROI SECTION */
-.roi-section{padding:80px 0;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.roi-inner{max-width:1200px;margin:0 auto;padding:0 32px}
-.roi-levels{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:var(--radius2);overflow:hidden;margin-top:48px}
-.roi-level{padding:28px 24px;border-right:1px solid var(--border);position:relative}
-.roi-level:last-child{border-right:none}
-.roi-level.active{background:var(--bg3)}
-.roi-level-tag{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
-.roi-level-num{font-size:28px;font-weight:800;color:var(--white);margin-bottom:4px;letter-spacing:-1px}
-.roi-level-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:8px}
-.roi-level-desc{font-size:12px;color:var(--text3);line-height:1.5}
-.roi-level-badge{display:inline-block;font-size:10px;padding:2px 8px;border-radius:4px;margin-top:10px;font-weight:600}
-.badge-gray{background:var(--bg4);color:var(--text3);border:1px solid var(--border)}
-.badge-accent{background:rgba(232,255,71,0.12);color:var(--accent);border:1px solid rgba(232,255,71,0.3)}
-.roi-example{margin-top:40px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius2);padding:32px;overflow-x:auto}
-.roi-example-title{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px}
-.roi-example-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.roi-step{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
-.roi-step-tag{font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
-.roi-step-item{font-size:12px;color:var(--text2);display:flex;align-items:flex-start;gap:6px;margin-bottom:6px;line-height:1.4}
-.roi-step-item::before{content:'→';color:var(--accent);flex-shrink:0;font-size:11px;margin-top:1px}
-
-/* BUILD SECTION */
-.build-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
-.build-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius2);padding:28px;transition:border-color .2s}
-.build-card:hover{border-color:var(--border2)}
-.build-card-tag{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
-.build-card-title{font-size:18px;font-weight:600;color:var(--white);margin-bottom:8px;letter-spacing:-0.3px}
-.build-card-desc{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:20px}
-.build-card-audience{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--text3);background:var(--bg3);padding:4px 10px;border-radius:4px;border:1px solid var(--border)}
-.build-card-terminal{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:16px;font-family:monospace;font-size:12px;color:var(--text2);margin-top:16px;line-height:1.8}
-.build-card-terminal .cmd{color:var(--accent)}
-.build-card-terminal .out{color:var(--text3)}
-
-/* EVALS */
-.eval-section{padding:80px 0;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);border-top:1px solid var(--border)}
-.eval-inner{max-width:1200px;margin:0 auto;padding:0 32px}
-.eval-demo{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius2);padding:28px;margin-top:40px;max-width:800px}
-.eval-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:gap}
-.eval-title{font-size:14px;font-weight:600;color:var(--text)}
-.eval-subtitle{font-size:12px;color:var(--text3)}
-.eval-bar-wrap{margin-bottom:12px}
-.eval-bar-label{display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-bottom:5px}
-.eval-bar{height:5px;background:var(--bg3);border-radius:3px;overflow:hidden}
-.eval-bar-fill{height:100%;border-radius:3px;background:var(--accent);transition:width .8s ease}
-.eval-results{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
-.eval-result-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:14px;display:flex;align-items:center;justify-content:space-between}
-.eval-result-name{font-size:13px;color:var(--text2)}
-.eval-result-status{font-size:11px;font-weight:600;color:#22c55e;display:flex;align-items:center;gap:4px}
-.eval-result-status::before{content:'✓';font-size:10px}
-
-/* OVERSIGHT */
-.oversight-section{padding:80px 0;border-top:1px solid var(--border)}
-.oversight-inner{max-width:1200px;margin:0 auto;padding:0 32px}
-.task-table{margin-top:40px;border:1px solid var(--border);border-radius:var(--radius2);overflow:hidden}
-.task-table-header{background:var(--bg2);display:grid;grid-template-columns:1fr auto auto auto;gap:16px;padding:12px 20px;font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border)}
-.task-row{display:grid;grid-template-columns:1fr auto auto auto;gap:16px;padding:14px 20px;border-bottom:1px solid var(--border);align-items:center;font-size:13px;transition:background .15s}
-.task-row:last-child{border-bottom:none}
-.task-row:hover{background:var(--bg2)}
-.task-time{font-size:12px;color:var(--text3);white-space:nowrap}
-.task-name{color:var(--text);display:flex;flex-direction:column;gap:3px}
-.task-agent{font-size:11px;color:var(--text3)}
-.task-cost{font-size:12px;color:var(--text2);text-align:right;white-space:nowrap}
-.task-saved{font-size:12px;text-align:right;white-space:nowrap}
-.task-saved.pos{color:#22c55e}
-.task-saved.neg{color:var(--text3)}
-.status-pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:4px;white-space:nowrap}
-.status-complete{background:rgba(34,197,94,0.1);color:#22c55e;border:1px solid rgba(34,197,94,0.2)}
-.status-escalated{background:rgba(251,191,36,0.1);color:#fbbf24;border:1px solid rgba(251,191,36,0.2)}
-.status-error{background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.2)}
-
-/* SECURITY */
-.security-section{padding:80px 0;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.security-inner{max-width:1200px;margin:0 auto;padding:0 32px}
-.security-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
-.security-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius2);padding:24px;transition:border-color .2s}
-.security-card:hover{border-color:var(--border2)}
-.security-icon{width:36px;height:36px;border-radius:8px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:12px}
-.security-card-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px}
-.security-card-desc{font-size:13px;color:var(--text2);line-height:1.6}
-
-/* MODEL SECTION */
-.model-section{padding:80px 0;border-top:1px solid var(--border)}
-.model-inner{max-width:1200px;margin:0 auto;padding:0 32px}
-.model-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius2);padding:28px;margin-top:40px;max-width:680px}
-.model-card-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
-.agent-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;flex-shrink:0}
-.model-agent-info{flex:1}
-.model-agent-name{font-size:14px;font-weight:600;color:var(--text)}
-.model-agent-status{font-size:12px;color:#22c55e;display:flex;align-items:center;gap:4px}
-.model-agent-status::before{content:'';width:5px;height:5px;border-radius:50%;background:#22c55e;display:inline-block}
-.model-table{width:100%;border-collapse:collapse}
-.model-table th{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;padding:8px 0;text-align:left;border-bottom:1px solid var(--border)}
-.model-table th:not(:first-child){text-align:right}
-.model-table td{padding:10px 0;font-size:13px;color:var(--text2);border-bottom:1px solid var(--border)}
-.model-table td:not(:first-child){text-align:right}
-.model-table tr:last-child td{border-bottom:none}
-.model-table tr.recommended td{color:var(--text)}
-.model-rec-badge{background:rgba(232,255,71,0.1);color:var(--accent);font-size:10px;font-weight:600;padding:2px 7px;border-radius:3px;border:1px solid rgba(232,255,71,.25);margin-left:6px}
-.model-provider{display:flex;align-items:center;gap:6px}
-.model-dot{width:16px;height:16px;border-radius:50%;background:var(--bg3);border:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px}
-
-/* INTEGRATIONS */
-.integrations-section{padding:80px 0;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.integrations-inner{max-width:1200px;margin:0 auto;padding:0 32px}
-.integrations-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
-.integration-chip{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:8px 14px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2);transition:all .15s;cursor:default}
-.integration-chip:hover{border-color:var(--border2);color:var(--text)}
-.chip-icon{width:20px;height:20px;border-radius:4px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
-
-/* COMPARE */
-.compare-section{padding:80px 0;border-top:1px solid var(--border)}
-.compare-inner{max-width:1200px;margin:0 auto;padding:0 32px}
-.compare-table{margin-top:48px;border:1px solid var(--border);border-radius:var(--radius2);overflow:hidden}
-.compare-head{display:grid;grid-template-columns:2fr 1fr 1fr;background:var(--bg2);border-bottom:1px solid var(--border)}
-.compare-head-cell{padding:16px 20px;font-size:13px;font-weight:600;color:var(--text)}
-.compare-head-cell.highlight{background:rgba(232,255,71,0.05);border-left:1px solid rgba(232,255,71,.2)}
-.compare-head-cell.highlight .ch-name{color:var(--accent)}
-.compare-row{display:grid;grid-template-columns:2fr 1fr 1fr;border-bottom:1px solid var(--border)}
-.compare-row:last-child{border-bottom:none}
-.compare-row:hover{background:var(--bg2)}
-.compare-cell{padding:16px 20px;font-size:13px;color:var(--text2);line-height:1.5}
-.compare-cell.highlight{background:rgba(232,255,71,0.03);border-left:1px solid rgba(232,255,71,.15)}
-.compare-cell.good{color:var(--text)}
-.compare-cell.question{color:var(--text);font-weight:500}
-.check{color:#22c55e;font-size:15px}
-.cross{color:var(--text3);font-size:15px}
-
-/* PRESS */
-.press-section{padding:64px 32px;max-width:1200px;margin:0 auto;border-top:1px solid var(--border)}
-.press-logos{display:flex;align-items:center;gap:32px;flex-wrap:wrap;justify-content:center;margin-bottom:40px}
-.press-logo{font-size:18px;font-weight:800;color:var(--text3);letter-spacing:-0.5px;text-transform:uppercase;text-decoration:none;transition:color .15s}
-.press-logo:hover{color:var(--text2)}
-.awards-row{display:flex;align-items:stretch;gap:16px;flex-wrap:wrap;justify-content:center}
-.award-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius2);padding:20px 24px;text-align:center;flex:1;min-width:180px;max-width:240px}
-.award-org{font-size:14px;font-weight:700;color:var(--text2);margin-bottom:6px}
-.award-label{font-size:12px;color:var(--text3);line-height:1.4}
-
-/* CTA SECTION */
-.cta-section{padding:100px 32px;text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--border)}
-.cta-section::before{content:'';position:absolute;bottom:-200px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(232,255,71,0.07) 0%,transparent 70%);pointer-events:none}
-.cta-title{font-size:clamp(28px,4vw,50px);font-weight:700;letter-spacing:-1px;color:var(--white);max-width:680px;margin:0 auto 16px;line-height:1.15}
-.cta-sub{font-size:17px;color:var(--text2);margin-bottom:36px}
-.cta-ctas{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
-
-/* FOOTER */
-footer{background:var(--bg2);border-top:1px solid var(--border);padding:64px 32px 32px}
-.footer-inner{max-width:1200px;margin:0 auto}
-.footer-top{display:grid;grid-template-columns:1.5fr repeat(4,1fr);gap:40px;margin-bottom:48px}
-.footer-brand .logo{font-size:18px;font-weight:700;color:var(--white);margin-bottom:8px;letter-spacing:-0.5px}
-.footer-brand .logo span{color:var(--accent)}
-.footer-brand .tagline{font-size:13px;color:var(--text3);margin-bottom:20px;line-height:1.5}
-.footer-social{display:flex;gap:10px}
-.social-btn{width:32px;height:32px;border-radius:var(--radius);background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text2);text-decoration:none;transition:all .15s}
-.social-btn:hover{border-color:var(--border2);color:var(--text)}
-.footer-col h5{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
-.footer-col a{display:block;font-size:13px;color:var(--text2);text-decoration:none;margin-bottom:10px;transition:color .15s}
-.footer-col a:hover{color:var(--text)}
-.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.footer-copy{font-size:12px;color:var(--text3)}
-.footer-legal{display:flex;gap:20px}
-.footer-legal a{font-size:12px;color:var(--text3);text-decoration:none}
-.footer-legal a:hover{color:var(--text2)}
-
-/* TESTIMONIALS */
-.testimonials-section{padding:80px 0;background:var(--bg2);border-top:1px solid var(--border)}
-.testimonials-inner{max-width:1200px;margin:0 auto;padding:0 32px}
-.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
-.testimonial-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius2);padding:28px;display:flex;flex-direction:column;gap:16px;transition:border-color .2s}
-.testimonial-card:hover{border-color:var(--border2)}
-.testimonial-client{font-size:12px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
-.testimonial-quote{font-size:15px;color:var(--text);line-height:1.65;font-style:italic}
-.testimonial-author{font-size:13px;color:var(--text2)}
-.testimonial-author strong{color:var(--text);font-style:normal;display:block}
-
-/* DIVIDERS */
-.full-border{border-top:1px solid var(--border)}
-
-/* UTIL */
-.center{text-align:center}
-.mt4{margin-top:4px}
-.mt8{margin-top:8px}
-.mt16{margin-top:16px}
-.mt24{margin-top:24px}
-.mt32{margin-top:32px}
-.mt48{margin-top:48px}
-.text2{color:var(--text2)}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Theorrem — Custom AI Agents for Business Workflows</title>
+  <meta name="description" content="Theorrem builds custom AI agents for sales, support, operations, CRM automation, lead qualification, reporting, approvals, and business workflows." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;650;700;750;800&family=Special+Elite&family=Josefin+Sans:wght@100;300;400;700&family=Cinzel:wght@400;700;900&family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;600;700;800&family=Orbitron:wght@400;500;700;900&family=Audiowide&family=Oxanium:wght@400;600;700;800&family=Syncopate:wght@400;700&family=Michroma&family=Russo+One&family=Teko:wght@400;500;600;700&family=Quantico:wght@400;700&family=Share+Tech&family=Aldrich&family=Saira+Condensed:wght@400;600;700;800;900&family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Arimo:wght@400;500;600;700&family=Big+Shoulders+Display:wght@400;600;700;800;900&family=Black+Han+Sans&family=Fjalla+One&family=Righteous&family=Bai+Jamjuree:wght@400;500;600;700&family=Chakra+Petch:wght@400;500;600;700&family=Electrolize&family=Nova+Square&family=Wallpoet&family=Megrim&family=Stalinist+One&family=Rye&family=Pirata+One&family=Abril+Fatface&family=Yeseva+One&family=Playfair+Display:wght@400;700;900&family=Cardo:wght@400;700&family=Uncial+Antiqua&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=8.8" />
 </head>
+
 <body>
+  <header class="site-header" id="top">
+    <nav class="nav">
+      <a class="brand theorem-logo" href="#top" aria-label="Theorrem home">
+        <span class="theorem-mark" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 30">
+            <rect x="0" y="0" width="36" height="6" rx="3"/>
+            <rect x="0" y="12" width="28" height="6" rx="3"/>
+            <rect x="0" y="24" width="18" height="6" rx="3"/>
+          </svg>
+        </span>
+        <span class="theorem-wordmark">Theorrem</span>
+      </a>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">theorr<span>em</span></a>
-    <div class="nav-links">
-      <div class="dropdown"><a href="#">Platform</a></div>
-      <div class="dropdown"><a href="#">Agents</a></div>
-      <div class="dropdown"><a href="#">Solutions</a></div>
-      <a href="#">Enterprise</a>
-      <a href="#">Pricing</a>
-    </div>
-    <div class="nav-right">
-      <a href="#" class="btn-ghost">Sign in</a>
-      <a href="#" class="btn-accent">Book a demo</a>
-    </div>
-  </div>
-</nav>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-badge">The AI Automation Platform for Enterprise</div>
-  <h1>AI agents that drive <em>real business impact</em>, built for your team</h1>
-  <p class="hero-sub">Where your domain experts and AI agents achieve results together — safely, at enterprise scale. No templates. No consultants. Just outcomes.</p>
-  <div class="hero-ctas">
-    <a href="#" class="btn-primary">Talk to sales</a>
-    <a href="#" class="btn-secondary">See the platform →</a>
-  </div>
-  <div class="hero-integrations">
-    <div class="integration-icon">💼</div>
-    <div class="integration-icon">📊</div>
-    <div class="integration-icon">💬</div>
-    <div class="integration-icon">📧</div>
-    <div class="integration-icon">🔗</div>
-    <div class="integration-icon">📱</div>
-    <span class="integration-count">100+ integrations</span>
-  </div>
-</section>
+      <div class="nav-links">
+        <a href="#playbooks">Solutions</a>
+        <a data-nav href="#quality">Quality</a>
+        <a href="#usecases">Use cases</a>
+        <a data-nav href="#governance">Governance</a>
+        <a href="#how-it-works">How it works</a>
+      </div>
 
-<!-- LOGOS MARQUEE -->
-<div class="logos-section">
-  <div class="logos-track" id="marqueeTrack">
-    <div class="logo-item">Zameen.com</div>
-    <div class="logo-item">Emirates NBD</div>
-    <div class="logo-item">Aryana Health</div>
-    <div class="logo-item">Engel & Völkers</div>
-    <div class="logo-item">Bayut</div>
-    <div class="logo-item">Techlogix</div>
-    <div class="logo-item">Systems Ltd</div>
-    <div class="logo-item">Gaditek</div>
-    <div class="logo-item">Netsol</div>
-    <div class="logo-item">Foree</div>
-    <div class="logo-item">Zones</div>
-    <div class="logo-item">Waada</div>
-    <!-- Duplicate for infinite scroll -->
-    <div class="logo-item">Zameen.com</div>
-    <div class="logo-item">Emirates NBD</div>
-    <div class="logo-item">Aryana Health</div>
-    <div class="logo-item">Engel & Völkers</div>
-    <div class="logo-item">Bayut</div>
-    <div class="logo-item">Techlogix</div>
-    <div class="logo-item">Systems Ltd</div>
-    <div class="logo-item">Gaditek</div>
-    <div class="logo-item">Netsol</div>
-    <div class="logo-item">Foree</div>
-    <div class="logo-item">Zones</div>
-    <div class="logo-item">Waada</div>
-  </div>
-</div>
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="contact.html">Contact sales</a>
+      </div>
+    </nav>
+  </header>
 
-<!-- PROOF CARDS -->
-<div class="proof-section">
-  <div class="center mt8">
-    <div class="section-label">Results that matter</div>
-    <h2 class="section-title center" style="margin:0 auto 48px">Businesses that moved faster with Theorrem</h2>
-  </div>
-  <div class="proof-grid">
-    <div class="proof-card">
-      <div class="proof-client">Real Estate</div>
-      <p class="proof-headline">Property firm generated 3× more qualified leads with AI-first sales coverage</p>
-      <div class="proof-stats">
-        <div class="proof-stat"><strong>3× increase</strong> in qualified pipeline</div>
-        <div class="proof-stat"><strong>24/7 AI</strong> lead qualification & follow-up</div>
-        <div class="proof-stat"><strong>65%</strong> faster average response time</div>
-      </div>
-      <a href="#" class="proof-link">Read the story →</a>
-    </div>
-    <div class="proof-card">
-      <div class="proof-client">Law Firm</div>
-      <p class="proof-headline">Corporate law firm saves 35 hours weekly by automating document review</p>
-      <div class="proof-stats">
-        <div class="proof-stat"><strong>35 hrs saved</strong> weekly per associate</div>
-        <div class="proof-stat"><strong>AI-powered</strong> contract analysis</div>
-        <div class="proof-stat"><strong>1000s of docs</strong> processed automatically</div>
-      </div>
-      <a href="#" class="proof-link">Read the story →</a>
-    </div>
-    <div class="proof-card">
-      <div class="proof-client">E-Commerce</div>
-      <p class="proof-headline">Online retailer drives 28% more conversions with automated customer engagement</p>
-      <div class="proof-stats">
-        <div class="proof-stat"><strong>28% increase</strong> in customer conversion</div>
-        <div class="proof-stat"><strong>24/7 AI</strong> support & upselling</div>
-        <div class="proof-stat"><strong>55% faster</strong> average resolution time</div>
-      </div>
-      <a href="#" class="proof-link">Read the story →</a>
-    </div>
-  </div>
-</div>
+  <main>
+    <section class="hero page-grid">
+      <span class="pixel p1"></span>
+      <span class="pixel p2"></span>
+      <span class="pixel p3"></span>
+      <span class="pixel p4"></span>
 
-<!-- ROI SECTION -->
-<div class="roi-section">
-  <div class="roi-inner">
-    <div class="section-label">The path to ROI</div>
-    <h2 class="section-title">Unlock the agentic ROI you promised your board</h2>
-    <p class="section-sub">Theorrem maps the path from assisted AI to full autonomy. Real business impact starts at L3/L4.</p>
-    <div class="roi-levels">
-      <div class="roi-level">
-        <div class="roi-level-tag">L1</div>
-        <div class="roi-level-num">Assisted</div>
-        <div class="roi-level-desc">Human sends requests one at a time. Generic AI tools. No memory, no context, no integration.</div>
-        <span class="roi-level-badge badge-gray">ChatGPT / Claude</span>
-      </div>
-      <div class="roi-level">
-        <div class="roi-level-tag">L2</div>
-        <div class="roi-level-num">Copilot</div>
-        <div class="roi-level-desc">Human triggers an agent skill. Agent takes multiple actions. Human reviews output.</div>
-        <span class="roi-level-badge badge-gray">Copilots / Code tools</span>
-      </div>
-      <div class="roi-level active">
-        <div class="roi-level-tag">L3</div>
-        <div class="roi-level-num">Autopilot</div>
-        <div class="roi-level-desc">Events trigger agents automatically. Multi-agent coordination. Humans manage, not execute.</div>
-        <span class="roi-level-badge badge-accent">Theorrem platform ✦</span>
-      </div>
-      <div class="roi-level active">
-        <div class="roi-level-tag">L4</div>
-        <div class="roi-level-num">Self-Driving</div>
-        <div class="roi-level-desc">Business goals set strategy. Agents experiment, iterate, and optimize autonomously.</div>
-        <span class="roi-level-badge badge-accent">Theorrem platform ✦</span>
-      </div>
-    </div>
-    <div class="roi-example">
-      <div class="roi-example-title">Example — Lead qualification</div>
-      <div class="roi-example-steps">
-        <div class="roi-step">
-          <div class="roi-step-tag">L1</div>
-          <div class="roi-step-item">Reps research each lead one prompt at a time</div>
-          <div class="roi-step-item">Manual copy-paste between tools</div>
-          <div class="roi-step-item">One action → one response</div>
-        </div>
-        <div class="roi-step">
-          <div class="roi-step-tag">L2</div>
-          <div class="roi-step-item">Rep uses qualification skill, handles output</div>
-          <div class="roi-step-item">Agent researches, scores & drafts</div>
-          <div class="roi-step-item">Rep reviews and sends</div>
-        </div>
-        <div class="roi-step" style="border-color:rgba(232,255,71,0.25);background:rgba(232,255,71,0.04)">
-          <div class="roi-step-tag">L3</div>
-          <div class="roi-step-item">New leads qualify and get contacted automatically</div>
-          <div class="roi-step-item">3 agents coordinate: research → score → outreach</div>
-          <div class="roi-step-item">Escalates to human if unsure</div>
-        </div>
-        <div class="roi-step" style="border-color:rgba(232,255,71,0.25);background:rgba(232,255,71,0.04)">
-          <div class="roi-step-tag">L4</div>
-          <div class="roi-step-item">Agents optimize outreach strategy on their own</div>
-          <div class="roi-step-item">A/B test messaging variants</div>
-          <div class="roi-step-item">Reply rate up 72% this quarter</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+      <div class="container hero-inner">
+        <p class="eyebrow">Custom AI solutions for real businesses</p>
+        <h1>AI agents built around <span class="hero-switch" aria-live="polite"><span>your workflows,</span></span> not a generic platform</h1>
+        <p class="hero-copy">
+          We design, build, and deploy custom AI agents that qualify leads, update CRMs,
+          answer customers, prepare reports, and automate the repetitive work your team
+          already does every day.
+        </p>
 
-<!-- BUILD SECTION -->
-<div class="section">
-  <div class="section-label">Platform</div>
-  <h2 class="section-title">Build agents that run your playbooks</h2>
-  <p class="section-sub">Your domain experts design the playbooks. Your agents execute them autonomously. Together, they scale what used to take entire teams.</p>
-  <div class="build-grid">
-    <div class="build-card">
-      <div class="build-card-tag">For domain experts</div>
-      <div class="build-card-title">Build with natural language</div>
-      <div class="build-card-desc">Describe what you want in plain language. Theorrem builds the agents, tools, and workflows for you — no code required.</div>
-      <div class="build-card-terminal">
-        <span class="cmd">&gt; Build me an outbound SDR workforce</span><br>
-        <span class="out">● Creating agents for research, outreach, follow-up</span><br>
-        <span class="out">● Lead Researcher ✓</span><br>
-        <span class="out">● Email Copywriter ✓</span><br>
-        <span class="out">● Outbound Sender ✓</span><br>
-        <span class="out">● Connecting CRM + Gmail ✓</span><br>
-        <span class="cmd">⠸ Configuring triggers...</span>
-      </div>
-      <div class="build-card-audience mt16">Ops & revenue teams</div>
-    </div>
-    <div class="build-card">
-      <div class="build-card-tag">For GTM engineers</div>
-      <div class="build-card-title">Build with drag & drop or code</div>
-      <div class="build-card-desc">Refine what you started in plain language, or build agents from scratch in our no-code builder. Use our API for full programmatic control.</div>
-      <div class="build-card-terminal">
-        <span class="out">// Connect via API or MCP</span><br>
-        <span class="cmd">POST /v1/agents/create</span><br>
-        <span class="out">{</span><br>
-        <span class="out">&nbsp;&nbsp;"name": "Inbound Qualifier",</span><br>
-        <span class="out">&nbsp;&nbsp;"trigger": "crm_webhook",</span><br>
-        <span class="out">&nbsp;&nbsp;"tools": ["enrich", "score"]</span><br>
-        <span class="out">}</span>
-      </div>
-      <div class="build-card-audience mt16">GTM engineers & developers</div>
-    </div>
-  </div>
-</div>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-large" href="contact.html">Talk to sales</a>
+          <a class="btn btn-secondary btn-large" href="#playbooks">View agent playbooks</a>
 
-<!-- EVALS SECTION -->
-<div class="eval-section">
-  <div class="eval-inner">
-    <div class="section-label">Quality assurance</div>
-    <h2 class="section-title">Your team sets the quality bar</h2>
-    <p class="section-sub">Domain experts define what good looks like — then Evals holds your agents to that standard across every task, every day.</p>
-    <div class="eval-demo">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
-        <div>
-          <div style="font-size:14px;font-weight:600;color:var(--text)">Sales Agent — eval results</div>
-          <div style="font-size:12px;color:var(--text3)">Last run: 2 hours ago</div>
-        </div>
-        <div style="font-size:12px;color:var(--text3)">Overall: <span style="color:#22c55e;font-weight:600">94%</span></div>
-      </div>
-      <div class="eval-bar-wrap">
-        <div class="eval-bar-label"><span>Email quality</span><span style="color:var(--text)">96%</span></div>
-        <div class="eval-bar"><div class="eval-bar-fill" style="width:96%"></div></div>
-      </div>
-      <div class="eval-bar-wrap">
-        <div class="eval-bar-label"><span>Lead qualification accuracy</span><span style="color:var(--text)">91%</span></div>
-        <div class="eval-bar"><div class="eval-bar-fill" style="width:91%"></div></div>
-      </div>
-      <div class="eval-bar-wrap">
-        <div class="eval-bar-label"><span>Response time SLA</span><span style="color:var(--text)">98%</span></div>
-        <div class="eval-bar"><div class="eval-bar-fill" style="width:98%"></div></div>
-      </div>
-      <div class="eval-bar-wrap">
-        <div class="eval-bar-label"><span>CRM data completeness</span><span style="color:var(--text)">88%</span></div>
-        <div class="eval-bar"><div class="eval-bar-fill" style="width:88%"></div></div>
-      </div>
-      <div class="eval-results">
-        <div class="eval-result-item">
-          <span class="eval-result-name">Email quality</span>
-          <span class="eval-result-status">Passing</span>
-        </div>
-        <div class="eval-result-item">
-          <span class="eval-result-name">Lead qualification</span>
-          <span class="eval-result-status">Passing</span>
-        </div>
-        <div class="eval-result-item">
-          <span class="eval-result-name">Response SLA</span>
-          <span class="eval-result-status">Passing</span>
-        </div>
-        <div class="eval-result-item">
-          <span class="eval-result-name">CRM data</span>
-          <span class="eval-result-status">Passing</span>
+          <div class="integration-cluster relevance-style-icons" aria-label="Common integrations">
+            <span class="si hubspot" aria-label="HubSpot">
+              <svg viewBox="0 0 24 24"><path d="M18.2 7.5V5.4a2.4 2.4 0 1 0-2.1-1.2l-3.9 3a5.9 5.9 0 0 0-2.3-.1L7.7 3.9A2.2 2.2 0 1 0 5.8 5l2.1 3.2a6 6 0 1 0 10.3 4.2 5.9 5.9 0 0 0-.8-3l1.7-1.7a2 2 0 0 0-.9-.2Zm-5.8 8.4a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Z" fill="#ff5c35"/></svg>
+            </span>
+            <span class="si salesforce" aria-label="Salesforce">
+              <svg viewBox="0 0 32 22"><path d="M13.3 4.1a6.3 6.3 0 0 1 11 3.2A5.4 5.4 0 0 1 22 17.5H7.4A6.4 6.4 0 0 1 6.5 4.8a7.1 7.1 0 0 1 6.8-.7Z" fill="#00a1e0"/></svg>
+            </span>
+            <span class="si slack" aria-label="Slack">
+              <svg viewBox="0 0 24 24"><rect x="9.2" y="2" width="4.3" height="10" rx="2.1" fill="#36C5F0"/><rect x="10.5" y="12" width="4.3" height="10" rx="2.1" fill="#2EB67D"/><rect x="12" y="9.2" width="10" height="4.3" rx="2.1" fill="#ECB22E"/><rect x="2" y="10.5" width="10" height="4.3" rx="2.1" fill="#E01E5A"/></svg>
+            </span>
+            <span class="si gmail" aria-label="Gmail">
+              <svg viewBox="0 0 28 20"><path d="M2 2.8h4.2L14 8.8l7.8-6H26V18h-4.2V8.4L14 14.4 6.2 8.4V18H2V2.8Z" fill="#EA4335"/><path d="M2 2.8 14 12 26 2.8v3.7L14 15.7 2 6.5V2.8Z" fill="#fff"/></svg>
+            </span>
+            <span class="si zapier" aria-label="Zapier">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#D7F700"/><path d="M11 3h2l-.3 6.2 5.5-3.1 1 1.7-5.8 2.9 5.8 2.9-1 1.7-5.5-3.1L13 21h-2l.3-8.8-5.5 3.1-1-1.7 5.8-2.9-5.8-2.9 1-1.7 5.5 3.1L11 3Z" fill="#111827"/></svg>
+            </span>
+            <span class="si make" aria-label="Make">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#7B3FF2"/><path d="M6.3 15.8V8.2h2.3l3.4 4.1 3.4-4.1h2.3v7.6h-2.4v-4.1l-3.3 4-3.3-4v4.1H6.3Z" fill="#fff"/></svg>
+            </span>
+            <span class="integration-text">100+ common integrations</span>
+          </div>
         </div>
       </div>
-      <div style="margin-top:16px;font-size:12px;color:#22c55e;font-weight:500">4 of 4 evals passing — safe to deploy</div>
-    </div>
-  </div>
-</div>
+    </section>
 
-<!-- OVERSIGHT / TASK TABLE -->
-<div class="oversight-section">
-  <div class="oversight-inner">
-    <div class="section-label">Oversight</div>
-    <h2 class="section-title">Nothing runs without your oversight</h2>
-    <p class="section-sub">Every task, decision, and escalation visible in one place. Your team stays in control at every step.</p>
-    <div class="task-table">
-      <div class="task-table-header">
-        <div>Task</div>
-        <div style="text-align:right">Cost</div>
-        <div style="text-align:right">Saved</div>
-        <div style="text-align:right">Status</div>
-      </div>
-      <div class="task-row">
-        <div class="task-name">
-          <span>Send follow-up sequence to 12 prospects</span>
-          <span class="task-agent">Outbound SDR Agent · 1:07 PM</span>
+    <section class="playbook-strip page-grid" id="playbooks">
+      <div class="container usecases-container">
+        <div class="playbook-intro">
+          <p class="eyebrow">Workflow automations we can build first</p>
+          <h2 class="target-small-heading">Practical AI agents for <span class="highlight">everyday business</span> workflows</h2>
+          <p class="playbook-subcopy">
+            Start with one high-friction process, launch a controlled agent around it,
+            then expand to the next workflow once value is proven.
+          </p>
         </div>
-        <div class="task-cost">$0.45</div>
-        <div class="task-saved pos">+$180</div>
-        <div><span class="status-pill status-complete">Complete</span></div>
-      </div>
-      <div class="task-row">
-        <div class="task-name">
-          <span>Research LinkedIn profiles for Meridian deal</span>
-          <span class="task-agent">Data Enrichment Agent · 11:30 AM</span>
-        </div>
-        <div class="task-cost">$0.18</div>
-        <div class="task-saved pos">−45m</div>
-        <div><span class="status-pill status-complete">Complete</span></div>
-      </div>
-      <div class="task-row">
-        <div class="task-name">
-          <span>Triage support email — needs human review</span>
-          <span class="task-agent">Email Triage Agent · 2:30 PM</span>
-        </div>
-        <div class="task-cost">$0.08</div>
-        <div class="task-saved neg">−8m</div>
-        <div><span class="status-pill status-escalated">Escalated</span></div>
-      </div>
-      <div class="task-row">
-        <div class="task-name">
-          <span>Qualify MQL from CRM webhook</span>
-          <span class="task-agent">Lead Scoring Agent · 12:08 PM</span>
-        </div>
-        <div class="task-cost">$0.03</div>
-        <div class="task-saved neg">−15m</div>
-        <div><span class="status-pill status-error">Error</span></div>
-      </div>
-      <div class="task-row">
-        <div class="task-name">
-          <span>Score inbound lead from contact form</span>
-          <span class="task-agent">Lead Scoring Agent · 4:13 PM</span>
-        </div>
-        <div class="task-cost">$0.03</div>
-        <div class="task-saved neg">−12m</div>
-        <div><span class="status-pill status-error">Error</span></div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- SECURITY -->
-<div class="security-section">
-  <div class="security-inner">
-    <div class="section-label">Enterprise-grade</div>
-    <h2 class="section-title">Security & governance at every layer</h2>
-    <p class="section-sub">Autonomous agents require serious governance. Granular access controls for your team, your agents, and the systems they touch.</p>
-    <div class="security-grid">
-      <div class="security-card">
-        <div class="security-icon">📊</div>
-        <div class="security-card-title">Monitoring dashboards</div>
-        <div class="security-card-desc">Real-time visibility into every agent's activity, performance, and cost. No blind spots.</div>
-      </div>
-      <div class="security-card">
-        <div class="security-icon">🔐</div>
-        <div class="security-card-title">RBAC</div>
-        <div class="security-card-desc">Role-based access controls for your team and your agents. Control who can build, edit, and deploy.</div>
-      </div>
-      <div class="security-card">
-        <div class="security-icon">🌍</div>
-        <div class="security-card-title">Data residency</div>
-        <div class="security-card-desc">Multi-region deployment ensures your data stays within your required geography.</div>
-      </div>
-      <div class="security-card">
-        <div class="security-icon">📋</div>
-        <div class="security-card-title">Audit logs</div>
-        <div class="security-card-desc">Every action, every decision, every tool call — fully logged and exportable.</div>
-      </div>
-      <div class="security-card">
-        <div class="security-icon">👤</div>
-        <div class="security-card-title">Human-in-the-loop</div>
-        <div class="security-card-desc">Set approval gates on any action. Agents escalate when confidence is low.</div>
-      </div>
-      <div class="security-card">
-        <div class="security-icon">🔏</div>
-        <div class="security-card-title">SSO / SAML</div>
-        <div class="security-card-desc">Enterprise single sign-on with SAML 2.0. Centralize identity and access management.</div>
-      </div>
-      <div class="security-card">
-        <div class="security-icon">🕵️</div>
-        <div class="security-card-title">PII masking</div>
-        <div class="security-card-desc">Automatically detect and redact personally identifiable information before it reaches the model.</div>
-      </div>
-      <div class="security-card">
-        <div class="security-icon">🔄</div>
-        <div class="security-card-title">Version control</div>
-        <div class="security-card-desc">Full version history on every agent. Roll back to any previous state instantly.</div>
-      </div>
-      <div class="security-card">
-        <div class="security-icon">📡</div>
-        <div class="security-card-title">Full observability</div>
-        <div class="security-card-desc">Export telemetry via OpenTelemetry and Delta Sharing for complete observability pipelines.</div>
-      </div>
-    </div>
-  </div>
-</div>
+        <div class="usecase-grid usecase-grid-six">
+          <article class="usecase-card mint">
+            <div class="usecase-copy">
+              <span class="usecase-label">Marketing</span>
+              <h3>Turn ad clicks into qualified conversations</h3>
+              <p>Capture leads from campaigns, understand intent, answer product questions, and pass sales-ready buyers to your team with full context.</p>
+            </div>
+            <div class="usecase-visual real-estate-visual">
+              <div class="chat-card one">I saw your ad — can you help me choose the right plan?</div>
+              <div class="chat-card two">Source: Meta ad<br>Intent: High</div>
+              <div class="lead-score">Qualified <b>92%</b></div>
+            </div>
+          </article>
 
-<!-- MODEL SECTION -->
-<div class="model-section">
-  <div class="model-inner">
-    <div class="section-label">Model agnostic</div>
-    <h2 class="section-title">Your agents get better every quarter</h2>
-    <p class="section-sub">Never locked to a single LLM provider. Theorrem agents can use whatever model delivers the best balance of performance and cost for your task.</p>
-    <div class="model-card">
-      <div class="model-card-header">
-        <div class="agent-avatar">S</div>
-        <div class="model-agent-info">
-          <div class="model-agent-name">Sales Development Agent</div>
-          <div class="model-agent-status">Active</div>
+          <article class="usecase-card lilac">
+            <div class="usecase-copy">
+              <span class="usecase-label">Sales pipeline</span>
+              <h3>Research, follow up, and keep deals moving</h3>
+              <p>Enrich prospects, draft personalized replies, remind reps, and keep CRM stages clean without manual chasing.</p>
+            </div>
+            <div class="usecase-visual sales-visual">
+              <div class="mini-email"></div>
+              <div class="mini-pill hot">Hot lead</div>
+              <div class="mini-pill deal">Follow-up due</div>
+            </div>
+          </article>
+
+          <article class="usecase-card peach">
+            <div class="usecase-copy">
+              <span class="usecase-label">Support</span>
+              <h3>Resolve customer issues with safe escalation</h3>
+              <p>Classify conversations, draft answers from your knowledge base, summarize issues, and escalate sensitive cases to the right person.</p>
+            </div>
+            <div class="usecase-visual support-visual">
+              <div class="ticket-card"></div>
+              <div class="reply-card">Suggested reply ready</div>
+            </div>
+          </article>
+
+          <article class="usecase-card sky">
+            <div class="usecase-copy">
+              <span class="usecase-label">Operations</span>
+              <h3>Turn reporting and approvals into daily workflows</h3>
+              <p>Collect updates from tools and sheets, summarize blockers, prepare reports, and route approvals before work gets delayed.</p>
+            </div>
+            <div class="usecase-visual ops-visual">
+              <span style="height:42%"></span><span style="height:58%"></span><span style="height:76%"></span>
+              <div class="report-badge">Daily report</div>
+            </div>
+          </article>
+
+          <article class="usecase-card butter">
+            <div class="usecase-copy">
+              <span class="usecase-label">Commerce</span>
+              <h3>Answer orders, returns, and product questions</h3>
+              <p>Connect Shopify, WhatsApp, and helpdesk tools so customers get fast answers without waiting for a support rep.</p>
+            </div>
+            <div class="usecase-visual ecommerce-visual">
+              <div class="product-card"></div>
+              <div class="cart-bubble">Order status checked</div>
+            </div>
+          </article>
+
+          <article class="usecase-card stone">
+            <div class="usecase-copy">
+              <span class="usecase-label">Compliance</span>
+              <h3>Keep risky actions behind approvals and logs</h3>
+              <p>Route refunds, pricing changes, policy exceptions, and sensitive customer decisions through approval gates with audit history.</p>
+            </div>
+            <div class="usecase-visual sop-visual">
+              <div></div><div></div><div></div>
+            </div>
+          </article>
         </div>
       </div>
-      <table class="model-table">
-        <thead>
-          <tr>
-            <th>Model</th>
-            <th>Eval score</th>
-            <th>Cost / 1k runs</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><div class="model-provider"><div class="model-dot">A</div>Claude Opus 4</div></td>
-            <td>97%</td>
-            <td>$18.40</td>
-          </tr>
-          <tr class="recommended">
-            <td><div class="model-provider"><div class="model-dot">A</div>Claude Sonnet 4 <span class="model-rec-badge">Recommended</span></div></td>
-            <td>94%</td>
-            <td>$4.20</td>
-          </tr>
-          <tr>
-            <td><div class="model-provider"><div class="model-dot">G</div>GPT-4o</div></td>
-            <td>91%</td>
-            <td>$5.80</td>
-          </tr>
-          <tr>
-            <td><div class="model-provider"><div class="model-dot">G</div>Gemini 1.5 Pro</div></td>
-            <td>89%</td>
-            <td>$3.50</td>
-          </tr>
-          <tr>
-            <td><div class="model-provider"><div class="model-dot">A</div>Claude Haiku</div></td>
-            <td>82%</td>
-            <td>$0.90</td>
-          </tr>
-        </tbody>
-      </table>
-      <div style="margin-top:14px;font-size:12px;color:var(--accent);font-weight:500">Claude Sonnet 4 recommended — best eval score per dollar</div>
-    </div>
-  </div>
-</div>
+    </section>
 
-<!-- INTEGRATIONS -->
-<div class="integrations-section">
-  <div class="integrations-inner">
-    <div class="section-label">Integrations</div>
-    <h2 class="section-title">Connect to 1,000+ apps</h2>
-    <p class="section-sub">Native connectors for the tools your team already uses. Plus MCP support and the ability to build custom connectors.</p>
-    <div class="integrations-grid">
-      <div class="integration-chip"><div class="chip-icon">💼</div>Salesforce</div>
-      <div class="integration-chip"><div class="chip-icon">🟠</div>HubSpot</div>
-      <div class="integration-chip"><div class="chip-icon">💬</div>Slack</div>
-      <div class="integration-chip"><div class="chip-icon">📧</div>Gmail</div>
-      <div class="integration-chip"><div class="chip-icon">📊</div>Google Sheets</div>
-      <div class="integration-chip"><div class="chip-icon">🔗</div>LinkedIn</div>
-      <div class="integration-chip"><div class="chip-icon">📱</div>WhatsApp</div>
-      <div class="integration-chip"><div class="chip-icon">📝</div>Notion</div>
-      <div class="integration-chip"><div class="chip-icon">🌊</div>Twilio</div>
-      <div class="integration-chip"><div class="chip-icon">📦</div>Shopify</div>
-      <div class="integration-chip"><div class="chip-icon">🔷</div>Microsoft</div>
-      <div class="integration-chip"><div class="chip-icon">❄️</div>Snowflake</div>
-      <div class="integration-chip"><div class="chip-icon">🗄️</div>Databricks</div>
-      <div class="integration-chip"><div class="chip-icon">📬</div>SendGrid</div>
-      <div class="integration-chip"><div class="chip-icon">🌐</div>Webflow</div>
-      <div class="integration-chip"><div class="chip-icon">🎯</div>Apollo</div>
-      <div class="integration-chip"><div class="chip-icon">📋</div>Airtable</div>
-      <div class="integration-chip"><div class="chip-icon">🐙</div>GitHub</div>
-      <div class="integration-chip"><div class="chip-icon">🔧</div>Zapier</div>
-      <div class="integration-chip"><div class="chip-icon">➕</div>+980 more</div>
-    </div>
-  </div>
-</div>
+    
+    <section class="quality-model-section trust-system-section page-grid" id="quality">
+      <div class="container trust-system-container">
+        <div class="trust-system-intro">
+          <p class="eyebrow">Model choice, quality checks, and human control</p>
+          <h2 class="target-small-heading">AI agents your team can <span class="highlight">trust</span> before they go live</h2>
+          <p>
+            Every workflow is tested, routed through the right model, and protected with approval
+            rules before it touches real customers or business-critical systems.
+          </p>
+        </div>
 
-<!-- COMPARE -->
-<div class="compare-section">
-  <div class="compare-inner">
-    <div class="section-label">Why Theorrem</div>
-    <h2 class="section-title">For teams who own the number</h2>
-    <p class="section-sub">Building an agent is easy. Theorrem is designed for what comes next — your domain experts owning agent quality, operations, and outcomes at scale.</p>
-    <div class="compare-table">
-      <div class="compare-head">
-        <div class="compare-head-cell"></div>
-        <div class="compare-head-cell highlight"><span class="ch-name">Theorrem</span></div>
-        <div class="compare-head-cell">Generic AI tools</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell question">Who manages agents day-to-day?</div>
-        <div class="compare-cell highlight good">Your ops and revenue teams — the people closest to the work, with dashboards designed for agent management.</div>
-        <div class="compare-cell">Your engineers. Requires YAML, containers, and API calls.</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell question">Who owns agent quality?</div>
-        <div class="compare-cell highlight good">Domain experts, with pre-deployment scenarios, production checks, and monitoring they can manage themselves.</div>
-        <div class="compare-cell">Your engineers, via runtime self-healing. No pre-deployment testing framework.</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell question">How do agents receive tasks?</div>
-        <div class="compare-cell highlight good">Native triggers for CRMs, email, calendar, and more. Plus webhooks, cron, and custom triggers.</div>
-        <div class="compare-cell">No native triggers. You need to build external orchestration.</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell question">What can my agents access?</div>
-        <div class="compare-cell highlight good">1,000+ native connectors plus MCP support and custom connector builder.</div>
-        <div class="compare-cell">MCP only. No native connectors — must self-host tool servers.</div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-cell question">How much can I tune cost?</div>
-        <div class="compare-cell highlight good">Full. Route to any model provider and optimize cost per agent, per task.</div>
-        <div class="compare-cell">Limited. Locked to one model family.</div>
-      </div>
-    </div>
-  </div>
-</div>
+        <div class="model-strip" aria-label="Compatible model providers">
+          <span>Built to work with</span>
+          <b>OpenAI</b>
+          <b>Anthropic</b>
+          <b>Gemini</b>
+          <b>Llama</b>
+          <b>Custom APIs</b>
+        </div>
 
-<!-- TESTIMONIALS -->
-<div class="testimonials-section">
-  <div class="testimonials-inner">
-    <div class="center">
-      <div class="section-label">What clients say</div>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="testimonial-client">Real Estate</div>
-        <p class="testimonial-quote">"The ability to have agents that actually understand our property database and qualify leads in real time — without any manual work — has transformed our sales operations."</p>
-        <div class="testimonial-author">
-          <strong>Head of Sales Operations</strong>
-          Property Development Group
+        <div class="trust-system-panel">
+          <article class="trust-card model-card">
+            <div class="trust-icon">01</div>
+            <h3>Choose the right brain</h3>
+            <p>Different workflow steps can use different models based on speed, cost, reasoning depth, context length, or safety.</p>
+            <div class="mini-model-map">
+              <span>Qualification</span>
+              <span>Documents</span>
+              <span>Reply drafting</span>
+              <span>Internal rules</span>
+            </div>
+          </article>
+
+          <article class="trust-card testing-card">
+            <div class="trust-icon">02</div>
+            <h3>Test before launch</h3>
+            <p>Agents are tested against real examples, edge cases, and workflow-specific evaluation checks before production use.</p>
+            <div class="quality-bars">
+              <div><span>Lead accuracy</span><b>94%</b></div>
+              <div><span>Reply quality</span><b>91%</b></div>
+              <div><span>Risk handling</span><b>Review</b></div>
+            </div>
+          </article>
+
+          <article class="trust-card approval-card-light">
+            <div class="trust-icon">03</div>
+            <h3>Keep humans in control</h3>
+            <p>Low-confidence, sensitive, or high-impact actions can pause for approval instead of running blindly.</p>
+            <div class="approval-mini">
+              <strong>Confidence below 85%</strong>
+              <span>Ask for approval</span>
+              <span>Log reason</span>
+              <span>Escalate safely</span>
+            </div>
+          </article>
         </div>
       </div>
-      <div class="testimonial-card">
-        <div class="testimonial-client">Professional Services</div>
-        <p class="testimonial-quote">"What took our associates two full days of document review now happens in under an hour. The accuracy is better than we expected, and the audit trail gives us complete confidence."</p>
-        <div class="testimonial-author">
-          <strong>Managing Partner</strong>
-          Corporate Law Firm
+    </section>
+
+    <section class="industry-slider-section page-grid" id="usecases">
+      <div class="industry-slider-container">
+        <div class="industry-slider-head">
+          <p class="section-eyebrow">INDUSTRY PLAYBOOKS</p>
+          <h2>Built for the <span class="highlight">customer workflows</span> teams repeat every day</h2>
+          <p>Launch a focused agent for one use case, then expand the same playbook across teams, channels, and tools.</p>
+        </div>
+
+        <div class="industry-carousel" data-industry-carousel>
+          <button class="industry-nav industry-prev" type="button" aria-label="Previous industry playbooks">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5 8 11.5 14.5 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <div class="industry-window">
+            <div class="industry-track">
+              <article class="industry-card bg-cream">
+                <div class="industry-art salon-art">
+                  <div class="ig-badge">◎</div>
+                  <div class="wa-badge">◔</div>
+                  <svg class="dotted-arc" viewBox="0 0 220 86" fill="none" aria-hidden="true">
+                    <path d="M10 58C56 12 132 6 208 48" stroke="#d39b21" stroke-width="2" stroke-dasharray="5 7"/>
+                  </svg>
+                  <div class="mini-social-card">
+                    <div class="mini-social-head"><span></span><div><strong>Northstar Studio</strong><small>Sponsored</small></div></div>
+                    <div class="mini-social-photo salon-photo"></div>
+                    <div class="mini-social-footer">Send Message <b>WhatsApp</b></div>
+                  </div>
+                  <div class="chat-screen">
+                    <div class="chat-head"><span></span> Northstar Studio</div>
+                    <p>Hey, thanks for showing interest in our services.</p>
+                    <p class="msg-right">Can you share availability?</p>
+                    <p>Sure, here are the open slots.</p>
+                    <div class="chat-link">Pay now</div>
+                  </div>
+                </div>
+                <div class="industry-copy">
+                  <h3>Spas & salons</h3>
+                  <p>Grow appointment bookings, payments, service questions, and catalogs in one guided customer flow.</p>
+                </div>
+              </article>
+
+              <article class="industry-card bg-mint">
+                <div class="industry-art ecommerce-art">
+                  <div class="wa-badge">◔</div>
+                  <div class="green-note">Hi, your invoice for this month is ready.</div>
+                  <div class="invoice-doc">
+                    <h4>Invoice</h4>
+                    <div class="doc-lines"><i></i><i></i><i></i></div>
+                    <div class="pdf-row"><span>PDF</span> Invoice.pdf</div>
+                    <small>1 page · PDF · 262 KB</small>
+                  </div>
+                </div>
+                <div class="industry-copy">
+                  <h3>E-commerce</h3>
+                  <p>Recover carts, answer product questions, share payment links, send invoices, and update customers instantly.</p>
+                </div>
+              </article>
+
+              <article class="industry-card bg-blue">
+                <div class="industry-art restaurant-art">
+                  <div class="wa-badge">◔</div>
+                  <div class="phone-chat">
+                    <div class="phone-head">Acme Restaurant</div>
+                    <p class="msg-right">I want to place an order.</p>
+                    <p>Your total is $18. How would you like to pay?</p>
+                    <p class="msg-right">Online payment please.</p>
+                    <div class="payment-row">Payment Link</div>
+                  </div>
+                </div>
+                <div class="industry-copy">
+                  <h3>Restaurant & food businesses</h3>
+                  <p>Streamline orders, payments, menu sharing, delivery updates, and customer interactions.</p>
+                </div>
+              </article>
+
+              <article class="industry-card bg-pink">
+                <div class="industry-art health-art">
+                  <div class="clinic-browser">
+                    <div class="clinic-top"></div>
+                    <div class="clinic-hero">
+                      <div class="doctor-shape"></div>
+                      <h4>Trustworthy care</h4>
+                    </div>
+                  </div>
+                  <div class="clinic-chat">
+                    <strong>Hi there!</strong>
+                    <span>We can help with appointments and questions.</span>
+                    <button>Start chat</button>
+                  </div>
+                </div>
+                <div class="industry-copy">
+                  <h3>Health & wellness</h3>
+                  <p>Improve appointment booking, reminders, clinic updates, offers, patient questions, and handoffs.</p>
+                </div>
+              </article>
+
+              <article class="industry-card bg-cream">
+                <div class="industry-art retail-art">
+                  <div class="cart-message">Your cart is waiting! Complete checkout with a limited offer.</div>
+                  <div class="product-message">
+                    <div class="product-thumb"></div>
+                    <div><strong>Study table</strong><small>Recommended product</small></div>
+                  </div>
+                  <div class="buy-link">Buy Now</div>
+                </div>
+                <div class="industry-copy">
+                  <h3>Home decor & furnishing</h3>
+                  <p>Boost product discovery, cart recovery, recommendations, payment links, and order follow-up.</p>
+                </div>
+              </article>
+
+              <article class="industry-card bg-mint">
+                <div class="industry-art agency-art">
+                  <div class="personalized-message">
+                    <p>Hey Sam, thanks for buying. Here are products you may like next.</p>
+                    <div>Shoes Catalog</div>
+                  </div>
+                  <div class="metric-card"><b>98%</b><span>more conversions with personalized follow-up.</span></div>
+                </div>
+                <div class="industry-copy">
+                  <h3>Marketing agencies</h3>
+                  <p>Create personalized journeys for client campaigns, lead capture, replies, reporting, and follow-up.</p>
+                </div>
+              </article>
+
+              <article class="industry-card bg-blue">
+                <div class="industry-art auto-art">
+                  <div class="service-note">
+                    <p>Hello Alex,</p>
+                    <p>Your vehicle is scheduled for maintenance next week.</p>
+                    <div><span>Car maintenance</span><span>More services</span></div>
+                  </div>
+                  <div class="service-pill">Car maintenance</div>
+                </div>
+                <div class="industry-copy">
+                  <h3>Automotive industry</h3>
+                  <p>Automate service reminders, booking requests, promotions, intake, and post-service follow-up.</p>
+                </div>
+              </article>
+
+              <article class="industry-card bg-pink">
+                <div class="industry-art property-art">
+                  <div class="property-question">Can you show me photos of the building?</div>
+                  <div class="property-photo"></div>
+                  <div class="key-chip">●</div>
+                </div>
+                <div class="industry-copy">
+                  <h3>Professional services</h3>
+                  <p>Qualify inquiries, answer listing questions, share media, schedule visits, and update CRM stages.</p>
+                </div>
+              </article>
+
+              <article class="industry-card bg-cream">
+                <div class="industry-art freelance-art">
+                  <div class="design-icon">✎</div>
+                  <div class="consultant-chat">
+                    <p class="msg-right">I’d like to view your services.</p>
+                    <p>Happy to help. Here’s my website.</p>
+                    <div>Website</div>
+                  </div>
+                </div>
+                <div class="industry-copy">
+                  <h3>Freelancers & consultants</h3>
+                  <p>Create personalized journeys, collect requirements, share services, and follow up professionally.</p>
+                </div>
+              </article>
+
+              <article class="industry-card bg-blue">
+                <div class="industry-art finance-art">
+                  <div class="money-mark">$</div>
+                  <div class="finance-buttons">
+                    <span>Rent Reminder</span>
+                    <span>Fees Payment</span>
+                    <span>Payment Links</span>
+                  </div>
+                </div>
+                <div class="industry-copy">
+                  <h3>Banking & finance</h3>
+                  <p>Automate payment reminders, secure handoffs, approval checks, and auditable customer workflows.</p>
+                </div>
+              </article>
+
+              <article class="industry-card bg-mint">
+                <div class="industry-art travel-art">
+                  <div class="travel-photo"></div>
+                  <div class="travel-strip">Ready to book your next vacation?</div>
+                  <div class="travel-button">Book Today!</div>
+                </div>
+                <div class="industry-copy">
+                  <h3>Travel & tourism</h3>
+                  <p>Fast-track bookings, share trip details, answer FAQs, collect preferences, and automate reminders.</p>
+                </div>
+              </article>
+
+              <article class="industry-card bg-blue">
+                <div class="industry-art beauty-art">
+                  <div class="catalog-panel">
+                    <h4>Product Catalog</h4>
+                    <p><span></span> Mascara <b>＋</b></p>
+                    <p><span></span> Lipstick <b>＋</b></p>
+                    <p><span></span> Sunscreen <b>＋</b></p>
+                  </div>
+                  <div class="wa-badge">◔</div>
+                </div>
+                <div class="industry-copy">
+                  <h3>Beauty & cosmetics</h3>
+                  <p>Help shoppers discover products, ask questions, receive offers, and buy through guided chat.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <button class="industry-nav industry-next" type="button" aria-label="Next industry playbooks">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5 16 11.5 9.5 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
       </div>
-      <div class="testimonial-card">
-        <div class="testimonial-client">E-Commerce</div>
-        <p class="testimonial-quote">"We went live in under two weeks. The integration with our existing stack was seamless, and the agents started delivering measurable results from day one."</p>
-        <div class="testimonial-author">
-          <strong>Chief Operating Officer</strong>
-          Online Retail Platform
+    </section>
+
+
+
+    
+    <section class="theorem-gov-section page-grid" id="governance">
+      <div class="theorem-gov-wrap">
+        <div class="theorem-gov-head">
+          <h2 class="target-small-heading">Security & <span>governance</span> at every layer</h2>
+          <p>Custom agents need serious control. We design workflows with access limits, audit trails, escalation paths, and human approvals from day one.</p>
+        </div>
+
+        <div class="theorem-gov-cards">
+          <article><span>▥</span><h3>Monitoring dashboards</h3><p>Visibility into each agent’s activity, cost, errors, and business impact.</p></article>
+          <article><span>👥</span><h3>Role-based access</h3><p>Decide who can approve, edit, deploy, and review specific workflows.</p></article>
+          <article><span>◇</span><h3>Data boundaries</h3><p>Agents only access the systems and data needed for the selected workflow.</p></article>
+          <article><span>↩</span><h3>Version control</h3><p>Track prompts, rules, tools, and workflow changes with rollback paths.</p></article>
+          <article><span>▤</span><h3>Audit logs</h3><p>Every tool call, decision, and escalation can be logged for review.</p></article>
+          <article><span>✓</span><h3>Human approval</h3><p>High-risk actions wait for approval; low-confidence cases are escalated.</p></article>
+          <article><span>🔒</span><h3>Safe integrations</h3><p>Least-privilege API access for CRM, email, sheets, and internal systems.</p></article>
+          <article><span>◌</span><h3>PII handling</h3><p>Mask or avoid sensitive customer data where the workflow does not need it.</p></article>
+          <article><span>⚑</span><h3>Escalation rules</h3><p>Clear fallback paths when agents are uncertain, tools fail, or customers complain.</p></article>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+    </section>
 
-<!-- PRESS / AWARDS -->
-<div class="press-section">
-  <div class="awards-row">
-    <div class="award-card">
-      <div class="award-org">Forbes</div>
-      <div class="award-label">"Companies to Watch in Enterprise AI"</div>
-    </div>
-    <div class="award-card">
-      <div class="award-org">CB Insights</div>
-      <div class="award-label">"Leading Enterprise Agent Vendor"</div>
-    </div>
-    <div class="award-card">
-      <div class="award-org">G2</div>
-      <div class="award-label">4.8 stars · Top Rated AI Automation</div>
-    </div>
-    <div class="award-card">
-      <div class="award-org">Product Hunt</div>
-      <div class="award-label">#1 Product of the Day</div>
-    </div>
-  </div>
-</div>
 
-<!-- CTA -->
-<div class="cta-section">
-  <p class="section-label center">Get started</p>
-  <h2 class="cta-title">Your team is buried in tasks humans shouldn't do anymore</h2>
-  <p class="cta-sub">Let Theorrem build the AI workforce that handles it — at enterprise scale.</p>
-  <div class="cta-ctas">
-    <a href="#" class="btn-primary">Book a demo</a>
-    <a href="#" class="btn-secondary">See the platform →</a>
-  </div>
-</div>
+    
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="logo">theorr<span>em</span></div>
-        <p class="tagline">The home of the AI workforce. Custom AI systems for businesses. No templates. No consultants.</p>
-        <div class="footer-social">
-          <a href="#" class="social-btn">in</a>
-          <a href="#" class="social-btn">tw</a>
-          <a href="#" class="social-btn">yt</a>
-          <a href="#" class="social-btn">gh</a>
+
+    <section id="how-it-works" class="final-cta page-grid" id="contact">
+      <div class="container">
+        <div class="cta-shell">
+          <div class="cta-copy">
+            <p class="eyebrow">Start with one workflow</p>
+            <h2 class="target-small-heading">Put your business workflows in control of <span class="highlight">AI agents</span>.</h2>
+            <p>Tell us the repetitive process your team hates most. We will map the workflow, identify automation points, and suggest the safest first agent to build.</p>
+            <div class="cta-actions">
+              <a class="btn btn-primary btn-large" href="contact.html">Contact sales</a>
+              <a class="btn btn-secondary btn-large" href="#playbooks">View agent playbooks</a>
+            </div>
+          </div>
+          <div class="cta-panel" aria-label="How engagement starts">
+            <div class="cta-panel-header">
+              <span class="cta-panel-kicker">Typical engagement</span>
+              <span class="cta-panel-note">2–3 weeks to first workflow</span>
+            </div>
+            <div class="cta-journey">
+              <div class="cta-step-item">
+                <span class="step-number">01</span>
+                <div>
+                  <strong>Workflow audit</strong>
+                  <p>We review your process, tools, approvals, and edge cases.</p>
+                </div>
+              </div>
+              <div class="cta-step-item">
+                <span class="step-number">02</span>
+                <div>
+                  <strong>Agent prototype</strong>
+                  <p>We build the first version, test quality, and tune the routing.</p>
+                </div>
+              </div>
+              <div class="cta-step-item">
+                <span class="step-number">03</span>
+                <div>
+                  <strong>Launch with controls</strong>
+                  <p>We add approvals, escalation paths, monitoring, and handover.</p>
+                </div>
+              </div>
+            </div>
+            <div class="cta-microproofs">
+              <span>Playbooks included</span>
+              <span>Human approval ready</span>
+              <span>Business tool integrations</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="footer-col">
-        <h5>Platform</h5>
-        <a href="#">AI Agents</a>
-        <a href="#">Agent Workforce</a>
-        <a href="#">Multi-Agent Systems</a>
-        <a href="#">Integrations</a>
-        <a href="#">Evals & Quality</a>
-        <a href="#">Enterprise</a>
-      </div>
-      <div class="footer-col">
-        <h5>Solutions</h5>
-        <a href="#">Real Estate</a>
-        <a href="#">Law Firms</a>
-        <a href="#">HR & Recruitment</a>
-        <a href="#">E-Commerce</a>
-        <a href="#">Financial Services</a>
-        <a href="#">Sales & GTM</a>
-      </div>
-      <div class="footer-col">
-        <h5>Resources</h5>
-        <a href="#">Documentation</a>
-        <a href="#">API Reference</a>
-        <a href="#">Blog</a>
-        <a href="#">Case Studies</a>
-        <a href="#">Changelog</a>
-        <a href="#">Community</a>
-      </div>
-      <div class="footer-col">
-        <h5>Company</h5>
-        <a href="#">About</a>
-        <a href="#">Careers</a>
-        <a href="#">Partners</a>
-        <a href="#">Trust & Security</a>
-        <a href="#">Contact</a>
-        <a href="#">Book a demo</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2026 Theorrem. All rights reserved.</div>
-      <div class="footer-legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Security Policy</a>
-      </div>
-    </div>
-  </div>
-</footer>
+    </section>
+  </main>
 
-<script>
-document.querySelectorAll('.eval-bar-fill').forEach(function(bar) {
-  var w = bar.style.width;
-  bar.style.width = '0%';
-  setTimeout(function() { bar.style.width = w; }, 400);
-});
-</script>
-</body>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand theorem-logo" href="index.html#top">
+          <span class="theorem-wordmark">Theorrem</span>
+        </a>
+        <p>Custom AI agents for sales, support, operations, and customer-facing teams.</p>
+        <div class="socials">
+          <a href="https://www.linkedin.com/company/theorrem/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.linkedin.com/company/theorrem/" target="_blank" rel="noopener">X</a>
+          <a href="https://www.linkedin.com/company/theorrem/" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
+      <div>
+        <h4>Solutions</h4>
+        <a href="index.html#playbooks">Sales agents</a>
+        <a href="index.html#playbooks">Support agents</a>
+        <a href="index.html#playbooks">Operations agents</a>
+        <a href="index.html#playbooks">Workflow agents</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="index.html#quality">Quality</a>
+        <a href="index.html#governance">Governance</a>
+        <a href="about.html">About us</a>
+        <a href="contact.html">Contact us</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="privacy-policy.html">Privacy policy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Theorrem</span>
+      <span><a href="contact.html">info@theorrem.com</a></span>
+      <span>AI agents built around your workflows</span>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+
+    <script>
+      (function () {
+        var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
+        if (!navLinks.length) return;
+
+        var storageKey = 'theorem-active-nav';
+
+        function normalize(hash) {
+          if (!hash || hash === '#') return '#solutions';
+          return hash;
+        }
+
+        function setActive(hash, persist) {
+          hash = normalize(hash);
+          navLinks.forEach(function (link) {
+            link.classList.toggle('is-active', link.getAttribute('href') === hash);
+          });
+          if (persist) {
+            try { localStorage.setItem(storageKey, hash); } catch (e) {}
+          }
+        }
+
+        navLinks.forEach(function (link) {
+          link.addEventListener('click', function () {
+            setActive(link.getAttribute('href'), true);
+          });
+        });
+
+        window.addEventListener('hashchange', function () {
+          setActive(window.location.hash, true);
+        });
+
+        var stored = '';
+        try { stored = localStorage.getItem(storageKey) || ''; } catch (e) {}
+
+        var valid = navLinks.map(function (link) { return link.getAttribute('href'); });
+
+        if (window.location.hash && valid.indexOf(window.location.hash) !== -1) {
+          setActive(window.location.hash, true);
+        } else if (stored && valid.indexOf(stored) !== -1) {
+          setActive(stored, false);
+        } else {
+          setActive('#solutions', false);
+        }
+      })();
+    </script>
+
+  </body>
 </html>
