@@ -1,7 +1,7 @@
 :root{
   --text:#0d1227;--muted:#747b8d;--muted2:#9aa1b2;--line:#e9ebf2;--line2:#f1f2f7;
   --primary:var(--brand);--primary2:#7568ff;--green:#18b966;--yellow:#e2a600;--red:#e8645d;
-  --site-rail:1080px;--container:var(--site-rail);--shadow:0 24px 80px rgba(24,28,52,.08)
+  --site-rail:1080px;--container:var(--site-rail);--section-space:68px;--shadow:0 24px 80px rgba(24,28,52,.08)
 }
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:#fff;letter-spacing:-.018em}a{text-decoration:none;color:inherit}.container{width:min(var(--container),calc(100% - 48px));margin:0 auto}
 .page-grid{position:relative;border-bottom:1px solid var(--line2);background:linear-gradient(90deg,transparent 0,transparent calc(50% - 560px),var(--line2) calc(50% - 560px),var(--line2) calc(50% - 559px),transparent calc(50% - 559px),transparent calc(50% - 280px),rgba(241,242,247,.64) calc(50% - 280px),rgba(241,242,247,.64) calc(50% - 279px),transparent calc(50% - 279px),transparent 50%,rgba(241,242,247,.55) 50%,rgba(241,242,247,.55) calc(50% + 1px),transparent calc(50% + 1px),transparent calc(50% + 280px),rgba(241,242,247,.64) calc(50% + 280px),rgba(241,242,247,.64) calc(50% + 281px),transparent calc(50% + 281px),transparent calc(50% + 560px),var(--line2) calc(50% + 560px),var(--line2) calc(50% + 561px),transparent calc(50% + 561px))}
@@ -3199,7 +3199,7 @@ section.governance-section,
    ========================================================= */
 body.document-extraction-page{
   --de-content-width:1080px;
-  --de-section-space:88px;
+  --de-section-space:var(--section-space);
 }
 
 body.document-extraction-page .section:not(.hero) > .shell,
@@ -3524,7 +3524,7 @@ body.document-extraction-page .comparison-table span{
 
 body.document-extraction-page .final-cta{
   margin-top:0;
-  margin-bottom:88px;
+  margin-bottom:var(--section-space);
   padding:36px 40px;
   border-radius:8px;
   background:#f5f8ff;
@@ -3576,7 +3576,7 @@ body.document-extraction-page .final-cta p{
 
 @media(max-width:760px){
   body.document-extraction-page{
-    --de-section-space:68px;
+    --de-section-space:var(--section-space);
   }
 
   body.document-extraction-page .section:not(.hero) > .shell,
@@ -3677,7 +3677,7 @@ body.document-extraction-page .final-cta p{
   }
 
   body.document-extraction-page .final-cta{
-    margin-bottom:68px;
+    margin-bottom:var(--section-space);
     padding:26px 22px;
   }
 
@@ -8112,8 +8112,8 @@ section,
 .industry-slider-section,
 .theorem-gov-section,
 .final-cta{
-  padding-top: 68px !important;
-  padding-bottom: 68px !important;
+  padding-top: var(--section-space) !important;
+  padding-bottom: var(--section-space) !important;
   border-top: 0 !important;
   border-bottom: 0 !important;
   position: relative !important;
@@ -9024,7 +9024,7 @@ body.document-extraction-page .hero-visual{
 /* v9.1 — final document-page alignment (kept last to outrank legacy page rules). */
 body.document-extraction-page{
   --de-content-width:1080px;
-  --de-section-space:88px;
+  --de-section-space:var(--section-space);
 }
 
 body.document-extraction-page .section:not(.hero) > .shell,
@@ -9192,7 +9192,7 @@ body.document-extraction-page .final-cta p{font-size:14px;line-height:1.55}
 }
 
 @media(max-width:760px){
-  body.document-extraction-page{--de-section-space:68px}
+  body.document-extraction-page{--de-section-space:var(--section-space)}
   body.document-extraction-page .section:not(.hero) > .shell,
   body.document-extraction-page .impact-section.shell,
   body.document-extraction-page .final-cta.shell,
@@ -9220,7 +9220,7 @@ body.document-extraction-page .final-cta p{font-size:14px;line-height:1.55}
   body.document-extraction-page .email-preview{width:100%;padding:22px}
   body.document-extraction-page .industry-panel{padding:26px 22px}
   body.document-extraction-page .industry-copy h3{font-size:26px}
-  body.document-extraction-page .final-cta{margin-bottom:68px;padding:26px 22px}
+body.document-extraction-page .final-cta{margin-bottom:var(--section-space);padding:26px 22px}
   body.document-extraction-page .final-cta h2{font-size:25px}
 }
 
@@ -9328,7 +9328,7 @@ body.document-extraction-page .final-cta p{font-size:14px;line-height:1.55}
 /* v9.3 — use the homepage rail and section rhythm exactly once. */
 body.document-extraction-page{
   --de-content-width:1080px;
-  --de-section-space:68px;
+  --de-section-space:var(--section-space);
 }
 
 body.document-extraction-page main > .shell,
@@ -9392,9 +9392,9 @@ body.document-extraction-page .shell{
   }
 }
 
-/* v9.6 — slightly more generous editorial rhythm. */
+/* v9.6 — use the shared site section rhythm. */
 body.document-extraction-page{
-  --de-section-space:88px;
+  --de-section-space:var(--section-space);
 }
 
 body.document-extraction-page .edge-heading{
@@ -9411,12 +9411,12 @@ body.document-extraction-page .context-copy h2{
 }
 
 body.document-extraction-page .final-cta{
-  margin-bottom:88px;
+  margin-bottom:var(--section-space);
 }
 
 @media(max-width:760px){
   body.document-extraction-page{
-    --de-section-space:76px;
+    --de-section-space:var(--section-space);
   }
 
   body.document-extraction-page .edge-heading{
@@ -9429,7 +9429,7 @@ body.document-extraction-page .final-cta{
   }
 
   body.document-extraction-page .final-cta{
-    margin-bottom:76px;
+    margin-bottom:var(--section-space);
   }
 }
 
@@ -10605,7 +10605,7 @@ body.document-extraction-page .hero-visual .trace-card{
 }
 
 body.document-extraction-page .context-copy > p{
-  line-height:1.75!important;
+  line-height:1.68!important;
 }
 
 body.document-extraction-page .context-source{
@@ -10624,6 +10624,10 @@ body.document-extraction-page .context-source small{
 body.document-extraction-page .context-source span{
   margin-top:6px;
   line-height:1.55;
+}
+
+body.document-extraction-page .mini-invoice strong{
+  top:58px;
 }
 body.document-extraction-page .invoice-card .source-po,
 body.document-extraction-page .invoice-card .source-total{
@@ -10708,7 +10712,7 @@ body.document-extraction-page .comparison-cta{margin-top:34px}
 
 body.document-extraction-page .final-cta{
   min-height:0;
-  margin:0 auto 88px;
+  margin:0 auto var(--section-space);
   padding:34px 42px;
   display:flex;
   align-items:center;
@@ -10740,7 +10744,7 @@ body.document-extraction-page .final-cta-actions .button:first-child{color:var(-
   body.document-extraction-page .industries-section > .shell{width:calc(100% - 28px)!important}
   body.document-extraction-page .reference-heading h2{font-size:34px;line-height:1.16}
   body.document-extraction-page .reference-heading{margin-bottom:30px}
-  body.document-extraction-page .final-cta{min-height:0;margin-bottom:68px;padding:38px 22px}
+  body.document-extraction-page .final-cta{min-height:0;margin-bottom:var(--section-space);padding:38px 22px}
   body.document-extraction-page .final-cta h2{font-size:32px}
   body.document-extraction-page .final-cta p{font-size:15px}
   body.document-extraction-page .final-cta-actions{display:grid;grid-template-columns:1fr;width:100%}
