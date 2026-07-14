@@ -1,0 +1,4 @@
+interface:
+  display_name: "Theorrem Feature Pages"
+  short_description: "Build consistent Theorrem feature marketing pages"
+  default_prompt: "Use $theorrem-feature-pages to build a responsive Theorrem feature page."

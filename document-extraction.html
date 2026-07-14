@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Theorrem Extract — Document work, ready for what comes next</title>
+  <meta name="description" content="Theorrem Extract turns incoming documents into checked, traceable records that are ready for the systems and teams that depend on them." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 30'%3E%3Cg fill='%230066e5'%3E%3Crect width='36' height='6' rx='3'/%3E%3Crect y='12' width='28' height='6' rx='3'/%3E%3Crect y='24' width='18' height='6' rx='3'/%3E%3C/g%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;650;700;750;800&family=Bai+Jamjuree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=10.19" />
+</head>
+<body class="document-extraction-page">
+  <header class="site-header" id="top">
+    <nav class="nav">
+      <a class="brand theorem-logo" href="index.html#top" aria-label="Theorrem home">
+        <span class="theorem-mark" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 30">
+            <rect x="0" y="0" width="36" height="6" rx="3"/>
+            <rect x="0" y="12" width="28" height="6" rx="3"/>
+            <rect x="0" y="24" width="18" height="6" rx="3"/>
+          </svg>
+        </span>
+        <span class="theorem-wordmark">Theorrem</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="index.html#playbooks">Solutions</a>
+        <a href="index.html#quality">Quality</a>
+        <a href="index.html#usecases">Use cases</a>
+        <a href="index.html#governance">Governance</a>
+        <a href="index.html#how-it-works">How it works</a>
+      </div>
+
+      <div class="nav-actions">
+        <a class="btn btn-primary" href="contact.html">Contact sales</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section shell">
+      <div class="hero-copy reveal">
+        <h1>Make every document <em>ready for business.</em></h1>
+        <p>Bring in files from any channel, understand the details that matter, check them against how your business works, and send complete records forward—without data entry.</p>
+        <div class="hero-actions">
+          <!-- Temporarily hidden: product tour button. -->
+          <a class="button secondary large" href="contact.html">Plan your workflow</a>
+        </div>
+        <div class="hero-facts">
+          <div><span class="fact-icon">✓</span><b>Bring any file</b><small>PDFs, messages, scans and sheets</small></div>
+          <div><span class="fact-icon">◎</span><b>Keep the evidence</b><small>See the source behind each value</small></div>
+          <div><span class="fact-icon">↗</span><b>Send it anywhere</b><small>ERP, CRM, database or API</small></div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal delay-1">
+        <div class="hero-glow"></div>
+        <div class="product-frame hero-product-frame">
+          <div class="frame-toolbar"><span class="frame-dots"><i></i><i></i><i></i></span><b>Northwind_Invoice_3391.pdf</b><span class="frame-state">Record prepared</span></div>
+          <div class="extract-grid">
+            <article class="invoice-card">
+              <header><div><b>NORTHWIND</b><small>TRADERS</small></div><strong>INVOICE</strong></header>
+              <div class="invoice-info"><span>Invoice #</span><b>INV-3391</b><span>Invoice date</span><b>08 Jul 2026</b><span>Purchase order</span><b class="source-box source-po">PO-2026-0BB1</b></div>
+              <div class="invoice-address"><span>BILL TO</span><b>Acme Operations</b><small>455 Market Street, San Francisco</small></div>
+              <div class="invoice-lines"><div class="line-head"><span>Description</span><span>Qty</span><span>Unit</span><span>Amount</span></div><div><span>Pallet racking system</span><span>300</span><span>$180</span><span>$54,000</span></div><div><span>Installation support</span><span>1</span><span>$1,200</span><span>$1,200</span></div></div>
+              <div class="invoice-total"><span>Total due</span><b class="source-box source-total">$55,200.00</b></div>
+            </article>
+            <aside class="data-card">
+              <header><div><span>Extracted data</span><b>Vendor invoice</b></div><span class="confidence">96% confidence</span></header>
+              <div class="field ok"><span>Vendor</span><b>Northwind Traders</b><em>99%</em></div>
+              <div class="field warn active"><span>Purchase order</span><b>PO-2026-0BB1</b><em>62%</em></div>
+              <div class="suggestion"><span>Closest purchase-order match</span><b>PO-2026-0881</b><button type="button" tabindex="-1">Apply match</button></div>
+              <div class="field ok"><span>Invoice number</span><b>INV-NW-3391</b><em>98%</em></div>
+              <div class="field ok"><span>Total amount</span><b>$55,200.00</b><em>99%</em></div>
+              <div class="field ok"><span>Line items</span><b>2 rows captured</b><em>97%</em></div>
+              <div class="delivery-chip"><span>Verified record queued</span><b>Operations ERP</b><i>→</i></div>
+            </aside>
+          </div>
+        </div>
+        <div class="floating-card trace-card"><span>Original evidence</span><b>Amount payable · Page 1</b><small>The record never loses its connection to the file.</small></div>
+        <div class="floating-card review-card"><span class="status-dot"></span><b>One value needs a decision</b></div>
+      </div>
+    </section>
+
+    
+    <section class="section edge-section" id="how">
+      <div class="shell edge-shell">
+        <div class="edge-heading reveal">
+          <p>The ordinary cases are easy.<br>The exceptions decide whether automation lasts.</p>
+          <h2><span>Theorrem</span> is designed around the work that does not follow the happy path.</h2>
+        </div>
+        <div class="edge-grid reveal">
+          <article class="edge-card">
+            <div class="edge-visual visual-graph">
+              <div class="edge-node main"></div>
+              <div class="edge-node top"></div>
+              <div class="edge-node mid"></div>
+              <div class="edge-node low"></div>
+              <div class="edge-pill company">Enrich the company</div>
+              <div class="edge-pill muted ask">Ask user <em>12%</em></div>
+              <div class="edge-pill muted call">AI call <em>31%</em></div>
+            </div>
+            <div class="edge-copy"><span>01</span><h3><strong>Connected context</strong> brings scattered business knowledge together.</h3></div>
+          </article>
+          <article class="edge-card">
+            <div class="edge-visual visual-rule">
+              <div class="rule-sticker">AP Agent <b>Now</b></div>
+              <div class="rule-panel"><h4>RULE #418 <i>✎</i></h4><p>Auto-approve invoices from Northwind when amount is within 2% of PO</p></div>
+              <div class="rule-chip">AP Agent <b>Now</b></div>
+            </div>
+            <div class="edge-copy"><span>02</span><h3><strong>Shared policies</strong> keep every automated decision consistent.</h3></div>
+          </article>
+          <article class="edge-card">
+            <div class="edge-visual visual-grounded">
+              <div class="mini-invoice"><b>INVOICE</b><small>PO Number #58172</small><div class="bars"><i></i><i></i></div><strong>$8,425.00</strong></div>
+              <div class="approval-float"><small>AP AGENT</small><b>Approved</b><span>PO #58172 matched</span><strong>PO amount<br>$8,425.00</strong></div>
+            </div>
+            <div class="edge-copy"><span>03</span><h3>Every outcome is <strong>supported</strong> by business evidence.</h3></div>
+          </article>
+          <article class="edge-card">
+            <div class="edge-visual visual-transparent">
+              <div class="invoice-agent">INVOICE AGENT <span class="live-dot"></span> Active</div>
+              <div class="transparent-toast">Posted #58172 to ERP. Applied validation rule #18 <small>3 mins ago</small></div>
+              <div class="avatar-bubble">N</div>
+            </div>
+            <div class="edge-copy"><span>04</span><h3>Every action stays <strong>visible and explainable.</strong></h3></div>
+          </article>
+          <article class="edge-card">
+            <div class="edge-visual visual-correction">
+              <div class="correction-panel"><b>Reviewer correction</b><div><span>GL CODE</span><small><s>4100</s> → 6100</small></div><div><span>VENDOR</span><small><i class="bad"></i> → <i class="good"></i></small></div></div>
+              <div class="save-pill"><span>✓</span> Rule saved <em>• 9 invoices updated</em></div>
+            </div>
+            <div class="edge-copy"><span>05</span><h3>Reviewer choices <strong>improve the next run.</strong></h3></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section context-section" id="context-graphs">
+      <div class="shell context-shell reveal">
+        <div class="context-copy">
+          <span class="section-label soft-label">CONNECTED CONTEXT</span>
+          <h2>Give document workflows the business context they need to make better decisions</h2>
+          <p>
+            A <mark data-context-ref="pdf">long-standing customer</mark> operating across <mark data-context-ref="erp">several distribution locations</mark> has multiple invoices <mark data-context-ref="invoice">more than ninety days</mark> overdue.
+            <mark data-context-ref="emails">Two promised payment dates</mark> have passed without settlement — what should the receivables team <mark data-context-ref="sop">do next?</mark>
+          </p>
+          <small>One decision, assembled from five sources that each hold a different part of the answer.</small>
+        </div>
+        <div class="context-panel" aria-label="Context sources">
+          <button class="context-source active" data-context="pdf" type="button"><b>Policies & agreements</b><small>COMMERCIAL TERMS · What governs the account?</small><span>Master agreement · net 60 · escalation after 90 days</span></button>
+          <button class="context-source" data-context="erp" type="button"><b>Customer systems</b><small>ACCOUNT RECORD · Who are we dealing with?</small><span>Acme Distribution · three linked locations</span></button>
+          <button class="context-source" data-context="invoice" type="button"><b>Transaction history</b><small>CALCULATED STATUS · What is currently owed?</small><span>112 days late · €240k outstanding</span></button>
+          <button class="context-source" data-context="emails" type="button"><b>Messages & calls</b><small>RELATIONSHIP HISTORY · What was agreed?</small><span>Two commitments since March · neither completed</span></button>
+          <button class="context-source" data-context="sop" type="button"><b>Operating procedures</b><small>NEXT ACTION · How should the team respond?</small><span>Pause the account · notify the receivables lead</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section usecases-section" id="tutorials">
+      <div class="shell reveal">
+        <div class="usecase-topline">
+          <span class="section-label soft-label">DOCUMENT WORKFLOWS</span>
+          <h2><span>Let automation move the routine work forward.</span><span>Bring people in only where judgment adds value.</span></h2>
+        </div>
+        <div class="usecase-board">
+          <div class="usecase-nav" role="tablist" aria-label="Document automation use cases">
+            <button class="usecase-tab active" type="button" data-case="extract">Structure documents</button>
+            <button class="usecase-tab" type="button" data-case="invoice">Manage payables</button>
+            <button class="usecase-tab" type="button" data-case="order">Create sales orders</button>
+            <button class="usecase-tab" type="button" data-case="shipment">Reconcile shipments</button>
+            <button class="usecase-tab" type="button" data-case="loan">Review loan files</button>
+          </div>
+          <div class="usecase-content">
+            <div class="usecase-copy" id="usecaseCopy">
+              <div class="metric-row"><strong>95%*</strong><small>sample field-capture goal</small></div>
+              <h3>Convert messy files into structured records</h3>
+              <p>Read the forms, invoices, orders and transport documents behind your operations, preserve their structure, and prepare the result for immediate use.</p>
+              <ul><li>Handle mixed layouts and file types</li><li>Retain tables, rows and relationships</li><li>Escalate uncertain values with evidence</li><li>Map results to the destination schema</li></ul>
+              <button class="usecase-demo-link js-open-demo" type="button">Walk through this workflow →</button>
+            </div>
+            <div class="usecase-visual" id="usecaseVisual">
+              <div class="uc-scene extract-scene active">
+                <div class="doc-pair"><div class="uc-doc left"><b>invoice.pdf</b><i></i><i></i></div><div class="uc-doc right"><span>Vendor</span><b>Acme Corp</b><span>Invoice</span><b>INV-0614</b><span>Amount</span><b>$4,200.00</b><span>Date</span><b>2025-10-14</b></div></div>
+                <div class="sap-tag">Delivered to ERP</div>
+              </div>
+              <div class="uc-scene invoice-scene">
+                <div class="bridge-scene"><div class="paper-source"><small>VENDOR</small><b>Invoice</b></div><div class="check-link">✓</div><div class="paper-source"><small>PAYABLE RULES</small><b>Validated</b></div><div class="erp-box">ERP</div></div>
+              </div>
+              <div class="uc-scene order-scene">
+                <div class="order-scene-wrap"><div class="paper-source angled"><b>Order</b></div><div class="screen-panel"><div class="screen-row"></div><div class="screen-row wide"></div><div class="screen-grid"><span></span><span></span><span></span></div></div><div class="keyboard-mini">Fulfilled</div></div>
+              </div>
+              <div class="uc-scene shipment-scene">
+                <div class="shipment-flow"><div class="ship-doc a"></div><div class="ship-doc b"></div><div class="ship-doc c"></div><svg viewBox="0 0 240 120" aria-hidden="true"><path d="M20 95 C70 55,110 55,130 35"/><path d="M120 90 C150 65,180 40,220 25"/></svg><div class="ship-node n1"></div><div class="ship-node n2"></div><div class="ship-node n3"></div></div>
+              </div>
+              <div class="uc-scene loan-scene">
+                <div class="loan-stack"><div class="loan-card top"><b>Application</b></div><div class="loan-card mid"><b>Income proof</b></div><div class="loan-card low"><b>Decision file</b></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section industries-section" id="team-workflows">
+      <div class="shell">
+        <div class="reference-heading industry-showcase-heading reveal">
+          <span class="section-label soft-label">DOCUMENT OPERATIONS</span>
+          <h2><span>Adapt document operations</span><span>to the way each team actually runs.</span></h2>
+        </div>
+        <div class="industry-tabs reveal" role="tablist" aria-label="Document workflows by team">
+          <button class="industry-tab active" data-industry="banking" type="button"><i>▥</i>Lending &amp; banking</button>
+          <button class="industry-tab" data-industry="finance" type="button"><i>↗</i>Financial services</button>
+          <button class="industry-tab" data-industry="healthcare" type="button"><i>⌁</i>Health administration</button>
+          <button class="industry-tab" data-industry="operations" type="button"><i>◇</i>Business operations</button>
+          <button class="industry-tab" data-industry="logistics" type="button"><i>▣</i>Freight & logistics</button>
+        </div>
+        <div class="industry-panel banking-panel reveal" id="industryPanel" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section impact-section shell" id="impact">
+      <div class="reference-heading impact-heading reveal">
+        <span class="section-label soft-label">A BETTER OPERATING MODEL</span>
+        <h2><span>Replace document handling</span><span>with document flow.</span></h2>
+        <p>Compare the manual pattern most teams inherit with a connected process built around verification and exceptions.</p>
+      </div>
+      <div class="comparison-table reveal">
+        <div class="comparison-head"><b>Area of work</b><b>Manual pattern</b><b>Theorrem workflow</b></div>
+        <div><strong>Record creation</strong><span><i>−</i> Staff open every file and retype its contents</span><span class="positive"><i>✓</i> Relevant values and tables become a structured record</span></div>
+        <div><strong>Handling time</strong><span><i>−</i> Each item waits for downloading, reading and entry</span><span class="positive"><i>✓</i> Routine items move through while exceptions pause</span></div>
+        <div><strong>Business checks</strong><span><i>−</i> Reviewers search sheets and systems for answers</span><span class="positive"><i>✓</i> Policies and reference records are checked in the flow</span></div>
+        <div><strong>Error prevention</strong><span><i>−</i> Problems surface after data reaches another tool</span><span class="positive"><i>✓</i> Gaps, conflicts and duplicates are caught before posting</span></div>
+        <div><strong>Human review</strong><span><i>−</i> People inspect every file to protect against mistakes</span><span class="positive"><i>✓</i> Reviewers see only the decision and its supporting context</span></div>
+        <div><strong>Evidence</strong><span><i>−</i> Entered values become detached from their origin</span><span class="positive"><i>✓</i> Sources, changes and approvals remain linked together</span></div>
+        <div><strong>System updates</strong><span><i>−</i> Teams copy completed work into destination tools</span><span class="positive"><i>✓</i> Approved records arrive already mapped to each system</span></div>
+        <div><strong>Process oversight</strong><span><i>−</i> Volume, queues and recurring issues stay hard to see</span><span class="positive"><i>✓</i> Intake, review and completion share one clear status</span></div>
+      </div>
+    </section>
+
+    <section class="final-cta shell">
+      <div>
+        <h2>Follow a document from arrival to completion.</h2>
+        <p>See how one supplier file becomes a checked record, with the evidence and review decision preserved along the way.</p>
+        <div class="final-cta-actions">
+          <button class="button large js-open-demo" type="button">Start the guided sample <span>→</span></button>
+          <a class="button large" href="contact.html">Plan your workflow</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand theorem-logo" href="index.html#top">
+          <span class="theorem-wordmark">Theorrem</span>
+        </a>
+        <p>Custom AI agents for sales, support, operations, and customer-facing teams.</p>
+        <div class="socials">
+          <a href="https://www.linkedin.com/company/theorrem/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.linkedin.com/company/theorrem/" target="_blank" rel="noopener">X</a>
+          <a href="https://www.linkedin.com/company/theorrem/" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
+      <div>
+        <h4>Solutions</h4>
+        <a href="index.html#playbooks">Sales agents</a>
+        <a href="index.html#playbooks">Support agents</a>
+        <a href="index.html#playbooks">Operations agents</a>
+        <a href="index.html#playbooks">Workflow agents</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="index.html#quality">Quality</a>
+        <a href="index.html#governance">Governance</a>
+        <a href="about.html">About us</a>
+        <a href="contact.html">Contact us</a>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <a href="privacy-policy.html">Privacy policy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Theorrem</span>
+      <span><a href="contact.html">info@theorrem.com</a></span>
+      <span>AI agents built around your workflows</span>
+    </div>
+  </footer>
+
+  <div class="demo-shell" id="demoShell" aria-hidden="true">
+    <div class="demo-backdrop js-close-demo"></div>
+    <div class="demo-app" role="dialog" aria-modal="true" aria-label="Guided Theorrem Extract product tour">
+      <header class="demo-header"><div class="demo-brand"><span class="demo-brand-mark">Th</span><div><b>Theorrem Extract</b><small>Acme Operations · Guided product tour</small></div></div><div class="demo-progress"><span class="active">1</span><i></i><span>2</span><i></i><span>3</span><i></i><span>4</span><small id="demoProgressText">File added</small></div><button class="demo-close js-close-demo" type="button" aria-label="Exit product tour">×</button></header>
+      <div class="demo-body">
+        <aside class="demo-sidebar"><div class="demo-sidebar-head"><b>Example work items</b><span>3</span></div><button class="demo-doc active" type="button" data-demo-doc="invoice"><span class="file-type pdf">PDF</span><div><b>Northwind billing</b><small>One decision pending</small></div><em>!</em></button><button class="demo-doc" type="button" data-demo-doc="spreadsheet"><span class="file-type xls">XLS</span><div><b>Catalogue changes</b><small>420 spreadsheet rows</small></div><em>✓</em></button><button class="demo-doc" type="button" data-demo-doc="email"><span class="file-type mail">@</span><div><b>Dispatch instruction</b><small>Message content</small></div><em>✓</em></button><div class="demo-sidebar-note"><span>Connected mailbox</span><b>operations@acme.example</b><small>Example sync completed · 2 min ago</small></div></aside>
+        <section class="demo-workspace"><div class="demo-toolbar"><div><b id="demoFileName">Northwind_Invoice_3391.pdf</b><small id="demoFileMeta">Email attachment · 2 pages · received 8:04 AM</small></div><div><button type="button" id="zoomOut">−</button><span id="zoomLabel">100%</span><button type="button" id="zoomIn">+</button></div></div>
+          <div class="demo-canvas"><div class="demo-source-pane"><div class="demo-source-label"><span>Source file</span><small id="sourceHint">Choose a record value to reveal its evidence</small></div><div class="demo-source-content" id="demoSourceContent"><article class="full-invoice" id="invoiceSource"><div class="full-invoice-head"><div><h3>NORTHWIND TRADERS</h3><p>1900 Harbor Avenue · Seattle, WA</p></div><strong>SUPPLIER BILL</strong></div><div class="full-meta-grid"><div data-region="invoice"><span>Billing reference</span><b>INV-NW-3391</b></div><div data-region="date"><span>Issued on</span><b>08 Jul 2026</b></div><div class="faint-region" data-region="po"><span>Order reference</span><b>PO-2026-0BB1</b><small>partially obscured</small></div><div data-region="terms"><span>Due within</span><b>30 days</b></div></div><div class="bill-to"><span>Customer</span><b>Acme Operations</b><p>455 Market Street · San Francisco, CA</p></div><table><thead><tr><th>Item</th><th>Code</th><th>Units</th><th>Rate</th><th>Amount</th></tr></thead><tbody><tr data-region="lineItems"><td>Pallet racking system — bay unit</td><td>RK-440</td><td>300</td><td>$180.00</td><td>$54,000.00</td></tr><tr><td>Installation support</td><td>IN-204</td><td>1</td><td>$1,200.00</td><td>$1,200.00</td></tr></tbody></table><div class="full-totals"><div><span>Items total</span><b>$55,200.00</b></div><div><span>Tax amount</span><b>$0.00</b></div><div data-region="total"><span>Amount payable</span><strong>$55,200.00</strong></div></div><div class="invoice-footer">Include billing reference INV-NW-3391 with remittance.</div></article></div></div>
+            <div class="demo-data-pane"><div class="demo-data-head"><div><span>Prepared record</span><b id="demoTemplate">Supplier billing</b></div><span class="demo-status warning" id="demoStatus">One value needs a decision</span></div><div class="demo-fields" id="demoFields"><button class="demo-field" type="button" data-region="vendor"><span>Supplier</span><b>Northwind Traders</b><em class="high">99%</em><i>✓</i></button><button class="demo-field" type="button" data-region="invoice"><span>Billing reference</span><b>INV-NW-3391</b><em class="high">98%</em><i>✓</i></button><button class="demo-field active warning" type="button" data-region="po"><span>Order reference</span><b id="poValue">PO-2026-0BB1</b><em class="low" id="poConfidence">62%</em><i>!</i></button><div class="demo-suggestion" id="poSuggestion"><span>Closest record in the purchasing master</span><b>PO-2026-0881</b><p>Supplier, amount, timing and item rows align</p><button type="button" id="acceptSuggestion">Use this record</button></div><button class="demo-field" type="button" data-region="date"><span>Issued on</span><b>08 Jul 2026</b><em class="high">96%</em><i>✓</i></button><button class="demo-field" type="button" data-region="total"><span>Amount payable</span><b>$55,200.00</b><em class="high">99%</em><i>✓</i></button><button class="demo-field" type="button" data-region="lineItems"><span>Item rows</span><b>2 rows prepared</b><em class="high">97%</em><i>✓</i></button></div><div class="demo-validation"><div><span>Business checks</span><b id="validationSummary">4 clear · 1 decision pending</b></div><button type="button" id="viewActivity">See history</button></div><button class="demo-primary-action" type="button" id="continueDemo" disabled>Approve record and deliver</button></div></div>
+        </section>
+      </div>
+      <div class="delivery-success" id="deliverySuccess" aria-hidden="true"><div class="success-ring">✓</div><p class="section-label">RECORD DELIVERED</p><h3>The approved entry is now in the Operations ERP.</h3><p>The original file, chosen match, policy evidence and complete action history remain connected to record <b>AP-2026-1842</b>.</p><div class="success-summary"><div><span>Values posted</span><b>11</b></div><div><span>Reviewer decisions</span><b>1</b></div><div><span>Elapsed time</span><b>24 sec</b></div></div><div class="success-actions"><button class="button secondary" type="button" id="restartDemo">Replay tour</button><a class="button primary" href="contact.html">Plan a workflow</a></div></div>
+    </div>
+  </div>
+  <script src="./script.js?v=10.10"></script>
+</body>
+</html>
