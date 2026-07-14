@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;650;700;750;800&family=Bai+Jamjuree:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=10.6" />
+  <link rel="stylesheet" href="./styles.css?v=10.17" />
 </head>
 <body class="document-extraction-page">
   <header class="site-header" id="top">
@@ -46,11 +46,10 @@
   <main>
     <section class="hero section shell">
       <div class="hero-copy reveal">
-        <div class="pill"><span>✦</span> THEORREM EXTRACT</div>
         <h1>Make every document <em>ready for business.</em></h1>
-        <p>Bring in files from any channel, understand the details that matter, check them against how your business works, and send complete records forward—without repetitive data entry.</p>
+        <p>Bring in files from any channel, understand the details that matter, check them against how your business works, and send complete records forward—without data entry.</p>
         <div class="hero-actions">
-          <button class="button primary large js-open-demo" type="button">Try the product tour <span>→</span></button>
+          <!-- Temporarily hidden: product tour button. -->
           <a class="button secondary large" href="contact.html">Plan your workflow</a>
         </div>
         <div class="hero-facts">
@@ -67,12 +66,10 @@
           <div class="extract-grid">
             <article class="invoice-card">
               <header><div><b>NORTHWIND</b><small>TRADERS</small></div><strong>INVOICE</strong></header>
-              <div class="invoice-info"><span>Invoice #</span><b>INV-3391</b><span>Invoice date</span><b>08 Jul 2026</b></div>
+              <div class="invoice-info"><span>Invoice #</span><b>INV-3391</b><span>Invoice date</span><b>08 Jul 2026</b><span>Purchase order</span><b class="source-box source-po">PO-2026-0BB1</b></div>
               <div class="invoice-address"><span>BILL TO</span><b>Acme Operations</b><small>455 Market Street, San Francisco</small></div>
               <div class="invoice-lines"><div class="line-head"><span>Description</span><span>Qty</span><span>Unit</span><span>Amount</span></div><div><span>Pallet racking system</span><span>300</span><span>$180</span><span>$54,000</span></div><div><span>Installation support</span><span>1</span><span>$1,200</span><span>$1,200</span></div></div>
-              <div class="invoice-total"><span>Total due</span><b>$55,200.00</b></div>
-              <span class="source-box source-po">PO-2026-0BB1</span>
-              <span class="source-box source-total">$55,200.00</span>
+              <div class="invoice-total"><span>Total due</span><b class="source-box source-total">$55,200.00</b></div>
             </article>
             <aside class="data-card">
               <header><div><span>Extracted data</span><b>Vendor invoice</b></div><span class="confidence">96% confidence</span></header>
@@ -151,14 +148,14 @@
           <span class="section-label soft-label">CONNECTED CONTEXT</span>
           <h2>Give document workflows the business context they need to make better decisions</h2>
           <p>
-            A <mark data-context-ref="pdf">French</mark> <mark data-context-ref="erp">distribution account</mark> has several balances outstanding for <mark data-context-ref="invoice">over three months</mark>.
-            The customer has made <mark data-context-ref="emails">two payment commitments</mark> without settling them — <mark data-context-ref="sop">what should happen next?</mark>
+            A <mark data-context-ref="pdf">long-standing customer</mark> operating across <mark data-context-ref="erp">several distribution locations</mark> has multiple invoices <mark data-context-ref="invoice">more than ninety days</mark> overdue.
+            <mark data-context-ref="emails">Two promised payment dates</mark> have passed without settlement — what should the receivables team <mark data-context-ref="sop">do next?</mark>
           </p>
           <small>One decision, assembled from five sources that each hold a different part of the answer.</small>
         </div>
         <div class="context-panel" aria-label="Context sources">
-          <button class="context-source active" data-context="pdf" type="button"><b>Policies & agreements</b><small>COMMERCIAL TERMS · What governs the account?</small><span>France · net 60 · escalation after 90 days</span></button>
-          <button class="context-source" data-context="erp" type="button"><b>Customer systems</b><small>ACCOUNT RECORD · Who are we dealing with?</small><span>Acme Distribution France · three linked locations</span></button>
+          <button class="context-source active" data-context="pdf" type="button"><b>Policies & agreements</b><small>COMMERCIAL TERMS · What governs the account?</small><span>Master agreement · net 60 · escalation after 90 days</span></button>
+          <button class="context-source" data-context="erp" type="button"><b>Customer systems</b><small>ACCOUNT RECORD · Who are we dealing with?</small><span>Acme Distribution · three linked locations</span></button>
           <button class="context-source" data-context="invoice" type="button"><b>Transaction history</b><small>CALCULATED STATUS · What is currently owed?</small><span>112 days late · €240k outstanding</span></button>
           <button class="context-source" data-context="emails" type="button"><b>Messages & calls</b><small>RELATIONSHIP HISTORY · What was agreed?</small><span>Two commitments since March · neither completed</span></button>
           <button class="context-source" data-context="sop" type="button"><b>Operating procedures</b><small>NEXT ACTION · How should the team respond?</small><span>Pause the account · notify the receivables lead</span></button>
@@ -208,13 +205,15 @@
             </div>
           </div>
         </div>
-        <p class="benchmark-note">* Example product targets for demonstration. Results vary with source quality, process complexity, business rules and connected systems.</p>
       </div>
     </section>
 
     <section class="section industries-section" id="team-workflows">
       <div class="shell">
-        <div class="industry-showcase-heading reveal"><h2>Adapt document operations to the way each team actually runs.</h2></div>
+        <div class="reference-heading industry-showcase-heading reveal">
+          <span class="section-label soft-label">DOCUMENT OPERATIONS</span>
+          <h2><span>Adapt document operations</span><span>to the way each team actually runs.</span></h2>
+        </div>
         <div class="industry-tabs reveal" role="tablist" aria-label="Document workflows by team">
           <button class="industry-tab active" data-industry="banking" type="button"><i>▥</i>Lending &amp; banking</button>
           <button class="industry-tab" data-industry="finance" type="button"><i>↗</i>Financial services</button>
@@ -227,7 +226,11 @@
     </section>
 
     <section class="section impact-section shell" id="impact">
-      <div class="center-heading reveal"><span class="section-label">A BETTER OPERATING MODEL</span><h2>Replace document handling with document flow.</h2><p>Compare the manual pattern most teams inherit with a connected process built around verification and exceptions.</p></div>
+      <div class="reference-heading impact-heading reveal">
+        <span class="section-label soft-label">A BETTER OPERATING MODEL</span>
+        <h2><span>Replace document handling</span><span>with document flow.</span></h2>
+        <p>Compare the manual pattern most teams inherit with a connected process built around verification and exceptions.</p>
+      </div>
       <div class="comparison-table reveal">
         <div class="comparison-head"><b>Area of work</b><b>Manual pattern</b><b>Theorrem workflow</b></div>
         <div><strong>Record creation</strong><span><i>−</i> Staff open every file and retype its contents</span><span class="positive"><i>✓</i> Relevant values and tables become a structured record</span></div>
@@ -239,10 +242,18 @@
         <div><strong>System updates</strong><span><i>−</i> Teams copy completed work into destination tools</span><span class="positive"><i>✓</i> Approved records arrive already mapped to each system</span></div>
         <div><strong>Process oversight</strong><span><i>−</i> Volume, queues and recurring issues stay hard to see</span><span class="positive"><i>✓</i> Intake, review and completion share one clear status</span></div>
       </div>
-      <div class="comparison-cta reveal"><button class="button primary large js-open-demo" type="button">Experience the sample flow <span>→</span></button></div>
     </section>
 
-    <section class="final-cta shell reveal"><div class="cta-icon">✦</div><div><h2>Follow a document from arrival to completion.</h2><p>See how one supplier file becomes a checked record, with the evidence and review decision preserved along the way.</p></div><button class="button primary large js-open-demo" type="button">Start the guided sample <span>→</span></button></section>
+    <section class="final-cta shell">
+      <div>
+        <h2>Follow a document from arrival to completion.</h2>
+        <p>See how one supplier file becomes a checked record, with the evidence and review decision preserved along the way.</p>
+        <div class="final-cta-actions">
+          <button class="button large js-open-demo" type="button">Start the guided sample <span>→</span></button>
+          <a class="button large" href="contact.html">Plan your workflow</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -299,6 +310,6 @@
       <div class="delivery-success" id="deliverySuccess" aria-hidden="true"><div class="success-ring">✓</div><p class="section-label">RECORD DELIVERED</p><h3>The approved entry is now in the Operations ERP.</h3><p>The original file, chosen match, policy evidence and complete action history remain connected to record <b>AP-2026-1842</b>.</p><div class="success-summary"><div><span>Values posted</span><b>11</b></div><div><span>Reviewer decisions</span><b>1</b></div><div><span>Elapsed time</span><b>24 sec</b></div></div><div class="success-actions"><button class="button secondary" type="button" id="restartDemo">Replay tour</button><a class="button primary" href="contact.html">Plan a workflow</a></div></div>
     </div>
   </div>
-  <script src="./script.js?v=10.6"></script>
+  <script src="./script.js?v=10.10"></script>
 </body>
 </html>

@@ -356,7 +356,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     industryKey=key;industryStep=0;const d=industryData[key],panel=qs('#industryPanel');
     qsa('.industry-tab').forEach(x=>x.classList.toggle('active',x.dataset.industry===key));
     panel.className=`industry-panel ${key}-panel`;
-    panel.innerHTML=`<div class="industry-copy"><h3>${d.title}</h3><ul>${d.items.map(x=>`<li>${x}</li>`).join('')}</ul><div class="industry-proof"><span><strong>THEORREM</strong><small>WORKFLOW EXAMPLE</small></span><b>${d.proof}</b></div><a href="contact.html">Explore this workflow <span>→</span></a></div><div class="industry-stage" id="industryStage"></div>`;
+    panel.innerHTML=`<div class="industry-copy"><h3>${d.title}</h3><ul>${d.items.map(x=>`<li>${x}</li>`).join('')}</ul><a href="contact.html">Explore this workflow <span>→</span></a></div><div class="industry-stage" id="industryStage"></div>`;
     renderIndustryStage();restartIndustry();
   }
   qsa('.industry-tab').forEach(b=>b.addEventListener('click',()=>renderIndustry(b.dataset.industry)));
