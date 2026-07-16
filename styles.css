@@ -10751,8 +10751,8 @@ body.document-extraction-page .final-cta-actions .button:first-child{color:var(-
   body.document-extraction-page .final-cta-actions .button{width:100%;min-width:0}
 }
 
-/* Homepage section headings — lighter editorial type with the established
-   Theorrem navy-to-cyan gradient on the highlighted phrase. */
+/* Homepage section headings — lighter editorial type with the exact gradient
+   used by “ready for business.” on the document extraction page. */
 body.home-page #playbooks .target-small-heading,
 body.home-page #quality .target-small-heading,
 body.home-page #governance .target-small-heading,
@@ -10766,7 +10766,7 @@ body.home-page .theorem-gov-head .target-small-heading > span,
 body.home-page .tw-intro h2 > span{
   color:transparent!important;
   -webkit-text-fill-color:transparent!important;
-  background-image:linear-gradient(110deg,#07118e 0%,#0b25b8 42%,#0875eb 76%,#19bde9 112%)!important;
+  background-image:linear-gradient(110deg,#07118e 0%,#0b25b8 48%,#1252df 100%)!important;
   background-repeat:no-repeat!important;
   -webkit-background-clip:text!important;
   background-clip:text!important;
@@ -10778,7 +10778,7 @@ body.home-page .tw-intro h2 > span{
 body.home-page .hero h1 .hero-switch > span{
   color:transparent!important;
   -webkit-text-fill-color:transparent!important;
-  background-image:linear-gradient(110deg,#07118e 0%,#0b25b8 42%,#0875eb 76%,#19bde9 112%)!important;
+  background-image:linear-gradient(110deg,#07118e 0%,#0b25b8 48%,#1252df 100%)!important;
   background-repeat:no-repeat!important;
   -webkit-background-clip:text!important;
   background-clip:text!important;
