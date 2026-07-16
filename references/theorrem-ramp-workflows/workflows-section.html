@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Theorrem workflow showcase</title>
+  <link rel="stylesheet" href="./workflows-section.css" />
+</head>
+<body>
+  <main class="preview-page">
+    <section class="tw-workflows" id="usecases" aria-labelledby="tw-workflows-title">
+      <div class="tw-shell">
+        <header class="tw-intro">
+          <div>
+            <p class="tw-eyebrow">WORKFLOW PLAYBOOKS</p>
+            <h2 id="tw-workflows-title">One operating layer for the work<br><span>your teams repeat every day.</span></h2>
+          </div>
+          <p class="tw-intro-copy">Start with one high-friction workflow, prove the value, then expand the same controlled automation across teams and systems.</p>
+        </header>
+
+        <div class="tw-grid">
+          <!-- 01 DOCUMENT INTELLIGENCE -->
+          <a class="tw-card tw-card--wide tw-card--document" href="document-extraction.html" aria-label="Explore Document Intelligence">
+            <div class="tw-card-title"><strong>Document intelligence</strong> <span>that turns incoming files into trusted data</span></div>
+            <span class="tw-card-arrow" aria-hidden="true">↗</span>
+            <div class="tw-particle-field tw-particle-field--arc" aria-hidden="true"></div>
+            <svg class="tw-contours" viewBox="0 0 700 530" aria-hidden="true">
+              <g fill="none" stroke="currentColor" stroke-width="1.1" stroke-dasharray="1 7" stroke-linecap="round">
+                <path d="M380 560C360 398 402 215 560 34"/><path d="M412 560C392 390 433 208 590 18"/><path d="M444 560C424 386 467 200 623 0"/><path d="M476 560C456 378 500 190 656-20"/><path d="M508 560C488 369 534 180 692-40"/>
+              </g>
+            </svg>
+
+            <div class="tw-doc-stage" aria-hidden="true">
+              <div class="tw-doc-note tw-doc-note--incoming">
+                <div><span class="tw-mini-icon tw-mini-icon--mail"></span><b>Invoice_3391.pdf received</b></div>
+                <p>AP inbox · Northwind Traders</p>
+                <p class="tw-note-fade">Reading fields and line items…</p>
+              </div>
+              <div class="tw-doc-sheet">
+                <div class="tw-doc-brand"><span>theorrem</span><small>EXTRACT</small></div>
+                <div class="tw-doc-wave"></div>
+                <div class="tw-doc-label">INVOICE</div>
+                <div class="tw-doc-number">INV-3391</div>
+                <div class="tw-doc-lines"><i></i><i></i><i></i><i></i></div>
+                <div class="tw-doc-total"><span>Total due</span><b>$55,200</b></div>
+              </div>
+              <div class="tw-doc-note tw-doc-note--done">
+                <div><span class="tw-check">✓</span><b>11 fields extracted and validated</b></div>
+                <p>One uncertain value routed for review.</p>
+                <p class="tw-note-accent">Source evidence attached</p>
+              </div>
+            </div>
+          </a>
+
+          <!-- 02 RECONCILIATION -->
+          <a class="tw-card tw-card--wide tw-card--reconcile" href="reconciliation.html" aria-label="Explore Reconciliation and Matching">
+            <div class="tw-card-title"><strong>Reconciliation &amp; matching</strong> <span>without spreadsheet chasing</span></div>
+            <span class="tw-card-arrow" aria-hidden="true">↗</span>
+            <div class="tw-reconcile-browser" aria-hidden="true">
+              <div class="tw-browser-bar"><span></span><span></span><span></span><b>Theorrem Reconcile</b></div>
+              <div class="tw-browser-nav"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="tw-reconcile-scene tw-reconcile-scene--drop">
+                <div class="tw-dropmark">⌁</div>
+                <small>Drop records to reconcile</small>
+                <div class="tw-file-stack">
+                  <span>Bank_October.csv</span><span>Ledger_October.xlsx</span><span>Processor_Settlement.pdf</span><span>Refunds.csv</span>
+                </div>
+                <em class="tw-file-count">4</em>
+              </div>
+              <div class="tw-reconcile-scene tw-reconcile-scene--match">
+                <div class="tw-source-panel">
+                  <small>BANK</small><b>Deposit · $45,042</b><span>14 Oct 2026</span>
+                  <small>PROCESSOR</small><b>Gross · $48,600</b><span>Fees and refunds found</span>
+                </div>
+                <div class="tw-match-panel">
+                  <h3>Settlement #ST-1048</h3>
+                  <div><span>Gross sales</span><b>$48,600</b></div><div><span>Refunds</span><b>− $2,100</b></div><div><span>Fees</span><b>− $1,458</b></div>
+                  <div class="tw-match-total"><span>Expected deposit</span><b>$45,042</b></div>
+                  <div class="tw-match-status"><i>✓</i><span>Matched across 4 sources</span><strong>100%</strong></div>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- 03 SMART APPROVALS -->
+          <a class="tw-card tw-card--third tw-card--approvals" href="#smart-approvals" aria-label="Explore Smart Approvals">
+            <div class="tw-card-title"><strong>Smart approvals</strong> <span>route only the right decisions to people</span></div>
+            <span class="tw-card-arrow" aria-hidden="true">↗</span>
+            <div class="tw-particle-field tw-particle-field--spray" aria-hidden="true"></div>
+            <div class="tw-mini-browser tw-approval-ui" aria-hidden="true">
+              <div class="tw-browser-bar"><span></span><span></span><span></span></div>
+              <div class="tw-filter-row"><div>Search requests…</div><div>Policy status</div><b>Needs Review</b></div>
+              <div class="tw-approval-table">
+                <div class="tw-table-head"><span>Request</span><span>Policy decision</span></div>
+                <div class="tw-approval-row"><i>MK</i><span><b>Marketing spend</b><small>Campaign · $8,500</small></span><strong class="tw-status-ok">Auto-approved</strong></div>
+                <div class="tw-approval-row"><i>IT</i><span><b>Software access</b><small>Engineering · Admin</small></span><strong class="tw-status-spin"><em></em><u>Checking</u></strong></div>
+                <div class="tw-approval-row"><i>PR</i><span><b>Purchase request</b><small>Equipment · $18,000</small></span><strong class="tw-status-review">Finance review</strong></div>
+                <div class="tw-approval-row"><i>RF</i><span><b>Customer refund</b><small>Order 8842 · $780</small></span><strong class="tw-status-ok">Within policy</strong></div>
+                <div class="tw-approval-row"><i>DS</i><span><b>Data export</b><small>Customer records</small></span><strong class="tw-status-spin"><em></em><u>Checking</u></strong></div>
+              </div>
+            </div>
+          </a>
+
+          <!-- 04 REQUEST AUTOMATION -->
+          <a class="tw-card tw-card--third tw-card--requests" href="#request-automation" aria-label="Explore Request Automation">
+            <div class="tw-card-title"><strong>Request automation</strong> <span>turns incoming messages into completed work</span></div>
+            <span class="tw-card-arrow" aria-hidden="true">↗</span>
+            <div class="tw-particle-field tw-particle-field--rain" aria-hidden="true"></div>
+            <div class="tw-mini-browser tw-request-ui" aria-hidden="true">
+              <div class="tw-browser-bar"><span></span><span></span><span></span></div>
+              <div class="tw-request-main">
+                <h3>Request Operations</h3>
+                <div class="tw-tabs"><b>Overview</b><span>Queue</span><span class="tw-new">New</span><span>Automations</span><span>History</span></div>
+                <div class="tw-request-metrics"><div><small>Requests completed</small><b>1,284</b><em>+18%</em></div><div><small>Manual touches avoided</small><b>846</b><em>this month</em></div></div>
+                <svg class="tw-flow-graph" viewBox="0 0 520 110" preserveAspectRatio="none"><defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#222" stop-opacity=".18"/><stop offset="1" stop-color="#222" stop-opacity="0"/></linearGradient><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#005be2" stop-opacity=".20"/><stop offset="1" stop-color="#005be2" stop-opacity="0"/></linearGradient></defs><path class="tw-graph-fill tw-graph-fill--one" d="M0 78 C90 72 140 66 220 68 S370 56 438 57 S490 38 520 30 L520 110 L0 110Z" fill="url(#g1)"/><path class="tw-graph-fill tw-graph-fill--two" d="M0 84 C72 82 145 74 210 77 S360 69 438 70 S487 50 520 47 L520 110 L0 110Z" fill="url(#g2)"/><path class="tw-graph-line" d="M0 78 C90 72 140 66 220 68 S370 56 438 57 S490 38 520 30"/><path class="tw-graph-line tw-graph-line--blue" d="M0 84 C72 82 145 74 210 77 S360 69 438 70 S487 50 520 47"/></svg>
+                <div class="tw-action-list"><b>Requires attention</b><div><i>!</i><span><strong>Delivery request missing an address</strong><small>Email · waiting 4 min</small></span><button>Resolve</button></div></div>
+              </div>
+            </div>
+          </a>
+
+          <!-- 05 CASE RESOLUTION - replaces the tools card -->
+          <a class="tw-card tw-card--third tw-card--cases" href="#case-resolution" aria-label="Explore Case Resolution">
+            <div class="tw-card-title"><strong>Case resolution</strong> <span>assembles every signal before the next action</span></div>
+            <span class="tw-card-arrow" aria-hidden="true">↗</span>
+            <div class="tw-evidence-cloud" aria-hidden="true">
+              <span class="tw-evidence ghost e01">Email</span><span class="tw-evidence ghost e02">Policy</span><span class="tw-evidence ghost e03">Call</span><span class="tw-evidence ghost e04">Payment</span><span class="tw-evidence ghost e05">Order</span><span class="tw-evidence ghost e06">Notes</span>
+              <span class="tw-evidence small e07">CRM</span><span class="tw-evidence small e08">SLA</span><span class="tw-evidence small e09">Invoice</span><span class="tw-evidence small e10">Shipment</span><span class="tw-evidence small e11">Chat</span>
+              <span class="tw-evidence medium e12">Customer</span><span class="tw-evidence medium e13">Refund</span><span class="tw-evidence medium e14">Policy</span><span class="tw-evidence medium e15">History</span>
+              <span class="tw-evidence major e16"><i>✉</i><b>Email</b></span><span class="tw-evidence major e17"><i>◫</i><b>Order</b></span><span class="tw-evidence major core e18"><i>✦</i><b>Context</b></span><span class="tw-evidence major e19"><i>⌁</i><b>Delivery</b></span><span class="tw-evidence major e20"><i>✓</i><b>Resolved</b></span>
+              <span class="tw-evidence medium e21">Knowledge</span><span class="tw-evidence medium e22">Courier</span><span class="tw-evidence medium e23">Account</span><span class="tw-evidence small e24">Risk</span><span class="tw-evidence small e25">Owner</span><span class="tw-evidence ghost e26">Timeline</span><span class="tw-evidence ghost e27">Reason</span><span class="tw-evidence ghost e28">Priority</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="./workflows-section.js"></script>
+</body>
+</html>

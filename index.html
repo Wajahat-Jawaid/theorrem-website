@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;650;700;750;800&family=Special+Elite&family=Josefin+Sans:wght@100;300;400;700&family=Cinzel:wght@400;700;900&family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;600;700;800&family=Orbitron:wght@400;500;700;900&family=Audiowide&family=Oxanium:wght@400;600;700;800&family=Syncopate:wght@400;700&family=Michroma&family=Russo+One&family=Teko:wght@400;500;600;700&family=Quantico:wght@400;700&family=Share+Tech&family=Aldrich&family=Saira+Condensed:wght@400;600;700;800;900&family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Arimo:wght@400;500;600;700&family=Big+Shoulders+Display:wght@400;600;700;800;900&family=Black+Han+Sans&family=Fjalla+One&family=Righteous&family=Bai+Jamjuree:wght@400;500;600;700&family=Chakra+Petch:wght@400;500;600;700&family=Electrolize&family=Nova+Square&family=Wallpoet&family=Megrim&family=Stalinist+One&family=Rye&family=Pirata+One&family=Abril+Fatface&family=Yeseva+One&family=Playfair+Display:wght@400;700;900&family=Cardo:wght@400;700&family=Uncial+Antiqua&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=8.8" />
+  <link rel="stylesheet" href="./workflows-section.css?v=1.0" />
 </head>
 
 <body>
@@ -237,69 +238,38 @@
       </div>
     </section>
 
-    <section class="workflows-section page-grid" id="usecases">
-      <div class="workflows-container">
-        <header class="workflows-head">
-          <p class="section-eyebrow">WORKFLOWS</p>
-          <h2>Workflows, built for<br>operations that <span class="highlight">move.</span></h2>
-          <p>From incoming information to decisions and action, each workflow is designed to reduce manual work and handle exceptions intelligently.</p>
+    <section class="tw-workflows" id="usecases" aria-labelledby="tw-workflows-title">
+      <div class="tw-shell">
+        <header class="tw-intro">
+          <div>
+            <h2 id="tw-workflows-title">One operating layer for the work<br><span>your teams repeat every day.</span></h2>
+          </div>
         </header>
 
-        <div class="workflows-grid">
-          <a class="workflow-card" href="document-extraction.html">
-            <div class="workflow-art" aria-hidden="true">
-              <svg viewBox="0 0 360 190">
-                <g class="art-lines"><path d="M42 43h17l9 9v22H42zM59 43v10h9M47 61h14M47 67h10"/><path d="M37 92h31v22H37zM38 93l14 12 15-12"/><path d="M43 134h22v29H43zM49 140v17M57 140v17M43 148h22"/><path class="route" d="M79 58c37 0 24 37 50 48M78 103h51M78 149c34 0 22-43 51-43"/><circle class="node" cx="132" cy="106" r="3"/><path d="M153 56h57l22 22v75h-79zM210 56v23h22M170 86h42M170 99h32M170 112h42M170 125h36"/><path class="route" d="M233 106h30c12 0 12-30 25-30M233 106h55M233 106h30c12 0 12 30 25 30"/></g>
-                <g class="art-points"><circle cx="292" cy="76" r="4"/><circle cx="314" cy="76" r="3"/><circle cx="336" cy="76" r="3"/><circle cx="292" cy="106" r="4"/><circle cx="314" cy="106" r="3"/><circle cx="336" cy="106" r="3"/><circle cx="292" cy="136" r="4"/><circle cx="314" cy="136" r="3"/><circle cx="336" cy="136" r="3"/></g>
-              </svg>
-            </div>
-            <div class="workflow-copy"><h3>Document Intelligence</h3><p>Extract and validate data from any document or message and deliver it in a structured format.</p></div>
+        <div class="tw-grid">
+          <a class="tw-card" href="document-extraction.html">
+            <svg class="tw-visual" viewBox="0 0 320 190" aria-hidden="true"><g class="tw-lines"><path d="M20 44h42q22 0 22 22v29h38"/><path d="M20 94h102"/><path d="M20 144h42q22 0 22-22v-27"/><path d="M196 95h28q18 0 18-32h48M196 95h94M196 95h28q18 0 18 32h48"/></g><g class="tw-nodes"><rect x="122" y="40" width="74" height="110" rx="4"/><path d="M175 40v24h21M140 82h38M140 96h38M140 110h28"/><circle cx="20" cy="44" r="8"/><circle cx="20" cy="94" r="8"/><circle cx="20" cy="144" r="8"/><circle cx="290" cy="63" r="4"/><circle cx="290" cy="95" r="4"/><circle cx="290" cy="127" r="4"/></g></svg>
+            <div class="tw-card-copy"><h3>Document intelligence</h3><p>Extract and validate data from any document or message, then deliver trusted records.</p></div><span class="tw-card-arrow" aria-hidden="true">↗</span>
           </a>
-
-          <a class="workflow-card" href="reconciliation.html">
-            <div class="workflow-art" aria-hidden="true">
-              <svg viewBox="0 0 360 190">
-                <g class="art-points source-points"><circle cx="40" cy="65" r="5"/><circle cx="69" cy="65" r="5"/><circle cx="40" cy="96" r="5"/><circle cx="69" cy="96" r="5"/><circle cx="40" cy="127" r="5"/><circle cx="69" cy="127" r="5"/><circle cx="291" cy="65" r="5"/><circle cx="320" cy="65" r="5"/><circle cx="291" cy="96" r="5"/><circle cx="320" cy="96" r="5"/><circle cx="291" cy="127" r="5"/><circle cx="320" cy="127" r="5"/></g>
-                <g class="art-lines"><path class="route" d="M90 66c24 0 13 30 38 30M90 96h38M90 126c24 0 13-30 38-30M270 66c-24 0-13 30-38 30M270 96h-38M270 126c-24 0-13-30-38-30"/><circle cx="164" cy="96" r="39"/><circle cx="196" cy="96" r="39"/><path class="route" d="M180 136v29"/></g><circle class="exception" cx="180" cy="169" r="6"/>
-              </svg>
-            </div>
-            <div class="workflow-copy"><h3>Reconciliation &amp; Matching</h3><p>Match related records across systems and surface only genuine mismatches.</p></div>
+          <a class="tw-card" href="reconciliation.html">
+            <svg class="tw-visual" viewBox="0 0 320 190" aria-hidden="true"><g class="tw-lines"><path d="M20 55h74M20 95h74M20 135h74M226 55h74M226 95h74M226 135h74"/><path d="M94 55q30 0 42 24M94 135q30 0 42-24M184 79q12-24 42-24M184 111q12 24 42 24"/></g><g class="tw-nodes"><circle cx="145" cy="95" r="42"/><circle cx="175" cy="95" r="42"/><circle class="tw-fill" cx="160" cy="160" r="6"/><circle cx="20" cy="55" r="5"/><circle cx="20" cy="95" r="5"/><circle cx="20" cy="135" r="5"/><circle cx="300" cy="55" r="5"/><circle cx="300" cy="95" r="5"/><circle cx="300" cy="135" r="5"/></g></svg>
+            <div class="tw-card-copy"><h3>Reconciliation &amp; matching</h3><p>Match related records across systems and surface only genuine mismatches.</p></div><span class="tw-card-arrow" aria-hidden="true">↗</span>
           </a>
-
-          <a class="workflow-card" href="#">
-            <div class="workflow-art" aria-hidden="true">
-              <svg viewBox="0 0 360 190">
-                <g class="art-lines"><path class="route" d="M24 48c47 0 55 48 103 48M24 72c44 0 57 24 103 24M24 96h103M24 120c44 0 57-24 103-24M24 144c47 0 55-48 103-48"/><circle class="node" cx="130" cy="96" r="3"/><circle cx="190" cy="96" r="44"/><circle cx="190" cy="96" r="29"/><circle class="checkpoint" cx="190" cy="96" r="7"/><path class="route" d="M234 96h43"/><circle class="node" cx="280" cy="96" r="3"/><circle cx="314" cy="73" r="15"/><path d="M287 136c2-23 13-35 27-35s25 12 27 35"/></g>
-              </svg>
-            </div>
-            <div class="workflow-copy"><h3>Smart Approvals</h3><p>Route every request through the right policy, evidence and approver automatically.</p></div>
+          <a class="tw-card" href="contact.html">
+            <svg class="tw-visual" viewBox="0 0 320 190" aria-hidden="true"><g class="tw-lines"><path d="M18 52h65l42 43M18 82h65l42 13M18 112h65l42-17M18 142h65l42-47M195 95h38"/></g><g class="tw-nodes"><circle cx="160" cy="95" r="44"/><circle cx="160" cy="95" r="25"/><circle class="tw-fill" cx="160" cy="95" r="7"/><circle cx="270" cy="67" r="16"/><path d="M244 140q3-31 26-31t26 31"/></g></svg>
+            <div class="tw-card-copy"><h3>Smart approvals</h3><p>Route every request through the right policy, evidence and approver automatically.</p></div><span class="tw-card-arrow" aria-hidden="true">↗</span>
           </a>
-
-          <a class="workflow-card" href="#">
-            <div class="workflow-art" aria-hidden="true">
-              <svg viewBox="0 0 360 190">
-                <g class="art-lines"><path d="M22 43h27v19H22zM23 44l12 10 13-10"/><path d="M23 81c0-7 6-12 14-12s14 5 14 12-6 12-14 12l-8 5 2-8c-5-2-8-5-8-9z"/><path d="M23 111h27v31H23zM29 119h15M29 126h15M29 133h10"/><circle cx="37" cy="163" r="13"/><path d="M32 156c2 8 6 11 11 12M32 156l4-2M43 168l2-4"/><path class="route" d="M67 53c41 0 31 43 79 43M67 81c39 0 37 15 79 15M67 126c39 0 37-30 79-30M67 163c44 0 36-67 79-67"/><circle cx="177" cy="96" r="37"/><path d="M177 81v30M162 96h30"/><path class="route" d="M214 96h31c17 0 11-43 39-43M214 96h70M214 96h31c17 0 11 43 39 43"/><circle cx="306" cy="53" r="14"/><path d="M299 53l5 5 9-11"/><circle cx="306" cy="96" r="14"/><path d="M299 96l5 5 9-11"/><circle cx="306" cy="139" r="14"/><path d="M299 139l5 5 9-11"/></g>
-              </svg>
-            </div>
-            <div class="workflow-copy"><h3>Request Automation</h3><p>Turn emails, forms and messages into structured requests and completed work.</p></div>
+          <a class="tw-card" href="contact.html">
+            <svg class="tw-visual" viewBox="0 0 320 190" aria-hidden="true"><g class="tw-lines"><path d="M22 42h74l40 53M22 76h74l40 19M22 114h74l40-19M22 148h74l40-53M184 95h72"/></g><g class="tw-nodes"><circle cx="160" cy="95" r="25"/><path d="M153 95l6 6 11-14"/><circle cx="272" cy="42" r="12"/><circle cx="272" cy="76" r="12"/><circle cx="272" cy="114" r="12"/><circle cx="272" cy="148" r="12"/><path d="M266 42l4 4 7-9M266 76l4 4 7-9M266 114l4 4 7-9M266 148l4 4 7-9"/></g></svg>
+            <div class="tw-card-copy"><h3>Request automation</h3><p>Turn emails, forms and messages into structured requests and completed work.</p></div><span class="tw-card-arrow" aria-hidden="true">↗</span>
           </a>
-
-          <a class="workflow-card" href="#">
-            <div class="workflow-art" aria-hidden="true">
-              <svg viewBox="0 0 360 190">
-                <g class="art-lines"><path d="M27 53l6-8 6 8-6 8z"/><circle cx="55" cy="64" r="5"/><path d="M81 45l5 9H76zM51 95l5 9H46z"/><circle cx="27" cy="101" r="5"/><circle cx="54" cy="127" r="5"/><path d="M82 118h10v10H82z"/><path class="route" d="M105 61l126 35M105 78l126 18M105 96h126M105 114l126-18M105 131l126-35"/><path d="M127 50l26 23v69l-26 18zM177 46l26 27v69l-26 20zM228 47l25 26v69l-25 17z"/><circle cx="300" cy="96" r="43"/><circle cx="300" cy="83" r="12"/><path d="M278 121c2-16 10-25 22-25s20 9 22 25"/></g><circle class="approved" cx="333" cy="65" r="12"/><path class="approved-check" d="M327 65l4 4 8-9"/>
-              </svg>
-            </div>
-            <div class="workflow-copy"><h3>Onboarding &amp; Verification</h3><p>Collect information, verify requirements and coordinate activation end-to-end.</p></div>
+          <a class="tw-card" href="contact.html">
+            <svg class="tw-visual" viewBox="0 0 320 190" aria-hidden="true"><g class="tw-lines"><path d="M18 48h70l42 47M18 95h112M18 142h70l42-47M190 95h46"/></g><g class="tw-nodes"><path d="M130 52l34 20v46l-34 20zM164 72l28-16v78l-28-16M192 56l28 16v46l-28 16"/><circle cx="266" cy="95" r="34"/><circle cx="266" cy="82" r="10"/><path d="M248 116q4-19 18-19t18 19"/><circle class="tw-fill" cx="292" cy="68" r="8"/><path class="tw-checkline" d="M288 68l3 3 6-7"/></g></svg>
+            <div class="tw-card-copy"><h3>Onboarding &amp; verification</h3><p>Collect information, verify requirements and coordinate activation end to end.</p></div><span class="tw-card-arrow" aria-hidden="true">↗</span>
           </a>
-
-          <a class="workflow-card" href="#">
-            <div class="workflow-art" aria-hidden="true">
-              <svg viewBox="0 0 360 190">
-                <g class="art-lines"><rect x="22" y="51" width="9" height="9"/><circle cx="52" cy="47" r="4"/><path d="M78 50l5 8H73zM37 82l5-7 6 7-6 7z"/><circle cx="69" cy="83" r="5"/><path d="M92 76h9v9h-9zM27 113l5-7 6 7-6 7zM59 112h9v9h-9zM88 110l5 8H83zM44 143l6-7 6 7-6 7zM79 143l5-8 5 8z"/><path class="route" d="M111 95h37"/><circle cx="185" cy="95" r="38"/><path d="M185 80v30M170 95h30M175 85l20 20M195 85l-20 20"/><path class="route" d="M223 95h47"/><circle class="node" cx="273" cy="95" r="3"/><circle cx="315" cy="95" r="38"/><circle cx="315" cy="95" r="29"/><circle cx="315" cy="95" r="20"/><path d="M304 95l8 8 15-18"/></g>
-              </svg>
-            </div>
-            <div class="workflow-copy"><h3>Case Resolution</h3><p>Assemble context, recommend the next best action and resolve complex cases faster.</p></div>
+          <a class="tw-card" href="contact.html">
+            <svg class="tw-visual" viewBox="0 0 320 190" aria-hidden="true"><g class="tw-lines"><path d="M18 46h72l44 49M18 78h86l30 17M18 112h86l30-17M18 144h72l44-49M186 95h45"/></g><g class="tw-nodes"><circle cx="160" cy="95" r="26"/><path d="M153 95h14M160 88v14"/><circle cx="269" cy="95" r="36"/><circle cx="269" cy="95" r="27"/><path d="M258 95l8 8 16-20"/><rect x="14" y="42" width="8" height="8"/><circle cx="18" cy="78" r="4"/><path d="M14 108l8 8M22 108l-8 8"/><path d="M18 138l5 10H13z"/></g></svg>
+            <div class="tw-card-copy"><h3>Case resolution</h3><p>Assemble context, recommend the next action and resolve complex cases faster.</p></div><span class="tw-card-arrow" aria-hidden="true">↗</span>
           </a>
         </div>
       </div>
@@ -425,6 +395,7 @@
   </footer>
 
   <script src="./script.js"></script>
+  <script src="./workflows-section.js?v=1.0"></script>
 
     <script>
       (function () {
