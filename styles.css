@@ -8825,9 +8825,9 @@ html body section.final-cta {
   display:block !important;
 }
 
-.theorem-mark rect:nth-child(1){ fill:#0a0a0a !important; }
-.theorem-mark rect:nth-child(2){ fill:#0a0a0a !important; }
-.theorem-mark rect:nth-child(3){ fill:#3b82f6 !important; }
+.theorem-mark rect:nth-child(1){ fill:#07118e !important; }
+.theorem-mark rect:nth-child(2){ fill:#0b25b8 !important; }
+.theorem-mark rect:nth-child(3){ fill:#1252df !important; }
 
 
 /* v67 — five item navigation */
@@ -10738,6 +10738,197 @@ body.document-extraction-page .final-cta p{max-width:680px;margin:17px auto 0;co
 body.document-extraction-page .final-cta-actions{margin-top:25px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 body.document-extraction-page .final-cta-actions .button{min-width:210px;min-height:52px;border-color:#fff;background:#fff;color:#111;box-shadow:none}
 body.document-extraction-page .final-cta-actions .button:first-child{color:var(--brand)}
+
+/* Homepage workflows — static editorial card grid */
+.workflows-section{
+  padding:var(--section-space) 0;
+  background:#fff;
+}
+
+.workflows-container{
+  width:min(1080px,calc(100% - 48px));
+  margin-inline:auto;
+}
+
+.workflows-head{
+  max-width:650px;
+  margin-bottom:44px;
+}
+
+.workflows-head .section-eyebrow{
+  margin:0 0 14px;
+  color:var(--brand);
+  font-size:12px;
+  line-height:1.4;
+  font-weight:700;
+  letter-spacing:.1em;
+}
+
+.workflows-head h2{
+  margin:0;
+  color:var(--text);
+  font-size:42px;
+  line-height:1.08;
+  font-weight:700;
+  letter-spacing:-.055em;
+}
+
+.workflows-head h2 .highlight{color:var(--brand)}
+
+.workflows-head > p:last-child{
+  max-width:600px;
+  margin:20px 0 0;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.65;
+}
+
+.workflows-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+}
+
+.workflow-card{
+  min-width:0;
+  min-height:424px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  color:var(--text);
+  text-decoration:none;
+  background:#faf9f7;
+  border:1px solid #e3e2df;
+  border-radius:13px;
+  box-shadow:0 2px 8px rgba(13,18,39,.025);
+  transition:transform .22s ease,background-color .22s ease,border-color .22s ease,box-shadow .22s ease;
+}
+
+.workflow-card:hover{
+  transform:translateY(-3px);
+  background:#f6f7f8;
+  border-color:#d7dce4;
+  box-shadow:0 5px 14px rgba(13,18,39,.045);
+}
+
+.workflow-card:focus-visible{
+  outline:3px solid rgba(var(--brand-rgb),.28);
+  outline-offset:3px;
+  border-color:var(--brand);
+}
+
+.workflow-art{
+  min-height:264px;
+  display:grid;
+  place-items:center;
+  padding:25px 19px 10px;
+}
+
+.workflow-art svg{
+  width:100%;
+  max-width:350px;
+  height:auto;
+  overflow:visible;
+}
+
+.workflow-art svg *{
+  vector-effect:non-scaling-stroke;
+}
+
+.workflow-art .art-lines,
+.workflow-art .approved-check{
+  fill:none;
+  stroke:#151a25;
+  stroke-width:1.1;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.workflow-art .route{
+  stroke:#8d94a2;
+  stroke-dasharray:1.2 3;
+  transition:stroke .22s ease,stroke-dashoffset .4s ease;
+}
+
+.workflow-art .node{fill:#151a25;stroke:none}
+
+.workflow-art .art-points circle{
+  fill:#fff;
+  stroke:#151a25;
+  stroke-width:1;
+  transition:fill .22s ease,stroke .22s ease;
+}
+
+.workflow-art .art-points circle:nth-child(3n + 1),
+.workflow-art .exception,
+.workflow-art .checkpoint,
+.workflow-art .approved{
+  fill:var(--brand);
+  stroke:var(--brand);
+}
+
+.workflow-art .approved-check{
+  stroke:#fff;
+  stroke-width:1.4;
+}
+
+.workflow-copy{
+  margin-top:auto;
+  padding:0 24px 25px;
+}
+
+.workflow-copy h3{
+  margin:0 0 10px;
+  color:var(--text);
+  font-size:19px;
+  line-height:1.25;
+  font-weight:700;
+  letter-spacing:-.025em;
+}
+
+.workflow-copy p{
+  margin:0;
+  color:#626b7d;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.workflow-card:hover .route{
+  stroke:var(--brand);
+  stroke-dashoffset:-4;
+}
+
+.workflow-card:hover .art-points circle:nth-child(2n),
+.workflow-card:hover .checkpoint{
+  stroke:var(--brand);
+}
+
+.workflow-card:hover .workflow-art svg{transform:translateY(-2px)}
+.workflow-art svg{transition:transform .25s ease}
+
+@media (max-width:1024px){
+  .workflows-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media (max-width:760px){
+  .workflows-container{width:calc(100% - 28px)}
+  .workflows-head{margin-bottom:32px}
+  .workflows-head h2{font-size:34px;line-height:1.12}
+  .workflows-head h2 br{display:none}
+  .workflows-head > p:last-child{margin-top:16px}
+  .workflows-grid{grid-template-columns:1fr;gap:14px}
+  .workflow-card{min-height:400px}
+  .workflow-art{min-height:246px;padding:20px 15px 5px}
+  .workflow-copy{padding:0 22px 24px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .workflow-card,
+  .workflow-art svg,
+  .workflow-art .route{transition:none}
+  .workflow-card:hover{transform:none}
+  .workflow-card:hover .workflow-art svg{transform:none}
+}
 
 @media(max-width:760px){
   body.document-extraction-page .shell,
