@@ -1,0 +1,95 @@
+:root{
+  --tw-blue:var(--brand,#005BE2);
+  --tw-ink:var(--text,#0d1227);
+  --tw-muted:var(--muted,#747b8d);
+  --tw-card:#fbfcfe;
+  --tw-border:#dfe4ec;
+}
+
+.tw-workflows,
+.tw-workflows *{box-sizing:border-box}
+
+.tw-workflows{
+  overflow:hidden;
+  padding:var(--section-space) 0;
+  color:var(--tw-ink);
+  font-family:Inter,Arial,sans-serif;
+}
+
+.tw-shell{width:min(var(--container),calc(100% - 48px));margin:0 auto}
+.tw-intro{margin-bottom:44px}
+.tw-intro h2{max-width:760px;margin:0;font-size:42px;line-height:1.16;letter-spacing:-.055em;font-weight:700}
+.tw-intro h2 span{color:var(--tw-blue);font-weight:700}
+
+.tw-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.tw-card{position:relative;display:flex;min-width:0;height:385px;overflow:hidden;flex-direction:column;border:1px solid var(--tw-border);border-radius:10px;background:var(--tw-card);color:inherit;text-decoration:none;transition:transform .25s ease,border-color .25s ease,background .25s ease}
+.tw-card:hover{transform:translateY(-2px);border-color:#c8d2e2;background:#fff}
+.tw-card:focus-visible{outline:3px solid rgba(var(--brand-rgb),.28);outline-offset:3px}
+.tw-card-arrow{position:absolute;top:18px;right:18px;width:30px;height:30px;display:grid;place-items:center;border:1px solid #d9e0ea;border-radius:6px;background:#fff;color:#607087;font-size:16px;transition:color .2s ease,transform .2s ease}
+.tw-card:hover .tw-card-arrow{color:var(--tw-blue);transform:translate(1px,-1px)}
+
+.tw-visual{width:100%;height:245px;flex:0 0 245px;padding:34px 26px 12px;color:#172033;overflow:visible}
+.tw-lines{fill:none;stroke:#6f8fbe;stroke-width:1.35;stroke-dasharray:4 4;stroke-linecap:round}
+.tw-nodes{fill:#fff;stroke:currentColor;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+.tw-nodes .tw-fill{fill:var(--tw-blue);stroke:var(--tw-blue)}
+.tw-nodes .tw-checkline{fill:none;stroke:#fff;stroke-width:1.4}
+.tw-nodes>*{transform-box:fill-box;transform-origin:center}
+.tw-card:nth-child(2n) .tw-lines{animation:tw-flow 4.2s linear infinite}
+.tw-card:nth-child(2n+1) .tw-lines{animation:tw-flow 5s linear infinite reverse}
+.tw-card .tw-fill{animation:tw-pulse 1.8s ease-in-out infinite}
+.tw-card:nth-child(1) .tw-nodes>rect{animation:tw-document 3.4s ease-in-out infinite}
+.tw-card:nth-child(1) .tw-nodes>circle{animation:tw-node-pop 3.4s ease-in-out infinite}
+.tw-card:nth-child(1) .tw-nodes>circle:nth-of-type(2n){animation-delay:.28s}
+.tw-card:nth-child(2) .tw-nodes>circle:nth-of-type(1){animation:tw-match-left 3.8s ease-in-out infinite}
+.tw-card:nth-child(2) .tw-nodes>circle:nth-of-type(2){animation:tw-match-right 3.8s ease-in-out infinite}
+.tw-card:nth-child(2) .tw-nodes>circle:nth-of-type(n+4){animation:tw-node-pop 3.8s ease-in-out infinite}
+.tw-card:nth-child(3) .tw-nodes>circle:nth-of-type(1){animation:tw-ring 3s ease-in-out infinite}
+.tw-card:nth-child(3) .tw-nodes>circle:nth-of-type(2){animation:tw-ring 3s ease-in-out infinite .18s}
+.tw-card:nth-child(3) .tw-nodes>circle:nth-of-type(4){animation:tw-person 3s ease-in-out infinite}
+.tw-card:nth-child(4) .tw-nodes>circle:first-of-type{animation:tw-route 3.2s ease-in-out infinite}
+.tw-card:nth-child(4) .tw-nodes>circle:nth-of-type(n+2){animation:tw-node-pop 3.2s ease-in-out infinite}
+.tw-card:nth-child(4) .tw-nodes>circle:nth-of-type(3){animation-delay:.2s}.tw-card:nth-child(4) .tw-nodes>circle:nth-of-type(4){animation-delay:.4s}.tw-card:nth-child(4) .tw-nodes>circle:nth-of-type(5){animation-delay:.6s}
+.tw-card:nth-child(5) .tw-nodes>path:first-child{animation:tw-gates 3.6s ease-in-out infinite}
+.tw-card:nth-child(5) .tw-nodes>circle:nth-of-type(1){animation:tw-person 3.6s ease-in-out infinite}
+.tw-card:nth-child(6) .tw-nodes>circle:nth-of-type(1){animation:tw-resolve 3.4s ease-in-out infinite}
+.tw-card:nth-child(6) .tw-nodes>circle:nth-of-type(2){animation:tw-ring 3.4s ease-in-out infinite .15s}
+.tw-card:nth-child(6) .tw-nodes>circle:nth-of-type(3){animation:tw-ring 3.4s ease-in-out infinite .3s}
+.tw-card.is-paused *{animation-play-state:paused!important}
+
+.tw-card-copy{margin-top:auto;padding:0 24px 24px}
+.tw-card-copy h3{margin:0 42px 9px 0;color:var(--tw-ink);font-size:18px;line-height:1.25;letter-spacing:-.035em;font-weight:700}
+.tw-card-copy p{margin:0;color:var(--tw-muted);font-size:13px;line-height:1.55}
+
+@keyframes tw-flow{0%{stroke-dashoffset:0;opacity:.45}45%,70%{opacity:1}100%{stroke-dashoffset:-48;opacity:.45}}
+@keyframes tw-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(1.45)}}
+@keyframes tw-document{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-7px) rotate(-1.5deg)}}
+@keyframes tw-node-pop{0%,15%,100%{opacity:.45;transform:scale(.72)}42%,78%{opacity:1;transform:scale(1.18)}}
+@keyframes tw-match-left{0%,100%{transform:translateX(-10px)}45%,65%{transform:translateX(7px)}}
+@keyframes tw-match-right{0%,100%{transform:translateX(10px)}45%,65%{transform:translateX(-7px)}}
+@keyframes tw-ring{0%,100%{opacity:.55;transform:scale(.82)}45%,70%{opacity:1;transform:scale(1.14)}}
+@keyframes tw-person{0%,100%{transform:translateY(5px);opacity:.6}45%,70%{transform:translateY(-5px);opacity:1}}
+@keyframes tw-route{0%,100%{transform:rotate(-12deg) scale(.88)}45%,70%{transform:rotate(0) scale(1.16)}}
+@keyframes tw-gates{0%,100%{transform:translateX(-7px);opacity:.55}45%,70%{transform:translateX(8px);opacity:1}}
+@keyframes tw-resolve{0%,100%{transform:rotate(0) scale(.85)}50%{transform:rotate(180deg) scale(1.12)}}
+
+@media(max-width:920px){
+  .tw-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(max-width:760px){
+  .tw-shell{width:calc(100% - 28px)}
+  .tw-intro{margin-bottom:32px}
+  .tw-intro h2{font-size:34px;line-height:1.16}
+  .tw-intro h2 br{display:none}
+  .tw-grid{grid-template-columns:1fr;gap:14px}
+  .tw-card{height:360px}
+  .tw-visual{height:222px;flex-basis:222px;padding:30px 22px 8px}
+  .tw-card-copy{padding:0 22px 22px}
+  .tw-card-copy h3{font-size:18px}
+  .tw-card-copy p{font-size:13px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .tw-card,
+  .tw-card *{animation:none!important;transition:none!important}
+}

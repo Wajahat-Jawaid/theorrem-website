@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theorrem Reconcile — Make every record agree</title>
+  <meta name="description" content="Connect records from every system, intelligently match what belongs together, explain differences, and deliver trusted results with Theorrem Reconcile.">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;650;700;750;800&family=Bai+Jamjuree:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=10.19">
+  <link rel="stylesheet" href="./reconciliation.css?v=1.0">
+</head>
+<body class="reconciliation-page">
+  <header class="site-header" id="top">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand theorem-logo" href="index.html#top" aria-label="Theorrem home"><span class="theorem-mark" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 30"><rect width="36" height="6" rx="3"/><rect y="12" width="28" height="6" rx="3"/><rect y="24" width="18" height="6" rx="3"/></svg></span><span class="theorem-wordmark">Theorrem</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <div class="nav-links"><a href="#how-it-works">How it works</a><a href="#matching">Intelligent matching</a><a href="#exceptions">Exceptions</a><a href="#use-cases">Use cases</a><a href="#impact">Impact</a></div>
+      <div class="nav-actions"><button class="btn btn-primary js-open-reconcile" type="button">Explore matching workflow</button><a class="btn btn-secondary" href="contact.html">Talk to Sales</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="recon-hero recon-shell" aria-labelledby="hero-title">
+      <div class="recon-hero-copy reveal">
+        <span class="recon-label">THEORREM RECONCILE</span>
+        <h1 id="hero-title">Make every record agree — <em>across every system.</em></h1>
+        <p>Bring together records from spreadsheets, ERPs, banks, payment platforms and operational systems. Theorrem intelligently matches what belongs together, explains every difference and sends only genuine exceptions to your team.</p>
+        <div class="recon-actions"><button class="button large js-open-reconcile" type="button">Explore matching workflow <span>→</span></button><a class="button secondary large" href="contact.html">Talk to Sales</a></div>
+        <div class="recon-facts"><span>✓ Any source or format</span><span>⌁ Complex matching supported</span><span>◎ Every decision traceable</span></div>
+      </div>
+      <div class="hero-match-scene reveal delay-1" data-animate="hero" aria-label="Animated three-way match across ERP and warehouse systems">
+        <div class="scene-bar"><span><i></i><i></i><i></i></span><b>Cross-system reconciliation</b><em>Live workflow</em></div>
+        <div class="hero-records">
+          <article class="match-record po"><small>ERP · PURCHASE ORDER</small><b>PO-8821</b><dl><div><dt>Supplier</dt><dd>Northwind</dd></div><div><dt>Quantity</dt><dd>300 units</dd></div><div><dt>Unit cost</dt><dd>$180</dd></div><div><dt>Total</dt><dd>$54,000</dd></div></dl></article>
+          <article class="match-record grn"><small>WAREHOUSE · GOODS RECEIPT</small><b>GRN-4418</b><dl><div><dt>Supplier</dt><dd>Northwind Traders</dd></div><div><dt>Received</dt><dd>300 units</dd></div><div><dt>Status</dt><dd>Delivery completed</dd></div></dl></article>
+          <article class="match-record inv"><small>AP · SUPPLIER INVOICE</small><b>INV-3391</b><dl><div><dt>Supplier</dt><dd>NORTHWIND LTD.</dd></div><div><dt>Quantity</dt><dd>300 units</dd></div><div><dt>Total</dt><dd>$54,000</dd></div></dl></article>
+        </div>
+        <div class="match-links" aria-hidden="true"><i></i><i></i><i></i><span>Normalising supplier · quantity · total</span></div>
+        <div class="trusted-result"><span class="result-check">✓</span><div><small>TRUSTED RESULT</small><b>Three-way match complete</b><em>PO-8821 · GRN-4418 · INV-3391</em></div><strong>Delivered to ERP →</strong></div>
+        <p class="floating-status"><i></i> Three records matched across ERP and warehouse systems.</p>
+      </div>
+    </section>
+
+    <section class="recon-section problem-section" id="how-it-works">
+      <div class="recon-shell">
+        <div class="problem-heading reveal"><h2>Most reconciliation tools work<br>until the records stop matching perfectly.</h2><p>Theorrem is built for what happens next.</p></div>
+        <div class="problem-grid reveal">
+          <article><div class="problem-visual formats"><span>ACME LTD.</span><span>Acme Limited</span><span>Acme Distribution</span><b>Acme Distribution</b></div><small>01</small><h3>Different formats</h3><p>Dates, names and references rarely arrive in the same format.</p></article>
+          <article><div class="problem-visual missing"><label>REFERENCE <em>Blank</em></label><i>+</i><span>Remittance email</span><b>INV-1048 · 1071</b></div><small>02</small><h3>Missing references</h3><p>Payments and operational records often arrive without reliable identifiers.</p></article>
+          <article><div class="problem-visual relations"><span>P-201</span><i></i><b>INV-31</b><b>INV-32</b><b>INV-33</b><em>1 → many</em></div><small>03</small><h3>Complex relationships</h3><p>One payment may cover several invoices. One order may create several deliveries.</p></article>
+          <article><div class="problem-visual differences"><span>Gross <b>$48,600</b></span><span>Fee <b>− $1,458</b></span><strong>Bank <b>$47,142</b></strong></div><small>04</small><h3>Valid differences</h3><p>Timing, FX, fees and tolerances can create differences that are not genuine errors.</p></article>
+          <article><div class="problem-visual genuine"><span>Matched <b>1,143</b></span><span>Explained <b>78</b></span><span class="fade">Waiting <b>21</b></span><strong>Exception <b>1</b></strong></div><small>05</small><h3>Genuine exceptions</h3><p>Only unresolved financial or operational risk should reach a person.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="recon-section workflow-section">
+      <div class="recon-shell">
+        <div class="recon-heading reveal"><span class="recon-label">END-TO-END RECONCILIATION</span><h2>From disconnected records<br>to one trusted result.</h2><p>Collect → Normalise → Match → Explain → Resolve → Deliver</p></div>
+        <div class="workflow-board reveal" data-tabs="workflow">
+          <div class="workflow-tabs" role="tablist" aria-label="End-to-end matching workflow">
+            <button class="active" data-step="connect" type="button"><span>01</span><b>Connect</b><small>Bring every record together</small></button>
+            <button data-step="normalise" type="button"><span>02</span><b>Normalise</b><small>Create one shared language</small></button>
+            <button data-step="match" type="button"><span>03</span><b>Match</b><small>Resolve complex relationships</small></button>
+            <button data-step="explain" type="button"><span>04</span><b>Explain</b><small>Account for every difference</small></button>
+            <button data-step="deliver" type="button"><span>05</span><b>Deliver</b><small>Publish the trusted result</small></button>
+          </div>
+          <div class="workflow-stage" id="workflowStage" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="recon-section intelligent-section" id="matching">
+      <div class="recon-shell">
+        <div class="recon-heading reveal"><span class="recon-label">CONTEXTUAL MATCHING</span><h2>AI handles the matches<br>that rigid rules cannot.</h2><p>When references are missing, incomplete or inconsistent, Theorrem uses amounts, dates, customer history, emails and related records to determine what belongs together.</p></div>
+        <div class="intelligent-board reveal" data-animate="intelligent">
+          <div class="intelligence-sources">
+            <article><small>BANK PAYMENT</small><b>ACME DIST.</b><dl><div><dt>Amount</dt><dd>$18,420</dd></div><div><dt>Reference</dt><dd class="warning">Blank</dd></div><div><dt>Date</dt><dd>14 Oct 2026</dd></div></dl></article>
+            <article><small>OPEN INVOICES</small><span class="invoice-option selected">INV-1048 <b>$10,200</b></span><span class="invoice-option selected">INV-1071 <b>$8,220</b></span><span class="invoice-option">INV-1090 <b>$3,600</b></span><strong class="combined">Combined · $18,420</strong></article>
+            <article class="email-card"><small>REMITTANCE EMAIL</small><b>Payment allocation</b><p>“Today’s payment covers invoices <mark>1048</mark> and <mark>1071</mark>.”</p></article>
+          </div>
+          <div class="reasoning-strip"><span class="fail">× Exact match failed</span><i>→</i><span>Identity resolved</span><i>→</i><span>Invoices grouped</span><i>→</i><strong>97% suggested match</strong></div>
+          <aside class="why-panel"><header><div><small>THEORREM RECOMMENDATION</small><h3>Why this matched</h3></div><span>97%</span></header><ul><li>Customer identity aligned</li><li>Combined invoice amount aligned</li><li>Payment date within tolerance</li><li>Remittance email mentioned both invoice numbers</li><li>No competing invoice combination found</li></ul><div class="policy-line"><span>Policy: auto-approve above 95%</span><b>Approved · invoices cleared</b></div><p>ERP customer balance updated <span>→</span></p></aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="recon-section exceptions-section" id="exceptions">
+      <div class="recon-shell">
+        <div class="recon-heading reveal"><span class="recon-label">EXCEPTION MANAGEMENT</span><h2>Matched records disappear.<br>Only genuine breaks remain.</h2></div>
+        <div class="exception-board reveal" data-animate="exceptions">
+          <div class="sample-label">Sample workflow · 1,248 records</div>
+          <div class="queue-summary"><article class="done"><b>1,143</b><span>Exact or high-confidence matches</span></article><article class="explained"><b>78</b><span>Automatically explained differences</span></article><article class="waiting"><b>21</b><span>Waiting for source data</span></article><article class="exception"><b>6</b><span>Genuine exceptions requiring judgment</span></article></div>
+          <div class="exception-workspace">
+            <div class="exception-list"><div class="list-head"><b>6 genuine exceptions</b><span>Financial exposure prioritised</span></div><button class="active" type="button"><span>Quantity mismatch</span><b>$5,400</b><small>PO-8821 · INV-3391</small></button><button type="button"><span>Amount variance</span><b>$1,240</b><small>Bank vs ledger</small></button><button type="button"><span>Duplicate</span><b>$820</b><small>Customer payment</small></button><div class="category-row">Amount variance · Missing transaction · Duplicate · Quantity mismatch · Settlement fee · Date or currency</div></div>
+            <div class="exception-case">
+              <header><div><small>AP THREE-WAY EXCEPTION</small><h3>30 units received short</h3></div><strong>$5,400 exposure</strong></header>
+              <div class="three-way"><article><small>PURCHASE ORDER</small><b>300 units</b><span>$180 each · $54,000</span></article><article class="short"><small>WAREHOUSE RECEIPT</small><b>270 units</b><span>30 units outstanding</span></article><article><small>SUPPLIER INVOICE</small><b>300 units</b><span>Invoice total · $54,000</span></article></div>
+              <div class="recommendation"><span>THEORREM RECOMMENDS</span><p>Approve <b>$48,600</b> and hold <b>$5,400</b> pending delivery confirmation.</p></div>
+              <div class="case-actions"><button class="button accept-case" type="button">Accept recommendation</button><button type="button">Request evidence</button><button type="button">Assign reviewer</button><button type="button">Add comment</button></div>
+              <div class="accepted-result" aria-live="polite"><b>✓ Recommendation accepted</b><span>$48,600 approved downstream · $5,400 held · activity history retained</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="recon-section types-section">
+      <div class="recon-shell">
+        <div class="recon-heading reveal"><span class="recon-label">MATCHING TYPES</span><h2>Match the way your records<br>actually behave.</h2></div>
+        <div class="type-grid reveal">
+          <article><div class="type-scene one-one"><span>PAY-821<br><b>$4,200</b></span><i>✓</i><span>INV-821<br><b>$4,200</b></span></div><small>01</small><h3>One-to-one</h3><p>One payment matched to one invoice.</p></article>
+          <article><div class="type-scene one-many"><span>PAY<br><b>$18,420</b></span><i></i><div><b>INV-1048 · $10,200</b><b>INV-1071 · $8,220</b></div></div><small>02</small><h3>One-to-many</h3><p>One payment matched to several invoices.</p></article>
+          <article><div class="type-scene many-one"><div><b>SALE · $12k</b><b>SALE · $8k</b><b>SALE · $6k</b></div><i></i><span>PAYOUT<br><b>$26k</b></span></div><small>03</small><h3>Many-to-one</h3><p>Several transactions matched to one settlement.</p></article>
+          <article><div class="type-scene many-many"><div><b>A1</b><b>A2</b><b>A3</b></div><i>≋</i><div><b>B1</b><b>B2</b><b>B3</b></div></div><small>04</small><h3>Many-to-many</h3><p>Aggregated transaction batches matched across systems.</p></article>
+          <article><div class="type-scene fuzzy"><span>ACME LTD.</span><span>Acme Limited</span><span>14 Oct ↔ 15 Oct</span><strong>Within policy</strong></div><small>05</small><h3>Tolerance and fuzzy matching</h3><p>Date differences, name variations, FX, rounding and formatting handled within policy.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="recon-section usecase-section" id="use-cases">
+      <div class="recon-shell">
+        <div class="recon-heading reveal"><span class="recon-label">UNIVERSAL RECONCILIATION</span><h2>One matching engine.<br>Every reconciliation workflow.</h2></div>
+        <div class="usecase-board-recon reveal" data-tabs="usecases">
+          <div class="usecase-tabs-recon" role="tablist" aria-label="Reconciliation use cases"></div>
+          <div class="usecase-panel-recon" id="reconUsecasePanel" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="recon-section impact-section-recon" id="impact">
+      <div class="recon-shell">
+        <div class="recon-heading reveal"><span class="recon-label">A CONTROLLED OPERATING MODEL</span><h2>What changes with<br>Theorrem Reconcile.</h2></div>
+        <div class="impact-table reveal"><div class="impact-head"><b>Reconciliation KPI</b><b>Before</b><b>With Theorrem</b></div><div><strong>Data collection</strong><span>Download reports and manually combine spreadsheets.</span><span>Records collected continuously from every source.</span></div><div><strong>Data preparation</strong><span>Clean names, dates, references and formats manually.</span><span>Data normalised automatically before matching.</span></div><div><strong>Matching</strong><span>Exact spreadsheet formulas and manual lookups.</span><span>Exact, fuzzy, tolerance and complex-relationship matching.</span></div><div><strong>Routine differences</strong><span>Staff repeatedly investigate fees, timing and rounding.</span><span>Known difference patterns explained automatically.</span></div><div><strong>Exceptions</strong><span>Review large unmatched queues.</span><span>Only genuine unresolved breaks reach people.</span></div><div><strong>Risk visibility</strong><span>Financial exposure hidden inside spreadsheets.</span><span>Every exception displays its value, cause and recommended action.</span></div><div><strong>Audit trail</strong><span>Decisions distributed across emails and files.</span><span>Sources, rules, corrections and approvals remain attached.</span></div><div><strong>Downstream delivery</strong><span>Corrected results manually entered into other systems.</span><span>Verified results delivered automatically.</span></div></div>
+      </div>
+    </section>
+
+    <section class="final-cta-recon recon-shell"><div><span class="recon-label">THEORREM RECONCILE</span><h2>Stop searching spreadsheets<br>for the records that do not agree.</h2><p>Show us the systems, files and rules behind your reconciliation process. Theorrem will turn them into one controlled matching and exception workflow.</p><div class="recon-actions"><button class="button large js-open-reconcile" type="button">Explore matching workflow <span>→</span></button><a class="button large" href="contact.html">Talk to Sales</a></div></div></section>
+  </main>
+
+  <footer class="footer"><div class="container footer-grid"><div><a class="brand theorem-logo" href="index.html#top"><span class="theorem-wordmark">Theorrem</span></a><p>Custom AI agents for sales, support, operations, and customer-facing teams.</p><div class="socials"><a href="https://www.linkedin.com/company/theorrem/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.linkedin.com/company/theorrem/" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/company/theorrem/" target="_blank" rel="noopener">YouTube</a></div></div><div><h4>Solutions</h4><a href="document-extraction.html">Document extraction</a><a href="reconciliation.html">Reconciliation</a><a href="index.html#playbooks">Workflow agents</a></div><div><h4>Company</h4><a href="index.html#quality">Quality</a><a href="index.html#governance">Governance</a><a href="about.html">About us</a><a href="contact.html">Contact us</a></div><div><h4>Legal</h4><a href="privacy-policy.html">Privacy policy</a><a href="terms.html">Terms</a></div></div><div class="container footer-bottom"><span>© 2026 Theorrem</span><span><a href="contact.html">info@theorrem.com</a></span><span>AI agents built around your workflows</span></div></footer>
+
+  <div class="reconcile-modal" id="reconcileModal" hidden><div class="modal-backdrop" data-close-modal></div><section class="reconcile-dialog" role="dialog" aria-modal="true" aria-labelledby="demoTitle"><header><div><small>FOCUSED WORKFLOW · EXAMPLE DATA</small><h2 id="demoTitle">Marketplace payout reconciliation</h2></div><button class="modal-close" data-close-modal type="button" aria-label="Close workflow">×</button></header><div class="demo-progress" aria-label="Workflow progress"></div><div class="demo-body" id="reconcileDemoBody" aria-live="polite"></div><footer><button class="demo-secondary" id="demoSource" type="button">View source</button><button class="demo-secondary" id="demoComment" type="button">Add comment</button><button class="button" id="demoNext" type="button">Open reconciliation →</button></footer></section></div>
+
+  <script src="./script.js?v=10.19"></script>
+  <script src="./reconciliation.js?v=1.0"></script>
+</body>
+</html>

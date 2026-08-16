@@ -42,7 +42,6 @@
       transparent calc(50% + 541px)
     ) !important;
 }
-
 /* Put the hero content closer to the reference: narrower and more centered, not too far left. */
 .hero .container{
   width:min(970px, calc(100% - 48px));
@@ -8825,9 +8824,9 @@ html body section.final-cta {
   display:block !important;
 }
 
-.theorem-mark rect:nth-child(1){ fill:#0a0a0a !important; }
-.theorem-mark rect:nth-child(2){ fill:#0a0a0a !important; }
-.theorem-mark rect:nth-child(3){ fill:#3b82f6 !important; }
+.theorem-mark rect:nth-child(1){ fill:#07118e !important; }
+.theorem-mark rect:nth-child(2){ fill:#0b25b8 !important; }
+.theorem-mark rect:nth-child(3){ fill:#1252df !important; }
 
 
 /* v67 — five item navigation */
@@ -10739,6 +10738,7 @@ body.document-extraction-page .final-cta-actions{margin-top:25px;display:flex;ju
 body.document-extraction-page .final-cta-actions .button{min-width:210px;min-height:52px;border-color:#fff;background:#fff;color:#111;box-shadow:none}
 body.document-extraction-page .final-cta-actions .button:first-child{color:var(--brand)}
 
+/* Homepage workflows — static editorial card grid */
 @media(max-width:760px){
   body.document-extraction-page .shell,
   body.document-extraction-page .industries-section > .shell{width:calc(100% - 28px)!important}
@@ -10749,4 +10749,37 @@ body.document-extraction-page .final-cta-actions .button:first-child{color:var(-
   body.document-extraction-page .final-cta p{font-size:15px}
   body.document-extraction-page .final-cta-actions{display:grid;grid-template-columns:1fr;width:100%}
   body.document-extraction-page .final-cta-actions .button{width:100%;min-width:0}
+}
+
+/* Homepage section headings — lighter editorial type with the exact gradient
+   used by “ready for business.” on the document extraction page. */
+body.home-page #playbooks .target-small-heading,
+body.home-page #quality .target-small-heading,
+body.home-page #governance .target-small-heading,
+body.home-page .tw-intro h2{
+  font-size:clamp(36px,3.35vw,50px)!important;
+  font-weight:500!important;
+}
+
+body.home-page .target-small-heading .highlight,
+body.home-page .theorem-gov-head .target-small-heading > span,
+body.home-page .tw-intro h2 > span{
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  background-image:linear-gradient(110deg,#07118e 0%,#0b25b8 48%,#1252df 100%)!important;
+  background-repeat:no-repeat!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  font-weight:inherit!important;
+}
+
+/* Keep the approved hero typography and motion; only change the rotating
+   phrase's fill from flat blue to the same brand gradient. */
+body.home-page .hero h1 .hero-switch > span{
+  color:transparent!important;
+  -webkit-text-fill-color:transparent!important;
+  background-image:linear-gradient(110deg,#07118e 0%,#0b25b8 48%,#1252df 100%)!important;
+  background-repeat:no-repeat!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
 }
