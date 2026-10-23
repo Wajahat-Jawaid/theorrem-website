@@ -17,6 +17,34 @@
           "value": "no-cache, no-store, must-revalidate"
         }
       ]
+    },
+    {
+      "source": "/apps/brightbook/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/apps/brightbook/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/apps/brightbook",
+      "destination": "/apps/brightbook/index.html"
+    },
+    {
+      "source": "/apps/brightbook/:path((?!assets/).*)",
+      "destination": "/apps/brightbook/index.html"
     }
   ]
 }
